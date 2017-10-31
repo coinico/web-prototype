@@ -1,0 +1,72 @@
+
+
+//Stylish Variables
+%fixHeight {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+//Grid Default Stylish
+.grid {
+    @extend %fixHeight;
+}
+
+%sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+%absoluteFull {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+}
+
+
+%inline {
+    &:after {
+        @extend %fixHeight;
+    }
+    vertical-align: top;
+    display: inline-block;
+    float:left;
+    @extend %sizing;
+    text-align: $left;
+}
+
+.float {
+    &-left {
+        float:left;
+    }
+    &-right {
+        float:right;
+    }
+}
+
+.hidden {
+    display:none;
+}
+
+body {
+    
+    overflow:auto;
+    @include effect(all,0.5s,ease);
+
+
+}
+
+
+.only-mobile {
+    display:none;
+    @media screen and (max-width: 767px){
+        display:block;
+    }
+}
+

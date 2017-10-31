@@ -1,0 +1,234 @@
+section#contact {
+  position: relative;
+  overflow: hidden;
+  background: $primaryColor;
+  padding: 90px 0 130px 0;
+  h2, h3 {
+    text-align: center;
+  }
+  h2{
+    color: $secondaryColor;
+  }
+  h3:after{
+    background: $secondaryColor;
+  }
+  .container {
+    form {
+      width: 50%;
+      float: left;
+      position: relative;
+      h4 {
+        color: $secondaryColor;
+        text-align: left;
+        margin-bottom: 15px;
+      }
+      fieldset {
+        .input{
+          @include bs();
+          width: 50%;
+          padding: 0 10px;
+          display: inline-block;
+          position: relative;
+          float: left;
+
+          input,textarea{
+            background: #fff;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid white;
+            &.error{
+              border: 1px solid $secondaryColor;
+              margin-bottom: 20px;
+            }
+          }
+          label{
+            text-align: left;
+            width: 100%;
+            display: inline-block;
+            font-size: 11px;
+            color:$secondaryColor;
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+          }
+
+          &:nth-child(2n+1){
+            padding-left: 0;
+          }
+          &:nth-child(2n){
+            padding-right: 0;
+            label{
+              left: 10px;
+            }
+          }
+          &.full-width{
+            width: 100%;
+            padding: 0;
+          }
+        }
+
+      }
+      button{
+        background: $secondaryColor;
+        color: white;
+        width: 100%;
+        padding: 12px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        cursor: pointer;
+        @include effect(all,0.5s,ease);
+        &:hover{
+          background: white;
+          color: $secondaryColor;
+        }
+      }
+      &.sending{
+        button{
+          &:before{
+            @extend %iconfont;
+            content:'\e904';
+            display:block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            line-height: 50px;
+            text-transform: none;
+            font-size: 14px;
+            margin: 15px auto;
+            border-radius: 50%;
+          }
+          top: 8px;
+          left: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: $primaryColor;
+        }
+
+        &.succes{
+          button{
+            &:before{
+              content:'\e90f';
+            }
+          }
+        }
+
+        &.error{
+          button {
+            &:before {
+              content: '\e903';
+            }
+          }
+        }
+      }
+
+
+    }
+    .info{
+      @include bs();
+      display: inline-block;
+      width: 50%;
+      padding-left: 60px;
+      margin-top: 20px;
+      .item{
+        position: relative;
+        min-height: 80px;
+        .icon{
+          position: absolute;
+          @include Y-50();
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: $secondaryColor;
+          &:before{
+            line-height: 50px;
+            color: white;
+            font-size: 20px;
+          }
+          &.location:before{
+            content: "\e906";
+          }
+          &.nextel:before{
+            content: "\e905";
+          }
+          &.email:before{
+            content: "\e909";
+          }
+          &.tel:before{
+            content: "\e907";
+          }
+          &.time:before{
+            content: "\e908";
+          }
+        }
+        .text{
+          padding-left: 75px;
+          @include Y-50();
+          position: absolute;
+          h4{
+            @extend %medium;
+            text-align: left;
+            font-size: 24px;
+            color: $secondaryColor;
+          }
+          p,a{
+            @extend %light;
+            text-align: left;
+            color: $secondaryColor;
+            font-size: 17px;
+            padding: 0;
+            display: inline-block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  @media(max-width: 767px){
+    .container{
+      form{
+        width: 100%;
+      }
+      .info{
+        width: 100%;
+        margin-top: 25px;
+        padding: 15px;
+        .item {
+          margin-bottom: 30px;
+          .icon{
+            position: relative;
+            transform: none;
+            margin: 11px auto;
+          }
+          .text{
+            padding: 0;
+            position: relative;
+            transform: none;
+            -webkit-transform: none;
+            -moz-transform: none;
+            h4,p,a {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media(max-width: 450px){
+    .container {
+      form {
+        fieldset {
+          .input:nth-child(n) {
+            width: 100%;
+            padding: 0;
+            label {
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

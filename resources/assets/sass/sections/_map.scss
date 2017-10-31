@@ -1,0 +1,46 @@
+section#map{
+  .map-container{
+    height: 425px;
+    #map-canvas{
+      width: 100%;
+      height: 100%;
+    }
+    .btn-map{
+      position: absolute;
+      right: 0;
+      color: #fff;
+      background: $secondaryColor;
+      padding: 15px 25px 15px 55px;
+      z-index: 2;
+      text-decoration: none;
+      text-transform: uppercase;
+      @include effect(all, 0.2s, ease);
+      svg{
+        @include Y-50();
+        position: absolute;
+        left: 7px;
+        max-width: 35px;
+        path{
+          @include effect(fill, 0.2s, ease);
+        }
+      }
+      strong{
+        display: block;
+      }
+      @media(max-width: 767px){
+        width: 100%;
+        @include bs();
+      }
+      &:hover{
+        background: white;
+        color: $secondaryColor;
+        svg{
+          path{
+            fill:$secondaryColor;
+          }
+        }
+      }
+    }
+  }
+
+}

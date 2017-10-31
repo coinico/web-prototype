@@ -1,0 +1,205 @@
+$boxHelperWidth 			: 350px;
+$boxHelperBackground 		: #4a9cba;
+
+
+.box-with-helper {
+	position:relative;
+	@extend %fixHeight;
+	.fixed-box {
+		@extend %sizing;
+		padding:0px 15px;
+		background:$boxHelperBackground;
+		position:absolute;
+		left:0px;
+		top:0px;
+		height:100%;
+		width:$boxHelperWidth;
+		@media screen and (max-width: 1023px){
+			width:$boxHelperWidth * 0.8;
+		}	
+		@media screen and (max-width: 768px){
+			position:relative;
+			display:block;
+			height:auto;
+			width:100%;
+		}			
+		.copy {
+			padding: 15% 40px;
+			@media screen and (max-width: 1023px){
+				padding:15% 15px;
+			}	
+			@media screen and (max-width: 768px){		
+				padding:15px;
+			}							
+			h2 {
+				@extend %light;
+				font-size: 37px;
+				color: #fff;
+				font-weight: normal;	
+				@media screen and (max-width: 1023px){	
+					font-size:24px;
+				}							
+			}
+			p {
+				@extend %light;
+			    font-size: 15px;
+			    line-height: 1.25;
+			    color: white;				
+			}
+		}
+	}
+
+	.box-static {
+		background:#e6edef;
+		padding-right:50px;
+		padding-left:$boxHelperWidth;
+		@media screen and (max-width: 1023px){
+			padding-left:$boxHelperWidth * 0.8;
+		}
+		@media screen and (max-width: 768px){
+			padding-left:15px;
+			padding-right:15px;
+		}			
+		.infografia {
+			margin:0px auto;
+			width:100%;
+			.years-data{
+				padding:25px 0px;
+				list-style-type:none;
+				li {
+					list-style-type:none;
+					max-width:80%;
+					display:none;
+					margin:0px auto;
+					@media screen and (max-width: 768px){
+						max-width:100%;
+					}	
+					&.active {
+						display:block;
+					}
+
+					p {
+						@extend %light;
+						min-height:130px;
+						width:100%;
+						max-width:100%;
+						@extend %sizing;
+						display:inline-block;
+						padding-left:150px;
+						padding-top:32px;
+						text-align:left;
+						font-size:17px;
+						position:relative;
+						@media screen and (max-width: 768px){
+							padding-top:0px;
+							padding-left:0px;
+						}							
+						em {
+							@extend %light;
+							font-style:normal;
+						}
+						var {
+							@extend %light;
+							position:absolute;
+							left:0px;
+							top:21px;
+							display:block;
+							font-size:53px;
+							color:#3c95b5;
+							@extend %sizing;
+							@extend %nexablack;
+							@include br(50%);
+							font-style:normal;
+							@media screen and (max-width: 768px){
+								position:relative;
+								top:auto;
+								text-align:center;
+								margin-bottom:15px;
+							}	
+						}
+
+					}
+
+				}
+			}
+			
+			.year-navigation {
+				position:relative;
+			
+				&:before {
+					position:absolute;
+				    right: 2px;
+				    top: 32px;
+					content:'';
+					width: 0; 
+					height: 0; 
+					border-top: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-left: 10px solid #0d3f55;
+				}
+
+				&:after {
+					content:'';
+					position:absolute;
+					top:41px;
+					height:3px;
+					background:#0d3f55;
+				    width: 92.7%;
+				    left: 6.3%;
+				}		
+
+				ul {
+					display:block;
+					padding:25px;
+					position:relative;
+					@extend %fixHeight;
+					@extend %sizing;
+
+					li {
+						list-style-type:none;
+						width:8.5%;
+						display:block;
+						float:left;
+						@media screen and (max-width: 768px){
+							width:40px;
+							&:first-of-type{
+								margin-left:-15px;
+							}
+						}							
+						a {
+							display:block;
+							width:100%;
+							text-align:center;
+							text-decoration:none;
+							@extend %nexablack;	
+							font-weight:normal;
+							color:#404040;
+							font-size:14px;			
+							span {
+								@include effect(all,0.25s,ease);
+								content:'';
+								display:block;
+								@extend %sizing;
+								width:20px;
+								height:20px;
+								@include br(50%);
+								margin:8px auto 15px auto;
+								background:#3c95b5;
+
+
+							}
+							&:hover, &.active {
+								span {
+									background: #3f4849;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+
+}

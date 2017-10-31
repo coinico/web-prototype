@@ -1,0 +1,198 @@
+$tabSelectorLinkColor	: #015f8b;
+$tableItemPerLine		: 1;
+$tableFirstItemFeatured	: 3;
+
+
+.tab-navigation{
+	padding-top:50px;
+	@media screen and (max-width: 768px){
+		padding-top:10px;
+	}
+	> .container {
+		z-index:2;
+
+		@media screen and (max-width: 768px){
+			padding:0px 10px;
+		}
+
+	}
+
+	.tab-selector{
+		position:relative;
+		display:block;
+		text-align:left;
+		list-style-type:none;
+		li {
+			border:1px solid rgba(255,255,255,0);
+			border-bottom:0px;			
+			display:inline-block;
+			list-style-type:none;
+			a {	
+				
+				text-decoration:none;
+				@extend %fixHeight;
+				padding:15px;
+				display:inline-block;
+				color:$tabSelectorLinkColor;
+				font-size:13px;
+				@media screen and (max-width: 768px){
+					text-align:center;
+				}
+			}
+
+			&.active {
+				border:1px solid #ccc;
+				border-bottom:0px;
+				background:#fff;
+			}
+		}
+	}
+
+}
+
+.tab-content{
+	display:none;
+	width:100%;
+	position:relative;
+	z-index:1;
+	margin-top:-1px;
+	border-top:1px solid #ccc;
+	padding:25px 0px;
+	background:#fff;
+	&.active {
+		display:block;
+	}
+	ul {
+		display:block;
+		width:100%;
+		@extend %fixHeight;
+		li {
+			width:100%;
+			display:block;
+			float:left;
+			@extend %fixHeight;
+			@extend %sizing;
+
+			> div {
+				float:left;
+				padding:25px;
+				display:inline-block;				
+				@extend %sizing;
+				font-size:13px;
+				color:#015f8b;
+				@media screen and (max-width: 1120px){
+					padding:25px 5px;
+				}
+				@media screen and (max-width: 980px){
+					padding:25px 5px;
+				}				
+				@if $tableItemPerLine != '' {
+					width:10%;
+					text-align:center;
+					@if $tableFirstItemFeatured != '' {
+						&:first-child {
+							width:20%;
+							text-align:left;
+						}					
+					}
+				}
+
+			}
+			&:nth-child(odd){
+				background:#eee;
+			}
+			&.heading-style {
+				
+				> div {
+					@extend %sizing;
+					@extend %light;
+					color:#fff;
+					background:#03a2e3;
+					
+					&:first-of-type {
+						background:#015f8b;
+					}
+
+				}
+			}
+
+		}
+	}
+}
+
+
+.receipt-trucks.table-mobile, .tab-navigation.tablet-mobile{
+
+	.tab-content {
+		border:0px;
+		padding:0px;
+		margin:0px;
+	}
+
+	.tab-content ul li {
+
+		> div:first-child {
+			width:100%;
+			padding:15px 15px;
+			font-size:20px;
+		}
+
+		.location-detials {
+			background:#3c96b5;
+			font-size:15px;
+			width:100%;
+			display:block;
+			color:#000;
+			padding:15px 15px;
+			@extend %sizing;
+			text-decoration:none;
+			position:relative;
+		    font-size: 15px;
+		    color: #fff;
+
+			&:after {
+				content:'';
+				display:block;
+				position:absolute;
+				right:15px;
+				top:23px;
+				@include arrow(down,5px,#fff);
+			}
+
+			+ div {
+				padding:5px 15px;
+				display:block;
+				width:100%;
+				&.hidden-content {
+					display:none;
+				}
+				@extend %fixHeight;
+				> div {
+					width:100%;
+					padding:0px;
+					@extend %fixHeight;
+					border-bottom:1px dotted #ccc;
+					margin-bottom:5px;
+					&:last-of-type{
+						border-bottom:0px;
+					}
+					> div {
+						padding:2px 0px;
+						display:inline-block;
+						&:first-child {
+							float:left;
+							+ div {
+								float:right;
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
+
+
+
+

@@ -1,0 +1,181 @@
+$serviceBackground          : white;
+$serviceGrid                : 3;
+$serviceCopyFont            : 15px;
+
+$featuredImageServices      : true;
+$serviceImageUrl            : '../images/service/bg.jpg';
+$fixedServiceImageWidth     : 40%;
+
+$hasDivisor                 : #ccc;
+
+.service {
+    padding:50px 35px;
+    position:relative;
+    background:$serviceBackground;
+    padding-right:$fixedServiceImageWidth;
+    @extend %fixHeight; 
+    @extend %sizing;
+    @media screen and (max-width: 768px){
+        padding:25px 0px 0px 0px;
+    }
+
+    h2 {
+        font-size:40px;
+        @extend %light;
+        strong {
+            @extend %medium;
+            color:#3c95b5;
+            font-weight:500;
+        }
+        @media screen and (max-width: 768px){
+            font-size:24px;
+            padding:0px 15px;
+            br {
+                display:none;
+            }
+        }   
+    }
+
+    ul {
+        margin-left:-15px;
+        padding:25px 25px 25px 0px;
+        padding-top:25px;
+        @extend %fixHeight;
+        @extend %sizing;
+        font-size:0px;
+        @media screen and (max-width: 768px){
+            padding:25px 0px;
+        }
+        li {
+            position:relative;
+            display:inline-block;
+            padding:0px 20px;
+            @extend %sizing;
+            text-align:left !important;
+            @media screen and (max-width: 768px){
+                display:block;
+                float:none;
+                width:100% !important;
+            }
+
+            &:first-of-type{
+                padding-left:20px !important;  
+            }
+
+            &:last-of-type{
+                padding-right:20px !important;
+                &:after {
+                    display:none;
+                }
+            }
+
+            p {
+                @extend %light; 
+                padding-left:10px;
+                font-size:$serviceCopyFont;
+                &:before {
+                    position:absolute;
+                    left: 13px;
+                    top: 14px;
+                    display:block;
+                    content:'';
+                    width:8px;
+                    height:8px;
+                    background:#3c95b5;
+                    @include br(50%);
+                }
+            }
+
+            @if $serviceGrid != '' {
+                width:100% / $serviceGrid;
+            }
+
+            @if $hasDivisor  != '' {
+                &:after {
+                    content:'';
+                    display:block;
+                    position:absolute;
+                    right:0px;
+                    background:$hasDivisor;
+                    width:1px;
+                    height:150px;
+                    top:0px
+                }
+            }
+
+        }
+
+    }
+
+    @if $featuredImageServices == true {
+
+        .service-image {
+            overflow:hidden;
+            display:block;
+            position:absolute;
+            width:$fixedServiceImageWidth;
+            right:0px;
+            top:0px;
+            height:100%;
+            z-index:2;
+            padding:0px 0px;
+            background:url('#{$serviceImageUrl}') no-repeat center center;
+
+            img {
+                max-width:100%;
+            }
+            
+            .owl-stage-outer, .owl-item , .owl-stage {
+                height:100%;
+            }
+
+            .owl-item {
+                height:100%;
+                > div {
+                    display:block;
+                    width:100%;
+                    height:100%;
+                    background-size:cover !important;
+                }
+            }
+
+
+            @extend %sizing;
+            @media screen and (max-width: 768px){
+                position:relative;
+                display:block;
+                width:100%;
+                height:250px;
+            }
+            .copy {
+                @extend %sizing;
+                padding:15% 38px;
+                @media screen and (max-width: 768px){       
+                    padding:15px;
+                }                   
+                h2 {
+                    font-size:$fixedFeaturedNewTitleSize;
+                    color:$fixedFeaturedNewTitleColor;
+                    font-weight:normal;
+
+                }
+                p {
+                    font-size:$fixedFeaturedNewCopySize;
+                    line-height:1.25;
+                    @extend %light;
+                    color:$fixedFeaturedNewCopyColor;
+                }
+            }
+
+        }
+
+    }
+
+}
+.services-zone {
+    iframe {
+        @media screen and (max-width: 767px){
+            height:350px;
+        }
+    }
+}

@@ -1,0 +1,259 @@
+$contactStyle			: 'material'; //you also can set as "default";
+$contactFormBackground	: #ffffff;
+$formCopyAlignament		: left;
+$contactLabelSize 		: 15px;
+
+$fixedContactInfo		:'true';
+$fixedContactBg			: #3c95b5;
+$fixedContactWidth		: 400px;
+
+
+.encuestas{
+
+	background:$contactFormBackground;
+	text-align:$formCopyAlignament;
+	position:relative;
+	padding:50px 50px 50px #{$fixedContactWidth + 50px};
+	text-align:$formCopyAlignament;
+	@extend %sizing;
+
+
+	@media screen and (max-width: 1250px){
+		padding-left:$fixedContactWidth * 0.75 + 25px;
+		padding-right:25px;
+	}
+	
+	@media screen and (max-width: 1023px){
+		width:100%;
+		padding:0px 15px 25px 0px;
+		position:relative;
+		form {
+			padding:25px 15px 25px 15px;
+		}
+	}	
+
+	@media screen and (max-width: 767px){
+		padding:0px;
+	}
+
+	.align-left {
+		p {
+			@extend %light;
+			text-align:left;
+			font-size:16px;
+			strong {
+				font-weight: normal;
+			}
+		}
+	}
+	.select-box {
+		&:after {
+			right:10px;
+			top:50%;
+			@include go-Y(-50%);
+			position:absolute;
+			content:'';
+			@include arrow(down,5px,#000);
+		}
+	}
+
+	@if $fixedContactInfo == 'true' {
+		.fixed-contact-info {
+			text-align:center;
+			@extend %sizing;
+			@extend %fixHeight;
+			display:block;
+			width:$fixedContactWidth;
+			background:#4b9bb8;
+			position:absolute;
+			padding:25px 20px;
+			left:0px;
+			top:0px;
+			height:100%;
+
+			@media screen and (max-width: 1250px){
+				width:$fixedContactWidth * 0.75;
+			}
+			@media screen and (max-width: 1023px){
+				width:100%;
+				position:relative;
+				padding:25px 15px;
+			}
+			@media screen and (max-width: 767px){
+				text-align:center;
+			}
+			> * {
+				text-align:left;
+			}
+
+			h2 {
+				padding:10px 35px 10px 35px;
+				font-size:30px;
+				@extend %light;
+				font-weight:normal;
+				color:#fff;
+				@media screen and (max-width: 1023px){
+					padding-left:0px;
+				}
+				@media screen and (max-width: 768px){
+					font-size:24px;
+					padding:0px;
+				}			
+			}
+
+			p {
+				@extend %sizing;
+				@extend %light;
+				display:block;
+				position:relative;								
+				font-size:15px;
+				padding:15px 35px 15px 35px;
+				line-height:1.25;
+				color:#fff;
+
+				@media screen and (max-width: 1023px){
+					padding-left:0px;
+				}
+
+				.icon{
+				    position: absolute;
+				    left: 25px;
+				    top: 18px;
+				    font-size: 30px;
+				}
+				strong {
+					font-weight:400;
+				}
+
+				
+			}
+
+			a {
+				display:block;
+				width:125px;
+				margin:0px 35px;
+				text-align: center;
+				@media screen and (max-width: 1023px){
+					margin:0px;
+				}
+
+			}
+
+		 	@extend .social-icons;
+		}
+	}
+
+	@if $contactStyle == 'material' {
+
+		div {
+			position:relative;
+		}
+
+		input[type="text"],select,textarea, label {
+			display:block;
+			@extend %light;
+			width:100%;
+			padding:8px 0px;			
+			font-size:$contactLabelSize;
+			@include apparience(none);
+		}
+
+		input {
+			
+			border-bottom:1px solid #ccc;
+		}
+
+		label {
+			text-align:left;
+			@extend %light;
+			font-size:14px;
+			color:#3c95b5;
+			@media screen and (max-width: 767px){
+				font-size:15px;
+			}
+
+		}
+
+		textarea {
+			resize:none;
+			border:0px solid #ccc;	
+			&.large {
+				min-height:212px;
+			}
+		}
+
+		.text-left {
+			text-align:left;
+		}
+
+		.grid.double {
+			> * {
+				width:49%;
+				float:left;
+				&:first-child {
+					margin-right:1%;
+					+* {
+						margin-left:1%;
+					}
+				}
+			}
+		}
+
+		.checkbox-inline {
+			position:relative;
+			input[type="checkbox"] {
+				position:absolute;
+				left:0px;
+				top:11px;
+				width:auto;
+			}
+			label {
+				padding:10px 0px;
+				color:#000;
+				padding-left:16px;
+				text-align: left;
+			}
+		}
+
+	}
+
+	textarea {
+		min-height: 135px;
+		padding:5px;
+		@extend %sizing;
+	}
+
+	.select-box , .text-box{
+		padding:5px;
+		border:1px solid #ccc;
+		margin-bottom:25px;
+	}
+	.select-box {
+		select {
+			cursor:pointer;
+			z-index:2;
+			position:relative;
+			background:transparent;
+		}
+		&:after {
+			z-index:1;
+
+		}
+	}
+	.grid.column-2{
+		> div {
+			max-width:48%;
+			@media screen and (max-width: 767px){
+				max-width:100%;
+			}
+		}
+	}
+
+	button {
+		@extend %light;
+	    margin: 25px 0px;
+	}
+	
+	@include placeholder(#000);
+
+}

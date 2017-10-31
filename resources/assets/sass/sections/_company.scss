@@ -1,0 +1,110 @@
+section#company{
+  position: relative;
+  overflow: hidden;
+  background: url('../images/company/bg.png');
+  background-size: cover!important;
+  padding: 90px 0 130px 0;
+  h2, h3{
+    text-align: center;
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    height: 45px;
+    width: 50%;
+    bottom: 0;
+    left: -20px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    transform: skew(45deg);
+    -webkit-transform: skew(45deg);
+  }
+  &:after{
+    content: '';
+    position: absolute;
+    height: 45px;
+    width: 50%;
+    bottom: 0;
+    right: -20px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    transform: skew(135deg);
+    -webkit-transform: skew(135deg);
+  }
+
+
+  .container{
+    .info{
+      width: 50%;
+      display: inline-block;
+      float: left;
+      p{
+        text-align: left;
+        color:white;
+        font-size: 21px;
+      }
+    }
+    .slides{
+      @include Y-50;
+      display: inline-block;
+      width: 50%;
+      position: absolute;
+      right: 0;
+      .wrapper{
+          width: 340px;
+          height: 340px;
+          margin: auto;
+          @include br(50%);
+          border: 10px solid $primaryColor;
+      }
+      .owl-carousel{
+        .item{
+          width: 100%;
+          height: 100%;
+          background-size: cover !important;
+          background-position: center center!important;
+        }
+        .owl-stage-outer{
+          @include br(50%);
+        }
+        .owl-dots{
+          margin-top: 30px;
+          .owl-dot{
+            width: 12px;
+            height: 12px;
+            background: white;
+            @include br(50%);
+            display: inline-block;
+            margin: 0 7px;
+            &.active{
+              background: $primaryColor;
+            }
+          }
+        }
+      }
+    }
+    @media(max-width: 1366px) {
+      .info{
+        p{
+          font-size: 18px;
+        }
+      }
+    }
+    @media(max-width: 767px) {
+      .info{
+        width: 100%;
+        padding-top: 300px;
+      }
+      .slides{
+        top: -5px;
+        transform: none;
+        margin: auto;
+        width: 100%;
+        .wrapper{
+          width: 250px;
+          height: 250px;
+        }
+      }
+    }
+  }
+}

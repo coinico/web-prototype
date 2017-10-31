@@ -1,0 +1,25 @@
+.openMobileMenu {
+
+	position:fixed;
+	z-index:999;
+	right:15px;
+	top:20px;
+	max-width:40px;
+	path{
+		fill:#fff;
+	}
+	.closing-menu {
+	  display: none;
+	}
+	@media screen and (min-width: 769px){
+		display:none !important;
+	}	
+}
+
+.scrolled {
+	@media screen and (max-width: 768px){
+		.openMobileMenu {
+			top:15px;
+		}
+	}	
+}

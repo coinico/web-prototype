@@ -1,0 +1,122 @@
+$optionBackground	: #005073;
+$bannerFontColor	: $white;
+$bannerTitleSize	: 28px;
+$bannerCopySize		: 13px;
+$bannerCopyAlign	: $left;
+$linkFontColor		: rgba(255,255,255,0.8);
+$linkFontSize		: 22px;
+$linkBackground		: #002c3e;
+$biggestFontTitle	: 47px;
+$biggestFontSize	: 17px;
+
+.options {
+	background:$optionBackground;
+	> .column-2 {
+		> div {
+			@media screen and (max-width: 980px){
+				width:100%;
+			}
+		}
+	}
+	.grid {
+		position:relative;
+
+	}
+	
+	h3,p {
+		text-align:left;
+	}
+	
+	h3 {
+		color:$bannerFontColor;
+		font-size:$bannerTitleSize;
+		@extend %light;
+	}
+
+	p {
+		color:$bannerFontColor;
+		font-size:$bannerCopySize;
+		@extend %light;
+	}
+
+	.background-image {
+		position:absolute !important;
+		display:block;
+		height:100%;
+		background-size:cover !important;
+		background-position:center center !important;
+
+		&.at-right {
+			right:0px;
+			+ div {
+				float:left;
+			}
+		}
+	}
+
+	.copy-content {
+		@media screen and (max-width: 767px){ 
+			background:rgba(60, 149, 181, 0.85);
+		}		
+		> div {
+			min-height:325px;
+			@media screen and (max-width: 767px){ 
+				min-height: 250px;
+			}				
+			position:relative;
+			@extend %sizing;
+			padding:35px 50px 35px 50px;
+			@media screen and (max-width: 767px){ 
+				padding:25px 15px;
+			}			
+			.btn {
+				@extend %sizing;
+				left:0px;
+				bottom:0px;
+				position:absolute;
+				width:100%;
+				padding:18px 10px;
+				text-decoration:none;
+				line-height:$linkFontSize + 22px;
+				color:$linkFontColor;
+				font-size:$linkFontSize;
+				background:$linkBackground;
+				@media screen and (max-width: 767px){ 
+					background:rgba(0, 79, 83, 0.5);
+					padding:10px;
+					font-size:$linkFontSize * 0.75;
+				}
+				i {
+					position:relative;
+					font-size:$linkFontSize + 15px;
+					margin-right:5px;
+					top:7px;
+					@media screen and (max-width: 767px){
+						font-size:$linkFontSize + 5px;	
+					}				
+				}
+			}
+		}
+		&.biggest-title {
+			h3 {
+				font-size:$biggestFontTitle;
+			}	
+			p {
+				font-size:$biggestFontSize;
+			}
+		}
+	}
+
+
+
+	/* Grid Variation */
+
+	.background-image {
+		&.at-right {
+			right:0px;
+			+ div {
+				float:left;
+			}
+		}
+	}
+}

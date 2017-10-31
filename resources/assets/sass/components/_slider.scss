@@ -1,0 +1,112 @@
+$dotsActive		:'true';
+
+.slider {
+	
+	ul {
+		li {
+			display:block;
+			position:relative;
+			@media screen and (max-width: 767px){
+				min-height:65vh;
+			}
+			&:before {
+				content:'';
+				display:block;
+				width:100%;
+				height:100%;
+				position:absolute;
+				left:0px;
+				top:0px;
+				z-index:2;
+				background:rgba(55,69,82,0.85);
+			}		
+			.content {
+				text-align:left;
+				max-width:575px;
+				z-index:3;
+				position:absolute;			
+				@include XY();
+
+				@media screen and (max-width: 767px){
+					text-align: center;
+					position:absolute;
+					max-width:100%;
+					left:auto;
+					top:50%;
+					-ms-transform:translateY(-50%);
+					-webkit-transform:translateY(-50%);
+					transform: translateY(-50%);	
+					padding:85px 15px 50px 15px;				
+				}	
+
+				h2 {
+					color:#fff;
+					letter-spacing:1px;
+					@extend %light;
+					font-size:41px;
+					@media screen and (max-width: 767px){
+						font-size:24px;
+					}			
+					strong {
+						font-weight:500;
+					}
+				}
+
+				a {
+					display:inline-block;
+					@include br(5px);
+					margin:10px 0px;
+					border:2px solid #3c95b5;
+					padding:8px 15px;
+					line-height:1;
+					text-decoration:none;
+				}
+
+				p {
+					color:#fff;
+					@extend %light;
+					font-size:18px;
+					@media screen and (max-width: 767px){
+						font-size:15px;
+					}
+				}
+			}	
+			img {
+				position:relative;
+				z-index:1;
+				@media screen and (max-width: 767px){
+					position:absolute;
+					top:0px;
+					height:125%;
+					width:auto !important;
+				}					
+			}
+		}
+	}
+	@if $dotsActive == 'true' { 
+
+		.owl-dots {
+			@extend %sizing;
+			padding:0px 15px;
+			position:absolute;
+			left:0px;
+			bottom:25px;
+			width:100%;
+			display:block;
+			text-align: center;
+			.owl-dot {
+				@include effect(background,0.25s,ease);
+				width:10px;
+				height:10px;
+				margin:0px 5px;
+				background:#a1a9b1;
+				@include br(50%);
+				display:inline-block;
+				&.active {
+					background:#2c6985;
+				}
+			}
+		}
+
+	}
+}

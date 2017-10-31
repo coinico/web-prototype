@@ -1,0 +1,229 @@
+/*ACCESOS CAMIONES*/
+
+.track-lists {
+
+	.box-static {
+		background:#fff;
+		padding-right:0px;
+		@media screen and (max-width: 768px){
+			padding-right:15px;
+		}
+	}
+
+	h3 {
+		@extend %light;
+		font-size:20px;
+		font-weight:bold;
+	}
+
+	p {
+		font-size:16px;
+		@extend %light;
+	}
+
+	.track-list-grid{
+
+		@extend %sizing;
+
+		li {
+			text-align: center;
+			border-top:1px solid #ccc;
+			padding:50px;
+			font-size:0;
+
+			@media screen and (max-width: 768px){
+				padding:30px 0px 15px 0px;
+			}
+
+			&:first-child {
+				border-top:0px;
+			}
+
+			&:nth-child(2n) {
+				div {
+					margin-left:5%;
+					@media screen and (max-width: 768px){
+						margin:0px;
+					}
+				}
+			}	
+
+			&:nth-child(0n + 1) {
+				div {
+					margin-right:5%;
+					@media screen and (max-width: 768px){
+						margin:0px;
+					}					
+				}
+			}	
+
+			> * {
+				text-align:left;
+				display:inline-block;
+				vertical-align:middle;
+			}
+			div {
+				max-width:35%;
+				@media screen and (max-width: 768px){
+					max-width:100%;
+				}				
+			}
+
+			img {
+				
+				max-width:60%;
+				&.desktop {
+					display:inline-block !important;
+				}
+				@media screen and (max-width: 768px){
+					max-width:80%;
+					margin:25px auto;
+					&.desktop {
+						display:none !important;
+					}					
+				}					
+			}
+
+		}
+	}
+}
+
+/*RECIBO DE CAMIONES*/
+.receipt-trucks {
+	.colored-table {
+		ul {
+			> li {
+				&:nth-child(2n + 1) {
+					> div {
+						&:first-child {
+							background:#015f8b;
+							color:#fff;
+						}
+					}
+				}
+				> div {
+					&:nth-child(3) {
+						background:#b4d2e0;
+						color:#000;
+					}
+					&:first-child {
+						background:#c0d3dc;
+						color:#fff;				
+					}
+				}
+				&:first-child {
+					> div {
+						&:nth-child(3) {
+							background:#028ec8;
+							color:#fff;
+						}			
+					}				
+				}
+			}
+		}
+	}
+}
+
+/*CARTAS DE PORTE*/
+.tab-cartadeporte {
+	background:#eeeeee;
+	padding-top:20px;
+	padding-bottom:0px;
+	@extend %sizing;
+
+	@media screen and (max-width: 1023px){
+		padding:20px 20px 0px 20px;
+	}
+	@media screen and (max-width: 767px){
+		padding:0px;
+	}
+	#contact-formularie {
+		@media screen and (max-width: 1024px){
+			padding:5px 5px 0px 5px;
+		}
+
+		ul {
+			list-style-type:none;
+			display:table;
+			width:100%;
+			@media screen and (max-width: 767px){
+				display:block;
+			}
+			li {
+				display:table-cell;
+				@media screen and (max-width: 767px){
+					display:block;
+				}				
+				a{
+					padding:5px 0px 20px 5px;
+					@extend %light;
+					display:block;
+					color:#000;
+					font-size:13px;
+					text-decoration:none;
+					text-align: center;
+					@media screen and (max-width: 1250px){
+						font-size:12px;
+					}			
+					@media screen and (max-width: 767px){
+						padding-bottom:10px;
+					}
+					&.active {
+						padding:5px 5px 20px 5px;
+						background:#fff;
+						border:1px solid #ccc;
+						border-bottom:0px;
+						color:#3c95b5;
+						@media screen and (max-width: 767px){
+							padding-bottom:10px;
+						}						
+					}
+					strong{
+						font-weight:normal;
+						font-size:18px;
+						display:block;
+						text-align:center;
+					}
+				}
+			}
+		}
+
+	}
+
+}
+
+.form-cartadeporte {
+	min-height:225px;
+	@media screen and (max-width: 767px){
+		max-width: 100%;
+	}
+	@media screen and (max-width: 1023px){
+		padding:0px !important;
+	}
+	.form-footer {
+		border-top:1px solid #ccc;
+		padding-top:10px;
+		margin-top:25px;
+		a {
+			margin-top:15px;
+		}
+	}
+	form {
+		@media screen and (max-width: 1023px){
+			padding:25px 15px;
+		}
+		label {
+			@extend %sizing;
+			@media screen and (max-width: 768px){
+				display:block;
+				max-width: 100%;
+			}
+		}
+	}
+	.steps {
+		display:none;
+		&.active {
+			display:block;
+		}
+	}
+}

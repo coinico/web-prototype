@@ -1,0 +1,113 @@
+$bannerBackground	: #3c95b5;
+$bannerFontColor	: #ffffff;
+$bannerTitleSize	: 30px;
+$bannerCopySize		: 14px;
+$bannerCopyAlign	: $left;
+$hasIcon			: true;
+$IconMaxWidth		: 100px;
+.banner  {
+	padding:25px 0px;
+	background:$bannerBackground;	
+	.column-2 {
+		@media screen and (max-width: 980px){
+			> * {
+				width:100%;
+				text-align:center;
+				br {
+					display:none;
+				}
+			}
+		}
+	}
+	.container {
+		&:after {
+			position:absolute;
+			content:'';
+			@include arrow(down,20px, $bannerBackground);
+			bottom:-45px;
+			left:145px;		
+			@media screen and (max-width: 768px){
+				left:45%;
+			}	
+		}
+		text-align:$bannerCopyAlign;
+		> * {
+			color:$bannerFontColor;
+			text-align:$left;
+			line-height:1.25;
+		}
+		h2 {
+			@extend %light;
+			font-size:$bannerTitleSize;
+			@media screen and (max-width: 768px){
+				font-size:17px;
+			}
+			strong {
+				font-weight:500;
+				color:$bannerFontColor;
+			}
+		}
+		p {
+			color:$bannerFontColor;
+			font-size:$bannerCopySize;
+			@media screen and (max-width: 768px){
+				font-size:13px;
+			}			
+		}
+	}
+
+	&-with {
+		@if $hasIcon == true {
+
+			&-icon {
+				@extend .banner;
+				padding:40px 0px;
+
+				p {
+					font-size:$bannerCopySize + 1;
+					@extend %light;
+					line-height:1.25;
+					position:relative;
+					@extend %sizing;	
+
+					strong {
+						font-weight:400;
+					}
+
+					em {
+						font-style:normal;
+						@extend %medium;
+						font-size:$bannerCopySize + 5px;
+					}
+					&.with-icon {
+						padding-right:15px;
+						padding-left:$IconMaxWidth + 10;
+						
+						@media screen and (max-width: 768px){
+							padding-left:15px;
+						}
+
+						img {
+							top:50%;
+							@include go-Y(-50%);
+							position:absolute;
+							left:0px;
+							max-width:$IconMaxWidth;
+							height:auto;
+							@media screen and (max-width: 768px){
+								display:block;
+								margin:20px auto -30px auto;
+								position:relative;
+								top:auto;
+								@include go-Y(none);
+							}
+						}
+					}
+					&.non-icon {
+						padding:0px 5%;
+					}					
+				}
+			}
+		}
+	}
+}

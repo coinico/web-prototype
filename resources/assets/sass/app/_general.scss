@@ -1,0 +1,212 @@
+body {
+	@extend %regular;
+	background:white;
+}
+
+h2 {
+	@extend %semibold;
+	color:$primaryColor;
+	font-size:50px;
+	text-transform: uppercase;
+	line-height: 50px;
+	@media(max-width: 1366px){
+		font-size:40px;
+	}
+}
+
+h3 {
+	@extend %light;
+	color:white;
+	font-size:23px;
+	line-height: 25px;
+	padding: 20px;
+	&:after{
+		content: '';
+		width: 100px;
+		height: 5px;
+		background: $primaryColor;
+		display: block;
+		margin: 32px auto;
+	}
+	@media(max-width: 1366px){
+		font-size:21px;
+	}
+}
+
+
+h4 {
+	@extend %light;
+	color:white;
+	font-size:22px;
+}
+
+
+p {
+	padding:10px 0px;
+	@extend %regular;
+	color:$Text;
+	font-size:$copy;
+}
+a {
+	color:$link;
+	text-decoration: none;
+	&:hover, &:link, &:visited{
+		text-decoration: none;
+	}
+}
+
+
+.center {
+	text-align:center !important;
+}
+
+
+
+.float{
+	&-left {
+		float:left !important;
+	}
+	&-right{
+		float:right !important;
+	}
+}
+
+
+.uppercase{
+	text-transform:uppercase;
+}
+
+
+.clear-fix{
+	clear: both;
+}
+
+.align  {
+	&-right {
+		text-align:right !important;
+	}
+	&-left{
+		text-align:left;
+	}
+	&-center{
+		text-align:center;
+	}
+}
+
+
+
+
+
+.vertical-align{
+	display:block;
+	font-size:0;
+	> * {
+		vertical-align:middle;
+		@extend %sizing;
+	}
+	&.column-2 {
+		> * {
+			display:inline-block;
+			width:50%;
+            @media screen and (max-width: 768px){
+                width:100% !important;
+                text-align:center;
+            }			
+		}
+	}
+}
+
+.desktop {
+	@media screen and (min-width: 981px){
+		display:block !important;
+	}
+	@media screen and (max-width: 980px){
+		display:none !important;
+	}	
+}
+
+.tablet-mobile {
+	@media screen and (min-width: 981px){
+		display:none !important;
+	}
+	@media screen and (max-width: 980px){
+		display:block !important;
+	}		
+}
+
+
+.only-desktop{
+	@media screen and (max-width: 768px){
+		display:none !important;
+	}	
+}
+
+
+@keyframes upInFix {
+  from {
+	@include go-Y(0px);
+  }	
+
+  50% {
+	@include go-Y(-15px);
+  }
+  to {
+	@include go-Y(0px);
+  }
+
+}
+
+
+#markerLayer {
+	@include go-Y(0px);
+	@include effect(all,0.2s,ease);
+   	animation:1s upInFix infinite;  
+   	@include delay(2s);
+}
+
+
+.outline {
+	&:after {
+		position:absolute;
+		content:'';
+		display:block;
+		height:2px;
+		bottom:0px;
+		width:0%;
+		left:0px;
+		background:#4b9bb8;
+		@include effect(all,0.25s,ease);
+	}
+	&.active {
+		&:after {
+			width:100%;
+		}
+	}
+}
+
+
+.owl-carousel{
+	.owl-nav{
+		.owl-prev,.owl-next{
+			position: absolute;
+			@include Y-50();
+			&:before{
+				@extend %iconfont;
+				color:white;
+				font-size: 35px;
+			}
+		}
+		.owl-prev {
+			left: 25px;
+			&:before {
+				content: "\e90c";
+			}
+		}
+		.owl-next{
+			right: 25px;
+			&:before{
+				content: "\e90d";
+			}
+		}
+	}
+}

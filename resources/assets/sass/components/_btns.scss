@@ -1,0 +1,104 @@
+
+
+.btn {
+	&-border {
+		text-decoration:none;
+		float:left;
+		text-align:center;
+		border:2px solid #fff;
+		@include br(5px);	
+		@extend %light;			
+		@extend %sizing;
+		padding:5px 10px;
+	}
+	&-submit {
+		@extend %light;			
+		@extend %sizing;	
+		@include br(3px);				
+		cursor:pointer;
+		padding: 10px 25px;
+		color:#00bcff;
+		border:1px solid #00bcff;
+		background:rgba(255,255,255,0);
+		@include effect(all,0.25s,ease);
+		&:hover {
+			background:#005e65;
+			color:#fff;
+		}
+	}
+	&-send {
+		display:block;
+		width:100%;
+		text-decoration:none;
+		@include br(3px);	
+		@extend %light;
+		@extend %sizing;	
+		padding: 10px 25px;
+		color:#fff;
+		background:#4b9bb8;
+		@include effect(all,0.25s,ease);
+		.icon {
+		    margin-left: 5px;
+		    position: relative;
+		    top: 2px;
+		}
+		&:hover {
+			background:#005e65;
+			color:#fff;
+		}		
+		&.dark {
+			background:#153d4d;
+			&:hover {
+				background:#ff8200;
+				color:#fff;
+			}				
+		}
+	}
+	&-lines {
+		border:1px solid #fff;
+		padding:10px 20px;
+		@extend %light;
+		@extend %sizing;
+		text-decoration:none;
+		@include effect(all,0.25s,ease);
+		&:hover {
+			background:#fff;
+			color:#005e65;
+		}			
+	}
+	&-upload {
+		position:relative;
+		@include br(3px);
+		padding:15px 20px 15px 60px;
+		text-decoration:none;
+		display:inline-block;
+		margin:10px 0px;
+		background:#3c95b5;
+		color:#fff;
+		font-size:15px;
+		margin-bottom:25px;
+		@extend %light;
+		@extend %sizing;
+		@include effect(all,0.25s,ease);
+
+		&:hover {
+			background:#005e65;
+			color:#fff;
+		}	
+
+		.icon {
+			@extend %sizing;
+			@include br(5px 0px 0px 5px);
+			font-size:30px;
+			position:absolute;
+			left:0px;
+			text-align:center;
+			padding:12px 0px;
+			top:0px;
+			width:40px;
+			height:100%;
+			font-size:20px;
+			background:#153d4d;
+		}
+	}
+}

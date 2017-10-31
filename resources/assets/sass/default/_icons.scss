@@ -1,0 +1,133 @@
+.icon {
+  &.more {
+    &:before {
+      content:"\e905";
+    }
+  }
+  &.close {
+    &:before {
+      content:"\e902";
+    }
+  }
+
+  &.fullscreen {
+    &:before {
+      content:"\e903";
+    }
+  }
+  &.sharesocial {
+    &:before {
+      content:"\e901";
+    }
+  }
+  &.location {
+    &:before {
+      content:"\e900";
+    }
+  }
+
+  &.arrow {
+    &-down {
+      &:before {
+        content: "\e90f";
+      }
+    }
+    &-right {
+      &:before {
+        content: "\e906";
+      }     
+    }
+    &-left {
+      &:before {
+        content: "\e907";
+      } 
+    }
+  }
+
+  &.user {
+    &:before {
+      content: "\e908";
+    }
+  }
+  &.windows {
+    &:before {
+       content: "\e909";
+    }
+  }
+  &.android {
+    &:before {
+      content: "\e90a";
+    }
+  }
+  &.apple {
+    &:before {
+      content: "\e90b";
+    }
+  }
+  &.twitter {
+    &:before {
+      content: "\e90c";
+    }
+  }
+  &.instagram {
+    &:before {
+      content: "\e90d";
+    }
+  }
+  &.youtube {
+    &:before {
+      content: "\e90e";
+    }
+  }
+  &.facebook {
+    &:before {
+      content:'\e914';
+    }
+  }
+  &.whatsapp {
+    &:before {
+      content:'\e904';
+    }
+  }
+  &.calendar {
+    &:before {
+      content:'\e910';
+    }
+  }
+  &.home {
+    &:before {
+      content:'\e911';
+    }
+  }
+  &.mail {
+    &:before {
+      content:'\e912';
+    }
+  }
+  &.phone {
+    &:before {
+      content:'\e913';
+    }
+  }
+  &.upload-file {
+    &:before {
+      content:'\e915';
+    }
+  }
+  &.map-location {
+    &:before {
+      content:'\e916';
+    }
+  }
+  &.keypad {
+    &:before {
+      content:'\e917';
+    }
+  }
+  &.double-arrow {
+    &:before {
+      content:'\e918';
+    }
+  }
+  
+}

@@ -1,0 +1,179 @@
+
+//Set Global Structure & Grids
+    .grid {
+        width:100%;
+        @extend %sizing;
+        //Grid 2 childs on a row.
+        &.column-2{
+
+            > * {
+                position:relative;
+                padding:0px 0px;
+                width:50%;
+                @extend %inline;
+                text-align:$center;
+                @include bs();
+                @extend %fixHeight;
+                &:first-child {
+                    + * {
+                        float:right;
+                    }
+                }
+
+                @media screen and (max-width: 767px){ 
+                    width:100%;
+                }           
+
+            }
+
+
+        }
+        //Grid 3 childs on a row.
+        &.column-3{
+            > * {
+                width:33.33%;
+                @extend %inline;
+                text-align:$center;
+                img {
+                    max-width:100%;
+                }
+            }
+        }
+
+        &.column-4{
+            > * {
+                padding:0px 1.5em;
+                width:25%;
+                @extend %inline;
+                text-align:$center;
+            }
+        }
+        &.column-65-35 {
+             > * {
+                padding:0px 1.5%;
+                width:35%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:65%;
+                    text-align:$left;
+                }
+            }           
+        }
+        &.column-3-7 {
+             > * {
+                padding:0px 1%;
+                width:70%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:30%;
+                    text-align:$left;
+                }
+            }           
+        }       
+        &.multirow {
+            display:table;
+            @extend %fixHeight;
+
+            > * {
+                display:table-cell;
+                width:23.33%;
+                padding:0px;
+                text-align:center;
+                &:first-child {
+                    width:30%;
+                }
+            }
+            
+        } 
+        &.column-35-65  {
+            @extend %fixHeight;
+             > * {
+                padding:0px 1.5%;
+                width:65%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:35%;
+                    text-align:$left;
+                }
+            }           
+        }
+        &.column-4-6{
+
+            > * {
+                padding:0px 1.5%;
+                width:60%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:40%;
+                    text-align:$left;
+                }
+            }
+            &.inverted {
+                > * {
+                    padding:0px;
+                    float:left;
+                    &:first-child {
+                        float:right;
+                    }
+                    @media screen and (max-width: 767px){ 
+                        float:none;
+                        width:100%;
+                    }
+                }
+            }            
+        }
+        &.column-6-4{
+            > * {
+                padding:0px 1.5%;
+                width:40%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:60%;
+                    text-align:$left;
+                }
+            }
+
+        }
+
+        &.column-7-3  {
+            @extend %fixHeight;
+             > * {
+                padding:0px 1.5%;
+                width:33%;
+                @extend %inline;
+                text-align:$right;
+                float:right;
+                &:first-child {
+                    float:left;
+                    width:66%;
+                    text-align:$left;
+                }
+            }           
+        }
+        > * {
+            &:first-child { padding-left:0px; }
+            &:last-child { padding-right:0px; }
+        }
+
+    }
+    
+
+
+
+
+

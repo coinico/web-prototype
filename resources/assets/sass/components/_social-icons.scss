@@ -1,0 +1,46 @@
+$socialIconPerLine		: 3;
+$socialIconColor		: #fff;
+$socialIconWidth		: 35px;
+$socialIconFontSize		: 20px;
+$socialIconBorderRadius	: 50%;
+$socialIconBorderStyle	: 2px solid #{$socialIconColor};
+
+.follow-social-network{
+	h3 {
+		text-align:center;
+		@extend %light;
+		color:#fff;
+		font-size:25px;
+		padding:25px 0px;
+	}
+	.social-icons {
+		max-width:90%;
+		margin:0px auto;
+		text-align:center;
+		font-size:0;
+		li {
+			width:100%/$socialIconPerLine;
+			display:inline-block;
+			text-align:center;
+			a {
+				display:inline-block;
+				@extend %sizing;
+				padding:5px 5px;
+				color:$socialIconColor;			
+				text-decoration:none;
+				text-align:center;
+				width:$socialIconWidth;
+				height:$socialIconWidth;
+				font-size:$socialIconFontSize;
+
+				@if $socialIconBorderStyle != '' {
+					border:$socialIconBorderStyle;
+				}
+				@if $socialIconBorderRadius != '' {
+					@include br($socialIconBorderRadius);
+				}
+
+			}
+		}
+	}
+}

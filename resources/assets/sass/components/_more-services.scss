@@ -1,0 +1,48 @@
+$boxHelperWidth 			: 350px;
+$boxHelperBackground 		: #4a9cba;
+
+.more-places {
+	h3 {
+		padding:20px 0px;
+		background:#00415b;
+		text-transform:uppercase;
+		color:#fff;
+		@extend %fixHeight;
+		font-weight:bold;
+
+	}
+	.headline {
+		padding:15px 0px;
+		background:#0091cd;
+		text-transform:uppercase;
+		color:#fff;
+		@extend %fixHeight;
+		font-weight:bold;
+		color:#fff !important;
+	}
+	ul {
+		list-style-type:none;
+		li {
+			padding:10px 0px;
+			display:block;
+			width:100%;
+			&.headline {
+				h4 {
+					color:#fff;
+				}
+			}
+			h3 {
+				padding:0px;
+			}
+			h4 {
+				@extend %light;
+				color:#777;
+				font-size:15px;
+				font-weight:normal;
+			}
+			&:nth-child(2n+0) {
+				background:#f1f1f1;
+			}
+		}
+	}
+}
