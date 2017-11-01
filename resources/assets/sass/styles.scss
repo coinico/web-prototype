@@ -6,7 +6,7 @@
 @import "default/_fonts";
 @import "default/_mixins";
 @import "default/_animations";
-@import "default/icons";
+//@import "default/icons";
 
 /*Global App */
 @import "app/global";
@@ -22,10 +22,10 @@
 @import "helpers/_core";
 
 /* Components App */
-@import "components/_preloading";
+@import "components/_tables";
 
-
-/* Sections */
+/* Pages */
+@import "pages/_exchange";
 
 
 

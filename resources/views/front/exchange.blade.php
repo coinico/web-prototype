@@ -3,23 +3,56 @@
 @section('main')
 
    <section id="exchange">
-       <div class="container">
-           <table id="markets" class="display" cellspacing="0" width="100%">
+       <div class="row">
+           <h3>BITCOIN MARKETS</h3>
+           <table id="btc" class="display" cellspacing="0" width="100%">
                <thead>
                <tr>
-                   <th>MarketName</th>
+                   <th>Market</th>
+                   <th>Currency</th>
+                   <th>Volume</th>
+                   <th>Change</th>
+                   <th>Last Price</th>
                    <th>High</th>
                    <th>Low</th>
+                   <th>Spread</th>
+                   <th>Added</th>
+               </tr>
+               </thead>
+           </table>
+       </div>
+       <div class="row">
+           <h3>ETHEREUM MARKETS</h3>
+           <table id="eth" class="display" cellspacing="0" width="100%">
+               <thead>
+               <tr>
+                   <th>Market</th>
+                   <th>Currency</th>
                    <th>Volume</th>
-                   <th>Last</th>
-                   <th>BaseVolume</th>
-                   <th>TimeStamp</th>
-                   <th>Bid</th>
-                   <th>Ask</th>
-                   <th>OpenBuyOrders</th>
-                   <th>OpenSellOrders</th>
-                   <th>PrevDay</th>
-                   <th>Created</th>
+                   <th>Change</th>
+                   <th>Last Price</th>
+                   <th>High</th>
+                   <th>Low</th>
+                   <th>Spread</th>
+                   <th>Added</th>
+               </tr>
+               </thead>
+           </table>
+       </div>
+       <div class="row">
+           <h3>USDT MARKETS</h3>
+           <table id="usdt" class="display" cellspacing="0" width="100%">
+               <thead>
+               <tr>
+                   <th>Market</th>
+                   <th>Currency</th>
+                   <th>Volume</th>
+                   <th>Change</th>
+                   <th>Last Price</th>
+                   <th>High</th>
+                   <th>Low</th>
+                   <th>Spread</th>
+                   <th>Added</th>
                </tr>
                </thead>
            </table>

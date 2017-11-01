@@ -15,3 +15,13 @@
     opacity: 0;
   }
 }
+
+.pace .pace-progress{
+  background: $primaryColor;
+}
+
+#loader {
+  &:before{
+    border-left: 8px solid $primaryColor;
+  }
+}

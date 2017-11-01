@@ -147,9 +147,33 @@ class PostController extends Controller
     {
         $client = new Client();
         $res = $client->get('https://bittrex.com/api/v2.0/pub/Markets/GetMarketSummaries?_=1509478036773');
-        $data = json_decode($res->getBody(), true);
+        $markets = json_decode($res->getBody(), true);
+
+        $result = array();
+
+        foreach ($markets['result'] as $market){
+
+            $spread = 0;
+            if($market['Summary']['Volume']){
+                $change = $market['Summary']['Volume'] / ($market['Summary']['Volume'] - $market['Summary']['BaseVolume']);
+            }else {
+                $change = 0;
+            }
+            $result[$market['Market']['BaseCurrency']][] = [
+                $market['Market']['MarketName'], //Market
+                $market['Market']['MarketCurrencyLong'], //Currency
+                $market['Summary']['Volume'], //Volume
+                $change,  //Change
+                $market['Summary']['Last'],  //Last price
+                $market['Summary']['High'],  //High
+                $market['Summary']['Low'],  //Low
+                $spread,  //Spread
+                date_format(date_create($market['Summary']['Created']),"d/m/Y")  //Added
+
+            ];
+        }
         if($res->getStatusCode() == 200){
-            return response($data);
+            return response($result);
         }else{
             //@todo: Vista de error
         }

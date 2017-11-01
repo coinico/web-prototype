@@ -4,17 +4,15 @@ $(document).ready(function(){
         url: url,
         dataType: "json",
         success: function(res){
-            var data = [];
-            $.each(res.result, function(){
-                var value = [];
-                for (var prop in this.Summary) {
-                    value.push(this.Summary[prop]);
-                }
-                data.push(value);
+            $('#btc').DataTable( {
+                data: res.BTC
             });
-            $('#markets').DataTable( {
-                data: data
-            } );
+            $('#eth').DataTable( {
+                data: res.ETH
+            });
+            $('#usdt').DataTable( {
+                data: res.USDT
+            });
         }
     }).done(function() {
         $( this ).addClass( "done" );

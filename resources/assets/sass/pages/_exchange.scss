@@ -1,0 +1,35 @@
+section#exchange {
+  .dataTables_filter {
+    float: right;
+    input {
+      padding: 0 10px;
+    }
+  }
+  .dataTables_length,.dataTables_info {
+    display: none;
+  }
+  .dataTables_paginate{
+    text-align: right;
+    a{
+      color:#ccc;
+      border: 1px solid #ccc;
+      padding: 4px;
+      margin: 5px;
+      min-width: 35px;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+  table{
+    tr{
+      th:first-child{
+        min-width: 100px;
+      }
+    }
+  }
+
+  h3 {
+    float: left;
+    margin-top: 65px;
+  }
+}
