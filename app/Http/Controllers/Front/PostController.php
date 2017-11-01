@@ -52,6 +52,16 @@ class PostController extends Controller
     }
 
     /**
+     * Display a listing of exchanges.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function exchange()
+    {
+        return view('front.exchange');
+    }
+
+    /**
      * Display a listing of the posts for the specified category.
      *
      * @param  \App\Models\Category  $category

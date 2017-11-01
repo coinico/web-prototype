@@ -9,6 +9,7 @@ use App\ {
     Models\Post,
     Repositories\PostRepository
 };
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
@@ -134,5 +135,23 @@ class PostController extends Controller
         $post->delete ();
 
         return response ()->json ();
+    }
+
+
+    /**
+     * Display a listing of json markets.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function markets()
+    {
+        $client = new Client();
+        $res = $client->get('https://bittrex.com/api/v2.0/pub/Markets/GetMarketSummaries?_=1509478036773');
+        $data = json_decode($res->getBody(), true);
+        if($res->getStatusCode() == 200){
+            return response($data);
+        }else{
+            //@todo: Vista de error
+        }
     }
 }

@@ -68,8 +68,8 @@
 				<li>
 					<a href="#">@lang('Investors')</a>
 				</li>
-				<li>
-					<a href="#">@lang('Exchange')</a>
+				<li {{ currentRoute('exchange') }}>
+					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
 				</li>
 				<li>
 					<a href="#">@lang('Community')</a>
@@ -123,7 +123,6 @@
 		</div> <!-- end search wrap -->
 
 		<div class="triggers">
-			<a class="search-trigger" href="#"><i class="fa fa-search"></i></a>
 			<a class="menu-toggle" href="#"><span>Menu</span></a>
 		</div> <!-- end triggers -->
 

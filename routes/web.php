@@ -18,10 +18,15 @@
 */
 
 //Logout
-Route::get('/logout' , 'Auth\LoginController@logout');
+Route::name('logout')->get('/logout' , 'Auth\LoginController@logout');
 
 // Home
 Route::name('home')->get('/', 'Front\PostController@index');
+
+// Exchange
+Route::name('exchange')->get('/exchange', 'Front\PostController@exchange');
+
+
 
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
@@ -52,6 +57,10 @@ Auth::routes();
 | Backend
 |--------------------------------------------------------------------------|
 */
+
+
+//Markets
+Route::name('markets')->get('/markets', 'Back\PostController@markets');
 
 Route::prefix('admin')->namespace('Back')->group(function () {
 
