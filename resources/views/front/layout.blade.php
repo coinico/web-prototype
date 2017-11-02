@@ -7,7 +7,7 @@
 	<!--- basic page needs
 	================================================== -->
 	<meta charset="utf-8">
-	<title>{{ isset($post) && $post->seo_title ? $post->seo_title :  __(lcfirst('Title')) }}</title>
+	<title>{{ isset($post) && $post->seo_title ? $post->seo_title :  __(lcfirst('CasaToken')) }}</title>
 	<meta name="description" content="{{ isset($post) && $post->meta_description ? $post->meta_description : __('description') }}">
 	<meta name="author" content="@lang(lcfirst ('Author'))">
 	@if(isset($post) && $post->meta_keywords)
@@ -62,17 +62,17 @@
 
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
-				<li>
-					<a href="#">@lang('Owners')</a>
+				<li {{ currentRoute('owners') }}>
+					<a href="{{ route('owners') }}">@lang('Owners')</a>
 				</li>
-				<li>
-					<a href="#">@lang('Investors')</a>
+				<li {{ currentRoute('investors') }}>
+					<a href="{{ route('investors') }}">@lang('Investors')</a>
 				</li>
 				<li {{ currentRoute('exchange') }}>
 					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
 				</li>
-				<li>
-					<a href="#">@lang('Community')</a>
+				<li {{ currentRoute('community') }}>
+					<a href="{{ route('community') }}">@lang('Community')</a>
 				</li>
 				@request('register')
 					<li class="current">
