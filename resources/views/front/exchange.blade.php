@@ -5,7 +5,7 @@
    <section id="exchange">
        <div class="row">
            <h3>BITCOIN MARKETS</h3>
-           <table id="btc" class="display" cellspacing="0" width="100%">
+           <table id="btc" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>
                    <th>Market</th>
