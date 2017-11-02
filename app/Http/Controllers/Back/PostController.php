@@ -162,11 +162,11 @@ class PostController extends Controller
             $result[$market['Market']['BaseCurrency']][] = [
                 $market['Market']['MarketName'], //Market
                 $market['Market']['MarketCurrencyLong'], //Currency
-                $market['Summary']['Volume'], //Volume
+                number_format($market['Summary']['Volume'], 3, ',', '.'), //Volume
                 $change,  //Change
-                $market['Summary']['Last'],  //Last price
-                $market['Summary']['High'],  //High
-                $market['Summary']['Low'],  //Low
+                number_format($market['Summary']['Last'], 8, ',', '.'), //Last price
+                number_format($market['Summary']['High'], 8, ',', '.'), //High
+                number_format($market['Summary']['Low'], 8, ',', '.'), //Low
                 $spread,  //Spread
                 date_format(date_create($market['Summary']['Created']),"d/m/Y")  //Added
 
