@@ -26,6 +26,14 @@ Route::name('home')->get('/', 'Front\PostController@index');
 // Exchange
 Route::name('exchange')->get('/exchange', 'Front\PostController@exchange');
 
+//Owners
+Route::name('owners')->get('/owners', 'Front\PostController@owners');
+
+//Investors
+Route::name('investors')->get('/investors', 'Front\PostController@investors');
+
+//Community
+Route::name('community')->get('/community', 'Front\PostController@community');
 
 
 // Contact

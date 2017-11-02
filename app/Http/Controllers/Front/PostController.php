@@ -52,16 +52,6 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of exchanges.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function exchange()
-    {
-        return view('front.exchange');
-    }
-
-    /**
      * Display a listing of the posts for the specified category.
      *
      * @param  \App\Models\Category  $category
@@ -116,5 +106,45 @@ class PostController extends Controller
         $info = __('Posts found with search: ') . '<strong>' . $search . '</strong>';
 
         return view('front.index', compact('posts', 'info'));
+    }
+
+    /**
+     * Display a listing of exchanges.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function exchange()
+    {
+        return view('front.exchange');
+    }
+
+    /**
+     * Display a listing of community.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function community()
+    {
+        return view('front.community');
+    }
+
+    /**
+     * Display a listing of owners.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function owners()
+    {
+        return view('front.owners');
+    }
+
+    /**
+     * Display a listing of investors.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function investors()
+    {
+        return view('front.investors');
     }
 }
