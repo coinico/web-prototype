@@ -29,7 +29,9 @@
     "autoload": {
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "database/migrations",
+            "app/Libraries"
         ],
         "files": [
             "app/helpers.php"
