@@ -5,13 +5,16 @@ $(document).ready(function(){
         dataType: "json",
         success: function(res){
             $('#btc').DataTable( {
-                data: res.BTC
+                data: res.BTC,
+                order: [[ 2, "desc" ]]
             });
             $('#eth').DataTable( {
-                data: res.ETH
+                data: res.ETH,
+                order: [[ 2, "desc" ]]
             });
             $('#usdt').DataTable( {
-                data: res.USDT
+                data: res.USDT,
+                order: [[ 2, "desc" ]]
             });
         }
     }).done(function() {
