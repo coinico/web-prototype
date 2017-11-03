@@ -1,0 +1,27 @@
+.preloading {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  background: #333e48;
+  z-index: 100;
+  @include anim(0.5s);
+  svg{
+    width: 200px;
+    margin: auto;
+    display: block;
+  }
+  &.removing{
+    opacity: 0;
+  }
+}
+
+.pace .pace-progress{
+  background: $primaryColor;
+}
+
+#loader {
+  &:before{
+    border-left: 8px solid $primaryColor;
+  }
+}

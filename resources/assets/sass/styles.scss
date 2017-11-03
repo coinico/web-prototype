@@ -1,0 +1,34 @@
+
+/* Default Responsive Layouts */
+@import "default/_theme_variables";
+@import "default/_reset";
+@import "default/_base";
+@import "default/_fonts";
+@import "default/_mixins";
+@import "default/_animations";
+@import "default/_datatables";
+//@import "default/icons";
+
+/*Global App */
+@import "app/global";
+@import "app/general";
+@import "app/header";
+@import "app/footer";
+@import "app/preloading";
+
+/* Structure */
+@import "default/structure";
+
+/* Helpers for Components*/
+@import "helpers/_core";
+
+/* Components App */
+@import "components/_tables";
+
+/* Pages */
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+header{
+	.logo a {
+		background: url(../images/logo_dark.svg) no-repeat center;
+		width: 210px;
+	}
+
+	.triggers {
+		.search-trigger{
+			color: $primaryColor;
+		}
+	}
+
+	.main-navigation{
+		li.current > a {
+			color: $primaryColor;
+			border-bottom: 2px solid $primaryColor;
+		}
+	}
+	#main-nav-wrap{
+		padding-right: 35px;
+	}
+}

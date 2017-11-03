@@ -18,17 +18,10 @@ return [
     ],
     [
         'color' => 'yellow',
-        'icon' => 'pencil',
-        'model' => \App\Models\Post::class,
-        'name' => 'admin.new-posts',
-        'url' => 'admin/posts?new=on',
-    ],
-    [
-        'color' => 'red',
-        'icon' => 'comment',
-        'model' => \App\Models\Comment::class,
-        'name' => 'admin.new-comments',
-        'url' => 'admin/comments?new=on',
-    ],
+        'icon' => 'home',
+        'model' => \App\Models\Property::class,
+        'name' => 'admin.new-properties',
+        'url' => 'admin/properties?new=on',
+    ]
 
 ];

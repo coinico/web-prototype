@@ -9,6 +9,7 @@ use App\ {
     Models\Post,
     Repositories\PostRepository
 };
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
@@ -134,5 +135,61 @@ class PostController extends Controller
         $post->delete ();
 
         return response ()->json ();
+    }
+
+
+    /**
+     * Display a listing of json markets.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function markets()
+    {
+        $client = new Client();
+        $res = $client->get('https://bittrex.com/api/v2.0/pub/Markets/GetMarketSummaries?_=1509478036773');
+        $markets = json_decode($res->getBody(), true);
+
+        $result = array();
+
+        foreach ($markets['result'] as $market){
+
+            if ($market['Summary']['Ask'] && $market['Summary']['Bid']) {
+                $spread = 100 * ($market['Summary']['Ask'] - $market['Summary']['Bid']) / $market['Summary']['Ask'];
+            } else {
+                $spread = 0;
+            }
+
+            if($market['Summary']['PrevDay']){
+                $change = ($market['Summary']['Last'] - $market['Summary']['PrevDay']) / $market['Summary']['PrevDay'] * 100;
+            }else {
+                $change = 0;
+            }
+
+            $changeString = "";
+            $changeString .= number_format($change, 1);
+            $changeString .= "%";
+
+            $spreadString = "";
+            $spreadString .= number_format($spread, 1);
+            $spreadString .= "%";
+
+            $result[$market['Market']['BaseCurrency']][] = [
+                $market['Market']['MarketName'], //Market
+                $market['Market']['MarketCurrencyLong'], //Currency
+                number_format($market['Summary']['BaseVolume'], 3, '.', ','), //Volume
+                $changeString,  //Change
+                number_format($market['Summary']['Last'], 8, '.', ','), //Last price
+                number_format($market['Summary']['High'], 8, '.', ','), //High
+                number_format($market['Summary']['Low'], 8, '.', ','), //Low
+                $spreadString,  //Spread
+                date_format(date_create($market['Summary']['Created']),"d/m/Y")  //Added
+
+            ];
+        }
+        if($res->getStatusCode() == 200){
+            return response($result);
+        }else{
+            //@todo: Vista de error
+        }
     }
 }
