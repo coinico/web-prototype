@@ -24,12 +24,6 @@ return [
         'create' => 'postCreate',
         'show' => 'postShow',
     ],
-    'properties' => [
-        'index' => 'propertiesGestion',
-        'edit' => 'propertyEdit',
-        'create' => 'propertyCreate',
-        'show' => 'propertyShow',
-    ],
     'notifications' => [
         'index' => 'notificationsGestion',
     ],

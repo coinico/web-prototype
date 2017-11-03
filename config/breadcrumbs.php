@@ -21,12 +21,6 @@ return [
         'icon' => 'file-text',
         'url' => '/admin/posts',
     ],
-    'properties' =>
-    [
-        'name' => 'properties',
-        'icon' => 'home',
-        'url' => '/admin/properties',
-    ],
     'users' =>
     [
         'name' => 'users',
