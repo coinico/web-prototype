@@ -66,6 +66,8 @@ Auth::routes();
 |--------------------------------------------------------------------------|
 */
 
+// Wallet
+Route::name('testWallet')->get('/testWallet', 'Back\WalletController@testWallet');
 
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
