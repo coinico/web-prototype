@@ -35,7 +35,6 @@ Route::name('investors')->get('/investors', 'Front\PostController@investors');
 //Community
 Route::name('community')->get('/community', 'Front\PostController@community');
 
-
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
@@ -47,6 +46,16 @@ Route::prefix('posts')->namespace('Front')->group(function () {
     Route::name('posts.comments.store')->post('{post}/comments', 'CommentController@store');
     Route::name('posts.comments.comments.store')->post('{post}/comments/{comment}/comments', 'CommentController@store');
     Route::name('posts.comments')->get('{post}/comments/{page}', 'CommentController@comments');
+});
+
+// Posts and comments
+Route::prefix('properties')->namespace('Front')->group(function () {
+    Route::name('properties.display')->get('{slug}', 'PostController@show');
+    Route::name('properties.tag')->get('tag/{tag}', 'PostController@tag');
+    Route::name('properties.search')->get('', 'PostController@search');
+    Route::name('properties.comments.store')->post('{post}/comments', 'CommentController@store');
+    Route::name('properties.comments.comments.store')->post('{post}/comments/{comment}/comments', 'CommentController@store');
+    Route::name('properties.comments')->get('{post}/comments/{page}', 'CommentController@comments');
 });
 
 Route::resource('comments', 'Front\CommentController', [
@@ -82,6 +91,12 @@ Route::prefix('admin')->namespace('Back')->group(function () {
         Route::name('posts.seen')->put('posts/seen/{post}', 'PostController@updateSeen')->middleware('can:manage,post');
         Route::name('posts.active')->put('posts/active/{post}/{status?}', 'PostController@updateActive')->middleware('can:manage,post');
         Route::resource('posts', 'PostController');
+
+        // Properties
+        Route::name('properties.seen')->put('properties/seen/{property}', 'PropertyController@updateSeen')->middleware('can:manage,property');
+        Route::name('properties.active')->put('properties/active/{property}/{status?}', 'PropertyController@updateActive')->middleware('can:manage,property');
+        Route::resource('properties', 'PropertyController');
+
 
         // Notifications
         Route::name('notifications.index')->get('notifications/{user}', 'NotificationController@index');

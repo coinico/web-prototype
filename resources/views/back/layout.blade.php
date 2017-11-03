@@ -174,50 +174,30 @@ desired effect
             ],
           ])
 
-          @include('back.partials.treeview', [
-            'icon' => 'comment',
-            'type' => 'comment',
-            'items' => [
-              [
-                'route' => route('comments.index'),
-                'command' => 'list',
-                'color' => 'blue',
-              ],
-              [
-                'route' => route('comments.index', ['new' => 'on']),
-                'command' => 'new',
-                'color' => 'yellow',
-              ],
-            ],
-          ])
-
-        <li><a href="{{ route('categories.index') }}"><i class="fa fa-list"></i> <span>@lang('Categories')</span></a></li>
-
         @endadmin
 
+
         @include('back.partials.treeview', [
-          'icon' => 'file-text',
-          'type' => 'post',
+          'icon' => 'home',
+          'type' => 'property',
           'items' => [
             [
-              'route' => route('posts.index'),
+              'route' => route('properties.index'),
               'command' => 'list',
               'color' => 'blue',
             ],
             [
-              'route' => route('posts.index', ['new' => 'on']),
+              'route' => route('properties.index', ['new' => 'on']),
               'command' => 'new',
               'color' => 'yellow',
             ],
             [
-              'route' => route('posts.create'),
+              'route' => route('properties.create'),
               'command' => 'create',
               'color' => 'green',
             ],
           ],
         ])
-
-        <li><a href="{{ route('medias.index') }}"><i class="fa fa-image"></i> <span>@lang('Medias')</span></a></li>
 
         @admin
           <li><a href="{{ route('settings.edit') }}"><i class="fa fa-cog"></i> <span>@lang('Settings')</span></a></li>
@@ -270,7 +250,7 @@ desired effect
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="#">@lang('My nice Company')</a>.</strong> @lang('All rights reserved').
+    <strong>Copyright &copy; 2017 <a href="#">@lang('CasaToken')</a>.</strong> @lang('All rights reserved').
   </footer>
 
 </div>
