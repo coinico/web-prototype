@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "86cb5e76f0774edabce8d1614b1195ab",
+    "content-hash": "5640ebddc0f2775dbb0c65ca08c04a96",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -304,6 +304,44 @@
                 "laravel"
             ],
             "time": "2017-02-15T22:07:40+00:00"
+        },
+        {
+            "name": "digitaldonkey/ethereum-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digitaldonkey/ethereum-php.git",
+                "reference": "823a9fa0166177421b4f18dbe770744d80c3af2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digitaldonkey/ethereum-php/zipball/823a9fa0166177421b4f18dbe770744d80c3af2a",
+                "reference": "823a9fa0166177421b4f18dbe770744d80c3af2a",
+                "shasum": ""
+            },
+            "require": {
+                "graze/guzzle-jsonrpc": "~3.0",
+                "pear/math_biginteger": "^1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ethereum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thorsten Krug",
+                    "email": "thorsten.krug@consensys.net"
+                }
+            ],
+            "description": "A library integrating Ethereum with typed PHP.",
+            "time": "2017-03-30T08:35:14+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -614,6 +652,65 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
+        },
+        {
+            "name": "graze/guzzle-jsonrpc",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/graze/guzzle-jsonrpc.git",
+                "reference": "c4513b7659534792b906723158a8388f54275a61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/graze/guzzle-jsonrpc/zipball/c4513b7659534792b906723158a8388f54275a61",
+                "reference": "c4513b7659534792b906723158a8388f54275a61",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "guzzlehttp/promises": "^1.0",
+                "php": ">=5.5",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "adlawson/timezone": "~1.0",
+                "fabpot/php-cs-fixer": "~0.5",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graze tech team",
+                    "homepage": "https://github.com/graze/guzzle-jsonrpc/graphs/contributors"
+                }
+            ],
+            "description": "JSON-RPC 2.0 client for Guzzle",
+            "homepage": "https://github.com/graze/guzzle-jsonrpc",
+            "keywords": [
+                "Guzzle",
+                "guzzlehttp",
+                "http",
+                "json",
+                "json-rpc",
+                "jsonrpc",
+                "ring",
+                "rpc"
+            ],
+            "time": "2016-02-16T15:18:21+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1551,6 +1648,55 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
+        },
+        {
+            "name": "pear/math_biginteger",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Math_BigInteger.git",
+                "reference": "33d4357543037a458fad3e8c837a01b93104e592"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Math_BigInteger/zipball/33d4357543037a458fad3e8c837a01b93104e592",
+                "reference": "33d4357543037a458fad3e8c837a01b93104e592",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=4.2.0"
+            },
+            "suggest": {
+                "ext-bcmath": "Allows using the BCMath extension internally for computation. Faster than native implementation.",
+                "ext-gmp": "Allows using the GNU Multiple Precision extension internally for computation. If you are doing a lot of computation this is the recommended extension."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Math_": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net"
+                }
+            ],
+            "description": "Pure-PHP arbitrary precission integer arithmetic library. If GMP or BCMath are available they are used.",
+            "homepage": "https://github.com/pear/Math_BigInteger",
+            "keywords": [
+                "arbitrary",
+                "bcmath",
+                "gmp",
+                "integer",
+                "precision"
+            ],
+            "time": "2016-04-12T05:46:52+00:00"
         },
         {
             "name": "psr/cache",
@@ -5002,7 +5148,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "digitaldonkey/ethereum-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
