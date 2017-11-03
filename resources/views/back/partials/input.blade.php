@@ -10,10 +10,16 @@
                 <input id="{{ $input['name'] }}" name="{{ $input['name'] }}" type="checkbox" {{ $input['value'] ? 'checked' : '' }}>{{ $input['label'] }}
             </label>
         </div>
-    @elseif ($input['input'] === 'select')
+    @elseif ($input['input'] === 'select_multiple')
         <select multiple required class="form-control" name="{{ $input['name'] }}[]" id="{{ $input['name'] }}">
-            @foreach($categories as $id => $title)
+            @foreach($input['options'] as $id => $title)
                 <option value="{{ $id }}" {{ old($input['name']) ? (in_array($id, old($input['name'])) ? 'selected' : '') : ($input['values']->contains('id', $id) ? 'selected' : '') }}>{{ $title }}</option>
+            @endforeach
+        </select>
+    @elseif ($input['input'] === 'select')
+        <select required class="form-control" name="{{ $input['name'] }}" id="{{ $input['name'] }}">
+            @foreach($input['options'] as $id => $title)
+                <option value="{{ $id }}" {{ ($input['value'] == $id) ? 'selected' : '' }}>@lang('admin.'.$title)</option>
             @endforeach
         </select>
     @elseif ($input['input'] === 'slider')

@@ -36,16 +36,30 @@
                     ],
                 ])
 
-                <button type="submit" class="btn btn-primary">@lang('Submit')</button>
             </div>
 
             <div class="col-md-4">
-
+                @component('back.components.box')
+                @slot('type')
+                danger
+                @endslot
+                @slot('boxTitle')
+                @lang('Status')
+                @endslot
+                @include('back.partials.input', [
+                    'input' => [
+                        'name' => 'status_id',
+                        'value' => $property->status->id,
+                        'input' => 'select',
+                        'options' => $status,
+                    ],
+                ])
+                @endcomponent
             </div>
 
-
-
-
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            </div>
 
         </div>
         </div>

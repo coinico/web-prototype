@@ -52,5 +52,18 @@ return [
     'new-messages' => 'New contacts !',
     'new-registers' => 'New users !',
     'new-posts' => 'New posts !',
+    'new-properties' => 'New properties !',
     'new-comments' => 'New comments !',
+    //Properties Status
+    'open' => 'Open',
+    'waiting' => 'Waiting for approval',
+    'denied' => 'Denied',
+    'accepted' => 'Accepted',
+    'verification_process' => 'Verification Process',
+    'verified' => 'Verified',
+    'no_agreement' => 'No agreement',
+    'no_verified' => 'No verified',
+    'published_and_tokenized' => 'Published and Tokenized',
+    'failure' => 'Failure',
+    'in_market' => 'In Market'
 ];

@@ -3,7 +3,7 @@
         <td>{{ $property->title }}</td>
         <td><img src="{{ thumb($property->image) }}" alt=""></td>
         <td>
-            <input type="checkbox" name="status" value="{{ $property->id }}" {{ $property->active ? 'checked' : ''}}>
+            @lang('admin.'.$property->status->name)
         </td>
         <td>{{ $property->created_at->formatLocalized('%c') }}</td>
         <td>

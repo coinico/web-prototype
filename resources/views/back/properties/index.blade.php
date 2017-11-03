@@ -19,9 +19,10 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <strong>@lang('Status') :</strong> &nbsp;
+                    <strong>@lang('Show') :</strong> &nbsp;
                     <input type="checkbox" name="new" @if(request()->new) checked @endif> @lang('New')&nbsp;
-                    <input type="checkbox" name="active" @if(request()->active) checked @endif> @lang('Active')&nbsp;
+
+
                     <div id="spinner" class="text-center"></div>
                 </div>
                 <div class="box-body table-responsive">
@@ -31,7 +32,7 @@
                             <th>@lang('Title')<span id="title" class="fa fa-sort pull-right"
                                                               aria-hidden="true"></span></th>
                             <th>@lang('Image')</th>
-                            <th>@lang('Active')<span id="active" class="fa fa-sort pull-right"
+                            <th>@lang('Status')<span id="status_id" class="fa fa-sort pull-right"
                                                               aria-hidden="true"></span></th>
                             <th>@lang('Creation')<span id="created_at" class="fa fa-sort-desc pull-right"
                                                               aria-hidden="true"></span></th>
@@ -45,7 +46,7 @@
                         <tr>
                             <th>@lang('Title')</th>
                             <th>@lang('Image')</th>
-                            <th>@lang('Active')</th>
+                            <th>@lang('Status')</th>
                             <th>@lang('Creation')</th>
                             <th>@lang('New')</th>
                             <th></th>

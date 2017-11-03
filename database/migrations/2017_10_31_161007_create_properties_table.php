@@ -16,7 +16,10 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->boolean('active')->default(false);
+            $table->integer('status_id')->unsigned();
+            $table->foreign('status_id')->references('id')->on('property_status')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')

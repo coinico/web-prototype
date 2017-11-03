@@ -25,11 +25,8 @@
                     <p>@lang('Author')</p>
                     {{ $property->user->name }}
                     <hr>
-                    <p>@lang('Slug')</p>
-                    {{ $property->slug }}
-                    <hr>
                     <p>@lang('Status')</p>
-                    {{ $property->active ? __('Active') : __('No Active')}}
+                    @lang('admin.'.$property->status->name)
                     <hr>
                     <p>@lang('Date Creation')</p>
                     {{ $property->created_at->formatLocalized('%c') }}

@@ -197,11 +197,9 @@ class PropertyRepository
      */
     public function update($property, $request)
     {
-        $request->merge(['active' => $request->has('active')]);
-
+        //$request->merge(['active' => $request->has('active')]);
         $property->update($request->all());
 
-        $this->saveCategoriesAndTags($property, $request);
     }
 
     /**
@@ -213,7 +211,7 @@ class PropertyRepository
     public function store($request)
     {
         $request->merge(['user_id' => auth()->id()]);
-        $request->merge(['active' => $request->has('active')]);
+        $request->merge(['status_id' => '1']);
 
         $property = Property::create($request->all());
 

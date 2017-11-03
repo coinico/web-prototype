@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\ {
     Http\Requests\PropertyRequest,
     Http\Controllers\Controller,
-    Models\Category,
+    Models\PropertyStatus,
     Models\Property,
     Repositories\PropertyRepository
 };
@@ -88,7 +88,8 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        return view('back.properties.show', compact('property'));
+        $status = PropertyStatus::all()->pluck('id', 'name');
+        return view('back.properties.show', compact('property', 'status'));
     }
 
     /**
@@ -101,9 +102,9 @@ class PropertyController extends Controller
     {
         $this->authorize('manage', $property);
 
-        $categories = Category::all()->pluck('title', 'id');
+        $status = PropertyStatus::all()->pluck('name', 'id');
 
-        return view('back.properties.edit', compact('property', 'categories'));
+        return view('back.properties.edit', compact('property', 'status'));
     }
 
     /**
