@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5640ebddc0f2775dbb0c65ca08c04a96",
+    "content-hash": "4991ac99e4d08b9566aa307bddb21e91",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -892,6 +892,51 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "hydrarulz/ethereum-php-lib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hydrarulz/ethereum-php-lib.git",
+                "reference": "ff9364f4d672673695422a52f092ef973f11bfd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hydrarulz/ethereum-php-lib/zipball/ff9364f4d672673695422a52f092ef973f11bfd9",
+                "reference": "ff9364f4d672673695422a52f092ef973f11bfd9",
+                "shasum": ""
+            },
+            "require": {
+                "graze/guzzle-jsonrpc": "~3.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EthereumClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Telle",
+                    "email": "brandon.telle@gmail.com"
+                },
+                {
+                    "name": "Thorsten Krug",
+                    "email": "thorsten.krug@consensys.net"
+                },
+                {
+                    "name": "Daniel Luca",
+                    "email": "daniel.luca@consensys.net"
+                }
+            ],
+            "description": "The PHP library for requesting data from an Ethereum client through JSON RPC by HTTP.",
+            "time": "2017-02-16T08:13:21+00:00"
         },
         {
             "name": "intervention/image",
@@ -5149,7 +5194,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "digitaldonkey/ethereum-php": 20
+        "digitaldonkey/ethereum-php": 20,
+        "hydrarulz/ethereum-php-lib": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

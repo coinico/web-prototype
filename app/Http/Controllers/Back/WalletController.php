@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\ {
     Http\Controllers\Controller
 };
-use App\Libraries\Ethereum;
+use Ethereum\EthereumClient;
 
 class WalletController extends Controller
 {
@@ -16,12 +16,12 @@ class WalletController extends Controller
         if (!$host) {
             $host = 'http://localhost:8445';
     }
-        $this->client = new Ethereum($host);
+        $this->client = new EthereumClient($host);
     }
 
     public function testWallet() {
         try {
-            $eth = new EthereumController();
+            $eth = new WalletController();
             $eth->client->eth_protocolVersion();
         }
         catch (\Exception $exception) {
