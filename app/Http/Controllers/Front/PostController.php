@@ -148,4 +148,14 @@ class PostController extends Controller
     {
         return view('front.investors');
     }
+
+    /**
+     * Display a listing of properties.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function properties()
+    {
+        return view('front.properties');
+    }
 }
