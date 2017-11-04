@@ -41,6 +41,10 @@ Route::name('properties')->get('/properties', 'Front\PostController@properties')
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
+//Images
+Route::get('/property/{id}/images', 'Back\PropertyImageController@index');
+Route::post('/property/{id}/images', 'Back\PropertyImageController@upload');
+
 // Posts and comments
 Route::prefix('posts')->namespace('Front')->group(function () {
     Route::name('posts.display')->get('{slug}', 'PostController@show');

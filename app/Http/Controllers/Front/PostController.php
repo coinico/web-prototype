@@ -10,7 +10,7 @@ use App\ {
     Models\Category
 };
 use Illuminate\Http\Request;
-
+use App\Models\Property;
 
 class PostController extends Controller
 {
@@ -156,6 +156,7 @@ class PostController extends Controller
      */
     public function properties()
     {
-        return view('front.properties');
+        $properties = Property::all();
+        return view('front.properties', compact('properties'));
     }
 }

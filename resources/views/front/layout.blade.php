@@ -185,7 +185,7 @@
 
       		<div class="col-twelve">
 	      		<div class="copyright">
-		         	<span>© Copyright Housechain 2017</span>
+		         	<span>© Copyright CasaToken 2017</span>
 		         	<span>Design by <a href="http://www.diwork.com.ar/">Di Work</a></span>
 		         </div>
 

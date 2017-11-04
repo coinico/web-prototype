@@ -11,6 +11,12 @@ section#properties{
       position: relative;
       .info {
         @include effect(all, 0.2s, ease);
+        .image{
+          height: 130px;
+          width: 100%;
+          background-size: cover;
+          background-position: center;
+        }
         .price {
           &:before {
             content: " ";

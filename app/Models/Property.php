@@ -8,6 +8,7 @@ use App\Events\ {
     PropertyUpdated
 };
 
+
 class Property extends Model
 {
     use IngoingTrait;
@@ -49,6 +50,16 @@ class Property extends Model
     public function status()
     {
         return $this->belongsTo(PropertyStatus::class);
+    }
+
+    /**
+     * One to Many relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class,'property_id', 'id');
     }
 
 }

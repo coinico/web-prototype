@@ -1,0 +1,20 @@
+/* Default Responsive Layouts */
+@import "default/_mixins";
+
+.images{
+  border: 1px solid #ccc;
+  background: white;
+  margin-bottom: 20px;
+  img{
+    width: 100px;
+    display: inline-block;
+    margin: 8px;
+  }
+}
+
+
+
+
+
+
+
