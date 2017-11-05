@@ -39,24 +39,6 @@
                </thead>
            </table>
        </div>
-       <div class="row">
-           <h3>USDT MARKETS</h3>
-           <table id="usdt" class="display" cellspacing="0" width="100%">
-               <thead>
-               <tr>
-                   <th>Market</th>
-                   <th>Currency</th>
-                   <th>Volume</th>
-                   <th>Change</th>
-                   <th>Last Price</th>
-                   <th>High</th>
-                   <th>Low</th>
-                   <th>Spread</th>
-                   <th>Added</th>
-               </tr>
-               </thead>
-           </table>
-       </div>
    </section>
 
 @endsection

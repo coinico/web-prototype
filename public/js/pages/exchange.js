@@ -12,10 +12,6 @@ $(document).ready(function(){
                 data: res.ETH,
                 order: [[ 2, "desc" ]]
             });
-            $('#usdt').DataTable( {
-                data: res.USDT,
-                order: [[ 2, "desc" ]]
-            });
         }
     }).done(function() {
         $( this ).addClass( "done" );
