@@ -62,4 +62,9 @@ class Property extends Model
         return $this->hasMany(PropertyImage::class,'property_id', 'id');
     }
 
+
+    public function getVotingTime(){
+        
+    }
+
 }

@@ -852,6 +852,10 @@ table { font-size: 13px; border: 1px solid #ccc; }
 table th, table td { padding: 3px; text-align: left; border-bottom: 1px solid #E8E8E8; }
 
 /* Pages */
+section#properties .info-results { background: white; color: #898998; margin: 10px; line-height: 25px; padding: 15px; }
+section#properties .info-results .results { width: 50%; display: inline-block; }
+section#properties .info-results .actions { width: 50%; display: inline-block; float: right; text-align: right; }
+section#properties .info-results .actions a { color: #898998; font-size: 25px; margin: 5px; }
 section#properties .wrapper { position: relative; width: 33.3333%; box-sizing: border-box; padding: 10px; float: left; }
 section#properties .wrapper .property { background: white; padding: 15px; position: relative; }
 section#properties .wrapper .property .info { -webkit-transition: all 0.2s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease; }
@@ -872,3 +876,9 @@ section#properties .wrapper .property .hover .vote .up { border-right: 1px dashe
 section#properties .wrapper .property .hover > a { color: white; display: block; clear: both; margin: 40px auto; }
 section#properties .wrapper .property:hover .info { filter: blur(5px); }
 section#properties .wrapper .property:hover .hover { opacity: 1; pointer-events: auto; }
+section#properties.horizontal-view .wrapper { width: 100%; }
+section#properties.horizontal-view .wrapper .property { padding: 15px; }
+section#properties.horizontal-view .wrapper .property .info .image { width: 130px; background-image: url(images/no-image.png); display: inline-block; float: left; margin-right: 20px; }
+section#properties.horizontal-view .wrapper .property .hover .vote { margin-top: -80px; }
+section#properties.horizontal-view .wrapper .property .hover .vote .up { border-right: none; }
+section#properties.horizontal-view .wrapper .property .hover .vote > a { display: inline-block; position: absolute; bottom: -20px; right: 20px; }
