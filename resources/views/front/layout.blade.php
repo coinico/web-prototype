@@ -41,8 +41,8 @@
 
 	<!-- favicons
 	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ asset('images/casatoken.ico') }}" type="image/x-icon"/>
+	<link rel="icon" href="{{ asset('images/casatoken.ico') }}" type="image/x-icon">
 
 </head>
 
@@ -149,7 +149,7 @@
 
 	      	<div class="col-six tab-full mob-full footer-info">
 
-	            <h4>@lang('About Our Site')</h4>
+	            <h4>@lang('Acerca de nuestro sitio')</h4>
 
 	               <p>@lang('Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.')</p>
 
@@ -157,14 +157,14 @@
 
 	      	<div class="col-three tab-1-2 mob-1-2 site-links">
 
-	      		<h4>@lang('Site Links')</h4>
+	      		<h4>@lang('Links del sitio')</h4>
 
 	      		<ul>
-				  	<li><a href="#">@lang('About us')</a></li>
-					<li><a href="{{ route('contacts.create') }}">@lang('Contact')</a></li>
+				  	<li><a href="#">@lang('Acerca de Nosotros')</a></li>
+					<li><a href="{{ route('contacts.create') }}">@lang('Contáctanos')</a></li>
 					<li><a href="{{ url('') }}">@lang('Blog')</a></li>
 					<li><a href="{{ url('') }}">@lang('FAQ')</a></li>
-					<li><a href="#">@lang('Privacy Policy')</a></li>
+					<li><a href="#">@lang('Política de Privacidad')</a></li>
 				</ul>
 
 	      	</div> <!-- end site-links -->
@@ -176,7 +176,6 @@
 	      		<ul>
 	      			<li><a href="#">Twitter</a></li>
 					<li><a href="#">Facebook</a></li>
-					<li><a href="#">Dribbble</a></li>
 					<li><a href="#">Google+</a></li>
 					<li><a href="#">Instagram</a></li>
 				</ul>
