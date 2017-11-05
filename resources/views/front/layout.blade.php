@@ -63,47 +63,54 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{ route('owners') }}">@lang('Owners')</a>
+					<a href="{{ route('owners') }}">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{ route('investors') }}">@lang('Investors')</a>
+					<a href="{{ route('investors') }}">@lang('Inversores')</a>
 				</li>
 				<li {{ currentRoute('exchange') }}>
 					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
 				</li>
 				<li {{ currentRoute('community') }}>
-					<a href="{{ route('community') }}">@lang('Community')</a>
+					<a href="{{ route('community') }}">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Register')</a>
+						<a href="{{ request()->url() }}">@lang('Registrarme')</a>
 					</li>
 				@endrequest
 				@request('password/email')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Forgotten password')</a>
+						<a href="{{ request()->url() }}">@lang('Contraseña olvidada')</a>
 					</li>
 				@else
 					@guest
 						<li {{ currentRoute('login') }}>
-							<a href="{{ route('login') }}">@lang('Login')</a>
+							<a href="{{ route('login') }}">@lang('Ingresar')</a>
 						</li>
 						@request('password/reset')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Password')</a>
+								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 						@request('password/reset/*')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Password')</a>
+								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 					@else
-						<li>
-							<a id="logout" href="{{ route('logout') }}">@lang('Logout')</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
-								{{ csrf_field() }}
-							</form>
+						<li class='cat-item'><a href='#' title='Usuario'>Usuario</a>
+							<ul class="children">
+								<li {{ currentRoute('wallet/create') }}>
+									<a href="{{ route('wallet/create') }}">@lang('Billetera')</a>
+								</li>
+								<li>
+									<a id="logout" href="{{ route('logout') }}">@lang('Salir')</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
+										{{ csrf_field() }}
+									</form>
+								</li>
+							</ul>
 						</li>
 					@endguest
 				@endrequest
