@@ -18,14 +18,14 @@
                 <div><span class="hs">{{$property->getVotingTime()->h}}</span> <small>hs</small></div>
                 <div><span class="min">{{$property->getVotingTime()->i}}</span> <small>min</small></div>
             </div>
-            <div class="vote">
+            <div class="vote" data-url="property/{{ $property->id }}/vote">
                 <div class="up">
-                    <a href="#"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a>
-                    <small>503</small>
+                    <a href="#" class="{{($property->getUserVote()==1) ? 'selected' : ''}}"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a>
+                    <small>{{$property->getPositiveVotes()}}</small>
                 </div>
                 <div class="down">
-                    <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> </a>
-                    <small>87</small>
+                    <a href="#" class="{{($property->getUserVote()==-1)? 'selected' : ''}}"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> </a>
+                    <small>{{$property->getNegativeVotes()}}</small>
                 </div>
             </div>
             <a href="properties/{{$property->id}}">Ampliar</a>

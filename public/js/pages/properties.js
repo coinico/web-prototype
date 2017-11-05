@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    //$('.properties .wrap')@todo: min height algh
+    //$('.properties .wrap')@todo: min height algorithm
+
+
+    /** Views **/
     $('#horizontal-view-btn').click(function(e){
         e.preventDefault();
         $('#properties').addClass('horizontal-view');
@@ -10,7 +13,7 @@ $(document).ready(function(){
         $('#properties').removeClass('horizontal-view');
     });
 
-    //Timer
+    /** Timer **/
     setInterval(function(){
         $('.time_left').each(function(){
             var days =  Number($(this).find('.days').html());
@@ -31,6 +34,36 @@ $(document).ready(function(){
             $(this).find('.hs').html(hs);
             $(this).find('.days').html(days);
         });
-
     }, 1000);
+
+    /** Votes **/
+    $('.vote a').click(function(e){
+        e.preventDefault();
+        var btn = $(this);
+        var wrapper = $(this).closest('.vote');
+        var url = wrapper.attr('data-url');
+        var vote = $(this).parent().hasClass('up') ? '1' : '-1';
+        wrapper.find('a').removeClass('selected');
+        btn.addClass('selected');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: url,
+            data: {vote:vote},
+            method: 'POST',
+            success: function(result){
+                console.log(result);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                var status = xhr.status;
+                if(status == 419) {
+                    alert("Debes iniciar sesión para votar");
+                }
+                btn.removeClass('selected');
+            }
+        });
+
+    });
+
 });

@@ -11,6 +11,7 @@ use App\ {
 };
 use GuzzleHttp\Client;
 use App\Models\PropertyImage;
+use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
@@ -136,6 +137,11 @@ class PropertyController extends Controller
         $property->delete ();
 
         return response ()->json ();
+    }
+
+    public function vote(){
+        //$this->repository->vote($request);
+        echo "Mono"; die();
     }
 
 
