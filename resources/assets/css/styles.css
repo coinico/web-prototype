@@ -869,8 +869,9 @@ section#properties .wrapper .property .hover .time_left div { width: 55px; heigh
 section#properties .wrapper .property .hover .time_left div small { display: block; line-height: 14px; }
 section#properties .wrapper .property .hover .vote { margin: 25px auto; width: 80%; height: 85px; }
 section#properties .wrapper .property .hover .vote .up, section#properties .wrapper .property .hover .vote .down { width: 50%; padding: 15px; float: left; }
-section#properties .wrapper .property .hover .vote .up a, section#properties .wrapper .property .hover .vote .down a { text-decoration: none; display: block; margin: 0 15px; }
+section#properties .wrapper .property .hover .vote .up a, section#properties .wrapper .property .hover .vote .down a { text-decoration: none; opacity: 0.5; display: block; margin: 0 15px; }
 section#properties .wrapper .property .hover .vote .up a i, section#properties .wrapper .property .hover .vote .down a i { color: white; font-size: 40px; font-weight: 300; }
+section#properties .wrapper .property .hover .vote .up a:hover, section#properties .wrapper .property .hover .vote .up a.selected, section#properties .wrapper .property .hover .vote .down a:hover, section#properties .wrapper .property .hover .vote .down a.selected { opacity: 1; }
 section#properties .wrapper .property .hover .vote .up small, section#properties .wrapper .property .hover .vote .down small { display: block; }
 section#properties .wrapper .property .hover .vote .up { border-right: 1px dashed white; }
 section#properties .wrapper .property .hover > a { color: white; display: block; clear: both; margin: 40px auto; }

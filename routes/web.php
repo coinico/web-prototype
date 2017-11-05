@@ -41,10 +41,6 @@ Route::name('properties')->get('/properties', 'Front\PostController@properties')
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
-//Images
-Route::get('/property/{id}/images', 'Back\PropertyImageController@index');
-Route::post('/property/{id}/images', 'Back\PropertyImageController@upload');
-
 // Posts and comments
 Route::prefix('posts')->namespace('Front')->group(function () {
     Route::name('posts.display')->get('{slug}', 'PostController@show');
@@ -80,6 +76,16 @@ Route::name('wallet/createWallet')->get('/wallet/createWallet', 'Back\WalletCont
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
 
+
+
+Route::middleware('redac')->group(function () {
+
+    // PropertyVote
+    Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
+
+});
+
+
 Route::prefix('admin')->namespace('Back')->group(function () {
 
     Route::middleware('redac')->group(function () {
@@ -96,10 +102,10 @@ Route::prefix('admin')->namespace('Back')->group(function () {
         Route::name('properties.active')->put('properties/active/{property}/{status?}', 'PropertyController@updateActive')->middleware('can:manage,property');
         Route::resource('properties', 'PropertyController');
 
-
         // Notifications
         Route::name('notifications.index')->get('notifications/{user}', 'NotificationController@index');
         Route::name('notifications.update')->put('notifications/{notification}', 'NotificationController@update');
+
 
         // Medias
         Route::view('medias', 'back.medias')->name('medias.index');
@@ -107,6 +113,11 @@ Route::prefix('admin')->namespace('Back')->group(function () {
     });
 
     Route::middleware('admin')->group(function () {
+
+        // PropertyImages
+        Route::get('/property/{id}/images', 'Back\PropertyImageController@index');
+        Route::post('/property/{id}/images', 'Back\PropertyImageController@upload');
+
 
         // Users
         Route::name('users.seen')->put('users/seen/{user}', 'UserController@updateSeen');

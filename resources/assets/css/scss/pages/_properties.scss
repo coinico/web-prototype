@@ -88,7 +88,7 @@ section#properties{
         font-weight: bold;
         z-index: 2;
         .time_left{
-          margin-top: 55px; 
+          margin-top: 55px;
           div{
             width: 55px;
             height: 55px;
@@ -114,6 +114,7 @@ section#properties{
             float: left;
             a {
               text-decoration: none;
+              opacity: 0.5;
               i{
                 color: white;
                 font-size: 40px;
@@ -121,6 +122,9 @@ section#properties{
               }
               display: block;
               margin: 0 15px;
+              &:hover, &.selected {
+                opacity: 1;
+              }
             }
             small{
               display: block;
