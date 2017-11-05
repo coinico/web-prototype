@@ -865,8 +865,8 @@ section#properties .wrapper .property .info .price:before { content: " "; positi
 section#properties .wrapper .property .hover { -webkit-transition: all 0.2s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease; opacity: 0; pointer-events: none; position: absolute; top: 0; bottom: 0; left: 0; right: 0; text-align: center; color: white; font-weight: bold; z-index: 2; }
 section#properties .wrapper .property .hover:before { content: ''; position: absolute; background: #4868af; opacity: 0.5; top: 0; bottom: 0; left: 0; right: 0; z-index: -1; }
 section#properties .wrapper .property .hover .time_left { margin-top: 55px; }
-section#properties .wrapper .property .hover .time_left span { width: 55px; height: 55px; display: inline-block; border: 1px solid; padding: 5px; border-radius: 50%; margin: 5px; font-size: 22px; }
-section#properties .wrapper .property .hover .time_left span small { display: block; line-height: 14px; }
+section#properties .wrapper .property .hover .time_left div { width: 55px; height: 55px; display: inline-block; border: 1px solid; padding: 5px; border-radius: 50%; margin: 5px; font-size: 22px; }
+section#properties .wrapper .property .hover .time_left div small { display: block; line-height: 14px; }
 section#properties .wrapper .property .hover .vote { margin: 25px auto; width: 80%; height: 85px; }
 section#properties .wrapper .property .hover .vote .up, section#properties .wrapper .property .hover .vote .down { width: 50%; padding: 15px; float: left; }
 section#properties .wrapper .property .hover .vote .up a, section#properties .wrapper .property .hover .vote .down a { text-decoration: none; display: block; margin: 0 15px; }

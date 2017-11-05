@@ -64,7 +64,11 @@ class Property extends Model
 
 
     public function getVotingTime(){
-        
+        $end = new \DateTime($this->created_at);
+        $end->add(new \DateInterval('PT10H30S'));
+        $date = new \DateTime();
+        $time = $date->diff($end);
+        return $time;
     }
 
 }

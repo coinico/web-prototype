@@ -14,9 +14,9 @@
         </div>
         <div class="hover">
             <div class="time_left">
-                <span>05 <small>dias</small></span>
-                <span>11 <small>hs</small></span>
-                <span>23 <small>min</small></span>
+                <div><span class="days"> {{$property->getVotingTime()->d}} </span> <small>dias</small></div>
+                <div><span class="hs">{{$property->getVotingTime()->h}}</span> <small>hs</small></div>
+                <div><span class="min">{{$property->getVotingTime()->i}}</span> <small>min</small></div>
             </div>
             <div class="vote">
                 <div class="up">
