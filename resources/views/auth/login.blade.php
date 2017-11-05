@@ -21,7 +21,7 @@
                             {!! session('confirmation-danger') !!}
                         @endcomponent
                     @endif
-                    <h3>@lang('Login')</h3>
+                    <h3>@lang('Ingresar')</h3>
                     <form role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         @if ($errors->has('log'))
@@ -29,19 +29,19 @@
                                 {{ $errors->first('log') }}
                             @endcomponent
                         @endif   
-                        <input id="log" type="text" placeholder="@lang('Login')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
-                        <input id="password" type="password" placeholder="@lang('Password')" class="full-width" name="password" required>
+                        <input id="log" type="text" placeholder="@lang('E-mail')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
+                        <input id="password" type="password" placeholder="@lang('Contraseña')" class="full-width" name="password" required>
                         <label class="add-bottom">
                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 
-                            <span class="label-text">@lang('Remember me')</span>
+                            <span class="label-text">@lang('Recuérdame')</span>
                         </label>
-                        <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Login')">
+                        <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Ingresar')">
                         <label class="add-bottom">
                             <a href="{{ route('password.request') }}">
-                                @lang('Forgot Your Password?')
+                                @lang('Olvidé mi contraseña')
                             </a><br>
                             <a href="{{ route('register') }}">
-                                @lang('Not registered?')
+                                @lang('Registrarme')
                             </a>
                         </label>
                     </form>
