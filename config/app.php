@@ -181,6 +181,11 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ElfinderServiceProvider::class,
 
+        Amranidev\ScaffoldInterface\ScaffoldInterfaceServiceProvider::class,
+        Amranidev\Ajaxis\AjaxisServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Pusher\Laravel\PusherServiceProvider::class,
+
     ],
 
     /*

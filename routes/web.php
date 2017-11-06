@@ -38,9 +38,6 @@ Route::name('community')->get('/community', 'Front\PostController@community');
 //Properties
 Route::name('properties')->get('/properties', 'Front\PostController@properties');
 
-//Properties
-Route::name('cryptoCurrencies')->get('/cryptoCurrencies', 'Front\PostController@cryptoCurrencies');
-
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
@@ -110,9 +107,6 @@ Route::prefix('admin')->namespace('Back')->group(function () {
         Route::name('properties.active')->put('properties/active/{property}/{status?}', 'PropertyController@updateActive')->middleware('can:manage,property');
         Route::resource('properties', 'PropertyController');
 
-        // Crypto Currencies
-        Route::resource('crypto_currencies', 'CryptoCurrenciesController');
-
         // Notifications
         Route::name('notifications.index')->get('notifications/{user}', 'NotificationController@index');
         Route::name('notifications.update')->put('notifications/{notification}', 'NotificationController@update');
@@ -158,4 +152,12 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 
     });
 
+});
+
+//crypto_currency Routes
+Route::group(['middleware'=> 'web'],function(){
+  Route::resource('crypto_currency', '\App\Http\Controllers\CryptoCurrencyController');
+  Route::post('crypto_currency/{id}/update','\App\Http\Controllers\CryptoCurrencyController@update');
+  Route::get('crypto_currency/{id}/delete','\App\Http\Controllers\CryptoCurrencyController@destroy');
+  Route::get('crypto_currency/{id}/deleteMsg','\App\Http\Controllers\CryptoCurrencyController@DeleteMsg');
 });
