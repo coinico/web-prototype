@@ -47,18 +47,6 @@ class PropertyRepository
         $this->comment = $comment;
     }
 
-    /**
-     * Create a query for Property.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function getCarouselProperties()
-    {
-        return $this->model->All()->limit(10)
-    }
-
-
-
 
     /**
      * Get active propertys collection paginated.
