@@ -4,11 +4,11 @@
 
 <section class="crypto-currency-abm">
     <h1>
-        Edit crypto_currency
+        Editar una Crypto Moneda
     </h1>
-    <a href="{!!url('crypto_currency')!!}" class = 'btn btn-primary'><i class="fa fa-home"></i> Crypto_currency Index</a>
+    <a href="{!!url('cryptoCurrency')!!}" class = 'btn btn-primary'><i class="fa fa-home"></i> Índice de Crypto Monedas</a>
     <br>
-    <form method = 'POST' action = '{!! url("crypto_currency")!!}/{!!$crypto_currency->
+    <form method = 'POST' action = '{!! url("cryptoCurrency")!!}/{!!$crypto_currency->
         id!!}/update'> 
         <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
         <div class="form-group">

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\CryptoCurrency;
+use App\Models\CryptoCurrency;
 use URL;
 
 /**
@@ -24,7 +25,7 @@ class CryptoCurrencyController extends Controller
     {
         $title = 'Index - crypto_currency';
         $crypto_currencies = CryptoCurrency::paginate(6);
-        return view('crypto_currency.index',compact('crypto_currencies','title'));
+        return view('front.crypto_currency.index',compact('crypto_currencies','title'));
     }
 
     /**
@@ -34,9 +35,7 @@ class CryptoCurrencyController extends Controller
      */
     public function create()
     {
-        $title = 'Create - crypto_currency';
-        
-        return view('crypto_currency.create');
+        return view('front.crypto_currency.create');
     }
 
     /**
@@ -75,7 +74,7 @@ class CryptoCurrencyController extends Controller
                          'test-event',
                         ['message' => 'A new crypto_currency has been created !!']);
 
-        return redirect('crypto_currency');
+        return redirect('cryptoCurrency');
     }
 
     /**
@@ -91,11 +90,11 @@ class CryptoCurrencyController extends Controller
 
         if($request->ajax())
         {
-            return URL::to('crypto_currency/'.$id);
+            return URL::to('cryptoCurrency/'.$id);
         }
 
         $crypto_currency = CryptoCurrency::findOrfail($id);
-        return view('crypto_currency.show',compact('title','crypto_currency'));
+        return view('front.crypto_currency.show',compact('title','crypto_currency'));
     }
 
     /**
@@ -109,12 +108,12 @@ class CryptoCurrencyController extends Controller
         $title = 'Edit - crypto_currency';
         if($request->ajax())
         {
-            return URL::to('crypto_currency/'. $id . '/edit');
+            return URL::to('cryptoCurrency/'. $id . '/edit');
         }
 
         
         $crypto_currency = CryptoCurrency::findOrfail($id);
-        return view('crypto_currency.edit',compact('title','crypto_currency'  ));
+        return view('front.crypto_currency.edit',compact('title','crypto_currency'  ));
     }
 
     /**
@@ -139,7 +138,7 @@ class CryptoCurrencyController extends Controller
         
         $crypto_currency->save();
 
-        return redirect('crypto_currency');
+        return redirect('cryptoCurrency');
     }
 
     /**
@@ -152,6 +151,6 @@ class CryptoCurrencyController extends Controller
     {
      	$crypto_currency = CryptoCurrency::findOrfail($id);
      	$crypto_currency->delete();
-        return URL::to('crypto_currency');
+        return URL::to('cryptoCurrency');
     }
 }

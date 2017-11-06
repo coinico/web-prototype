@@ -6,7 +6,7 @@
     <h1>
         Crypto_currency Index
     </h1>
-    <a href='{!!url("crypto_currency")!!}/create' class = 'btn btn-success'><i class="fa fa-plus"></i> New</a>
+    <a href='{!!url("cryptoCurrency")!!}/create' class = 'btn btn-success'><i class="fa fa-plus"></i> New</a>
     <br>
     <br>
     <div class = "info-results">
@@ -27,9 +27,9 @@
                         <td>{!!$crypto_currency->image!!}</td>
                         <td>{!!$crypto_currency->usd_value!!}</td>
                         <td>
-                            <a href = "crypto_currency/{!!$crypto_currency->id!!}/delete" ><i class = 'fa fa-trash'> delete</i></a>
-                            <a href = 'crypto_currency/{!!$crypto_currency->id!!}/edit'><i class = 'fa fa-edit'> edit</i></a>
-                            <a href = 'crypto_currency/{!!$crypto_currency->id!!}' disabled="" ><i class = 'fa fa-eye'> info</i></a>
+                            <a href = "cryptoCurrency/{!!$crypto_currency->id!!}/delete" ><i class = 'fa fa-trash'> delete</i></a>
+                            <a href = 'cryptoCurrency/{!!$crypto_currency->id!!}/edit'><i class = 'fa fa-edit'> edit</i></a>
+                            <a href = 'cryptoCurrency/{!!$crypto_currency->id!!}' disabled="" ><i class = 'fa fa-eye'> info</i></a>
                         </td>
                     </tr>
                     @endforeach

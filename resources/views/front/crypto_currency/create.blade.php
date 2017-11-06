@@ -3,11 +3,11 @@
 @section('main')
 <section class="crypto-currency-abm">
     <h1>
-        Create crypto_currency
+        Crear una Crypto-Moneda
     </h1>
-    <a href="{!!url('crypto_currency')!!}" class = 'btn btn-danger'><i class="fa fa-home"></i> Crypto_currency Index</a>
+    <a href="{!!url('cryptoCurrency')!!}" class = 'btn btn-danger'><i class="fa fa-home"></i> Índice de Crypto-monedas</a>
     <br>
-    <form method = 'POST' action = '{!!url("crypto_currency")!!}'>
+    <form method = 'POST' action = '{!!url("cryptoCurrency")!!}'>
         <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
         <div class="form-group">
             <label for="name">name</label>

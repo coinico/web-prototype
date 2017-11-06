@@ -4,31 +4,31 @@
 
 <section class="crypto-currency-abm">
     <h1>
-        Show crypto_currency
+        Mostrar Crypto-Moneda
     </h1>
     <br>
-    <a href='{!!url("crypto_currency")!!}' class = 'btn btn-primary'><i class="fa fa-home"></i>Crypto_currency Index</a>
+    <a href='{!!url("cryptoCurrency")!!}' class = 'btn btn-primary'><i class="fa fa-home"></i>Índice de Crypto Monedas</a>
     <br>
     <table class = 'table table-bordered'>
         <thead>
-            <th>Key</th>
-            <th>Value</th>
+            <th>Campo</th>
+            <th>Valor</th>
         </thead>
         <tbody>
             <tr>
-                <td> <b>name</b> </td>
+                <td> <b>Nombre</b> </td>
                 <td>{!!$crypto_currency->name!!}</td>
             </tr>
             <tr>
-                <td> <b>alias</b> </td>
+                <td> <b>Alias</b> </td>
                 <td>{!!$crypto_currency->alias!!}</td>
             </tr>
             <tr>
-                <td> <b>image</b> </td>
+                <td> <b>Imagen</b> </td>
                 <td>{!!$crypto_currency->image!!}</td>
             </tr>
             <tr>
-                <td> <b>usd_value</b> </td>
+                <td> <b>Valor Dólar</b> </td>
                 <td>{!!$crypto_currency->usd_value!!}</td>
             </tr>
         </tbody>
