@@ -101,8 +101,8 @@
 					@else
 						<li class='cat-item'><a href='#' title='Usuario'>Usuario</a>
 							<ul class="children">
-								<li {{ currentRoute('wallet/create') }}>
-									<a href="{{ route('wallet/create') }}">@lang('Billetera')</a>
+								<li {{ currentRoute('wallets.index') }}>
+									<a href="{{ route('wallets.index') }}">@lang('Billetera')</a>
 								</li>
 								<li>
 									<a id="logout" href="{{ route('logout') }}">@lang('Salir')</a>

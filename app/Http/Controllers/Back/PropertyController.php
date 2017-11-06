@@ -139,12 +139,6 @@ class PropertyController extends Controller
         return response ()->json ();
     }
 
-    public function vote(){
-        //$this->repository->vote($request);
-        echo "Mono"; die();
-    }
-
-
     /**
      * Display a listing of json markets.
      *

@@ -69,16 +69,21 @@ Auth::routes();
 */
 
 // Wallet
-Route::name('wallet/create')->get('/wallet/create', 'Back\WalletController@create');
+Route::name('wallets.start')->get('/wallets/start', 'Back\WalletController@start');
+Route::resource('wallets', 'Back\WalletController');
 
-Route::name('wallet/createWallet')->get('/wallet/createWallet', 'Back\WalletController@createWallet');
+
+//Route::name('wallets/create')->get('/wallets/create', 'Back\WalletController@create');
+
+
+//Route::name('wallet/createWallet')->get('/wallet/createWallet', 'Back\WalletController@createWallet');
 
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
 
 
 
-Route::middleware('redac')->group(function () {
+Route::middleware('community')->group(function () {
 
     // PropertyVote
     Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');

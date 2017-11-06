@@ -43,8 +43,17 @@ $(document).ready(function(){
         var wrapper = $(this).closest('.vote');
         var url = wrapper.attr('data-url');
         var vote = $(this).parent().hasClass('up') ? '1' : '-1';
+
+        if(!$(this).hasClass('selected') && wrapper.find('.selected').length){
+            var votes = $(this).parent().find('small');
+            votes.html(Number(votes.html())+1);
+            votes = wrapper.find('.selected').parent().find('small');
+            votes.html(Number(votes.html())-1);
+        }
+
         wrapper.find('a').removeClass('selected');
         btn.addClass('selected');
+
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -53,11 +62,11 @@ $(document).ready(function(){
             data: {vote:vote},
             method: 'POST',
             success: function(result){
-                console.log(result);
+                //
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var status = xhr.status;
-                if(status == 419) {
+                if(status == 401) {
                     alert("Debes iniciar sesión para votar");
                 }
                 btn.removeClass('selected');

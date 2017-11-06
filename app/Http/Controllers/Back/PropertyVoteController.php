@@ -31,7 +31,7 @@ class PropertyVoteController extends Controller
 
 
     public function vote($propertyId, PropertyVoteRequest $request){
-        $propertyVote = PropertyVote::where('property_id',$propertyId)->first();
+        $propertyVote = PropertyVote::where(['property_id'=>$propertyId, 'user_id' => auth()->user()->id])->first();
         if($propertyVote){
             $this->repository->update($propertyVote, $request);
         }else{

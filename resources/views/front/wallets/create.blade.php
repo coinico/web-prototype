@@ -4,22 +4,25 @@
 
    <section id="create-wallet">
 
-       <br>
-       <h1 aria-live="polite">Crear nueva billetera</h1>
-       <h4>Ingresa una contraseña</h4>
-       <div class="input-group">
-           <input id="password" name="password" type="password">
-           <button id="pwd-visible-btn" onclick="showHidePassword()">Mostrar/Esconder</button>
+        <div class="row">
+            <form>
+            <br>
+            <h1 aria-live="polite">Crear nueva billetera</h1>
+            <h4>Ingresa una contraseña</h4>
+            <div class="input-group">
+               <input id="password" name="password" type="password">
+               <button id="pwd-visible-btn" onclick="showHidePassword()">Mostrar/Esconder</button>
 
-           <input id="seed" name="seed" type="text" readonly="readonly">
-           <button id="pwd-visible-btn" onclick="generateRandomSeed()">Generar seed aleatoria</button>
+               <input id="seed" name="seed" type="text" readonly="readonly">
+               <button id="pwd-visible-btn" onclick="generateRandomSeed()">Generar seed aleatoria</button>
 
-           <input id="private-key" name="private-key" type="text" readonly="readonly">
+               <input id="private-key" name="private-key" type="text" readonly="readonly">
 
-       </div>
-       <button id="create-wallet-btn" onclick="createWalletPrivateKey()">Crear</button>
-       <br>
-
+            </div>
+            <button id="create-wallet-btn" onclick="createWalletPrivateKey()">Crear</button>
+            <br>
+            </form>
+        </div>
    </section>
 
 @endsection
