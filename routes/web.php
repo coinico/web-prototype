@@ -159,5 +159,12 @@ Route::group(['middleware'=> 'web'],function(){
   Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
   Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
   Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
-  Route::get('cryptoCurrency/{id}/deleteMsg','\App\Http\Controllers\Front\CryptoCurrencyController@DeleteMsg');
+});
+
+//user_wallet Routes
+Route::group(['middleware'=> 'web'],function(){
+  Route::resource('userWallet', '\App\Http\Controllers\Front\UserWalletController');
+  Route::post('userWallet/{id}/update','\App\Http\Controllers\Front\UserWalletController@update');
+  Route::get('userWallet/{id}/delete','\App\Http\Controllers\Front\UserWalletController@destroy');
+  Route::get('userWallet/{id}/deleteMsg','\App\Http\Controllers\Front\UserWalletController@DeleteMsg');
 });
