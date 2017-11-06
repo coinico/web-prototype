@@ -860,11 +860,20 @@ section#home .first-stop { background: url("../images/home/bg_1.jpg"); backgroun
 section#home .first-stop p { text-align: center; font-size: 30px; font-weight: bold; line-height: 50px; color: white; }
 section#home .first-stop p span { color: #fdcd1a; display: block; }
 section#home .features { background: white; padding: 20px; }
-section#home .features .feature { display: inline-block; width: 33.333%; text-align: center; padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-@media (max-width: 1050px) { section#home .features .feature { width: 50%; } }
+section#home .features .feature { display: inline-block; width: 33%; text-align: center; padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+@media (max-width: 1050px) { section#home .features .feature { width: 49%; } }
 @media (max-width: 768px) { section#home .features .feature { width: 100%; } }
 section#home .features .feature .info { height: 150px; }
 section#home .features .feature .info p { font-size: 14px; line-height: 18px; }
+section#home section { padding: 90px 0; background: #0c161f; background-size: cover !important; background-position: center !important; }
+section#home section h1 { text-align: center; font-size: 30px; font-weight: bold; line-height: 50px; color: white; }
+section#home section.second-stop, section#home section.fourth-stop { background: url("../images/home/bg_3.jpg"); }
+section#home section.second-stop p, section#home section.fourth-stop p { max-width: 450px; color: white; text-align: center; margin: 0 auto 40px auto; padding: 20px; }
+section#home section.third-stop { background: url("../images/home/bg_4.jpg"); }
+section#home section.third-stop .wrapper { width: auto; float: none; }
+section#home section.third-stop .wrapper .property { min-height: 320px; }
+section#home section.fourth-stop a { text-transform: uppercase; text-decoration: none; border: 1px solid; color: white; display: block; margin: auto; width: 140px; padding: 10px; text-align: center; }
+section#home section.fourth-stop a:hover { background: white; color: #0c161f; }
 
 section#properties .info-results { background: white; color: #898998; margin: 10px; line-height: 25px; padding: 15px; }
 section#properties .info-results .results { width: 50%; display: inline-block; }

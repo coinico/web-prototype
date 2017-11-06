@@ -32,8 +32,13 @@
         @include('front.home.second-stop')
         @include('front.home.third-stop')
         @include('front.home.fourth-stop')
-        @include('front.home.fifth-stop')
 
     </section> <!-- end bricks -->
 
 @endsection
+
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/pages/home.js') }}" ></script>
+@stop

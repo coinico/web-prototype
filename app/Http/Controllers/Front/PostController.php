@@ -43,9 +43,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->getActiveOrderByDate($this->nbrPages);
+        //$posts = $this->postRepository->getActiveOrderByDate($this->nbrPages);
+        $properties = Property::all();
 
-        return view('front.index', compact('posts'));
+        return view('front.index', compact('properties'));
     }
 
     /**

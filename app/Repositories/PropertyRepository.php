@@ -52,13 +52,13 @@ class PropertyRepository
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function queryActiveOrderByDate()
+    protected function getCarouselProperties()
     {
-        return $this->model
-            ->select('id', 'title', 'slug', 'excerpt', 'image')
-            ->whereActive(true)
-            ->latest();
+        return $this->model->All()->limit(10)
     }
+
+
+
 
     /**
      * Get active propertys collection paginated.
