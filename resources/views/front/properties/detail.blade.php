@@ -9,7 +9,6 @@
 
             <div class="price">$ 2500</div>
             <h3>{{$property->title}}</h3>
-            <h1>Amazing view, jacuzzi and terrace</h1>
             <span>1500</span>
         </div>
         <div class="hover">

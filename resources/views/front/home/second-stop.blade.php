@@ -1,7 +1,8 @@
-<section class="first-stop">
-    <div class="container">
-        <h1>Second stop</h1>
-        <p>Descripción de “Propietarios” link | fotos ejemplo
-    (información a completar luego lorem imspum sdkjgsdfg)</p>
-    </div>
+<section class="second-stop">
+    <h1>
+        Propietarios
+    </h1>
+    <p>
+        Los gastos indirectos se eliminan y los usuarios pagan comisiones sustancialmente más bajas en las transacciones de compra y alquiler procesadas a través de contratos inteligentes
+    </p>
 </section>

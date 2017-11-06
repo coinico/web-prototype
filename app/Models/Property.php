@@ -83,7 +83,11 @@ class Property extends Model
         $end = new \DateTime($this->getAttribute('created_at'));
         $end->add(new \DateInterval('PT10H30S'));
         $date = new \DateTime();
-        $time = $date->diff($end);
+        if($end > $date) {
+            $time = $end->diff($date);
+        }else{
+            $time = $date->diff($date);
+        }
         return $time;
     }
 
