@@ -20,26 +20,44 @@ class CryptoCurrenciesController extends Controller
         $this->table = 'crypto_currencies';
     }
 
-    /**
-     * Show the form for creating a new contact.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view ('back.crypto_currency');
+
+        return view('back.crypto_currencies.create', compact('status'));
     }
 
-    /**
-     * Store a newly created contact in storage.
-     *
-     * @param  CryptoCurrencyRequest $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CryptoCurrencyRequest $request)
     {
-        CryptoCurrency::create ($request->all ());
+        CryptoCurrency::create($request->all());
 
-        return back ()->with ('ok', __('La crypto currency ha sido creada con éxito.'));
+        return redirect(route('properties.index'))->with('property-ok', __('La propiedad fue creada con éxito.'));
+    }
+
+    public function show(CryptoCurrency $cryptoCurrency)
+    {
+        return view('back.crypto_currencies.show', compact('cryptoCurrency'));
+    }
+
+    public function edit(CryptoCurrency $cryptoCurrency)
+    {
+
+        return view('back.crypto_currencies.edit', compact('cryptoCurrency'));
+    }
+
+    public function update(CryptoCurrencyRequest $request, CryptoCurrency $cryptoCurrency)
+    {
+
+        $cryptoCurrency->update($request->all());
+
+        return back()->with('crypto_currency-ok', __('La crypto moneda fue actualizada con éxito.'));
+    }
+
+    public function destroy(CryptoCurrency $cryptoCurrency)
+    {
+
+        $cryptoCurrency->delete ();
+
+        return response ()->json ();
     }
 }
