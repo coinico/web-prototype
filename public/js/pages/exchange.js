@@ -6,14 +6,21 @@ $(document).ready(function(){
         success: function(res){
             $('#btc').DataTable( {
                 data: res.BTC,
-                order: [[ 2, "desc" ]]
+                order: [[ 2, "desc" ]],
+                columnDefs: [
+                    { "className": "dt-body-left", targets: [0, 1, 8]},
+                    { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7]}
+                ],
+                language: {
+                    "search": ""
+                },
+                lengthChange: false,
+                caption: {
+                    html: "BTC MARKET"
+                }
             });
             $('#eth').DataTable( {
                 data: res.ETH,
-                order: [[ 2, "desc" ]]
-            });
-            $('#usdt').DataTable( {
-                data: res.USDT,
                 order: [[ 2, "desc" ]]
             });
         }

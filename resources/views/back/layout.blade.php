@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{ asset('adminlte/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. -->
   <link rel="stylesheet" href="{{ asset('adminlte/css/skins/skin-blue.min.css') }}">
+  <!-- Customs styles -->
+  <link rel="stylesheet" href="{{ asset('adminlte/css/custom.css') }}">
 
   @yield('css')
 

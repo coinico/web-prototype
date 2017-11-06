@@ -41,8 +41,8 @@
 
 	<!-- favicons
 	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ asset('images/casatoken.ico') }}" type="image/x-icon"/>
+	<link rel="icon" href="{{ asset('images/casatoken.ico') }}" type="image/x-icon">
 
 </head>
 
@@ -63,47 +63,54 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{ route('owners') }}">@lang('Owners')</a>
+					<a href="{{ route('owners') }}">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{ route('investors') }}">@lang('Investors')</a>
+					<a href="{{ route('investors') }}">@lang('Inversores')</a>
 				</li>
 				<li {{ currentRoute('exchange') }}>
 					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
 				</li>
 				<li {{ currentRoute('community') }}>
-					<a href="{{ route('community') }}">@lang('Community')</a>
+					<a href="{{ route('community') }}">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Register')</a>
+						<a href="{{ request()->url() }}">@lang('Registrarme')</a>
 					</li>
 				@endrequest
 				@request('password/email')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Forgotten password')</a>
+						<a href="{{ request()->url() }}">@lang('Contraseña olvidada')</a>
 					</li>
 				@else
 					@guest
 						<li {{ currentRoute('login') }}>
-							<a href="{{ route('login') }}">@lang('Login')</a>
+							<a href="{{ route('login') }}">@lang('Ingresar')</a>
 						</li>
 						@request('password/reset')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Password')</a>
+								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 						@request('password/reset/*')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Password')</a>
+								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 					@else
-						<li>
-							<a id="logout" href="{{ route('logout') }}">@lang('Logout')</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
-								{{ csrf_field() }}
-							</form>
+						<li class='cat-item'><a href='#' title='Usuario'>Usuario</a>
+							<ul class="children">
+								<li {{ currentRoute('wallets.index') }}>
+									<a href="{{ route('wallets.index') }}">@lang('Billetera')</a>
+								</li>
+								<li>
+									<a id="logout" href="{{ route('logout') }}">@lang('Salir')</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
+										{{ csrf_field() }}
+									</form>
+								</li>
+							</ul>
 						</li>
 					@endguest
 				@endrequest
@@ -142,7 +149,7 @@
 
 	      	<div class="col-six tab-full mob-full footer-info">
 
-	            <h4>@lang('About Our Site')</h4>
+	            <h4>@lang('Acerca de nuestro sitio')</h4>
 
 	               <p>@lang('Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.')</p>
 
@@ -150,14 +157,14 @@
 
 	      	<div class="col-three tab-1-2 mob-1-2 site-links">
 
-	      		<h4>@lang('Site Links')</h4>
+	      		<h4>@lang('Links del sitio')</h4>
 
 	      		<ul>
-				  	<li><a href="#">@lang('About us')</a></li>
-					<li><a href="{{ route('contacts.create') }}">@lang('Contact')</a></li>
+				  	<li><a href="#">@lang('Acerca de Nosotros')</a></li>
+					<li><a href="{{ route('contacts.create') }}">@lang('Contáctanos')</a></li>
 					<li><a href="{{ url('') }}">@lang('Blog')</a></li>
 					<li><a href="{{ url('') }}">@lang('FAQ')</a></li>
-					<li><a href="#">@lang('Privacy Policy')</a></li>
+					<li><a href="#">@lang('Política de Privacidad')</a></li>
 				</ul>
 
 	      	</div> <!-- end site-links -->
@@ -169,7 +176,6 @@
 	      		<ul>
 	      			<li><a href="#">Twitter</a></li>
 					<li><a href="#">Facebook</a></li>
-					<li><a href="#">Dribbble</a></li>
 					<li><a href="#">Google+</a></li>
 					<li><a href="#">Instagram</a></li>
 				</ul>
@@ -185,7 +191,7 @@
 
       		<div class="col-twelve">
 	      		<div class="copyright">
-		         	<span>© Copyright Housechain 2017</span>
+		         	<span>© Copyright CasaToken 2017</span>
 		         	<span>Design by <a href="http://www.diwork.com.ar/">Di Work</a></span>
 		         </div>
 

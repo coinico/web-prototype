@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\ {
-    Http\Controllers\Controller
-};
 use App\Libraries\Ethereum;
-use Ethereum\EthereumClient;
+use App\Http\Controllers\Controller;
+use App\Models\Wallet;
+use App\Models\User;
 
 class WalletController extends Controller
 {
@@ -15,21 +14,50 @@ class WalletController extends Controller
 
     public function __construct($host = FALSE, $port = FALSE) {
         if (!$host) {
-            $host = 'http://138.68.182.38';
+
+            $host = 'http://127.0.0.1';
             $port = '8545';
         }
         $this->client = new Ethereum($host, $port);
     }
 
-    public function testWallet() {
-        try {
-            $eth = new WalletController();
-            $eth->client->eth_protocolVersion();
+
+    /**
+     * Display a listing of the wallets.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $userId = auth()->user()->id;
+        $wallets = Wallet::where('user_id', $userId)->get();
+
+        return view('front.wallets.index', compact('wallets'));
+    }
+
+    /**
+     * Show the form for creating a new wallet.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+
+        return view('front.wallets.create');
+    }
+
+    /**
+     * Set eth and ctf wallets and user seedphrase
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function start() {
+
+        $user = User::find(auth()->user()->id);
+        $wallets = Wallet::where('user_id', $user->getAttribute('id'))->count();
+        if(!$wallets){ //Initial config
+            $user->setSeedPhrase();
+            //@todo: Agregar billteras
         }
-        catch (\Exception $exception) {
-            return ("Unable to connect.");
-        }
-        return ("Success.");
 
     }
 

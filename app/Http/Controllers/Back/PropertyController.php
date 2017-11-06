@@ -10,6 +10,8 @@ use App\ {
     Repositories\PropertyRepository
 };
 use GuzzleHttp\Client;
+use App\Models\PropertyImage;
+use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
@@ -62,9 +64,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $categories = Category::all()->pluck('title', 'id');
+        $status = PropertyStatus::all()->pluck('name', 'id');
 
-        return view('back.properties.create', compact('categories'));
+        return view('back.properties.create', compact('status'));
     }
 
     /**
@@ -101,10 +103,9 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
         $this->authorize('manage', $property);
-
         $status = PropertyStatus::all()->pluck('name', 'id');
 
-        return view('back.properties.edit', compact('property', 'status'));
+        return view('back.properties.edit', compact('property', 'status', 'images'));
     }
 
     /**
@@ -137,7 +138,6 @@ class PropertyController extends Controller
 
         return response ()->json ();
     }
-
 
     /**
      * Display a listing of json markets.

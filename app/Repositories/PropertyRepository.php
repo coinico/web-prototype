@@ -211,7 +211,7 @@ class PropertyRepository
     public function store($request)
     {
         $request->merge(['user_id' => auth()->id()]);
-        $request->merge(['status_id' => '1']);
+        $request->merge(['status_id' => $request->status_id]);
 
         $property = Property::create($request->all());
 

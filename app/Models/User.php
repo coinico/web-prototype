@@ -86,4 +86,18 @@ class User extends Authenticatable
         }
         return null;
     }
+
+
+    /**
+     * Set Seed Phrase
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function setSeedPhrase()
+    {
+        $output = shell_exec($_ENV['NODE_PATH'].' '.base_path().'/node/seedPhrase.js mono');
+        echo var_dump($output); die();
+    }
+
 }

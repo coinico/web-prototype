@@ -10,7 +10,7 @@ use App\ {
     Models\Category
 };
 use Illuminate\Http\Request;
-
+use App\Models\Property;
 
 class PostController extends Controller
 {
@@ -147,5 +147,16 @@ class PostController extends Controller
     public function investors()
     {
         return view('front.investors');
+    }
+
+    /**
+     * Display a listing of properties.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function properties()
+    {
+        $properties = Property::all();
+        return view('front.properties', compact('properties'));
     }
 }

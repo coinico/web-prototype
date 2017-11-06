@@ -83,8 +83,8 @@ class Ethereum extends JSON_RPC
 	{
 		return $this->ether_request(__FUNCTION__);
 	}
-	
-	function eth_blockNumber($decode_hex=FALSE)
+
+    function eth_blockNumber($decode_hex=FALSE)
 	{
 		$block = $this->ether_request(__FUNCTION__);
 		
@@ -385,6 +385,12 @@ class Ethereum extends JSON_RPC
 	{
 		return $this->ether_request(__FUNCTION__, array($id));
 	}
+
+    function personal_newAccount($password)
+    {
+        $privateKey =  $this->ether_request(__FUNCTION__, array($password));
+        return $privateKey;
+    }
 }
 
 /**

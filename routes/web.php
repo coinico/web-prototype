@@ -35,6 +35,9 @@ Route::name('investors')->get('/investors', 'Front\PostController@investors');
 //Community
 Route::name('community')->get('/community', 'Front\PostController@community');
 
+//Properties
+Route::name('properties')->get('/properties', 'Front\PostController@properties');
+
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
@@ -46,16 +49,6 @@ Route::prefix('posts')->namespace('Front')->group(function () {
     Route::name('posts.comments.store')->post('{post}/comments', 'CommentController@store');
     Route::name('posts.comments.comments.store')->post('{post}/comments/{comment}/comments', 'CommentController@store');
     Route::name('posts.comments')->get('{post}/comments/{page}', 'CommentController@comments');
-});
-
-// Posts and comments
-Route::prefix('properties')->namespace('Front')->group(function () {
-    Route::name('properties.display')->get('{slug}', 'PostController@show');
-    Route::name('properties.tag')->get('tag/{tag}', 'PostController@tag');
-    Route::name('properties.search')->get('', 'PostController@search');
-    Route::name('properties.comments.store')->post('{post}/comments', 'CommentController@store');
-    Route::name('properties.comments.comments.store')->post('{post}/comments/{comment}/comments', 'CommentController@store');
-    Route::name('properties.comments')->get('{post}/comments/{page}', 'CommentController@comments');
 });
 
 Route::resource('comments', 'Front\CommentController', [
@@ -76,10 +69,27 @@ Auth::routes();
 */
 
 // Wallet
-Route::name('testWallet')->get('/testWallet', 'Back\WalletController@testWallet');
+Route::name('wallets.start')->get('/wallets/start', 'Back\WalletController@start');
+Route::resource('wallets', 'Back\WalletController');
+
+
+//Route::name('wallets/create')->get('/wallets/create', 'Back\WalletController@create');
+
+
+//Route::name('wallet/createWallet')->get('/wallet/createWallet', 'Back\WalletController@createWallet');
 
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
+
+
+
+Route::middleware('community')->group(function () {
+
+    // PropertyVote
+    Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
+
+});
+
 
 Route::prefix('admin')->namespace('Back')->group(function () {
 
@@ -97,10 +107,10 @@ Route::prefix('admin')->namespace('Back')->group(function () {
         Route::name('properties.active')->put('properties/active/{property}/{status?}', 'PropertyController@updateActive')->middleware('can:manage,property');
         Route::resource('properties', 'PropertyController');
 
-
         // Notifications
         Route::name('notifications.index')->get('notifications/{user}', 'NotificationController@index');
         Route::name('notifications.update')->put('notifications/{notification}', 'NotificationController@update');
+
 
         // Medias
         Route::view('medias', 'back.medias')->name('medias.index');
@@ -108,6 +118,11 @@ Route::prefix('admin')->namespace('Back')->group(function () {
     });
 
     Route::middleware('admin')->group(function () {
+
+        // PropertyImages
+        Route::get('/property/{id}/images', 'Back\PropertyImageController@index');
+        Route::post('/property/{id}/images', 'Back\PropertyImageController@upload');
+
 
         // Users
         Route::name('users.seen')->put('users/seen/{user}', 'UserController@updateSeen');
