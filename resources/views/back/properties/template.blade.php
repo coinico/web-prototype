@@ -55,7 +55,7 @@
                 </div>
 
                 <form></form>
-                <form action="{{ asset('/property/'.$property->id.'/images') }}"
+                <form action="{{ asset('admin/property/'.$property->id.'/images') }}"
                       class="dropzone"
                       id="my-awesome-dropzone">
                     {{ csrf_field() }}

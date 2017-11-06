@@ -120,8 +120,8 @@ Route::prefix('admin')->namespace('Back')->group(function () {
     Route::middleware('admin')->group(function () {
 
         // PropertyImages
-        Route::get('/property/{id}/images', 'Back\PropertyImageController@index');
-        Route::post('/property/{id}/images', 'Back\PropertyImageController@upload');
+        Route::get('/property/{id}/images', 'PropertyImageController@index');
+        Route::post('/property/{id}/images', 'PropertyImageController@upload');
 
 
         // Users
