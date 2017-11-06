@@ -3,7 +3,7 @@ section#home{
     background: url('../images/home/bg_1.jpg');
     background-size: cover!important;
     background-position: center!important;
-    padding: 90px 0;
+    padding: 110px 0 50px 0;
     p{
       text-align: center;
       font-size: 30px;
@@ -15,6 +15,16 @@ section#home{
         display: block;
       }
     }
+  }
+  .casatoken-title{
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 50px;
+    color: white;
+  }
+  .casatoken-title:hover{
+    color:$secondaryColor;
   }
   .features{
     background: white;

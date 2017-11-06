@@ -3038,7 +3038,7 @@ section#home .first-stop {
   background: url("../images/home/bg_1.jpg");
   background-size: cover !important;
   background-position: center !important;
-  padding: 90px 0; }
+  padding: 110px 0 50px 0; }
   section#home .first-stop p {
     text-align: center;
     font-size: 30px;
@@ -3048,6 +3048,14 @@ section#home .first-stop {
     section#home .first-stop p span {
       color: #fdcd1a;
       display: block; }
+section#home .casatoken-title {
+  text-align: center;
+  font-size: 70px;
+  font-weight: bold;
+  line-height: 50px;
+  color: white; }
+section#home .casatoken-title:hover {
+  color: #fdcd1a; }
 section#home .features {
   background: white;
   padding: 20px; }
