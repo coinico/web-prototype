@@ -14,7 +14,7 @@ class CryptoCurrency extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'alias', 'image'
+        'name', 'alias', 'image', 'usd_value'
     ];
 
 }
