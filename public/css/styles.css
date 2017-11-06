@@ -3058,7 +3058,7 @@ section#home .casatoken-title:hover {
   color: #fdcd1a; }
 section#home .features {
   background: white;
-  padding: 20px; }
+  padding: 40px 0 30px 0; }
   section#home .features .feature {
     display: inline-block;
     width: 33%;
