@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\Http\Controllers\Controller;
 use App\Libraries\Ethereum;
-use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
 use App\Models\Wallet;
 use App\Models\User;
 
@@ -15,6 +14,7 @@ class WalletController extends Controller
 
     public function __construct($host = FALSE, $port = FALSE) {
         if (!$host) {
+
             $host = 'http://127.0.0.1';
             $port = '8545';
         }
@@ -61,17 +61,4 @@ class WalletController extends Controller
 
     }
 
-
-    /*public function createWallet() {
-
-        try {
-            $password =  Input::get('password', "nopassword");
-            $eth = new WalletController();
-            $privateKey = $eth->client->personal_newAccount($password);
-
-        } catch (\Exception $exception) {
-            return ($exception);
-        }
-        return view('front.wallet.wallet-created', compact('privateKey', 'password'));
-    }*/
 }

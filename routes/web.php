@@ -38,6 +38,9 @@ Route::name('community')->get('/community', 'Front\PostController@community');
 //Properties
 Route::name('properties')->get('/properties', 'Front\PostController@properties');
 
+//Properties
+Route::name('cryptoCurrencies')->get('/cryptoCurrencies', 'Front\PostController@cryptoCurrencies');
+
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
 
@@ -106,6 +109,9 @@ Route::prefix('admin')->namespace('Back')->group(function () {
         Route::name('properties.seen')->put('properties/seen/{property}', 'PropertyController@updateSeen')->middleware('can:manage,property');
         Route::name('properties.active')->put('properties/active/{property}/{status?}', 'PropertyController@updateActive')->middleware('can:manage,property');
         Route::resource('properties', 'PropertyController');
+
+        // Crypto Currencies
+        Route::resource('crypto_currencies', 'CryptoCurrenciesController');
 
         // Notifications
         Route::name('notifications.index')->get('notifications/{user}', 'NotificationController@index');

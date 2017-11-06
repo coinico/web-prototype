@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\ {
-    Http\Controllers\Controller,
-    Http\Requests\SearchRequest,
-    Repositories\PostRepository,
-    Models\Tag,
-    Models\Category
+use App\{
+    Http\Controllers\Controller, Http\Requests\SearchRequest, Models\CryptoCurrency, Repositories\PostRepository, Models\Tag, Models\Category
 };
 use Illuminate\Http\Request;
 use App\Models\Property;
@@ -158,5 +154,16 @@ class PostController extends Controller
     {
         $properties = Property::all();
         return view('front.properties', compact('properties'));
+    }
+
+    /**
+     * Display a listing of crypto currencies.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cryptoCurrencies()
+    {
+        $cryptoCurrencies = CryptoCurrency::all();
+        return view('front.crypto_currencies', compact('cryptoCurrencies'));
     }
 }
