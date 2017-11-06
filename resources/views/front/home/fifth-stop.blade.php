@@ -1,5 +1,7 @@
 <section class="fifth-stop">
-    <h1>Fifth stop</h1>
-    <p>Descripción de “Comunidad” link | fotos ejemplo
-    (información a completar luego lorem imspum sdkjgsdfg)</p>
+    <p>
+        La Plataforma Descentralizada
+        <span>Para el Futuro de las Propiedades Inmobiliarias</span>
+    </p>
 </section>
+

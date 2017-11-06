@@ -1,0 +1,44 @@
+section#home{
+  .first-stop{
+    background: url('../images/home/bg_1.jpg');
+    background-size: cover!important;
+    background-position: center!important;
+    padding: 90px 0;
+    p{
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 50px;
+      color: white;
+      span{
+        color:$secondaryColor;
+        display: block;
+      }
+    }
+  }
+  .features{
+    background: white;
+    padding: 20px;
+    .feature {
+      display: inline-block;
+      width: 33.333%;
+      text-align: center;
+      padding: 20px;
+      @include bs();
+      @media(max-width: 1050px){
+        width: 50%;
+      }
+      @media(max-width: 768px){
+        width: 100%;
+      }
+      .info{
+        height: 150px;
+        p{
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+
+    }
+  }
+}

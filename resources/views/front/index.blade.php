@@ -4,7 +4,7 @@
 
     <!-- masonry
     ================================================== -->
-    <section id="bricks">
+    <section id="home">
 
         <div class="row masonry">
             @isset($info)
@@ -26,6 +26,7 @@
             <!-- brick-wrapper -->
 
         </div> <!-- end row -->
+
 
         @include('front.home.first-stop')
         @include('front.home.second-stop')
