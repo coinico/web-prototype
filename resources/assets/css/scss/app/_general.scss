@@ -15,3 +15,29 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
     background: $primaryColor;
   }
 }
+
+.info-results{
+  background: white;
+  color: #898998;
+  margin: 10px;
+  line-height: 25px;
+  padding: 15px;
+  .results{
+    width: 50%;
+    display: inline-block;
+    h3{
+      margin-bottom: 0;
+    }
+  }
+  .actions {
+    width: 50%;
+    display: inline-block;
+    float: right;
+    text-align: right;
+    a{
+      color: #898998;
+      font-size: 25px;
+      margin: 5px;
+    }
+  }
+}
