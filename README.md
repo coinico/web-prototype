@@ -1,6 +1,8 @@
 # Prototipo WEB de la Plataforma CasaToken
 
-# Plataforma descentralizada para el futuro de las propiedades inmobiliarias
+
+# Plataforma descentralizada para el 
+# Futuro de las propiedades inmobiliarias
 
 Para entender el proyecto podramos pensar en el problema que se le presenta a una persona que desea comprar una propiedad inmobiliaria cuando carece de capital. En la la mayoría de los países del mundo, el mecanismo más común es a través de un sistema de créditos bancarios. Este mecanismo no es de simple acceso para las personas de menores recursos, lleva a que las personas mantengan una una deuda por una gran cantidad de años y presenta riesgos financieros para todos los actores intervinientes. Notemos que la carencia de recursos perjudica también a propietarios de inmuebles que desean obtener liquidez monetaria y no consiguen comprador.
 
