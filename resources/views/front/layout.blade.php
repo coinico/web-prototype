@@ -64,16 +64,16 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{ route('owners') }}">@lang('Propietarios')</a>
+					<a href="#second-stop">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{ route('investors') }}">@lang('Inversores')</a>
+					<a href="#third-stop">@lang('Inversores')</a>
 				</li>
 				<li {{ currentRoute('exchange') }}>
-					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
+					<a href="#fourth-stop">@lang('Exchange')</a>
 				</li>
 				<li {{ currentRoute('community') }}>
-					<a href="{{ route('community') }}">@lang('Comunidad')</a>
+					<a href="#fifth-stop">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">

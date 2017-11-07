@@ -1,4 +1,4 @@
-<section class="second-stop">
+<section id="second-stop" class="second-stop">
     <h1>
         Propietarios
     </h1>
