@@ -14,7 +14,7 @@ header{
 	}
 
 	.logo a {
-		background: url(../images/logo_dark.svg) no-repeat center;
+		background: url('../images/logo_dark.svg') no-repeat center;
 		width: 210px;
 	}
 
@@ -30,7 +30,17 @@ header{
 			border-bottom: 2px solid $primaryColor;
 		}
 	}
-	#main-nav-wrap{
-		padding-right: 35px;
+
+	@media(min-width: 992px) {
+		#main-nav-wrap {
+			padding-right: 35px;
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.main-navigation > li {
+		text-align: center;
+		border-bottom: 1px solid #ccc;
 	}
 }
