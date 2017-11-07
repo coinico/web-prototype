@@ -9,7 +9,7 @@ use Illuminate\Database\Migrations\Migration;
  * @author  The scaffold-interface created at 2017-11-06 05:56:31pm
  * @link  https://github.com/amranidev/scaffold-interface
  */
-class CryptoCurrenciesTable extends Migration
+class CryptoCurrencies extends Migration
 {
     /**
      * Run the migrations.
@@ -29,13 +29,13 @@ class CryptoCurrenciesTable extends Migration
         $table->String('image');
         
         $table->double('usd_value');
-        
+
         /**
          * Foreignkeys section
          */
-        
-        
-        
+
+
+
         // type your addition here
 
         });

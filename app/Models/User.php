@@ -88,16 +88,8 @@ class User extends Authenticatable
     }
 
 
-    /**
-     * Set Seed Phrase
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function setSeedPhrase()
+    public function wallets()
     {
-        $output = shell_exec($_ENV['NODE_PATH'].' '.base_path().'/node/seedPhrase.js mono');
-        echo var_dump($output); die();
+        return $this->hasMany(UserWallet::class,'user_id', 'id');
     }
-
 }

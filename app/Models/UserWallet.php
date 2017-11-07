@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Userwallet.
@@ -14,9 +13,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserWallet extends Model
 {
 
-    public $timestamps = false;
-    
     protected $table = 'user_wallets';
 
+    protected $fillable = [
+        'available_balance', 'book_balance', 'user_id','crypto_currency'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function cryptoCurrency()
+    {
+        return $this->belongsTo(CryptoCurrency::class, 'crypto_currency');
+    }
 	
 }

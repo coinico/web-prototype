@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\CryptoCurrency;
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\userWallet;
-use Amranidev\Ajaxis\Ajaxis;
+use App\Models\UserWallet;
 use URL;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class userWalletController.
@@ -25,7 +27,7 @@ class userWalletController extends Controller
     public function index()
     {
         $title = 'Índice - User Wallet';
-        $userWallets = userWallet::paginate(6);
+        $userWallets = UserWallet::paginate(6);
         return view('front.user_wallet.index',compact('userWallets','title'));
     }
 
@@ -36,7 +38,10 @@ class userWalletController extends Controller
      */
     public function create()
     {
-        return view('front.user_wallet.create');
+
+        $cryptoCurrencies = CryptoCurrency::all()->pluck('alias', 'id');
+
+        return view('front.user_wallet.create', compact('cryptoCurrencies'));
     }
 
     /**
@@ -47,11 +52,10 @@ class userWalletController extends Controller
      */
     public function store(Request $request)
     {
-        $userWallet = new userWallet();
+        $request->merge(['user_id' => auth()->id()]);
+        $request->merge(['crypto_currency' => $request->crypto_currency_id]);
 
-        $userWallet->balance = $request->balance;
-
-        $userWallet->save();
+        $userWallet = UserWallet::create($request->all());
 
         $pusher = App::make('pusher');
 
@@ -82,7 +86,7 @@ class userWalletController extends Controller
             return URL::to('userWallet/'.$id);
         }
 
-        $userWallet = userWallet::findOrfail($id);
+        $userWallet = UserWallet::findOrfail($id);
         return view('front.user_wallet.show',compact('title','userWallet'));
     }
 
@@ -94,15 +98,16 @@ class userWalletController extends Controller
      */
     public function edit($id,Request $request)
     {
-        $title = 'Edit - userWallet';
         if($request->ajax())
         {
             return URL::to('userWallet/'. $id . '/edit');
         }
 
-        
-        $userWallet = userWallet::findOrfail($id);
-        return view('front.user_wallet.edit',compact('title','userWallet'  ));
+        $users = User::all()->pluck('id', 'name');
+        $cryptoCurrencies = CryptoCurrency::all()->pluck('id', 'alias');
+
+        $userWallet = UserWallet::findOrfail($id);
+        return view('front.user_wallet.edit',compact('userWallet', 'users', 'cryptoCurrencies'  ));
     }
 
     /**
@@ -114,7 +119,7 @@ class userWalletController extends Controller
      */
     public function update($id,Request $request)
     {
-        $userWallet = userWallet::findOrfail($id);
+        $userWallet = UserWallet::findOrfail($id);
     	
         $userWallet->balance = $request->balance;
         
@@ -132,7 +137,7 @@ class userWalletController extends Controller
      */
     public function destroy($id)
     {
-     	$userWallet = userWallet::findOrfail($id);
+     	$userWallet = UserWallet::findOrfail($id);
      	$userWallet->delete();
         return URL::to('userWallet');
     }

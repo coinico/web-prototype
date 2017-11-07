@@ -23,7 +23,7 @@ class UserWalletsTable extends Migration
             $table->increments('id');
 
             $table->float('available_balance');
-            $table->float('pending_balance');
+            $table->float('book_balance');
 
             /**
              * Foreignkeys section
@@ -33,6 +33,8 @@ class UserWalletsTable extends Migration
 
             $table->integer('crypto_currency')->unsigned(); // crypto currency que quiere vender
             $table->foreign('crypto_currency')->references('id')->on('crypto_currencies');
+
+            $table->timestamps();
 
         });
     }
