@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Post;
-use App\Models\Comment;
-use App\Models\User;
-use App\Models\Contact;
+use App\Models\CryptoCurrency;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +12,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Users
+
+        CryptoCurrency::create(
+            [
+                'name' => 'Ethereum',
+                'alias' => 'ETH',
+                'image' => 'eth-logo.png',
+                'usd_value' => 304.22
+            ]
+        );
+
+        CryptoCurrency::create(
+            [
+                'name' => 'Casa Token',
+                'alias' => 'CTF',
+                'image' => 'logo_dark.png',
+                'usd_value' => 1.01
+            ]
+        );
+
+      /*  // Users
         User::create(
             [
                 'name' => 'GreatAdmin',
@@ -317,7 +333,7 @@ class DatabaseSeeder extends Seeder
             'post_id' => 2,
             'user_id' => 1,
             //'parent_id' => $nbrComments + 1,
-        ])->makeChildOf($comment3);
+        ])->makeChildOf($comment3);*/
 
     }
 }
