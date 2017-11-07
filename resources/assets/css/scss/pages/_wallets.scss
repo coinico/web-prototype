@@ -8,3 +8,45 @@ section#create-wallet{
         max-width: 800px;
     }
 }
+
+
+.wallets, .tokens{
+    .wallet-wrapper{
+        display: inline-block;
+        width: 25%;
+        padding: 10px;
+        min-height: 225px;
+        .wallet{
+            background: white;
+            display: block;
+            padding: 40px 10px;
+            p{
+                padding: 0;
+                margin: 0;
+                text-align: center;
+                color:#999;
+            }
+            img{
+                width: 60px;
+                display: block;
+                margin: 0 auto 10px auto;
+            }
+        }
+    }
+    &.horizontal-view{
+        .wallet-wrapper{
+            width: 100%;
+            min-height: 0px;
+            .wallet{
+                p{
+                    padding-left: 70px;
+                    text-align: left;
+                }
+                img{
+                    position: absolute;
+                    margin-top: -15px;
+                }
+            }
+        }
+    }
+}

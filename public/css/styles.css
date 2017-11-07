@@ -2805,6 +2805,27 @@ input[type="email"], input[type="number"], input[type="search"], input[type="tex
   .button.button-primary:hover, a.button.button-primary:hover, button.button-primary:hover, input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover {
     background: #4868af; }
 
+.info-results {
+  background: white;
+  color: #898998;
+  margin: 10px;
+  line-height: 25px;
+  padding: 15px; }
+  .info-results .results {
+    width: 50%;
+    display: inline-block; }
+    .info-results .results h3 {
+      margin-bottom: 0; }
+  .info-results .actions {
+    width: 50%;
+    display: inline-block;
+    float: right;
+    text-align: right; }
+    .info-results .actions a {
+      color: #898998;
+      font-size: 25px;
+      margin: 5px; }
+
 body {
   padding-top: 95px; }
 
@@ -3144,7 +3165,7 @@ section#home section {
       color: white;
       text-align: center;
       margin: 0 auto 40px auto;
-      font-size: 22px;
+      font-size: 18px;
       padding: 20px; }
     section#home section.fifth-stop a {
       text-transform: uppercase;
@@ -3161,24 +3182,6 @@ section#home section {
         background: white;
         color: #0c161f; }
 
-section#properties .info-results {
-  background: white;
-  color: #898998;
-  margin: 10px;
-  line-height: 25px;
-  padding: 15px; }
-  section#properties .info-results .results {
-    width: 50%;
-    display: inline-block; }
-  section#properties .info-results .actions {
-    width: 50%;
-    display: inline-block;
-    float: right;
-    text-align: right; }
-    section#properties .info-results .actions a {
-      color: #898998;
-      font-size: 25px;
-      margin: 5px; }
 section#properties .wrapper {
   position: relative;
   width: 33.3333%;
@@ -3326,3 +3329,31 @@ section#create-wallet {
   section#create-wallet form {
     width: 100%;
     max-width: 800px; }
+
+.wallets .wallet-wrapper, .tokens .wallet-wrapper {
+  display: inline-block;
+  width: 25%;
+  padding: 10px;
+  min-height: 225px; }
+  .wallets .wallet-wrapper .wallet, .tokens .wallet-wrapper .wallet {
+    background: white;
+    display: block;
+    padding: 40px 10px; }
+    .wallets .wallet-wrapper .wallet p, .tokens .wallet-wrapper .wallet p {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      color: #999; }
+    .wallets .wallet-wrapper .wallet img, .tokens .wallet-wrapper .wallet img {
+      width: 60px;
+      display: block;
+      margin: 0 auto 10px auto; }
+.wallets.horizontal-view .wallet-wrapper, .tokens.horizontal-view .wallet-wrapper {
+  width: 100%;
+  min-height: 0px; }
+  .wallets.horizontal-view .wallet-wrapper .wallet p, .tokens.horizontal-view .wallet-wrapper .wallet p {
+    padding-left: 70px;
+    text-align: left; }
+  .wallets.horizontal-view .wallet-wrapper .wallet img, .tokens.horizontal-view .wallet-wrapper .wallet img {
+    position: absolute;
+    margin-top: -15px; }
