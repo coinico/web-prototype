@@ -158,6 +158,18 @@ class PostController extends Controller
     }
 
     /**
+     * Display a property.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function property($id)
+    {
+        $property = Property::find($id);
+        return view('front.property', compact('properties'));
+    }
+
+
+    /**
      * Display a listing of crypto currencies.
      *
      * @return \Illuminate\Http\Response

@@ -9,7 +9,7 @@
 
             <div class="price">$ 2500</div>
             <h3>{{$property->title}}</h3>
-            <span>1500</span>
+            <p>Se trata de una casa en un barrio residencial de lujo en las afueras de Londres. La propiedad cuenta con un diseño moderno y está dispuesta sobre un amplio terreno.</p>
         </div>
         <div class="hover">
             <div class="time_left">

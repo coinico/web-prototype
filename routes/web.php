@@ -37,6 +37,7 @@ Route::name('community')->get('/community', 'Front\PostController@community');
 
 //Properties
 Route::name('properties')->get('/properties', 'Front\PostController@properties');
+Route::name('properties.display')->get('/properties/{id}', 'Front\PostController@property');
 
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
