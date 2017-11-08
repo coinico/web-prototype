@@ -11,10 +11,10 @@
             <p class="address"></p>
 
         </div>
-        <div class="middle-details">
-            <p class="available_balance">Balance Disponible</p>
-            <p class="balance">{!!number_format($standardWallet->available_balance, 8, '.', ',')!!}</p>
-            <p class="transaction_history">Historial de Transacciones</p>
-        </div>
+        <div1 class="middle-details">
+            <p1 class="available_balance">Balance Disponible</p1>
+            <p1 class="balance">{!!number_format($standardWallet->available_balance, 8, ',', '.')!!}</p1>
+            <p1 class="transaction_history">Historial de Transacciones</p1>
+        </div1>
     </div>
 </div>

@@ -3332,10 +3332,12 @@ section#create-wallet {
   width: 100%;
   min-height: 225px; }
   .wallets.horizontal-view .wallet-wrapper .wallet, .tokens.horizontal-view .wallet-wrapper .wallet {
+    display: table;
+    width: 100%;
     height: 225px; }
     .wallets.horizontal-view .wallet-wrapper .wallet .left-details, .tokens.horizontal-view .wallet-wrapper .wallet .left-details {
       float: left;
-      width: 25%; }
+      width: 30%; }
       .wallets.horizontal-view .wallet-wrapper .wallet .left-details img, .tokens.horizontal-view .wallet-wrapper .wallet .left-details img {
         position: absolute;
         margin-top: -15px; }
@@ -3347,30 +3349,6 @@ section#create-wallet {
         text-shadow: 1px 1px grey;
         font-weight: bold;
         font-size: 25px; }
-    .wallets.horizontal-view .wallet-wrapper .wallet .middle-details, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details {
-      height: 200px;
-      background-color: green;
-      width: 50%;
-      display: initial; }
-      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance {
-        margin-left: 35px;
-        color: #353535;
-        float: left;
-        font-size: 18px;
-        text-align: left;
-        font-weight: bold; }
-      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .balance {
-        margin-right: 35px;
-        color: #353535;
-        font-size: 18px;
-        float: right;
-        text-align: right;
-        font-weight: bold; }
-      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history {
-        margin-bottom: 35px;
-        float: bottom;
-        font-size: 22px;
-        font-weight: bold; }
     .wallets.horizontal-view .wallet-wrapper .wallet .right-details, .tokens.horizontal-view .wallet-wrapper .wallet .right-details {
       width: 25%;
       display: initial;
@@ -3384,6 +3362,30 @@ section#create-wallet {
         text-align: center;
         color: #353535;
         font-size: 13px; }
+    .wallets.horizontal-view .wallet-wrapper .wallet .middle-details, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details {
+      height: 200px;
+      width: 45%;
+      display: initial; }
+      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance {
+        color: #353535;
+        float: left;
+        font-size: 18px;
+        margin-left: 35px;
+        text-align: left;
+        font-weight: bold; }
+      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .balance {
+        color: #353535;
+        font-size: 18px;
+        float: right;
+        margin-right: 35px;
+        text-align: right;
+        font-weight: bold; }
+      .wallets.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 120px;
+        position: absolute; }
 
 section#property {
   padding-top: 40px;
