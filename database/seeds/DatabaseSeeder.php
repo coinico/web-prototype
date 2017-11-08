@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\CryptoCurrency;
+use App\Models\User;
+use App\Models\UserWallet;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +30,36 @@ class DatabaseSeeder extends Seeder
                 'alias' => 'CTF',
                 'image' => 'logo_dark.png',
                 'usd_value' => 1.01
+            ]
+        );
+
+        User::create(
+            [
+                'name' => 'lnacosta',
+                'email' => 'laion.cj91@gmail.com',
+                'password' => bcrypt('admin'),
+                'role' => 'admin',
+                'valid' => true,
+                'confirmed' => true,
+                'remember_token' => str_random(10),
+            ]
+        );
+
+        UserWallet::create(
+            [
+                'available_balance' => 0,
+                'book_balance' => 0,
+                'user_id' => 1,
+                'crypto_currency' => 1,
+            ]
+        );
+
+        UserWallet::create(
+            [
+                'available_balance' => 0,
+                'book_balance' => 0,
+                'user_id' => 1,
+                'crypto_currency' => 2,
             ]
         );
 
