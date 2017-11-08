@@ -36,7 +36,8 @@
             "app/Libraries"
         ],
         "files": [
-            "app/helpers.php"
+            "app/helpers.php",
+            "app/Http/Controllers/Back/RegisterController.php"
         ],
         "psr-4": {
             "App\\": "app/"

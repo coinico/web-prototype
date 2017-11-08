@@ -32,6 +32,8 @@ Route::name('owners')->get('/owners', 'Front\PostController@owners');
 //Investors
 Route::name('investors')->get('/investors', 'Front\PostController@investors');
 
+
+
 //Community
 Route::name('community')->get('/community', 'Front\PostController@community');
 
@@ -150,6 +152,8 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 
 //crypto_currency Routes
 Route::group(['middleware'=> 'web'],function(){
+//Welcome
+    Route::name('welcome')->get('/welcome', 'Front\PostController@welcome');
   Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
   Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
   Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
