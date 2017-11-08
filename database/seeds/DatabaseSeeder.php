@@ -48,8 +48,6 @@ class DatabaseSeeder extends Seeder
 
         UserWallet::create(
             [
-                'available_balance' => 100,
-                'book_balance' => 100,
                 'user_id' => 1,
                 'crypto_currency' => 1,
             ]
@@ -57,8 +55,6 @@ class DatabaseSeeder extends Seeder
 
         UserWallet::create(
             [
-                'available_balance' => 10000,
-                'book_balance' => 10000,
                 'user_id' => 1,
                 'crypto_currency' => 2,
             ]

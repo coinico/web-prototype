@@ -16,7 +16,7 @@ class UserWallet extends Model
     protected $table = 'user_wallets';
 
     protected $fillable = [
-        'available_balance', 'book_balance', 'user_id','crypto_currency'
+        'user_id','crypto_currency'
     ];
 
     public function user()

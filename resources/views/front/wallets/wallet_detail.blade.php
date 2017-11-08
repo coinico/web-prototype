@@ -13,7 +13,7 @@
         </div>
         <div1 class="middle-details">
             <p1 class="available_balance">Balance Disponible</p1>
-            <p1 class="balance">{!!number_format($standardWallet->available_balance, 8, ',', '.')!!}</p1>
+            <p1 class="balance">{!!number_format($standardWallet->transactions->sum( 'amount' ), 8, ',', '.')!!}</p1>
             <p1 class="transaction_history">Historial de Transacciones</p1>
         </div1>
     </div>
