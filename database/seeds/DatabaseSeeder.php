@@ -107,6 +107,12 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($tokenCurrencies as $tokenCurrency) {
+            UserWallet::create(
+                [
+                    'user_id' => $user->id,
+                    'crypto_currency' => $tokenCurrency->id,
+                ]
+            );
             for ($i = 1; $i <= 60; $i++) {
                 $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
             }
