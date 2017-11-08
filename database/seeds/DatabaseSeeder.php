@@ -106,6 +106,12 @@ class DatabaseSeeder extends Seeder
             $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency);
         }
 
+        foreach ($tokenCurrencies as $tokenCurrency) {
+            for ($i = 1; $i <= 60; $i++) {
+                $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
+            }
+        }
+
     }
 
     function createCurrency($name, $alias, $image, $usd_value) {
