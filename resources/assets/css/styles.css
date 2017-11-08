@@ -777,7 +777,7 @@ body { overflow: auto; -webkit-transition: all 0.5s ease; -moz-transition: all 0
 a:hover, a:focus { color: white; border: none; }
 
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select { background: none; border: 1px solid #ccc; border-radius: 5px; }
-input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, textarea:focus, select:focus { background: #ffffff; color: white; }
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, textarea:focus, select:focus { background: #ffffff; color: #4868af; }
 
 .button.button-primary, a.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary { background: #0c161f; font-family: inherit; }
 .button.button-primary:hover, a.button.button-primary:hover, button.button-primary:hover, input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover { background: #4868af; }
@@ -924,11 +924,22 @@ section#create-wallet form { width: 100%; max-width: 800px; }
 
 .wallets .wallet-wrapper, .tokens .wallet-wrapper { display: inline-block; width: 25%; padding: 10px; min-height: 225px; }
 .wallets .wallet-wrapper .wallet, .tokens .wallet-wrapper .wallet { background: white; display: block; padding: 40px 10px; }
-.wallets .wallet-wrapper .wallet p, .tokens .wallet-wrapper .wallet p { padding: 0; margin: 0; text-align: center; color: #999; }
-.wallets .wallet-wrapper .wallet img, .tokens .wallet-wrapper .wallet img { width: 60px; display: block; margin: 0 auto 10px auto; }
-.wallets.horizontal-view .wallet-wrapper, .tokens.horizontal-view .wallet-wrapper { width: 100%; min-height: 0px; }
-.wallets.horizontal-view .wallet-wrapper .wallet p, .tokens.horizontal-view .wallet-wrapper .wallet p { padding-left: 70px; text-align: left; }
-.wallets.horizontal-view .wallet-wrapper .wallet img, .tokens.horizontal-view .wallet-wrapper .wallet img { position: absolute; margin-top: -15px; }
+.wallets .wallet-wrapper .wallet .left-details .currency_name, .tokens .wallet-wrapper .wallet .left-details .currency_name { margin: 15px; text-align: center; color: #353535; letter-spacing: 2px; text-shadow: 1px 1px grey; font-weight: bold; font-size: 25px; }
+.wallets .wallet-wrapper .wallet .left-details img, .tokens .wallet-wrapper .wallet .left-details img { width: 100px; display: block; margin: 0 auto 5px auto; }
+.wallets .wallet-wrapper .wallet .middle-details, .tokens .wallet-wrapper .wallet .middle-details { display: none; }
+.wallets .wallet-wrapper .wallet .right-details, .tokens .wallet-wrapper .wallet .right-details { display: none; }
+.wallets.horizontal-view .wallet-wrapper, .tokens.horizontal-view .wallet-wrapper { width: 100%; min-height: 225px; }
+.wallets.horizontal-view .wallet-wrapper .wallet, .tokens.horizontal-view .wallet-wrapper .wallet { display: table; width: 100%; height: 225px; }
+.wallets.horizontal-view .wallet-wrapper .wallet .left-details, .tokens.horizontal-view .wallet-wrapper .wallet .left-details { float: left; width: 30%; }
+.wallets.horizontal-view .wallet-wrapper .wallet .left-details img, .tokens.horizontal-view .wallet-wrapper .wallet .left-details img { position: absolute; margin-top: -15px; }
+.wallets.horizontal-view .wallet-wrapper .wallet .left-details .currency_name, .tokens.horizontal-view .wallet-wrapper .wallet .left-details .currency_name { padding-left: 105px; text-align: left; color: #353535; letter-spacing: 2px; text-shadow: 1px 1px grey; font-weight: bold; font-size: 25px; }
+.wallets.horizontal-view .wallet-wrapper .wallet .right-details, .tokens.horizontal-view .wallet-wrapper .wallet .right-details { width: 25%; display: initial; float: right; }
+.wallets.horizontal-view .wallet-wrapper .wallet .right-details img, .tokens.horizontal-view .wallet-wrapper .wallet .right-details img { width: 100px; display: block; margin: 0 auto 5px auto; }
+.wallets.horizontal-view .wallet-wrapper .wallet .right-details .address, .tokens.horizontal-view .wallet-wrapper .wallet .right-details .address { padding-left: -22px; text-align: center; color: #353535; font-size: 13px; }
+.wallets.horizontal-view .wallet-wrapper .wallet .middle-details, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details { height: 200px; width: 45%; display: initial; }
+.wallets.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .available_balance { color: #353535; float: left; font-size: 18px; margin-left: 35px; text-align: left; font-weight: bold; }
+.wallets.horizontal-view .wallet-wrapper .wallet .middle-details .balance, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .balance { color: #353535; font-size: 18px; float: right; margin-right: 35px; text-align: right; font-weight: bold; }
+.wallets.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history, .tokens.horizontal-view .wallet-wrapper .wallet .middle-details .transaction_history { font-size: 18px; font-weight: bold; text-align: center; margin-top: 120px; position: absolute; }
 
 section#property { padding-top: 40px; color: #666; }
 section#property h1 { background: white; padding: 20px; color: #666; }
@@ -952,3 +963,5 @@ section#property .features .feature span, section#property .features .feature sm
 section#property .features .feature small { font-size: 15px; font-weight: bold; }
 section#property section { margin-top: 20px; background: white; padding: 15px; }
 section#property section.plans a img { width: 200px; }
+
+section#welcome { margin: 40px 20px; padding: 20px 0; background: white; }

@@ -7,6 +7,7 @@ use App\{
 };
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -144,6 +145,18 @@ class PostController extends Controller
     public function investors()
     {
         return view('front.investors');
+    }
+
+
+    /**
+     * Display the welcome message.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function welcome()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('front.welcome', compact('user'));
     }
 
     /**
