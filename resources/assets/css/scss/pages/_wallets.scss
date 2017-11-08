@@ -9,7 +9,6 @@ section#create-wallet{
     }
 }
 
-
 .wallets, .tokens{
     .wallet-wrapper{
         display: inline-block;
@@ -20,31 +19,96 @@ section#create-wallet{
             background: white;
             display: block;
             padding: 40px 10px;
-            p{
-                padding: 0;
-                margin: 0;
-                text-align: center;
-                color:#999;
+            .left-details {
+                .currency_name {
+                    margin: 15px;
+                    text-align: center;
+                    color: #353535;
+                    letter-spacing: 2px;
+                    text-shadow: 1px 1px grey;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+                img {
+                    width: 100px;
+                    display: block;
+                    margin: 0 auto 5px auto;
+                }
             }
-            img{
-                width: 60px;
-                display: block;
-                margin: 0 auto 10px auto;
+            .middle-details{
+                display:none;
+            }
+            .right-details{
+                display:none;
             }
         }
     }
     &.horizontal-view{
         .wallet-wrapper{
             width: 100%;
-            min-height: 0px;
+            min-height: 225px;
             .wallet{
-                p{
-                    padding-left: 70px;
-                    text-align: left;
+                height: 225px;
+                .left-details {
+                    float:left;
+                    width: 25%;
+                    img {
+                        position: absolute;
+                        margin-top: -15px;
+                    }
+                    .currency_name {
+                        padding-left: 105px;
+                        text-align: left;
+                        color: #353535;
+                        letter-spacing: 2px;
+                        text-shadow: 1px 1px grey;
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
                 }
-                img{
-                    position: absolute;
-                    margin-top: -15px;
+                .middle-details{
+                    height: 200px;
+                    background-color: green;
+                    width: 50%;
+                    display:initial;
+                    .available_balance{
+                        margin-left: 35px;
+                        color: #353535;
+                        float:left;
+                        font-size: 18px;
+                        text-align:left;
+                        font-weight: bold;
+                    }
+                    .balance{
+                        margin-right: 35px;
+                        color: #353535;
+                        font-size: 18px;
+                        float:right;
+                        text-align:right;
+                        font-weight: bold;
+                    }
+                    .transaction_history{
+                        margin-bottom: 35px;
+                        float: bottom;
+                        font-size: 22px;
+                        font-weight: bold;
+                    }
+                }
+                .right-details{
+                    width: 25%;
+                    display:initial;
+                    float: right;
+                    img {
+                        width: 100px;
+                        display: block;
+                        margin: 0 auto 5px auto;
+                    }
+                    .address{
+                        padding-left: -22px;
+                        text-align: center;
+                        color: #353535;
+                        font-size: 13px;
+                    }
                 }
             }
         }

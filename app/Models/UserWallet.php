@@ -24,9 +24,10 @@ class UserWallet extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function cryptoCurrency()
+    public function currency()
     {
         return $this->belongsTo(CryptoCurrency::class, 'crypto_currency');
+
     }
 	
 }

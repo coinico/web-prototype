@@ -3,18 +3,10 @@
 @section('main')
 
    <section id="wallets">
-      <!--<div class="row">
-      @if( !count($wallets))
-         <p> Todavía no tienes billeteras, pero puedes <a href="wallets/start">comenzar ahora</a> </p>
-      @else
-         {{dump($wallets)}}
-      @endif
-      </div>-->
-
       <div class="row">
          <div class="info-results">
             <div class="results">
-               <h3>Billeteras</h3>
+               <h3>@lang('Mostrando ') {{count($standardWallets)}} @lang('billeteras')</h3>
             </div>
             <div class="actions">
                <a href="#" id="wallets-horizontal-view-btn">
@@ -27,18 +19,9 @@
          </div>
 
          <div class="wallets">
-            <div class="wallet-wrapper">
-               <a href="#" class="wallet">
-                  <img src="images/wallets/ethereum.png" />
-                  <p>Ethereum</p>
-               </a>
-            </div>
-            <div class="wallet-wrapper">
-               <a href="#" class="wallet">
-                  <img src="images/wallets/casatoken.png" />
-                  <p>Ethereum</p>
-               </a>
-            </div>
+            @foreach ($standardWallets as $standardWallet)
+               @include('front.wallets.wallet_detail')
+            @endforeach
          </div>
 
          <div class="info-results">
@@ -80,5 +63,6 @@
 @endsection
 
 @section('scripts')
+   <script type="text/javascript" src="{{ asset('js/wallet/lightwallet.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/pages/wallets.js') }}" ></script>
 @stop

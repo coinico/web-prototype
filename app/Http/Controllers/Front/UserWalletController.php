@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\UserWallet;
 use URL;
-use Illuminate\Support\Facades\Input;
 
 /**
  * Class userWalletController.
@@ -17,7 +16,7 @@ use Illuminate\Support\Facades\Input;
  * @author  The scaffold-interface created at 2017-11-06 10:20:35pm
  * @link  https://github.com/amranidev/scaffold-interface
  */
-class userWalletController extends Controller
+class UserWalletController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,10 +25,12 @@ class userWalletController extends Controller
      */
     public function index()
     {
-        $title = 'Índice - User Wallet';
-        $userWallets = UserWallet::paginate(6);
-        return view('front.user_wallet.index',compact('userWallets','title'));
+        $userId = auth()->user()->id;
+        $standardWallets = UserWallet::where('user_id', $userId)->get();
+
+        return view('front.wallets.index', compact('standardWallets'));
     }
+
 
     /**
      * Show the form for creating a new resource.
