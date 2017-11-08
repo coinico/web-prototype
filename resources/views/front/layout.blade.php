@@ -151,7 +151,6 @@
    <footer>
 
    	<div class="footer-main">
-		{{$_SERVER['PHP_SELF']}}
 
    		<div class="row">
 
