@@ -63,7 +63,7 @@ class UserWalletController extends Controller
         // TODO: walletId exists
         // TODO: amountToWithdraw != negative
         // TODO: feeForWithdrawal != negative
-        // TODO: define fee for withdrawal
+        // TODO: validate balance >= amount + fee
 
         $walletId = Input::get("walletId");
         $amountToWithdraw = Input::get("amountToWithdraw");

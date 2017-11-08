@@ -1,11 +1,3 @@
-function walletOnClick() {
-    if ($('.wallets').hasClass("horizontal-view")) {
-        $('#wallets-normal-view-btn').click();
-    } else {
-        $('#wallets-horizontal-view-btn').click();
-    }
-}
-
 $(document).ready(function() {
 
     /** Views **/

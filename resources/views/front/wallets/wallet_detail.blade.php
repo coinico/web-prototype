@@ -1,9 +1,7 @@
 <div class="wallet-wrapper">
     <div class="wallet">
         <div class="left-details">
-            <a href="javascript:walletOnClick()">
-                <img src="/images/{!!$standardWallet->currency->image!!}" />
-            </a>
+            <img src="/images/{!!$standardWallet->currency->image!!}" />
             <p class="currency_name">{{$standardWallet->currency->name}}</p>
         </div>
         <div class="right-details">
