@@ -20,6 +20,7 @@ class CreateCryptoCurrenciesTable extends Migration
             $table->String('alias');
             $table->String('image');
             $table->double('usd_value');
+            $table->enum('type', array('token', 'currency'));
             $table->timestamps();
 
         });
