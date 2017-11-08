@@ -3,7 +3,7 @@
 @import "default/_theme_variables";
 @import "default/_reset";
 @import "default/_base";
-@import "default/_fonts";
+//@import "default/_fonts";
 @import "default/_mixins";
 @import "default/_animations";
 @import "default/_datatables";
@@ -29,10 +29,4 @@
 @import "pages/_home";
 @import "pages/_properties";
 @import "pages/_wallets";
-
-
-
-
-
-
-
+@import "pages/_property";

@@ -6,7 +6,7 @@
        <div class="row">
             <div class="info-results">
                 <div class="results">
-                    @lang('Showing ') {{count($properties)}} @lang('results')
+                    @lang('Mostrando ') {{count($properties)}} @lang('resultados')
                 </div>
                 <div class="actions">
                     <a href="#" id="horizontal-view-btn">
