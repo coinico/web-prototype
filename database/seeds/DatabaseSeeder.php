@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
-        $value = $currencyFrom->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+        $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
 
         OrderBook::create(
             [
