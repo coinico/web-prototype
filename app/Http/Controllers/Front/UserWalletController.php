@@ -24,9 +24,15 @@ class UserWalletController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $standardWallets = UserWallet::where('user_id', $userId)->get();
+        $standardWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','currency');
+        })->where('user_id', $userId)->get();
 
-        return view('front.wallets.index', compact('standardWallets'));
+        $tokenWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','token');
+        })->where('user_id', $userId)->get();
+
+        return view('front.wallets.index', compact('standardWallets', 'tokenWallets'));
     }
 
     public function deposit(Request $request) {

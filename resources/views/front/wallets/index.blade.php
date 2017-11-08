@@ -39,25 +39,11 @@
          </div>
 
          <div class="tokens">
-            <div class="wallet-wrapper">
-               <a href="#" class="wallet">
-                  <img src="images/tokens/house.png" />
-                  <p>ARG-00-NADA</p>
-               </a>
-            </div>
-            <div class="wallet-wrapper">
-               <a href="#" class="wallet">
-                  <img src="images/tokens/house.png" />
-                  <p>Ethereum</p>
-               </a>
-            </div>
+            @foreach ($tokenWallets as $tokenWallet)
+               @include('front.wallets.token_detail')
+            @endforeach
          </div>
-
-
-
       </div>
-
-
    </section>
 
 @endsection
