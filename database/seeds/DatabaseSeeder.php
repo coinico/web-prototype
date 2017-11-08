@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\CryptoCurrency;
 use App\Models\User;
 use App\Models\UserWallet;
+use App\Models\UserWalletTransaction;
 
 class DatabaseSeeder extends Seeder
 {
@@ -60,6 +61,34 @@ class DatabaseSeeder extends Seeder
                 'book_balance' => 10000,
                 'user_id' => 1,
                 'crypto_currency' => 2,
+            ]
+        );
+
+        UserWalletTransaction::create(
+            [
+                'address_from' => '0x',
+                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'amount' => 100,
+                'type' => 'credit',
+                'memo' => 'Depósito inicial.',
+                'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                'transaction_fee' => 0.0002,
+                'total' => 100.0002,
+                'user_wallet' => 1,
+            ]
+        );
+
+        UserWalletTransaction::create(
+            [
+                'address_from' => '0x',
+                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'amount' => 10000,
+                'type' => 'credit',
+                'memo' => 'Depósito inicial.',
+                'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                'transaction_fee' => 0.02,
+                'total' => 10000.02,
+                'user_wallet' => 2,
             ]
         );
 
