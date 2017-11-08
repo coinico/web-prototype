@@ -12,11 +12,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserWalletTransaction extends Model
 {
-	
-	
-    public $timestamps = false;
-    
+
     protected $table = 'user_wallet_transactions';
 
-	
+    protected $fillable = [
+        'user_wallet', 'total', 'transaction_fee',
+        'transaction_hash', 'memo', 'type','amount',
+        'address_to', 'address_from'
+    ];
+
+    public function userWallet()
+    {
+        return $this->belongsTo(UserWallet::class, 'user_wallet');
+
+    }
 }
