@@ -29,5 +29,10 @@ class UserWallet extends Model
         return $this->belongsTo(CryptoCurrency::class, 'crypto_currency');
 
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(UserWalletTransaction::class,'user_wallet', 'id');
+    }
 	
 }

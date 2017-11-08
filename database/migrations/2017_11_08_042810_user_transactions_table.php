@@ -34,11 +34,9 @@ class UserTransactionsTable extends Migration
             /**
              * Foreignkeys section
              */
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('crypto_currency')->unsigned(); // crypto currency que quiere vender
-            $table->foreign('crypto_currency')->references('id')->on('crypto_currencies');
+            $table->integer('user_wallet')->unsigned();
+            $table->foreign('user_wallet')->references('id')->on('user_wallets');
 
             $table->timestamps();
 
