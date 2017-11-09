@@ -4,6 +4,16 @@
 
 <section id="manage-wallet">
 
+   @lang('Mostrando los detalles de tu billetera')
+   </br>
+   {{$userWallet}}
+
+   </br>
+   @lang('Mostrando ') {{count($userWallet->transactions)}} @lang('transacciones')
+   </br>
+   @foreach ($userWallet->transactions as $transaction)
+         {{$transaction}}
+   @endforeach
 </section>
 
 @endsection
