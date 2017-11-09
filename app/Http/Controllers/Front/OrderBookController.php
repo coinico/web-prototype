@@ -18,7 +18,7 @@ class OrderBookController extends Controller
 
     public function exchange()
     {
-        return view('front.exchange.exchange');
+        return view('front.exchange.index');
     }
 
     public function ctfMarkets()
