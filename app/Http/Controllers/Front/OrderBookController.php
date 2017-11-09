@@ -19,7 +19,7 @@ class OrderBookController extends Controller
     public function ctfMarkets()
     {
         $dbResults = DB::select("
-                    select crypto_currency, 
+                    select crypto_currency_to as crypto_currency, 
                            sum(quantity*value) as volume, 
                            max(value) as high, 
                            min(value) as low
@@ -59,16 +59,19 @@ class OrderBookController extends Controller
 
             $spreadString = MarketUtils::calculateSpreadString($ask->value, $bid->value);
 
-            $changeString = MarketUtils::calculateChangeString($prevDay->value, $last->value);
+            if ($prevDay)
+                $changeString = MarketUtils::calculateChangeString($prevDay->value, $last->value);
+            else
+                $changeString = "0.0%";
 
             $result[] = array(
                 $ctfCurrency->alias."-".$currentCurrency->alias, //Market
                 $currentCurrency->name, //Currency
-                number_format($dbResult->volume, 3, '.', ','), //Volume
+                number_format($dbResult->volume, 3, '.', ''), //Volume
                 $changeString,  //Change
-                number_format($last->value, 8, '.', ','), //Last price
-                number_format($dbResult->high, 8, '.', ','), //High
-                number_format($dbResult->low, 8, '.', ','), //Low
+                number_format($last->value, 8, '.', ''), //Last price
+                number_format($dbResult->high, 8, '.', ''), //High
+                number_format($dbResult->low, 8, '.', ''), //Low
                 $spreadString  //Spread
             );
         };

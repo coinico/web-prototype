@@ -4,6 +4,24 @@
 
    <section id="exchange">
        <div class="row">
+           <h3>CTF MARKETS</h3>
+           <table id="ctf" class="display cell-border hover stripe" cellspacing="0" width="100%">
+               <thead>
+               <tr>
+                   <th>Market</th>
+                   <th>Currency</th>
+                   <th>Volume</th>
+                   <th>Change</th>
+                   <th>Last Price</th>
+                   <th>High</th>
+                   <th>Low</th>
+                   <th>Spread</th>
+               </tr>
+               </thead>
+           </table>
+       </div>
+
+       <div class="row">
            <h3>BITCOIN MARKETS</h3>
            <table id="btc" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>

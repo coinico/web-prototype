@@ -1,15 +1,15 @@
 $(document).ready(function(){
 
-    var url2 = "./ctfMarkets";
+    var ctfMarketsUrl = "./ctfMarkets";
     $.get({
-        url: url2,
+        url: ctfMarketsUrl,
         dataType: "json",
         success: function(res){
             $('#ctf').DataTable( {
                 data: res,
                 order: [[ 2, "desc" ]],
                 columnDefs: [
-                    { "className": "dt-body-left", targets: [0, 1, 8]},
+                    { "className": "dt-body-left", targets: [0, 1]},
                     { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7]}
                 ],
                 language: {
