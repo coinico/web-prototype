@@ -7,6 +7,7 @@ use App\{
 };
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -146,6 +147,18 @@ class PostController extends Controller
         return view('front.investors');
     }
 
+
+    /**
+     * Display the welcome message.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function welcome()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('front.welcome', compact('user'));
+    }
+
     /**
      * Display a listing of properties.
      *
@@ -158,6 +171,18 @@ class PostController extends Controller
     }
 
     /**
+     * Display a property.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function property($id)
+    {
+        $property = Property::find($id);
+        return view('front.property', compact('properties'));
+    }
+
+
+    /**
      * Display a listing of crypto currencies.
      *
      * @return \Illuminate\Http\Response
@@ -167,4 +192,16 @@ class PostController extends Controller
         $cryptoCurrencies = CryptoCurrency::all();
         return view('front.crypto_currencies', compact('cryptoCurrencies'));
     }
+
+    /**
+     * Display the user panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function panel()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('front.panel', compact('user'));
+    }
+
 }

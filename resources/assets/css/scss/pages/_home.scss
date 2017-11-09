@@ -95,9 +95,37 @@ section#home{
         color: white;
         display: block;
         margin: auto;
+        font-weight: bold;
         width: 140px;
         padding: 10px;
         text-align: center;
+        &:hover{
+          background: white;
+          color: $primaryBgColor;
+        }
+      }
+    }
+    &.fifth-stop {
+      background: url('../images/home/bg_5.jpg');
+      p{
+        max-width: 650px;
+        color: white;
+        text-align: center;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        padding: 20px;
+      }
+      a{
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid;
+        color: white;
+        display: block;
+        margin: auto;
+        width: 210px;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
         &:hover{
           background: white;
           color: $primaryBgColor;

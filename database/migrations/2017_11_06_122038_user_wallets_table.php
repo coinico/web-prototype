@@ -22,9 +22,6 @@ class UserWalletsTable extends Migration
 
             $table->increments('id');
 
-            $table->float('available_balance');
-            $table->float('book_balance');
-
             /**
              * Foreignkeys section
              */

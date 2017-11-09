@@ -16,7 +16,7 @@ class UserWallet extends Model
     protected $table = 'user_wallets';
 
     protected $fillable = [
-        'available_balance', 'book_balance', 'user_id','crypto_currency'
+        'user_id','crypto_currency'
     ];
 
     public function user()
@@ -24,9 +24,15 @@ class UserWallet extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function cryptoCurrency()
+    public function currency()
     {
         return $this->belongsTo(CryptoCurrency::class, 'crypto_currency');
+
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(UserWalletTransaction::class,'user_wallet', 'id');
     }
 	
 }

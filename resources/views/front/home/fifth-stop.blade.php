@@ -1,7 +1,11 @@
-<section class="fifth-stop">
+<section id="fifth-stop" class="fifth-stop">
+    <h1>
+        Comunidad
+    </h1>
     <p>
-        La Plataforma Descentralizada
-        <span>Para el Futuro de las Propiedades Inmobiliarias</span>
+        Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma.
+        Se parte de nuestra comunidad y contribuí con futuro del negocio inmobiliario descentralizado.
     </p>
+    <a>QUIERO SER PARTE</a>
 </section>
 

@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-	
+
 	@yield('css')
 
 	<style>
@@ -64,16 +64,22 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{ route('owners') }}">@lang('Propietarios')</a>
+					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{ route('investors') }}">@lang('Inversores')</a>
+					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
 				</li>
-				<li {{ currentRoute('exchange') }}>
-					<a href="{{ route('exchange') }}">@lang('Exchange')</a>
-				</li>
+				@guest
+					<li {{ currentRoute('exchange') }}>
+						<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
+					</li>
+				@else
+					<li {{ currentRoute('exchange') }}>
+						<a href="{{route('exchange')}}">@lang('Exchange')</a>
+					</li>
+				@endguest
 				<li {{ currentRoute('community') }}>
-					<a href="{{ route('community') }}">@lang('Comunidad')</a>
+					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">
@@ -100,8 +106,15 @@
 							</li>
 						@endrequest
 					@else
-						<li class='cat-item'><a href='#' title='Usuario'>Usuario</a>
+						<li class='cat-item'>
+							<a href='#' title='Usuario'>
+								<img src="images/user-icon.svg" />
+								Usuario
+							</a>
 							<ul class="children">
+								<li {{ currentRoute('panel') }}>
+									<a href="{{ route('panel') }}">@lang('Panel')</a>
+								</li>
 								<li {{ currentRoute('wallets.index') }}>
 									<a href="{{ route('wallets.index') }}">@lang('Billetera')</a>
 								</li>

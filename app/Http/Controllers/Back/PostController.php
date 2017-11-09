@@ -9,6 +9,7 @@ use App\ {
     Models\Post,
     Repositories\PostRepository
 };
+use App\Utils\MarketUtils;
 use GuzzleHttp\Client;
 
 class PostController extends Controller
@@ -153,25 +154,9 @@ class PostController extends Controller
 
         foreach ($markets['result'] as $market){
 
-            if ($market['Summary']['Ask'] && $market['Summary']['Bid']) {
-                $spread = 100 * ($market['Summary']['Ask'] - $market['Summary']['Bid']) / $market['Summary']['Ask'];
-            } else {
-                $spread = 0;
-            }
+            $spreadString = MarketUtils::calculateSpreadString($market['Summary']['Ask'], $market['Summary']['Bid']);
 
-            if($market['Summary']['PrevDay']){
-                $change = ($market['Summary']['Last'] - $market['Summary']['PrevDay']) / $market['Summary']['PrevDay'] * 100;
-            }else {
-                $change = 0;
-            }
-
-            $changeString = "";
-            $changeString .= number_format($change, 1);
-            $changeString .= "%";
-
-            $spreadString = "";
-            $spreadString .= number_format($spread, 1);
-            $spreadString .= "%";
+            $changeString = MarketUtils::calculateChangeString($market['Summary']['PrevDay'], $market['Summary']['Last']);
 
             $result[$market['Market']['BaseCurrency']][] = [
                 $market['Market']['MarketName'], //Market

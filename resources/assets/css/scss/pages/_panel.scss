@@ -1,0 +1,116 @@
+section#panel{
+  margin:40px 15px;
+  section {
+    background: white;
+    padding: 15px;
+    color: #666;
+    .highcharts-axis-labels, .highcharts-credits, .highcharts-grid {
+      display: none !important;
+    }
+    .highcharts-container{
+      svg{
+        margin-left: -20px;
+        margin-top: -25px;
+      }
+    }
+    .tabs-selector{
+      .tab-selector{
+        display: inline-block;
+        padding-right: 20px;
+        border-right: 1px dashed #ccc;
+        margin-right: 20px;
+        &.active{
+          color:$primaryColor;
+          position: relative;
+          &:after{
+            content: '';
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            right: 20px;
+            position: absolute;
+            background: $primaryColor;
+          }
+        }
+        &:last-child{
+          border: none;
+        }
+      }
+    }
+    .tabs{
+      .tab {
+        display: none;
+        .currency-info {
+          margin-top: 3px;
+          border-top: 1px dashed #ccc;
+          padding: 20px;
+          border-bottom: 1px dashed #ccc;
+          > div {
+            width: 32.5%;
+            display: inline-block;
+            border-right: 1px dashed #ccc;
+            text-align: center;
+            small {
+              display: block;
+            }
+            span {
+              font-size: 40px;
+              b {
+                color: #24da24;
+                font-size: 33px;
+              }
+            }
+            &:last-child {
+              border: none;
+            }
+          }
+          @media(max-width: 991px){
+            > div {
+              span {
+                font-size: 30px;
+              }
+            }
+          }
+          @media(max-width: 767px){
+            > div {
+              width: 100%;
+              border-bottom: 1px dashed #ccc;
+              padding: 20px;
+              border-right: none;
+            }
+          }
+        }
+        &.active{
+          display: block;
+        }
+      }
+    }
+    .summary{
+      margin-bottom: 40px;
+      h3{
+        border-bottom: 1px dashed #ccc;
+        border-top: 1px dashed #ccc;
+        line-height: 40px;
+        text-align: center;
+      }
+      >div{
+        width: 49%;
+        display: inline-block;
+        text-align: center;
+        border-right: 1px dashed #ccc;
+        &:last-child{
+          border:none;
+        }
+        span{
+          font-size: 25px;
+        }
+        small{
+          display: block;
+        }
+      }
+    }
+  }
+  @media(max-width: 490px){
+    margin: 40px 0px;
+  }
+}

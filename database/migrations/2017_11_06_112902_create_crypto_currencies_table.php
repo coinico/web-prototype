@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateCryptoCurrenciesTable extends Migration
+class CreateCryptoCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,6 @@ class UpdateCryptoCurrenciesTable extends Migration
      */
     public function up()
     {
-        Schema::drop('crypto_currencies');
         Schema::create('crypto_currencies',function (Blueprint $table){
 
             $table->increments('id');
@@ -21,6 +20,7 @@ class UpdateCryptoCurrenciesTable extends Migration
             $table->String('alias');
             $table->String('image');
             $table->double('usd_value');
+            $table->enum('type', array('token', 'currency'));
             $table->timestamps();
 
         });

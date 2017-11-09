@@ -32,11 +32,14 @@ Route::name('owners')->get('/owners', 'Front\PostController@owners');
 //Investors
 Route::name('investors')->get('/investors', 'Front\PostController@investors');
 
+
+
 //Community
 Route::name('community')->get('/community', 'Front\PostController@community');
 
 //Properties
 Route::name('properties')->get('/properties', 'Front\PostController@properties');
+Route::name('properties.display')->get('/properties/{id}', 'Front\PostController@property');
 
 // Contact
 Route::resource('contacts', 'Front\ContactController', ['only' => ['create', 'store']]);
@@ -69,17 +72,11 @@ Auth::routes();
 */
 
 // Wallet
-Route::name('wallets.start')->get('/wallets/start', 'Back\WalletController@start');
-Route::resource('wallets', 'Back\WalletController');
-
-
-//Route::name('wallets/create')->get('/wallets/create', 'Back\WalletController@create');
-
-
-//Route::name('wallet/createWallet')->get('/wallet/createWallet', 'Back\WalletController@createWallet');
+Route::resource('wallets', 'Front\UserWalletController');
 
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
+Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
 
 
 
@@ -156,14 +153,15 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 
 //crypto_currency Routes
 Route::group(['middleware'=> 'web'],function(){
-  Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
-  Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
-  Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
-});
 
-//user_wallet Routes
-Route::group(['middleware'=> 'web'],function(){
-  Route::resource('userWallet', '\App\Http\Controllers\Front\UserWalletController');
-  Route::post('userWallet/{id}/update','\App\Http\Controllers\Front\UserWalletController@update');
-  Route::get('userWallet/{id}/delete','\App\Http\Controllers\Front\UserWalletController@destroy');
+    //Welcome
+    Route::name('welcome')->get('/welcome', 'Front\PostController@welcome');
+
+    //Panel
+    Route::name('panel')->get('/panel', 'Front\PostController@panel');
+
+
+    Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
+    Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
+    Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
 });

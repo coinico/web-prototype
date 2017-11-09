@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Models\CryptoCurrency;
-use App\Models\User;
-use Illuminate\Support\Facades\App;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\UserWallet;
-use URL;
+use App\Models\UserWalletTransaction;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 /**
@@ -17,7 +14,7 @@ use Illuminate\Support\Facades\Input;
  * @author  The scaffold-interface created at 2017-11-06 10:20:35pm
  * @link  https://github.com/amranidev/scaffold-interface
  */
-class userWalletController extends Controller
+class UserWalletController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,119 +23,76 @@ class userWalletController extends Controller
      */
     public function index()
     {
-        $title = 'Índice - User Wallet';
-        $userWallets = UserWallet::paginate(6);
-        return view('front.user_wallet.index',compact('userWallets','title'));
+        $userId = auth()->user()->id;
+        $standardWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','currency');
+        })->where('user_id', $userId)->get();
+
+        $tokenWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','token');
+        })->where('user_id', $userId)->get();
+
+        return view('front.wallets.index', compact('standardWallets', 'tokenWallets'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return  \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function deposit(Request $request) {
 
-        $cryptoCurrencies = CryptoCurrency::all()->pluck('alias', 'id');
+        // TODO: walletId exists
+        // TODO: amountToDeposit != negative
+        // TODO: no fee for deposits
 
-        return view('front.user_wallet.create', compact('cryptoCurrencies'));
+        $walletId = Input::get("walletId");
+        $amountToDeposit = Input::get("amountToDeposit");
+        $memoToDeposit = Input::get("memoToDeposit") ? Input::get("memoToDeposit") : "Depósito manual.";
+
+        $wallet = UserWallet::find($walletId)->get();
+
+        UserWalletTransaction::create(
+            [
+                'address_from' => '0x',
+                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'amount' => $amountToDeposit,
+                'type' => 'credit',
+                'memo' => $memoToDeposit,
+                'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                'transaction_fee' => 0,
+                'total' => $amountToDeposit,
+                'user_wallet' => $wallet->id,
+            ]
+        );
+
+        // TODO: return what?
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param    \Illuminate\Http\Request  $request
-     * @return  \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->merge(['user_id' => auth()->id()]);
-        $request->merge(['crypto_currency' => $request->crypto_currency_id]);
+    public function withdraw(Request $request) {
 
-        $userWallet = UserWallet::create($request->all());
+        // TODO: walletId exists
+        // TODO: amountToWithdraw != negative
+        // TODO: feeForWithdrawal != negative
+        // TODO: validate balance >= amount + fee
 
-        $pusher = App::make('pusher');
+        $walletId = Input::get("walletId");
+        $amountToWithdraw = Input::get("amountToWithdraw");
+        $feeForWithdrawal = Input::get("feeForWithdrawal");
+        $memoToWithdraw = Input::get("memoToWithdraw") ? Input::get("memoToWithdraw") : "Retiro manual.";
 
-        //default pusher notification.
-        //by default channel=test-channel,event=test-event
-        //Here is a pusher notification example when you create a new resource in storage.
-        //you can modify anything you want or use it wherever.
-        $pusher->trigger('test-channel',
-                         'test-event',
-                        ['message' => 'Un nuevo wallet user ha sido creado. !!']);
+        $total = $amountToWithdraw + $feeForWithdrawal;
+        $wallet = UserWallet::find($walletId)->get();
 
-        return redirect('userWallet');
-    }
+        UserWalletTransaction::create(
+            [
+                'address_from' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0x',
+                'amount' => -$amountToWithdraw,
+                'type' => 'debit',
+                'memo' => $memoToWithdraw,
+                'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                'transaction_fee' => -$feeForWithdrawal,
+                'total' => -$total,
+                'user_wallet' => $wallet->id,
+            ]
+        );
 
-    /**
-     * Display the specified resource.
-     *
-     * @param    \Illuminate\Http\Request  $request
-     * @param    int  $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function show($id,Request $request)
-    {
-        $title = 'Mostrar User Wallet';
-
-        if($request->ajax())
-        {
-            return URL::to('userWallet/'.$id);
-        }
-
-        $userWallet = UserWallet::findOrfail($id);
-        return view('front.user_wallet.show',compact('title','userWallet'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param    \Illuminate\Http\Request  $request
-     * @param    int  $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function edit($id,Request $request)
-    {
-        if($request->ajax())
-        {
-            return URL::to('userWallet/'. $id . '/edit');
-        }
-
-        $users = User::all()->pluck('id', 'name');
-        $cryptoCurrencies = CryptoCurrency::all()->pluck('id', 'alias');
-
-        $userWallet = UserWallet::findOrfail($id);
-        return view('front.user_wallet.edit',compact('userWallet', 'users', 'cryptoCurrencies'  ));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param    \Illuminate\Http\Request  $request
-     * @param    int  $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function update($id,Request $request)
-    {
-        $userWallet = UserWallet::findOrfail($id);
-    	
-        $userWallet->balance = $request->balance;
-        
-        
-        $userWallet->save();
-
-        return redirect('userWallet');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param    int $id
-     * @return  \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-     	$userWallet = UserWallet::findOrfail($id);
-     	$userWallet->delete();
-        return URL::to('userWallet');
+        // TODO: return what?
     }
 }

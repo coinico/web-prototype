@@ -16,6 +16,7 @@
                     <th>Nombre</th>
                     <th>Alias</th>
                     <th>Imagen</th>
+                    <th>Imagen2</th>
                     <th>Valor Dólar</th>
                     <th>Acciones</th>
                 </thead>
@@ -25,6 +26,7 @@
                         <td>{!!$crypto_currency->name!!}</td>
                         <td>{!!$crypto_currency->alias!!}</td>
                         <td>{!!$crypto_currency->image!!}</td>
+                        <td><img width="25" height="25" src="../images/{!!$crypto_currency->image!!}" alt="{!!$crypto_currency->name!!}"></td>
                         <td>{!!$crypto_currency->usd_value!!}</td>
                         <td>
                             <a href = "cryptoCurrency/{!!$crypto_currency->id!!}/delete" ><i class = 'fa fa-trash'> delete</i></a>

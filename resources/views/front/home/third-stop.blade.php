@@ -1,4 +1,6 @@
-<section id="properties" class="third-stop">
+<section id="third-stop">
+    <section id="properties" class="third-stop">
+
     <h1>
         Inversores
     </h1>
@@ -7,4 +9,5 @@
             @include('front.properties.detail')
         @endforeach
     </div>
+    </section>
 </section>
