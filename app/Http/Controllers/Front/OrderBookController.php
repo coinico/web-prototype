@@ -7,7 +7,7 @@ use App\Utils\MarketUtils;
 use Illuminate\Support\Facades\DB;
 use App\Models\CryptoCurrency;
 use App\Models\OrderBook;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class OrderBookController.
@@ -22,9 +22,20 @@ class OrderBookController extends Controller
         return view('front.exchange.index');
     }
 
-    public function exchangeDetails(Request $request)
+    public function exchangeDetails()
     {
-        return $request;
+        $pairArray = preg_split("~-~", Input::get("pair"));
+
+        $currencyFrom = CryptoCurrency::where("alias", $pairArray[0])->first();
+        $currencyTo = CryptoCurrency::where("alias", $pairArray[1])->first();
+
+        return view('front.exchange.details', compact("currencyFrom", "currencyTo"));
+    }
+
+    public function lastExecutedOrders()
+    {
+
+        return [];
     }
 
     public function ctfMarkets()
