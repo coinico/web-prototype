@@ -2,9 +2,9 @@
 
 @section('main')
 
-   <section id="exchange">
+   <section id="exchange-details">
        <div class="row">
-           <table id="ctf" class="display cell-border hover stripe" cellspacing="0" width="100%">
+           <table id="lastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>
                    <th>Mercado</th>
@@ -24,7 +24,7 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/pages/exchange.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/pages/exchange-details.js') }}" ></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" ></script>
 
 @stop

@@ -71,6 +71,7 @@ Auth::routes();
 
 //Exchange
 Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
+Route::name('exchangeDetails')->get('/exchangeDetails', 'Front\OrderBookController@exchangeDetails');
 
 
 

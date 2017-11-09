@@ -1,3 +1,7 @@
+
+var $currencyFrom = "<?php Print($currencyFrom->id); ?>";
+var $currencyTo = "<?php Print($currencyTo->id); ?>";
+
 $(document).ready(function(){
 
     $.extend( $.fn.dataTable.defaults, {
@@ -21,13 +25,17 @@ $(document).ready(function(){
         }
     );
 
-    var ctfMarketsUrl = "./ctfMarkets";
+    var lastExecutedOrders = "./lastExecutedOrders";
     $.get({
-        url: ctfMarketsUrl,
+        url: lastExecutedOrders,
+        data: {
+            "currencyFrom": $currencyFrom,
+            "$currencyTo": $currencyTo
+        },
         dataType: "json",
         success: function(res){
 
-            $('#ctf').DataTable( {
+            $('#lastExecutedOrders').DataTable( {
                 data: res,
                 order: [[ 2, "desc" ]],
                 columnDefs: [
@@ -35,16 +43,8 @@ $(document).ready(function(){
                     { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7]}
                 ],
                 language: {
-                    "info": "<strong>Mercados CasaToken</strong>"
-                },
-                columns:[
-                    {
-                        "mData":"Mercado",
-                        "render": function ( mData, type,row, meta ) {
-                            return '<a href="exchangeDetails?pair='+row[0]+'">' + row[0]+'</a>';
-                        }
-                    }
-                ]
+                    "info": "<strong>Últimas órdenes ejecutadas</strong>"
+                }
             });
         }
     }).done(function() {
@@ -52,4 +52,3 @@ $(document).ready(function(){
     });
 
 });
-

@@ -7,6 +7,7 @@ use App\Utils\MarketUtils;
 use Illuminate\Support\Facades\DB;
 use App\Models\CryptoCurrency;
 use App\Models\OrderBook;
+use Illuminate\Http\Request;
 
 /**
  * Class OrderBookController.
@@ -19,6 +20,11 @@ class OrderBookController extends Controller
     public function exchange()
     {
         return view('front.exchange.index');
+    }
+
+    public function exchangeDetails(Request $request)
+    {
+        return $request;
     }
 
     public function ctfMarkets()
