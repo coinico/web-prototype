@@ -2645,7 +2645,7 @@ footer ul li {
 	width: 60px;
 	line-height: 63px;
 	text-align: center;
-	background: #b5b5b5;
+	/* background: #b5b5b5; */
 	color: #555;
 	text-align: center;
 	text-transform: uppercase;
@@ -2657,18 +2657,18 @@ footer ul li {
 }
 
 #go-top a i {
-	font-size: 24px;
+	font-size: 28px;
 	line-height: inherit;
 }
 
 #go-top a:visited {
 	background: #b5b5b5;
-	color: #555;
+	color: #4767af;
 }
 
 #go-top a:hover,
 #go-top a:focus {
-	background: #000000;
+	/* background: #000000; */
 	color: #FFFFFF;
 }
 
