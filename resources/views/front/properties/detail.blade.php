@@ -1,15 +1,15 @@
 <div class="wrapper">
     <div class="property">
         <div class="info">
-            @if( isset($property->images{0}))
-                <div class="image" style="background-image: url('{{asset('images/properties/'.$property->images{0}->property_id.'/'.$property->images{0}->file_name) }}') "></div>
+            @if( isset($property->images))
+                <div class="image" style="background-image: url('images/properties/{{$property->images}}') "></div>
             @else
                 <div class="image" style="background-image: url('images/no-image.png') "></div>
             @endif
 
-            <div class="price">$ 2500</div>
+            <div class="price">U$D {{$property->value}}</div>
             <h3>{{$property->title}}</h3>
-            <p>Se trata de una casa en un barrio residencial de lujo en las afueras de Londres. La propiedad cuenta con un diseño moderno y está dispuesta sobre un amplio terreno.</p>
+            <p>{{substr ($property->description, 0, 150)}}...</p>
         </div>
         <div class="hover">
             <div class="time_left">

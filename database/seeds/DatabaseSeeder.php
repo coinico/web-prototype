@@ -122,6 +122,10 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        $this->call([
+            PropertiesTableSeeder::class,
+        ]);
+
     }
 
     function createCurrency($name, $alias, $image, $usd_value) {
@@ -191,5 +195,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
     }
+
+
 
 }

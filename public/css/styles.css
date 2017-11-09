@@ -3103,6 +3103,8 @@ section#home section {
       text-align: center;
       margin: 0 auto 40px auto;
       padding: 20px; }
+  section#home section#third-stop {
+    padding: 0; }
   section#home section.third-stop {
     background: url("../images/home/bg_4.jpg"); }
     section#home section.third-stop .wrapper {

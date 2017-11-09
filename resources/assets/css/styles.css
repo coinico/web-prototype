@@ -888,6 +888,7 @@ section#home section { padding: 90px 0; background: #0c161f; background-size: co
 section#home section h1 { text-align: center; font-size: 30px; font-weight: bold; line-height: 50px; color: white; }
 section#home section.second-stop, section#home section.fourth-stop { background: url("../images/home/bg_3.jpg"); }
 section#home section.second-stop p, section#home section.fourth-stop p { max-width: 450px; color: white; text-align: center; margin: 0 auto 40px auto; padding: 20px; }
+section#home section#third-stop { padding: 0; }
 section#home section.third-stop { background: url("../images/home/bg_4.jpg"); }
 section#home section.third-stop .wrapper { width: auto; float: none; }
 section#home section.third-stop .wrapper .property { min-height: 320px; }
@@ -965,8 +966,19 @@ section#exchange .row .currency_wrapper .sub_header_name { overflow: hidden; hei
 section#exchange .row .currency_wrapper .sub_header_volume { margin-top: -5px; margin-right: 7px; font-size: 12px; }
 section#exchange .row .currency_wrapper .sub_header_change { margin-top: -5px; margin-right: 7px; font-size: 12px; }
 
-section#exchange-details .row { margin-top: 30px; background-color: white; padding: 20px 50px 20px 50px; }
+section#exchange-details .row { margin-top: 30px; background-color: white; padding: 0 50px 0 50px; }
 section#exchange-details .row .arrow_percent { width: 9px; }
+section#exchange-details .order_book_container { display: grid; grid-template-columns: repeat(2, 1fr); grid-column-gap: 40px; }
+section#exchange-details .order_book_container .order_book_bid { grid-column: 1; }
+section#exchange-details .order_book_container .order_book_ask { grid-column: 2; }
+section#exchange-details .info_container { display: grid; padding-top: 30px; grid-template-columns: repeat(8, 1fr); grid-column-gap: 40px; }
+section#exchange-details .info_container .graphic { grid-column: 1 / 6; }
+section#exchange-details .info_container .info_currency { grid-column: 6 / 9; }
+section#exchange-details .info_container .info_currency .info_currency_table { border: none; }
+section#exchange-details .info_container .info_currency .info_currency_table .currency_header img { width: 70px; float: left; }
+section#exchange-details .info_container .info_currency .info_currency_table tr .key_values { text-align: left; vertical-align: middle; font-weight: 600; font-size: 20px; }
+section#exchange-details .info_container .info_currency .info_currency_table tr .usd_values { text-align: right; font-size: 10px; }
+section#exchange-details .info_container .info_currency .info_currency_table tr .currency_values { font-weight: 600; font-size: 18px; text-align: right; border: none; }
 
 section#property { padding-top: 40px; color: #666; }
 section#property h1 { background: white; padding: 20px; color: #666; }
