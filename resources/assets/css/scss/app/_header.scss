@@ -33,7 +33,22 @@ header{
 
 	@media(min-width: 992px) {
 		#main-nav-wrap {
-			padding-right: 35px;
+			padding-right: 4%;
+		}
+	}
+
+	#main-nav-wrap{
+		padding-right: 4%!important;
+		li.cat-item{
+			a{
+				padding-left: 35px;
+				img{
+					width: 30px;
+					position: absolute;
+					margin-left: -35px;
+					margin-top: -5px;
+				}
+			}
 		}
 	}
 }

@@ -795,7 +795,10 @@ header .header-content { top: 12px; }
 header .logo a { background: url("../images/logo_dark.svg") no-repeat center; width: 210px; }
 header .triggers .search-trigger { color: #4868af; }
 header .main-navigation li.current > a { color: #4868af; border-bottom: 2px solid #4868af; }
-@media (min-width: 992px) { header #main-nav-wrap { padding-right: 35px; } }
+@media (min-width: 992px) { header #main-nav-wrap { padding-right: 4%; } }
+header #main-nav-wrap { padding-right: 4% !important; }
+header #main-nav-wrap li.cat-item a { padding-left: 35px; }
+header #main-nav-wrap li.cat-item a img { width: 30px; position: absolute; margin-left: -35px; margin-top: -5px; }
 
 @media only screen and (max-width: 768px) { .main-navigation > li { text-align: center; border-bottom: 1px solid #ccc; } }
 .preloading { position: fixed; top: 0; width: 100%; bottom: 0; background: #333e48; z-index: 100; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
@@ -965,3 +968,29 @@ section#property section { margin-top: 20px; background: white; padding: 15px; }
 section#property section.plans a img { width: 200px; }
 
 section#welcome { margin: 40px 20px; padding: 20px 0; background: white; }
+
+section#panel { margin: 40px 15px; }
+section#panel section { background: white; padding: 15px; color: #666; }
+section#panel section .highcharts-axis-labels, section#panel section .highcharts-credits, section#panel section .highcharts-grid { display: none !important; }
+section#panel section .highcharts-container svg { margin-left: -20px; margin-top: -25px; }
+section#panel section .tabs-selector .tab-selector { display: inline-block; padding-right: 20px; border-right: 1px dashed #ccc; margin-right: 20px; }
+section#panel section .tabs-selector .tab-selector.active { color: #4868af; position: relative; }
+section#panel section .tabs-selector .tab-selector.active:after { content: ''; height: 2px; bottom: -4px; left: 0; right: 20px; position: absolute; background: #4868af; }
+section#panel section .tabs-selector .tab-selector:last-child { border: none; }
+section#panel section .tabs .tab { display: none; }
+section#panel section .tabs .tab .currency-info { margin-top: 3px; border-top: 1px dashed #ccc; padding: 20px; border-bottom: 1px dashed #ccc; }
+section#panel section .tabs .tab .currency-info > div { width: 32.5%; display: inline-block; border-right: 1px dashed #ccc; text-align: center; }
+section#panel section .tabs .tab .currency-info > div small { display: block; }
+section#panel section .tabs .tab .currency-info > div span { font-size: 40px; }
+section#panel section .tabs .tab .currency-info > div span b { color: #24da24; font-size: 33px; }
+section#panel section .tabs .tab .currency-info > div:last-child { border: none; }
+@media (max-width: 991px) { section#panel section .tabs .tab .currency-info > div span { font-size: 30px; } }
+@media (max-width: 767px) { section#panel section .tabs .tab .currency-info > div { width: 100%; border-bottom: 1px dashed #ccc; padding: 20px; border-right: none; } }
+section#panel section .tabs .tab.active { display: block; }
+section#panel section .summary { margin-bottom: 40px; }
+section#panel section .summary h3 { border-bottom: 1px dashed #ccc; border-top: 1px dashed #ccc; line-height: 40px; text-align: center; }
+section#panel section .summary > div { width: 49%; display: inline-block; text-align: center; border-right: 1px dashed #ccc; }
+section#panel section .summary > div:last-child { border: none; }
+section#panel section .summary > div span { font-size: 25px; }
+section#panel section .summary > div small { display: block; }
+@media (max-width: 490px) { section#panel { margin: 40px 0px; } }
