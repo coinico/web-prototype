@@ -19,6 +19,19 @@ $(document).ready(function(){
                         "render": function ( mData, type,row, meta ) {
                             return '<a href="exchangeDetails?pair='+row[0]+'">' + row[0]+'</a>';
                         }
+                    },{},{},
+                    {
+                        "mData":"Cambio",
+                        "render": function ( mData, type,row, meta ) {
+                            var changeStringNumber = row[3].substring(0, row[3].length-1);
+                            var floatChange = parseFloat(changeStringNumber);
+                            if (floatChange  !== 0.0) {
+                                var changevalueAndColor = (floatChange > 0) ? '<font color="green">'+row[3]+'</font>' : '<font color="red">'+row[3]+'</font>';
+                                return changevalueAndColor + ' <img class="arrow_percent" src="/images/'+(floatChange > 0 ? 'up_arrow.png' : 'down_arrow.png')+'"></img>';
+                            }
+
+                            return row[3] + ' <img class="arrow_percent" src="/images/leftandright.png"></img>';
+                        }
                     }
                 ],
                 info: true,

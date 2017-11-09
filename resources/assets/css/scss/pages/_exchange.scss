@@ -3,6 +3,9 @@ section#exchange{
     margin-top: 30px;
     background-color: white;
     padding: 20px 50px 20px 50px;
+    .arrow_percent{
+      width: 9px;
+    }
     .currency_wrapper{
       display: grid;
       grid-template-columns: repeat(2, 1fr);

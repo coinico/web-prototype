@@ -3392,6 +3392,8 @@ section#exchange .row {
   margin-top: 30px;
   background-color: white;
   padding: 20px 50px 20px 50px; }
+  section#exchange .row .arrow_percent {
+    width: 9px; }
   section#exchange .row .currency_wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -3434,6 +3436,11 @@ section#exchange .row {
       margin-top: -5px;
       margin-right: 7px;
       font-size: 12px; }
+
+section#exchange-details .row {
+  margin-top: 30px;
+  background-color: white;
+  padding: 20px 50px 20px 50px; }
 
 section#property {
   padding-top: 40px;
