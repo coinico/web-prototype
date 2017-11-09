@@ -2805,13 +2805,15 @@ header {
       padding-right: 4%; } }
   header #main-nav-wrap {
     padding-right: 4% !important; }
-    header #main-nav-wrap li.cat-item a {
-      padding-left: 35px; }
-      header #main-nav-wrap li.cat-item a img {
-        width: 30px;
-        position: absolute;
-        margin-left: -35px;
-        margin-top: -5px; }
+    header #main-nav-wrap li.cat-item .user-lnk {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 6px; }
+      header #main-nav-wrap li.cat-item .user-lnk .atata {
+        grid-column: 1; }
+      header #main-nav-wrap li.cat-item .user-lnk .atata1 {
+        grid-column: 2;
+        width: 30px; }
 
 @media only screen and (max-width: 768px) {
   .main-navigation > li {
@@ -3552,5 +3554,3 @@ section#panel {
   @media (max-width: 490px) {
     section#panel {
       margin: 40px 0px; } }
-
-/*# sourceMappingURL=styles.css.map */

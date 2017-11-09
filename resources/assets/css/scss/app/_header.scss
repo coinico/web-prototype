@@ -40,13 +40,16 @@ header{
 	#main-nav-wrap{
 		padding-right: 4%!important;
 		li.cat-item{
-			a{
-				padding-left: 35px;
-				img{
+			.user-lnk{
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 6px;
+				.atata{
+					grid-column: 1;
+				}
+				.atata1{
+					grid-column: 2;
 					width: 30px;
-					position: absolute;
-					margin-left: -35px;
-					margin-top: -5px;
 				}
 			}
 		}

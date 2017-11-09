@@ -107,10 +107,10 @@
 						@endrequest
 					@else
 						<li class='cat-item'>
-							<a href='#' title='Usuario'>
-								<img src="images/user-icon.svg" />
-								Usuario
-							</a>
+							<div class="user-lnk">
+								<a class="atata" href='#' title='Usuario'>Usuario</a>
+								<a class="atata1" href='#' title='Usuario'><img src="images/user-icon.svg" /></a>
+							</div>
 							<ul class="children">
 								<li {{ currentRoute('panel') }}>
 									<a href="{{ route('panel') }}">@lang('Panel')</a>
