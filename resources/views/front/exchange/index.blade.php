@@ -6,7 +6,10 @@
        <div class="row">
            <div class="owl-carousel">
                @foreach ($volumeCurrencies as $currency)
-                   @include('front.exchange.sub_header')
+                   @include('front.exchange.sub_header', array('headerFor'=>'Mayor Volumen'))
+               @endforeach
+               @foreach ($biggestGainCurrencies as $currency)
+                   @include('front.exchange.sub_header', array('headerFor'=>'Mayor Ganancia %'))
                @endforeach
            </div>
        </div>

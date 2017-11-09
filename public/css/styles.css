@@ -3392,6 +3392,48 @@ section#exchange .row {
   margin-top: 30px;
   background-color: white;
   padding: 20px 50px 20px 50px; }
+  section#exchange .row .currency_wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0;
+    grid-auto-rows: 40px;
+    margin: 5px 5px 5px 5px;
+    background-color: #F5F5F5; }
+    section#exchange .row .currency_wrapper .left-details {
+      grid-column: 1;
+      grid-row: 1 / 4; }
+      section#exchange .row .currency_wrapper .left-details a {
+        height: 100%;
+        width: 100%; }
+      section#exchange .row .currency_wrapper .left-details img {
+        width: 90px; }
+      section#exchange .row .currency_wrapper .left-details .center_image {
+        margin: auto; }
+      section#exchange .row .currency_wrapper .left-details .vcenter {
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+    section#exchange .row .currency_wrapper .right-details {
+      grid-column: 2;
+      grid-row: 1 / 4;
+      text-align: right; }
+    section#exchange .row .currency_wrapper .sub_header_type {
+      font-size: 10px;
+      margin-right: 7px; }
+    section#exchange .row .currency_wrapper .sub_header_name {
+      overflow: hidden;
+      height: 30px;
+      margin-top: -5px;
+      margin-right: 7px;
+      font-size: 13px; }
+    section#exchange .row .currency_wrapper .sub_header_volume {
+      margin-top: -5px;
+      margin-right: 7px;
+      font-size: 12px; }
+    section#exchange .row .currency_wrapper .sub_header_change {
+      margin-top: -5px;
+      margin-right: 7px;
+      font-size: 12px; }
 
 section#property {
   padding-top: 40px;
