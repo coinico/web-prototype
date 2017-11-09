@@ -102,8 +102,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        $date = date("Y-m-d H:i:s", time() - 60 * 60 * 24);
+
         for ($i = 1; $i <= 60; $i++) {
             $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency);
+            $this->createOrderBookWithDate($user->id, $ethCurrency, $ctfCurrency, $date);
         }
 
         foreach ($tokenCurrencies as $tokenCurrency) {
@@ -115,6 +118,7 @@ class DatabaseSeeder extends Seeder
             );
             for ($i = 1; $i <= 60; $i++) {
                 $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
+                $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $date);
             }
         }
 
@@ -160,6 +164,29 @@ class DatabaseSeeder extends Seeder
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),
                 'executed' => array_random($booleanTypes)
+            ]
+        );
+    }
+
+    function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $date) {
+
+        $types = array('bid', 'ask');
+        $executionTypes = array('sell', 'buy');
+        $booleanTypes = array(1, 0);
+        $quantity = rand(1, 5000);
+        $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+
+        OrderBook::create(
+            [
+                'user_id' => $userId,
+                'crypto_currency_from' => $currencyFrom->id,
+                'crypto_currency_to' => $currencyTo->id,
+                'type' => array_random($types),
+                'quantity' => $quantity,
+                'value' => $value,
+                'execution_type' => array_random($executionTypes),
+                'executed' => array_random($booleanTypes),
+                'created_at' => $date
             ]
         );
     }

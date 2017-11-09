@@ -11,13 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OrderBook extends Model
 {
+    public $timestamps = true;
 
     protected $table = 'order_book';
 
     protected $fillable = [
         'user_id', 'crypto_currency_from', 'crypto_currency_to',
         'type', 'quantity', 'value','execution_type',
-        'executed'
+        'executed', 'created_at'
     ];
 
     public function user()
