@@ -192,4 +192,16 @@ class PostController extends Controller
         $cryptoCurrencies = CryptoCurrency::all();
         return view('front.crypto_currencies', compact('cryptoCurrencies'));
     }
+
+    /**
+     * Display the user panel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function panel()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('front.panel', compact('user'));
+    }
+
 }

@@ -153,9 +153,15 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 
 //crypto_currency Routes
 Route::group(['middleware'=> 'web'],function(){
-//Welcome
+
+    //Welcome
     Route::name('welcome')->get('/welcome', 'Front\PostController@welcome');
-  Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
-  Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
-  Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
+
+    //Panel
+    Route::name('panel')->get('/panel', 'Front\PostController@panel');
+
+
+    Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
+    Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
+    Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
 });

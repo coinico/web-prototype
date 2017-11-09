@@ -4,55 +4,52 @@
 
    <section id="exchange">
        <div class="row">
-           <h3>CTF MARKETS</h3>
            <table id="ctf" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>
-                   <th>Market</th>
-                   <th>Currency</th>
-                   <th>Volume</th>
-                   <th>Change</th>
-                   <th>Last Price</th>
-                   <th>High</th>
-                   <th>Low</th>
-                   <th>Spread</th>
+                   <th>Mercado</th>
+                   <th>Moneda</th>
+                   <th>Volúmen</th>
+                   <th>Cambio</th>
+                   <th>Último Precio</th>
+                   <th>Máximo</th>
+                   <th>Mínimo</th>
+                   <th>Margen</th>
                </tr>
                </thead>
            </table>
        </div>
 
        <div class="row">
-           <h3>BITCOIN MARKETS</h3>
            <table id="btc" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>
-                   <th>Market</th>
-                   <th>Currency</th>
-                   <th>Volume</th>
-                   <th>Change</th>
-                   <th>Last Price</th>
-                   <th>High</th>
-                   <th>Low</th>
-                   <th>Spread</th>
-                   <th>Added</th>
+                   <th>Mercado</th>
+                   <th>Moneda</th>
+                   <th>Volúmen</th>
+                   <th>Cambio</th>
+                   <th>Último Precio</th>
+                   <th>Máximo</th>
+                   <th>Mínimo</th>
+                   <th>Margen</th>
+                   <th>Añadido</th>
                </tr>
                </thead>
            </table>
        </div>
        <div class="row">
-           <h3>ETHEREUM MARKETS</h3>
            <table id="eth" class="display" cellspacing="0" width="100%">
                <thead>
                <tr>
-                   <th>Market</th>
-                   <th>Currency</th>
-                   <th>Volume</th>
-                   <th>Change</th>
-                   <th>Last Price</th>
-                   <th>High</th>
-                   <th>Low</th>
-                   <th>Spread</th>
-                   <th>Added</th>
+                   <th>Mercado</th>
+                   <th>Moneda</th>
+                   <th>Volúmen</th>
+                   <th>Cambio</th>
+                   <th>Último</th>
+                   <th>Máximo</th>
+                   <th>Mínimo</th>
+                   <th>Margen</th>
+                   <th>Añadido</th>
                </tr>
                </thead>
            </table>

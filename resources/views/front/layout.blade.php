@@ -106,8 +106,15 @@
 							</li>
 						@endrequest
 					@else
-						<li class='cat-item'><a href='#' title='Usuario'>Usuario</a>
+						<li class='cat-item'>
+							<a href='#' title='Usuario'>
+								<img src="images/user-icon.svg" />
+								Usuario
+							</a>
 							<ul class="children">
+								<li {{ currentRoute('panel') }}>
+									<a href="{{ route('panel') }}">@lang('Panel')</a>
+								</li>
 								<li {{ currentRoute('wallets.index') }}>
 									<a href="{{ route('wallets.index') }}">@lang('Billetera')</a>
 								</li>
