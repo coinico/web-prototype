@@ -71,11 +71,7 @@ Auth::routes();
 |--------------------------------------------------------------------------|
 */
 
-// Wallet
-Route::resource('wallets', 'Front\UserWalletController');
-
-//Markets
-Route::name('markets')->get('/markets', 'Back\PostController@markets');
+//Exchange
 Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
 
 
@@ -164,4 +160,8 @@ Route::group(['middleware'=> 'web'],function(){
     Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
     Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
     Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
+
+    // wallets
+    Route::resource('wallets', 'Front\UserWalletController');
+    Route::get('/userWallet/{id}/manage', 'Front\UserWalletController@manageWallet');
 });

@@ -35,6 +35,11 @@ class UserWalletController extends Controller
         return view('front.wallets.index', compact('standardWallets', 'tokenWallets'));
     }
 
+    public function manageWallet($id)
+    {
+        return UserWallet::find($id);
+    }
+
     public function deposit(Request $request) {
 
         // TODO: walletId exists
