@@ -1,6 +1,75 @@
 
 $(document).ready(function(){
 
+    var askOrders = "./askOrders";
+    $.get({
+        url: askOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#order_book_ask').DataTable( {
+                "ordering": false,
+                data: res,
+                order: [[ 0, "desc" ]],
+                columnDefs: [
+                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Órdenes de Venta</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primera",
+                        "last": "Última",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    });
+
+    var bidOrders = "./bidOrders";
+    $.get({
+        url: bidOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#order_book_bid').DataTable( {
+                "ordering": false,
+                data: res,
+                order: [[ 0, "desc" ]],
+                columnDefs: [
+                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Órdenes de Compra</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primera",
+                        "last": "Última",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    });
+
+
     var lastExecutedOrders = "./lastExecutedOrders";
     $.get({
         url: lastExecutedOrders,

@@ -1,6 +1,7 @@
 section#panel{
   margin:40px 15px;
   section {
+    position: relative;
     background: white;
     padding: 15px;
     color: #666;
@@ -64,14 +65,14 @@ section#panel{
               border: none;
             }
           }
-          @media(max-width: 991px){
+          @media(max-width: 1200px){
             > div {
               span {
                 font-size: 30px;
               }
             }
           }
-          @media(max-width: 767px){
+          @media(max-width: 991px){
             > div {
               width: 100%;
               border-bottom: 1px dashed #ccc;
@@ -107,6 +108,70 @@ section#panel{
         small{
           display: block;
         }
+      }
+    }
+    &.main{
+      width: calc(100% - 315px);
+      float: left;
+    }
+    &.sidebar{
+      width: 300px;
+      float: right;
+      .title{
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ccc;
+      }
+      .items{
+        .item{
+          padding: 15px 0 22px 0;
+          border-bottom: 1px dashed #ccc;
+          display: block;
+          color:#666;
+          &:hover{
+            color:#666;
+          }
+          span{
+            line-height: 38px;
+            padding-left: 10px;
+          }
+          img{
+            float: left;
+            width: 38px;
+          }
+          .detail{
+            float: right;
+            text-align: right;
+            margin-top: -5px;
+            span{
+              line-height: 25px;
+              font-size: 14px;
+            }
+            small{
+              display: block;
+              color:#ccc;
+              line-height: 10px;
+            }
+          }
+          &:last-child{
+            border: none;
+          }
+        }
+      }
+      .divider{
+        height: 20px;
+        &:before{
+          content: '';
+          left: 0;
+          right:0;
+          height:15px;
+          background: whitesmoke;
+          position: absolute;
+        }
+      }
+    }
+    @media(max-width: 767px){
+      &.main, &.sidebar{
+        width: 100%;
       }
     }
   }
