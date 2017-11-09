@@ -99,7 +99,7 @@ class OrderBookController extends Controller
         foreach ($dbResults as $dbResult) {
 
             $result[] = array(
-                $dbResult->updated_at->format('Y/m/d - H:i:s'), //Market
+                $dbResult->updated_at->format('d/m/Y H:i:s A'), //Market
                 $dbResult->execution_type, //Currency
                 number_format($dbResult->value, 8, '.', ''),
                 number_format($dbResult->quantity, 8, '.', ''),
