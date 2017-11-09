@@ -22,36 +22,51 @@ section#exchange-details{
   .info_container{
     display: grid;
     padding-top: 30px;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-column-gap: 40px;
     .graphic {
-      grid-column: 1 / 6;
+      grid-column: 1 / 7;
     }
     .info_currency {
-      grid-column:  6 / 9;
+      grid-column:  7 / 10;
       .info_currency_table {
         border: none;
         .currency_header {
-          img {
+          position:relative;
+          vertical-align: middle;
+          height: 100px;
+          .currency_header_title {
+            position:absolute;
+            width: 100%;
+            top:35px;
+            left:85px;
+            font-weight: 600;
+            font-size: 20px;
+          }
+          .currency_header_img {
+            position:relative;
             width: 70px;
-            float: left;
           }
         }
-        tr .key_values {
-          text-align: left;
-          vertical-align: middle;
-          font-weight: 600;
-          font-size: 20px;
-        }
-        tr .usd_values {
-          text-align: right;
-          font-size: 10px;
-        }
-        tr .currency_values {
-          font-weight: 600;
-          font-size: 18px;
-          text-align: right;
-          border: none;
+        tr {
+          .key_values {
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 600;
+            font-size: 20px;
+          }
+          .usd_values {
+            text-align: right;
+            font-size: 10px;
+            vertical-align: top;
+          }
+          .currency_values {
+            font-weight: 600;
+            vertical-align: bottom;
+            font-size: 18px;
+            text-align: right;
+            border: none;
+          }
         }
       }
     }

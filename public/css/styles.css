@@ -3454,17 +3454,28 @@ section#exchange-details .order_book_container {
 section#exchange-details .info_container {
   display: grid;
   padding-top: 30px;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   grid-column-gap: 40px; }
   section#exchange-details .info_container .graphic {
-    grid-column: 1 / 6; }
+    grid-column: 1 / 7; }
   section#exchange-details .info_container .info_currency {
-    grid-column: 6 / 9; }
+    grid-column: 7 / 10; }
     section#exchange-details .info_container .info_currency .info_currency_table {
       border: none; }
-      section#exchange-details .info_container .info_currency .info_currency_table .currency_header img {
-        width: 70px;
-        float: left; }
+      section#exchange-details .info_container .info_currency .info_currency_table .currency_header {
+        position: relative;
+        vertical-align: middle;
+        height: 100px; }
+        section#exchange-details .info_container .info_currency .info_currency_table .currency_header .currency_header_title {
+          position: absolute;
+          width: 100%;
+          top: 35px;
+          left: 85px;
+          font-weight: 600;
+          font-size: 20px; }
+        section#exchange-details .info_container .info_currency .info_currency_table .currency_header .currency_header_img {
+          position: relative;
+          width: 70px; }
       section#exchange-details .info_container .info_currency .info_currency_table tr .key_values {
         text-align: left;
         vertical-align: middle;
@@ -3472,9 +3483,11 @@ section#exchange-details .info_container {
         font-size: 20px; }
       section#exchange-details .info_container .info_currency .info_currency_table tr .usd_values {
         text-align: right;
-        font-size: 10px; }
+        font-size: 10px;
+        vertical-align: top; }
       section#exchange-details .info_container .info_currency .info_currency_table tr .currency_values {
         font-weight: 600;
+        vertical-align: bottom;
         font-size: 18px;
         text-align: right;
         border: none; }

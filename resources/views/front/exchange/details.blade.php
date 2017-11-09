@@ -22,8 +22,8 @@
                    <thead>
                        <tr>
                            <th class="currency_header" colspan="2">
-                                <img src="/images/tokens/{!!$currencyTo->image!!}" />
-                               <p>{{$currencyTo->name}} ({{$currencyTo->alias}})</p>
+                               <div><img class="currency_header_img" src="/images/tokens/{!!$currencyTo->image!!}" /></div>
+                               <div class="currency_header_title">{{$currencyTo->name}} ({{$currencyTo->alias}})</div>
                             </th>
                        </tr>
                    </thead>
