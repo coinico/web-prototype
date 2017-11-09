@@ -58,20 +58,20 @@
    	<div class="row header-content">
 
    		<div class="logo">
-	    	<a href="{{ url('') }}">Author</a>
+	    	<a class="{{$_SERVER['PHP_SELF'] === '/index.php' ? 'smoothscroll' : ''}}" href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '#first-stop' : route('home')}}">Author</a>
 	    </div>
 
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
+					<a class="smoothscroll" href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
+					<a class="smoothscroll" href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
 				</li>
 				@guest
 					<li {{ currentRoute('exchange') }}>
-						<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
+						<a class="smoothscroll" href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@else
 					<li {{ currentRoute('exchange') }}>
@@ -79,30 +79,30 @@
 					</li>
 				@endguest
 				<li {{ currentRoute('community') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
+					<a class="smoothscroll" href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Registrarme')</a>
+						<a class="smoothscroll" href="{{ request()->url() }}">@lang('Registrarme')</a>
 					</li>
 				@endrequest
 				@request('password/email')
 					<li class="current">
-						<a href="{{ request()->url() }}">@lang('Contraseña olvidada')</a>
+						<a class="smoothscroll" href="{{ request()->url() }}">@lang('Contraseña olvidada')</a>
 					</li>
 				@else
 					@guest
 						<li {{ currentRoute('login') }}>
-							<a href="{{ route('login') }}">@lang('Ingresar')</a>
+							<a class="smoothscroll" href="{{ route('login') }}">@lang('Ingresar')</a>
 						</li>
 						@request('password/reset')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
+								<a class="smoothscroll" href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 						@request('password/reset/*')
 							<li class="current">
-								<a href="{{ request()->url() }}">@lang('Contraseña')</a>
+								<a class="smoothscroll" href="{{ request()->url() }}">@lang('Contraseña')</a>
 							</li>
 						@endrequest
 					@else
