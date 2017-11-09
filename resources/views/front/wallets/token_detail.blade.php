@@ -11,8 +11,8 @@
         </div>
         <div1 class="middle-details">
             <p1 class="available_balance">Balance Disponible</p1>
-            <p1 class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, ',', '.')!!}</p1>
-            <p1 class="transaction_history">Historial de Transacciones</p1>
+            <p1 class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p1>
+            <button class="manage_button">Administrar</button>
         </div1>
     </div>
 </div>
