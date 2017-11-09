@@ -186,7 +186,8 @@ class DatabaseSeeder extends Seeder
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),
                 'executed' => array_random($booleanTypes),
-                'created_at' => $date
+                'created_at' => $date,
+                'updated_at' => $date
             ]
         );
     }
