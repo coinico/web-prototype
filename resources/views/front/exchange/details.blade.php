@@ -18,54 +18,57 @@
                </table>
            </div1>
            <div class="info_currency">
-               <table id="info_currency" class="display cell-border hover stripe" cellspacing="0">
+               <table id="info_currency" class="info_currency_table" cellspacing="0">
                    <thead>
                        <tr>
-                           <th colspan="2">{{$currencyFrom->name}} ({{$currencyFrom->alias}})</th>
+                           <th class="currency_header" colspan="2">
+                                <img src="/images/tokens/{!!$currencyTo->image!!}" />
+                               <p>{{$currencyTo->name}} ({{$currencyTo->alias}})</p>
+                            </th>
                        </tr>
                    </thead>
                    <tbody>
                        <tr>
-                           <td rowspan="2">Último</td>
-                           <td class=""><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">Último</td>
+                           <td class="currency_values">{{$basicDetails->last_value}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->last_value * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2">Volumen {{$currencyFrom->alias}}</td>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">Volumen {{$currencyFrom->alias}}</td>
+                           <td class="currency_values">{{$basicDetails->volume}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->volume * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2">Precio Venta</td>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">Precio Venta</td>
+                           <td class="currency_values">{{$basicDetails->ask}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->ask * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2">Precio Compra</td>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">Precio Compra</td>
+                           <td class="currency_values">{{$basicDetails->bid}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->bid * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2">Máximo 24 horas</td>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">24H Máximo</td>
+                           <td class="currency_values">{{$basicDetails->high}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->high * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2" >Mínimo 24 horas</td>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td rowspan="2" class="key_values">24H Mínimo</td>
+                           <td class="currency_values">{{$basicDetails->low}}</td>
                        </tr>
                        <tr>
-                           <td><strong>{{$currencyFrom->alias}}</strong></td>
+                           <td class="usd_values">$ {{$basicDetails->low * $currencyFrom->usd_value}}</td>
                        </tr>
                    </tbody>
                </table>

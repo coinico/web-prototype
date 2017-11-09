@@ -74,6 +74,8 @@ class OrderBookController extends Controller
                   order by change_percent desc
                      limit 2");
 
+
+
         return view('front.exchange.index', compact('volumeCurrencies', 'biggestGainCurrencies'));
     }
 
@@ -84,7 +86,22 @@ class OrderBookController extends Controller
         $currencyFrom = CryptoCurrency::where("alias", $pairArray[0])->first();
         $currencyTo = CryptoCurrency::where("alias", $pairArray[1])->first();
 
-        return view('front.exchange.details', compact("currencyFrom", "currencyTo"));
+        $basicDetails = DB::select("select ob.crypto_currency_to, sum(ob.quantity*ob.value) as volume, 
+                           max(ob.value) as high, 
+                           min(ob.value) as low,
+                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
+                            order by updated_at desc limit 1) as last_value,
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'ask'
+                            order by value asc , created_at desc  limit 1) as ask,
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'bid'
+                            order by value desc , created_at desc limit 1) as bid
+                      from order_book ob 
+                     where ob.crypto_currency_from = $currencyFrom->id
+    and ob.crypto_currency_to = $currencyTo->id
+    and ob.executed = 1
+    and ob.updated_at >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
+
+        return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails'));
     }
 
     public function lastExecutedOrders()
@@ -167,6 +184,7 @@ class OrderBookController extends Controller
 
     public function ctfMarkets()
     {
+
         $dbResults = DB::select("
                     select crypto_currency_to as crypto_currency, 
                            sum(quantity*value) as volume, 
@@ -176,6 +194,10 @@ class OrderBookController extends Controller
             Date(updated_at) = CURDATE() -INTERVAL 1 DAY order by updated_at desc limit 1) as prev_day,
                            (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
                             order by updated_at desc limit 1) as last_value,
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'ask'
+                            order by value asc , created_at desc  limit 1) as ask,
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'bid'
+                            order by value desc , created_at desc limit 1) as bid,
                            (select (IF(isnull(prev_day), 0, (last_value - prev_day) / prev_day * 100))) as change_percent,
                            (select concat(FORMAT(change_percent, 1),'%')) as change_string
                       from order_book ob
@@ -193,17 +215,7 @@ class OrderBookController extends Controller
 
             $currentCurrency = CryptoCurrency::find($dbResult->crypto_currency);
 
-            $ask = OrderBook::where("crypto_currency_to", $dbResult->crypto_currency)
-                ->where("executed", 0)
-                ->where("type", "ask")
-                ->orderBy('id', 'DESC')->first();
-
-            $bid = OrderBook::where("crypto_currency_to", $dbResult->crypto_currency)
-                ->where("executed", 0)
-                ->where("type", "bid")
-                ->orderBy('id', 'DESC')->first();
-
-            $spreadString = MarketUtils::calculateSpreadString($ask->value, $bid->value);
+            $spreadString = MarketUtils::calculateSpreadString($dbResult->ask, $dbResult->bid);
 
             $result[] = array(
                 $ctfCurrency->alias."-".$currentCurrency->alias, //Market

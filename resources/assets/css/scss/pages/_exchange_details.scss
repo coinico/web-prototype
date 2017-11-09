@@ -29,6 +29,31 @@ section#exchange-details{
     }
     .info_currency {
       grid-column:  6 / 9;
+      .info_currency_table {
+        border: none;
+        .currency_header {
+          img {
+            width: 70px;
+            float: left;
+          }
+        }
+        tr .key_values {
+          text-align: left;
+          vertical-align: middle;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        tr .usd_values {
+          text-align: right;
+          font-size: 10px;
+        }
+        tr .currency_values {
+          font-weight: 600;
+          font-size: 18px;
+          text-align: right;
+          border: none;
+        }
+      }
     }
   }
 }

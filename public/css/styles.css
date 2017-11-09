@@ -3460,6 +3460,24 @@ section#exchange-details .info_container {
     grid-column: 1 / 6; }
   section#exchange-details .info_container .info_currency {
     grid-column: 6 / 9; }
+    section#exchange-details .info_container .info_currency .info_currency_table {
+      border: none; }
+      section#exchange-details .info_container .info_currency .info_currency_table .currency_header img {
+        width: 70px;
+        float: left; }
+      section#exchange-details .info_container .info_currency .info_currency_table tr .key_values {
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 600;
+        font-size: 20px; }
+      section#exchange-details .info_container .info_currency .info_currency_table tr .usd_values {
+        text-align: right;
+        font-size: 10px; }
+      section#exchange-details .info_container .info_currency .info_currency_table tr .currency_values {
+        font-weight: 600;
+        font-size: 18px;
+        text-align: right;
+        border: none; }
 
 section#property {
   padding-top: 40px;
