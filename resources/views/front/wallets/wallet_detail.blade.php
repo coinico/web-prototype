@@ -1,8 +1,10 @@
 <div class="wallet-wrapper">
     <div class="wallet">
         <div class="left-details">
-            <img src="/images/{!!$standardWallet->currency->image!!}" />
-            <p class="currency_name">{{$standardWallet->currency->name}}</p>
+            <a href="{{ url("userWallet/$standardWallet->id/manage") }}">
+                <img src="/images/{!!$standardWallet->currency->image!!}" />
+                 <p class="currency_name">{{$standardWallet->currency->name}}</p>
+            </a>
         </div>
         <div class="right-details">
             <img src="/images/wallets/qr_code.png" />
