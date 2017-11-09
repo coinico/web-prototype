@@ -170,7 +170,7 @@ class PostController extends Controller
     public function property($id)
     {
         $property = Property::find($id);
-        return view('front.property', compact('properties'));
+        return view('front.property', compact('property'));
     }
 
 

@@ -166,7 +166,7 @@
 
 	            <h4>@lang('Acerca de nuestro sitio')</h4>
 
-	               <p>@lang('Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.')</p>
+	               <p>@lang('Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma. Se parte de nuestra comunidad y contribuí con futuro del negocio inmobiliario descentralizado.')</p>
 
 		      </div> <!-- end footer-info -->
 

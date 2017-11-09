@@ -9,18 +9,18 @@
 
    <section id="property">
        <div class="row">
-            <h1> ARG-BN-001 <span>U$D 1.000.000</span></h1>
-            <img src="/images/example.jpg" />
+            <h1> {{$property->title}} <span>U$D {{$property->value}}</span></h1>
+            <img src="/images/properties/{{$property->images}}" class="main-image" />
 
             <div class="economic">
                 <div class="item-wrap">
-                    <div class="item"><p>29,25%</p></div>
+                    <div class="item"><p>{{$rand = rand(0,100)}}%</p></div>
                 </div>
                 <div class="item-wrap">
                     <div class="item"><p>486 <small>Suscriptores</small></p></div>
                 </div>
                 <div class="item-wrap">
-                    <div class="item"><p>U$D 117.000</p></div>
+                    <div class="item"><p>U$D {{$rand*str_replace('.','',$property->value)*0.01}}</p></div>
                 </div>
             </div>
 
@@ -59,8 +59,7 @@
 
            <section class="decription">
                <h3> Descripción </h3>
-               <p>Proyecto destinado a la acumulación de capital colaborativo para la adquisición parcial de la titularidad del inmueble detallado en este documento. Se suscribe inicialmente a la participación mediante la compra mínima de de un token ARG-BN-001 y se establece como contraprestación la obtención de beneficios, proporcionales al capital suscripto, originados por el arrendamiento de la propiedad y por la recompra por parte del inquilino de la totalidad de los tokens en la fecha de finalización del proyecto.
-               La participación en el proyecto se extingue al completarse el plazo y las condiciones previstas. Se puede recuperar el capital invertido en cualquier momento mediante el intercambio de los token en el mercado donde estos presentan cotización.</p>
+               <p>{{$property->description}}</p>
 
                <h4>Detalles:</h4>
                <p>Se realizó la correspondiente tasación de la propiedad en U$D 1.000.000 y se procede a emitir 100.000 unidades de ARG-BN-001 por un valor inicial de U$D 10 c/u.</p>

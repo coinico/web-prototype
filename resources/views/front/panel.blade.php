@@ -34,7 +34,7 @@
                         <div class="price">
                             <div>
                                 <span>1,43 USD</span>
-                                <small>PRECIO CASATOKEN</small>
+                                <small>PRECIO CTF</small>
                             </div>
                         </div>
                         <div class="variation">
@@ -70,6 +70,7 @@
                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                 </div>
            </div>
+           <div class="divider"></div>
            <!--<div class="summary">
                <h3>Resumen</h3>
                <div class="">
