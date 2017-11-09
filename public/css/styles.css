@@ -3440,9 +3440,17 @@ section#exchange .row {
 section#exchange-details .row {
   margin-top: 30px;
   background-color: white;
-  padding: 20px 50px 20px 50px; }
+  padding: 0 50px 0 50px; }
   section#exchange-details .row .arrow_percent {
     width: 9px; }
+section#exchange-details .order_book_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 50px; }
+  section#exchange-details .order_book_container .order_book_bid {
+    grid-column: 1; }
+  section#exchange-details .order_book_container .order_book_ask {
+    grid-column: 2; }
 
 section#property {
   padding-top: 40px;

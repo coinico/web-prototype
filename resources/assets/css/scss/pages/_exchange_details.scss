@@ -2,9 +2,20 @@ section#exchange-details{
   .row {
     margin-top: 30px;
     background-color: white;
-    padding: 20px 50px 20px 50px;
+    padding: 0 50px 0 50px;
     .arrow_percent{
       width: 9px;
+    }
+  }
+  .order_book_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 50px;
+    .order_book_bid {
+      grid-column: 1;
+    }
+    .order_book_ask {
+      grid-column: 2;
     }
   }
 }

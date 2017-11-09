@@ -44,7 +44,7 @@ class OrderBookController extends Controller
                            cc.name,
                            cc.image,
                            cc.alias
-                  order by sum(ob.quantity*ob.value) desc
+                  order by volume desc
                      limit 2");
 
         $biggestGainCurrencies = DB::select("
@@ -104,6 +104,62 @@ class OrderBookController extends Controller
                 number_format($dbResult->value, 8, '.', ''),
                 number_format($dbResult->quantity, 8, '.', ''),
                 number_format($dbResult->value * $dbResult->quantity, 8, '.', '')
+            );
+        }
+        return $result;
+    }
+
+    public function askOrders()
+    {
+        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
+            ->where("crypto_currency_to", Input::get("currencyTo"))
+            ->where("executed", 0)
+            ->where("type", "ask")
+            ->orderBy("value", "ASC")
+            ->orderBy("created_at", "DESC")->get();
+
+        $result = array();
+        $totalSum = 0;
+
+        foreach ($dbResults as $dbResult) {
+
+            $total = $dbResult->quantity * $dbResult->value;
+            $sum = $totalSum + $total;
+            $totalSum += $total;
+
+            $result[] = array(
+                number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($total, 4, '.', ''),
+                number_format($sum, 4, '.', '')
+            );
+        }
+        return $result;
+    }
+
+    public function bidOrders()
+    {
+        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
+            ->where("crypto_currency_to", Input::get("currencyTo"))
+            ->where("executed", 0)
+            ->where("type", "bid")
+            ->orderBy("value", "DESC")
+            ->orderBy("created_at", "DESC")->get();
+
+        $result = array();
+        $totalSum = 0;
+
+        foreach ($dbResults as $dbResult) {
+
+            $total = $dbResult->quantity * $dbResult->value;
+            $sum = $totalSum + $total;
+            $totalSum += $total;
+
+            $result[] = array(
+                number_format($sum, 4, '.', ''),
+                number_format($total, 4, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($dbResult->value, 8, '.', ''),
             );
         }
         return $result;
