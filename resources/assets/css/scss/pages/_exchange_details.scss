@@ -10,7 +10,7 @@ section#exchange-details{
   .order_book_container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 50px;
+    grid-column-gap: 40px;
     .order_book_bid {
       grid-column: 1;
     }

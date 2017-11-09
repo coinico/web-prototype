@@ -13,6 +13,7 @@ $(document).ready(function(){
 
             $('#order_book_ask').DataTable( {
                 "ordering": false,
+                "searching": false,
                 data: res,
                 order: [[ 0, "desc" ]],
                 columnDefs: [
@@ -46,6 +47,7 @@ $(document).ready(function(){
         success: function(res){
 
             $('#order_book_bid').DataTable( {
+                "searching": false,
                 "ordering": false,
                 data: res,
                 order: [[ 0, "desc" ]],

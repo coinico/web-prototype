@@ -3446,7 +3446,7 @@ section#exchange-details .row {
 section#exchange-details .order_book_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 50px; }
+  grid-column-gap: 40px; }
   section#exchange-details .order_book_container .order_book_bid {
     grid-column: 1; }
   section#exchange-details .order_book_container .order_book_ask {
@@ -3547,6 +3547,7 @@ section#welcome {
 section#panel {
   margin: 40px 15px; }
   section#panel section {
+    position: relative;
     background: white;
     padding: 15px;
     color: #666; }
@@ -3594,10 +3595,10 @@ section#panel {
               font-size: 33px; }
           section#panel section .tabs .tab .currency-info > div:last-child {
             border: none; }
-        @media (max-width: 991px) {
+        @media (max-width: 1200px) {
           section#panel section .tabs .tab .currency-info > div span {
             font-size: 30px; } }
-        @media (max-width: 767px) {
+        @media (max-width: 991px) {
           section#panel section .tabs .tab .currency-info > div {
             width: 100%;
             border-bottom: 1px dashed #ccc;
@@ -3623,6 +3624,53 @@ section#panel {
           font-size: 25px; }
         section#panel section .summary > div small {
           display: block; }
+    section#panel section.main {
+      width: calc(100% - 315px);
+      float: left; }
+    section#panel section.sidebar {
+      width: 300px;
+      float: right; }
+      section#panel section.sidebar .title {
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ccc; }
+      section#panel section.sidebar .items .item {
+        padding: 15px 0 22px 0;
+        border-bottom: 1px dashed #ccc;
+        display: block;
+        color: #666; }
+        section#panel section.sidebar .items .item:hover {
+          color: #666; }
+        section#panel section.sidebar .items .item span {
+          line-height: 38px;
+          padding-left: 10px; }
+        section#panel section.sidebar .items .item img {
+          float: left;
+          width: 38px; }
+        section#panel section.sidebar .items .item .detail {
+          float: right;
+          text-align: right;
+          margin-top: -5px; }
+          section#panel section.sidebar .items .item .detail span {
+            line-height: 25px;
+            font-size: 14px; }
+          section#panel section.sidebar .items .item .detail small {
+            display: block;
+            color: #ccc;
+            line-height: 10px; }
+        section#panel section.sidebar .items .item:last-child {
+          border: none; }
+      section#panel section.sidebar .divider {
+        height: 20px; }
+        section#panel section.sidebar .divider:before {
+          content: '';
+          left: 0;
+          right: 0;
+          height: 15px;
+          background: whitesmoke;
+          position: absolute; }
+    @media (max-width: 767px) {
+      section#panel section.main, section#panel section.sidebar {
+        width: 100%; } }
   @media (max-width: 490px) {
     section#panel {
       margin: 40px 0px; } }
