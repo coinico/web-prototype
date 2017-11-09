@@ -1,14 +1,12 @@
 
-var $currencyFrom = "<?php Print($currencyFrom->id); ?>";
-var $currencyTo = "<?php Print($currencyTo->id); ?>";
-
 $(document).ready(function(){
 
     $.extend( $.fn.dataTable.defaults, {
             order: [[ 2, "desc" ]],
             columnDefs: [
-                { "className": "dt-body-left", targets: [0, 1, 8] },
-                { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7] }
+                { "className": "dt-body-left", targets: [0] },
+                { "className": "dt-body-center", targets: [1] },
+                { "className": "dt-body-right", targets: [2, 3, 4] }
             ],
             info: true,
             dom: '<if<t>lp>',
@@ -29,18 +27,19 @@ $(document).ready(function(){
     $.get({
         url: lastExecutedOrders,
         data: {
-            "currencyFrom": $currencyFrom,
-            "$currencyTo": $currencyTo
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
         },
         dataType: "json",
         success: function(res){
 
             $('#lastExecutedOrders').DataTable( {
                 data: res,
-                order: [[ 2, "desc" ]],
+                order: [[ 0, "desc" ]],
                 columnDefs: [
-                    { "className": "dt-body-center", targets: [0, 1]},
-                    { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7]}
+                    { "className": "dt-body-left", targets: [0] },
+                    { "className": "dt-body-center", targets: [1] },
+                    { "className": "dt-body-right", targets: [2, 3, 4] }
                 ],
                 language: {
                     "info": "<strong>Últimas órdenes ejecutadas</strong>"
