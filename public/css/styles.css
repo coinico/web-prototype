@@ -3451,6 +3451,15 @@ section#exchange-details .order_book_container {
     grid-column: 1; }
   section#exchange-details .order_book_container .order_book_ask {
     grid-column: 2; }
+section#exchange-details .info_container {
+  display: grid;
+  padding-top: 30px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 40px; }
+  section#exchange-details .info_container .graphic {
+    grid-column: 1 / 6; }
+  section#exchange-details .info_container .info_currency {
+    grid-column: 6 / 9; }
 
 section#property {
   padding-top: 40px;

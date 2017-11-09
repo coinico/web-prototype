@@ -18,4 +18,17 @@ section#exchange-details{
       grid-column: 2;
     }
   }
+
+  .info_container{
+    display: grid;
+    padding-top: 30px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 40px;
+    .graphic {
+      grid-column: 1 / 6;
+    }
+    .info_currency {
+      grid-column:  6 / 9;
+    }
+  }
 }
