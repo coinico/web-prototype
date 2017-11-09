@@ -107,15 +107,6 @@ class PostController extends Controller
         return view('front.index', compact('posts', 'info'));
     }
 
-    /**
-     * Display a listing of exchanges.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function exchange()
-    {
-        return view('front.exchange');
-    }
 
     /**
      * Display a listing of community.

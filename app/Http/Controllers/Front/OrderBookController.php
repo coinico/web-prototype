@@ -16,6 +16,11 @@ use App\Models\OrderBook;
 class OrderBookController extends Controller
 {
 
+    public function exchange()
+    {
+        return view('front.exchange.exchange');
+    }
+
     public function ctfMarkets()
     {
         $dbResults = DB::select("

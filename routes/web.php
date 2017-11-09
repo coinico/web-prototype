@@ -24,7 +24,7 @@ Route::name('logout')->get('/logout' , 'Auth\LoginController@logout');
 Route::name('home')->get('/', 'Front\PostController@index');
 
 // Exchange
-Route::name('exchange')->get('/exchange', 'Front\PostController@exchange');
+Route::name('exchange')->get('/exchange', 'Front\OrderBookController@exchange');
 
 //Owners
 Route::name('owners')->get('/owners', 'Front\PostController@owners');
