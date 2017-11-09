@@ -52,11 +52,16 @@ class OrderBookController extends Controller
                 ->where("executed", 1)
                 ->orderBy('id', 'DESC')->first();
 
+            $prevDay = OrderBook::where("executed", 1)
+                ->where("crypto_currency_to", $dbResult->crypto_currency)
+                ->whereRaw('Date(updated_at) = CURDATE() -INTERVAL 1 DAY')
+                ->orderBy('updated_at', 'DESC')->first();
+
             $spreadString = MarketUtils::calculateSpreadString($ask->value, $bid->value);
 
-            $changeString = MarketUtils::calculateChangeString($market['Summary']['PrevDay'], $last->value);
+            $changeString = MarketUtils::calculateChangeString($prevDay->value, $last->value);
 
-            $result = array(
+            $result[] = array(
                 $ctfCurrency->alias."-".$currentCurrency->alias, //Market
                 $currentCurrency->name, //Currency
                 number_format($dbResult->volume, 3, '.', ','), //Volume
