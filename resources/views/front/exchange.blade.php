@@ -19,41 +19,6 @@
                </thead>
            </table>
        </div>
-
-       <div class="row">
-           <table id="btc" class="display cell-border hover stripe" cellspacing="0" width="100%">
-               <thead>
-               <tr>
-                   <th>Mercado</th>
-                   <th>Moneda</th>
-                   <th>Volúmen</th>
-                   <th>Cambio</th>
-                   <th>Último Precio</th>
-                   <th>Máximo</th>
-                   <th>Mínimo</th>
-                   <th>Margen</th>
-                   <th>Añadido</th>
-               </tr>
-               </thead>
-           </table>
-       </div>
-       <div class="row">
-           <table id="eth" class="display" cellspacing="0" width="100%">
-               <thead>
-               <tr>
-                   <th>Mercado</th>
-                   <th>Moneda</th>
-                   <th>Volúmen</th>
-                   <th>Cambio</th>
-                   <th>Último</th>
-                   <th>Máximo</th>
-                   <th>Mínimo</th>
-                   <th>Margen</th>
-                   <th>Añadido</th>
-               </tr>
-               </thead>
-           </table>
-       </div>
    </section>
 
 @endsection
