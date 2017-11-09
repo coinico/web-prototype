@@ -9,7 +9,7 @@
                <tr>
                    <th>Mercado</th>
                    <th>Moneda</th>
-                   <th>Volúmen</th>
+                   <th>Volumen</th>
                    <th>Cambio</th>
                    <th>Último Precio</th>
                    <th>Máximo</th>
