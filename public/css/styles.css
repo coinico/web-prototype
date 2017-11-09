@@ -3388,6 +3388,11 @@ section#create-wallet {
         position: absolute;
         margin-top: 100px; }
 
+section#exchange .row {
+  margin-top: 30px;
+  background-color: white;
+  padding: 20px 50px 20px 50px; }
+
 section#property {
   padding-top: 40px;
   color: #666; }
