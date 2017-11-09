@@ -9,10 +9,10 @@
             <p class="address"></p>
 
         </div>
-        <div1 class="middle-details">
-            <p1 class="available_balance">Balance Disponible</p1>
-            <p1 class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p1>
-            <button class="manage_button">Administrar</button>
-        </div1>
+        <div class="middle-details">
+            <p class="available_balance">Balance Disponible</p>
+            <p class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p>
+            <button class="manage_button" onclick="window.location='{{ url("userWallet/$tokenWallet->id/manage") }}'">Administrar</button>
+        </div>
     </div>
 </div>

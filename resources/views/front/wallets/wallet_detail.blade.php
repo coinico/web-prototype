@@ -9,10 +9,10 @@
             <p class="address"></p>
 
         </div>
-        <div1 class="middle-details">
-            <p1 class="available_balance">Balance Disponible</p1>
+        <div class="middle-details">
+            <p class="available_balance">Balance Disponible</p>
             <p1 class="balance">{!!number_format($standardWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p1>
-            <button class="manage_button">Administrar</button>
-        </div1>
+            <button class="manage_button" onclick="window.location='{{ url("userWallet/$standardWallet->id/manage") }}'">Administrar</button>
+        </div>
     </div>
 </div>
