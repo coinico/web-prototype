@@ -8,6 +8,7 @@ use App\{
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\User;
+use App\Models\UserWallet;
 
 class PostController extends Controller
 {
@@ -192,7 +193,16 @@ class PostController extends Controller
     public function panel()
     {
         $user = User::find(auth()->user()->id);
-        return view('front.panel', compact('user'));
+
+        $standardWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','currency');
+        })->where('user_id', $user->id)->get();
+
+        $tokenWallets = UserWallet::whereHas('currency', function($q){
+            $q->where('type', '=','token');
+        })->where('user_id', $user->id)->get();
+
+        return view('front.panel', compact('user','standardWallets', 'tokenWallets'));
     }
 
 }
