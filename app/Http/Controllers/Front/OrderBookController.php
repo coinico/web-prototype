@@ -3,35 +3,71 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserWallet;
-use App\Models\UserWalletTransaction;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use App\Utils\MarketUtils;
+use Illuminate\Support\Facades\DB;
+use App\Models\CryptoCurrency;
+use App\Models\OrderBook;
 
 /**
  * Class OrderBookController.
  *
- * @author  The scaffold-interface created at 2017-11-06 10:20:35pm
- * @link  https://github.com/amranidev/scaffold-interface
+ * @author lnacosta
  */
 class OrderBookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return  \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function ctfMarkets()
     {
-        $userId = auth()->user()->id;
-        $standardWallets = UserWallet::whereHas('currency', function($q){
-            $q->where('type', '=','currency');
-        })->where('user_id', $userId)->get();
+        $dbResults = DB::select("
+                    select crypto_currency, 
+                           sum(quantity*value) as volume, 
+                           max(value) as high, 
+                           min(value) as low
+                      from order_book 
+                     where crypto_currency_from = 2 
+                       and executed = 1
+                       and updated_at >= (NOW() - INTERVAL 1 DAY) 
+                  group by crypto_currency_to 
+                  order by sum(quantity*value)");
 
-        $tokenWallets = UserWallet::whereHas('currency', function($q){
-            $q->where('type', '=','token');
-        })->where('user_id', $userId)->get();
+        $ctfCurrency = CryptoCurrency::find(2);
 
-        return view('front.wallets.index', compact('standardWallets', 'tokenWallets'));
+        $result = array();
+
+        foreach ($dbResults as $dbResult) {
+
+            $currentCurrency = CryptoCurrency::find($dbResult->crypto_currency);
+
+            $ask = OrderBook::where("crypto_currency_to", $dbResult->crypto_currency)
+                ->where("executed", 0)
+                ->where("type", "ask")
+                ->orderBy('id', 'DESC')->first();
+
+            $bid = OrderBook::where("crypto_currency_to", $dbResult->crypto_currency)
+                ->where("executed", 0)
+                ->where("type", "bid")
+                ->orderBy('id', 'DESC')->first();
+
+            $last = OrderBook::where("crypto_currency_to", $dbResult->crypto_currency)
+                ->where("executed", 1)
+                ->orderBy('id', 'DESC')->first();
+
+            $spreadString = MarketUtils::calculateSpreadString($ask->value, $bid->value);
+
+            $changeString = MarketUtils::calculateChangeString($market['Summary']['PrevDay'], $last->value);
+
+            $result = array(
+                $ctfCurrency->alias."-".$currentCurrency->alias, //Market
+                $currentCurrency->name, //Currency
+                number_format($dbResult->volume, 3, '.', ','), //Volume
+                $changeString,  //Change
+                number_format($last->value, 8, '.', ','), //Last price
+                number_format($dbResult->high, 8, '.', ','), //High
+                number_format($dbResult->low, 8, '.', ','), //Low
+                $spreadString  //Spread
+            );
+        };
+
+        return $result;
     }
 }

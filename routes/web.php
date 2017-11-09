@@ -76,6 +76,7 @@ Route::resource('wallets', 'Front\UserWalletController');
 
 //Markets
 Route::name('markets')->get('/markets', 'Back\PostController@markets');
+Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
 
 
 
