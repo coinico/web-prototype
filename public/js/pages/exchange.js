@@ -26,6 +26,7 @@ $(document).ready(function(){
         url: ctfMarketsUrl,
         dataType: "json",
         success: function(res){
+
             $('#ctf').DataTable( {
                 data: res,
                 order: [[ 2, "desc" ]],
@@ -34,7 +35,7 @@ $(document).ready(function(){
                     { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7]}
                 ],
                 language: {
-                    "info": "<strong>CTF MARKET</strong>"
+                    "info": "<strong>Mercados CasaToken</strong>"
                 }
             });
         }
