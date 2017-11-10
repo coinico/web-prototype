@@ -43,11 +43,16 @@ function removePanel() {
 
 $(document).ready(function(){
 
-    fillOpenOrdersTable();
+    var isLoggedIn = $("#userLoggedIn").val();
+
+    if (isLoggedIn) {
+        fillOpenOrdersTable();
+        fillMyLastExecutedOrdersTable();
+    }
+
     fillAskOrdersTable();
     fillBidOrdersTable();
     fillLastExecutedOrdersTable();
-    fillMyLastExecutedOrdersTable();
     buildTestGraph();
 
 });

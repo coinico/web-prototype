@@ -9,6 +9,7 @@ use App\Models\CryptoCurrency;
 use App\Models\OrderBook;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use \Illuminate\Support\Facades\Auth;
 
 /**
  * Class OrderBookController.
@@ -75,8 +76,6 @@ class OrderBookController extends Controller
                   order by change_percent desc
                      limit 2");
 
-
-
         return view('front.exchange.index', compact('volumeCurrencies', 'biggestGainCurrencies'));
     }
 
@@ -102,7 +101,8 @@ class OrderBookController extends Controller
     and ob.closed_time is not null
     and ob.updated_at >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
 
-        return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails'));
+        $userLoggedIn = Auth::check();
+        return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails', 'userLoggedIn'));
     }
 
     public function lastExecutedOrders()

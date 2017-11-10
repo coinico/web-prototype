@@ -6,6 +6,7 @@
 
        <input type="hidden" id="currencyFrom" value="{{ $currencyFrom->id }}">
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
+       <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
 
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
