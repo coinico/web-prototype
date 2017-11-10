@@ -116,7 +116,33 @@ class OrderBookController extends Controller
         foreach ($dbResults as $dbResult) {
 
             $result[] = array(
-                $dbResult->updated_at->format('d/m/Y H:i:s A'), //Market
+                $dbResult->closed_time->format('d/m/Y H:i:s A'), //Market
+                $dbResult->execution_type, //Currency
+                number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($dbResult->value * $dbResult->quantity, 8, '.', '')
+            );
+        }
+        return $result;
+    }
+
+    public function myLastExecutedOrders()
+    {
+        $userId = auth()->user()->id;
+
+        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
+            ->where("crypto_currency_to", Input::get("currencyTo"))
+            ->whereNull("closed_time")
+            ->where("user_id", $userId)
+            ->orderBy("closed_time", "DESC")->get();
+
+        $result = array();
+
+        foreach ($dbResults as $dbResult) {
+
+            $result[] = array(
+                $dbResult->closed_time->format('d/m/Y H:i:s A'), //Market
+                $dbResult->created_at->format('d/m/Y H:i:s A'), //Market
                 $dbResult->execution_type, //Currency
                 number_format($dbResult->value, 8, '.', ''),
                 number_format($dbResult->quantity, 8, '.', ''),

@@ -163,6 +163,8 @@ class DatabaseSeeder extends Seeder
         else
             $type = "bid";
 
+        $cerrar = array_random($booleanTypes);
+
         OrderBook::create(
             [
                 'user_id' => $userId,
@@ -171,8 +173,10 @@ class DatabaseSeeder extends Seeder
                 'type' => $type,
                 'quantity' => $quantity,
                 'value' => $value,
+                'filled' => $quantity,
+                'current_cost' => $value*$quantity,
                 'execution_type' => array_random($executionTypes),
-                'closed_time' => array_random($booleanTypes) ? $dateToday : NULL
+                'closed_time' => $cerrar ? $dateToday : NULL
             ]
         );
     }
@@ -188,6 +192,8 @@ class DatabaseSeeder extends Seeder
         else
             $type = "bid";
 
+        $cerrar = array_random($booleanTypes);
+
         OrderBook::create(
             [
                 'user_id' => $userId,
@@ -196,8 +202,10 @@ class DatabaseSeeder extends Seeder
                 'type' => $type,
                 'quantity' => $quantity,
                 'value' => $value,
+                'filled' => $quantity,
+                'current_cost' => $value*$quantity,
                 'execution_type' => array_random($executionTypes),
-                'closed_time' => array_random($booleanTypes) ? $dateToday : NULL,
+                'closed_time' => $cerrar ? $dateToday : NULL,
                 'created_at' => $date,
                 'updated_at' => $date
             ]
