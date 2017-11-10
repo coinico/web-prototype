@@ -108,7 +108,8 @@ class OrderBookController extends Controller
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->whereNotNull("closed_time")
+            //->whereNotNull("closed_time")
+            ->where('closed_time', '<>', '', 'and')
             ->orderBy("updated_at", "DESC")->get();
 
         $result = array();
@@ -132,7 +133,7 @@ class OrderBookController extends Controller
 
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->whereNull("closed_time")
+            ->whereNotNull("closed_time")
             ->where("user_id", $userId)
             ->orderBy("closed_time", "DESC")->get();
 
@@ -140,13 +141,18 @@ class OrderBookController extends Controller
 
         foreach ($dbResults as $dbResult) {
 
+            $actualRate = $dbResult->current_cost/$dbResult->filled;
+            $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+
             $result[] = array(
-                $dbResult->closed_time->format('d/m/Y H:i:s A'), //Market
-                $dbResult->created_at->format('d/m/Y H:i:s A'), //Market
-                $dbResult->execution_type, //Currency
+                $dbResult->closed_time->format('d/m/Y H:i:s A'),
+                $dbResult->created_at->format('d/m/Y H:i:s A'),
+                "LIMIT ".strtoupper($dbResult->execution_type),
                 number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->filled, 8, '.', ''),
                 number_format($dbResult->quantity, 8, '.', ''),
-                number_format($dbResult->value * $dbResult->quantity, 8, '.', '')
+                number_format($actualRate, 8, '.', ''),
+                number_format($dbResult->current_cost, 8, '.', '')
             );
         }
         return $result;

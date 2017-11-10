@@ -121,7 +121,7 @@
                    <th>Valor</th>
                    <th>Cantidad llenada</th>
                    <th>Cantidad Total</th>
-                   <th>Valor de Venta Real</th>
+                   <th>Valor Promedio</th>
                    <th>Costo Total</th>
                </tr>
                </thead>

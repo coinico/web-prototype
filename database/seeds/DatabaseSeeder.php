@@ -103,11 +103,10 @@ class DatabaseSeeder extends Seeder
         );
 
         $dateYesterday = date("Y-m-d H:i:s", time() - 60 * 60 * 24);
-        $dateToday = date("Y-m-d H:i:s", time());
 
         for ($i = 1; $i <= 60; $i++) {
-            $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency, $dateToday);
-            $this->createOrderBookWithDate($user->id, $ethCurrency, $ctfCurrency, $dateToday, $dateYesterday);
+            $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency);
+            $this->createOrderBookWithDate($user->id, $ethCurrency, $ctfCurrency, $dateYesterday);
         }
 
         foreach ($tokenCurrencies as $tokenCurrency) {
@@ -118,8 +117,8 @@ class DatabaseSeeder extends Seeder
                 ]
             );
             for ($i = 1; $i <= 60; $i++) {
-                $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency, $dateToday);
-                $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $dateToday, $dateYesterday);
+                $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
+                $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $dateYesterday);
             }
         }
 
@@ -151,7 +150,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    function createOrderBook($userId, $currencyFrom, $currencyTo, $dateToday) {
+    function createOrderBook($userId, $currencyFrom, $currencyTo) {
 
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
@@ -165,23 +164,41 @@ class DatabaseSeeder extends Seeder
 
         $cerrar = array_random($booleanTypes);
 
-        OrderBook::create(
-            [
-                'user_id' => $userId,
-                'crypto_currency_from' => $currencyFrom->id,
-                'crypto_currency_to' => $currencyTo->id,
-                'type' => $type,
-                'quantity' => $quantity,
-                'value' => $value,
-                'filled' => $quantity,
-                'current_cost' => $value*$quantity,
-                'execution_type' => array_random($executionTypes),
-                'closed_time' => $cerrar ? $dateToday : NULL
-            ]
-        );
+        if ($cerrar) {
+            OrderBook::create(
+                [
+                    'user_id' => $userId,
+                    'crypto_currency_from' => $currencyFrom->id,
+                    'crypto_currency_to' => $currencyTo->id,
+                    'type' => $type,
+                    'quantity' => $quantity,
+                    'value' => $value,
+                    'filled' => $quantity,
+                    'current_cost' => $value * $quantity,
+                    'execution_type' => array_random($executionTypes),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
+                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
+                ]
+            );
+        } else {
+            OrderBook::create(
+                [
+                    'user_id' => $userId,
+                    'crypto_currency_from' => $currencyFrom->id,
+                    'crypto_currency_to' => $currencyTo->id,
+                    'type' => $type,
+                    'quantity' => $quantity,
+                    'value' => $value,
+                    'filled' => $quantity,
+                    'current_cost' => $value * $quantity,
+                    'execution_type' => array_random($executionTypes),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
+                ]
+            );
+        }
     }
 
-    function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $dateToday, $date) {
+    function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $date) {
 
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
@@ -194,22 +211,40 @@ class DatabaseSeeder extends Seeder
 
         $cerrar = array_random($booleanTypes);
 
-        OrderBook::create(
-            [
-                'user_id' => $userId,
-                'crypto_currency_from' => $currencyFrom->id,
-                'crypto_currency_to' => $currencyTo->id,
-                'type' => $type,
-                'quantity' => $quantity,
-                'value' => $value,
-                'filled' => $quantity,
-                'current_cost' => $value*$quantity,
-                'execution_type' => array_random($executionTypes),
-                'closed_time' => $cerrar ? $dateToday : NULL,
-                'created_at' => $date,
-                'updated_at' => $date
-            ]
-        );
+        if ($cerrar) {
+            OrderBook::create(
+                [
+                    'user_id' => $userId,
+                    'crypto_currency_from' => $currencyFrom->id,
+                    'crypto_currency_to' => $currencyTo->id,
+                    'type' => $type,
+                    'quantity' => $quantity,
+                    'value' => $value,
+                    'filled' => $quantity,
+                    'current_cost' => $value * $quantity,
+                    'execution_type' => array_random($executionTypes),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
+                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
+                    'updated_at' => $date
+                ]
+            );
+        } else {
+            OrderBook::create(
+                [
+                    'user_id' => $userId,
+                    'crypto_currency_from' => $currencyFrom->id,
+                    'crypto_currency_to' => $currencyTo->id,
+                    'type' => $type,
+                    'quantity' => $quantity,
+                    'value' => $value,
+                    'filled' => $quantity,
+                    'current_cost' => $value * $quantity,
+                    'execution_type' => array_random($executionTypes),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
+                    'updated_at' => $date
+                ]
+            );
+        }
     }
 
 

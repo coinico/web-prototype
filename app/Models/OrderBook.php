@@ -13,6 +13,8 @@ class OrderBook extends Model
 {
     public $timestamps = true;
 
+    protected $dates = ['closed_time'];
+
     protected $table = 'order_book';
 
     protected $fillable = [

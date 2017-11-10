@@ -312,4 +312,39 @@ $(document).ready(function(){
         $( this ).addClass( "done" );
     });
 
+    var myLastExecutedOrders = "./myLastExecutedOrders";
+    $.get({
+        url: myLastExecutedOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#myLastExecutedOrders').DataTable( {
+                data: res,
+                order: [[ 0, "desc" ]],
+                columnDefs: [
+                    { "className": "dt-body-center", targets: [0, 1, 2] },
+                    { "className": "dt-body-right", targets: [3, 4, 5, 6, 7] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Mis Últimas Órdenes</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    }).done(function() {
+        $( this ).addClass( "done" );
+    });
 });

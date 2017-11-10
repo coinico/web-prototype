@@ -34,7 +34,7 @@ class CreateOrderBookTable extends Migration
 
             $table->enum('execution_type', array('buy', 'sell'));
 
-            $table->timestamp('closed_time')->nullable()->default(null); // si fue ejecutada
+            $table->timestamp('closed_time')->nullable(); // si fue ejecutada
 
             $table->timestamps();
         });
