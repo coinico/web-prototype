@@ -1,6 +1,7 @@
 section#exchange-details{
 
   .row {
+    font-family: "montserrat-regular", sans-serif;
     margin-top: 30px;
     background-color: white;
     padding: 0 50px 0 50px;
@@ -16,7 +17,7 @@ section#exchange-details{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 40px;
-    grid-template-rows: 45px 350px;
+    grid-template-rows: 60px 350px;
     .submit_trade{
       left: 20%;
     }
@@ -26,7 +27,7 @@ section#exchange-details{
       display: table;
       border-collapse: separate;
       box-sizing: border-box;
-      font-family: 'Open Sans',sans-serif;
+      font-family: "montserrat-regular", sans-serif;
       font-size: 12px;
       line-height: 1.42857143;
       color: #333;
@@ -62,7 +63,7 @@ section#exchange-details{
         display: table-cell;
         box-sizing: border-box;
         border-collapse: separate;
-        font-family: 'Open Sans',sans-serif;
+        font-family: "montserrat-regular", sans-serif;
         line-height: 1.42857143;
         color: #333;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -91,7 +92,7 @@ section#exchange-details{
         }
       }
       .input-group-addon {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "montserrat-regular", sans-serif;
         border-collapse: separate;
         box-sizing: border-box;
         background-color: #f2f5f9;
@@ -115,28 +116,34 @@ section#exchange-details{
     .order_book_title_trade_bid{
       grid-column: 1 / 2;
       grid-row: 1;
+      background-color: #f2f5f9;
       text-align: center;
-      font-size: 24px;
-      margin-top:25px;
+      font-size: 20px;
+      padding-top: 5px;
+      margin-top:22px;
       vertical-align: middle;
       font-weight: 600;
     }
     .order_book_title_trade_ask{
       grid-column: 2 / 3;
       grid-row: 1;
+      background-color: #f2f5f9;
       text-align: center;
-      font-size: 24px;
-      margin-top:25px;
+      padding-top: 5px;
+      font-size: 20px;
+      margin-top:22px;
       vertical-align: middle;
       font-weight: 600;
     }
     .order_book_trade_bid {
       grid-column: 1;
       grid-row: 2;
+      margin-top:-25px;
     }
     .order_book_trade_ask {
       grid-column: 2;
       grid-row: 2;
+      margin-top:-25px;
     }
   }
 
