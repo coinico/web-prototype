@@ -110,7 +110,8 @@
                </thead>
            </table>
        </div>
-
+       
+       @auth
        <div class="row">
            <table id="myLastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
@@ -127,6 +128,7 @@
                </thead>
            </table>
        </div>
+       @endauth
    </section>
 
 @endsection
