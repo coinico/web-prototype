@@ -156,12 +156,14 @@ class DatabaseSeeder extends Seeder
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
 
+        $currentCost = $value * $quantity;
         if ($value > $currencyTo->usd_value) {
             $type = "ask";
             $executionType = "sell";
         }else {
             $executionType = "buy";
             $type = "bid";
+            $currentCost = -$currentCost;
         }
 
         $cerrar = array_random($booleanTypes);
@@ -176,7 +178,7 @@ class DatabaseSeeder extends Seeder
                     'quantity' => $quantity,
                     'value' => $value,
                     'filled' => $quantity,
-                    'current_cost' => $value * $quantity,
+                    'current_cost' => $currentCost,
                     'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
                     'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
@@ -192,7 +194,6 @@ class DatabaseSeeder extends Seeder
                     'quantity' => $quantity,
                     'value' => $value,
                     'filled' => $quantity,
-                    'current_cost' => $value * $quantity,
                     'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
                 ]
@@ -205,6 +206,7 @@ class DatabaseSeeder extends Seeder
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+        $currentCost = $value * $quantity;
 
         if ($value > $currencyTo->usd_value) {
             $type = "ask";
@@ -212,6 +214,7 @@ class DatabaseSeeder extends Seeder
         }else {
             $executionType = "buy";
             $type = "bid";
+            $currentCost = -$currentCost;
         }
 
         $cerrar = array_random($booleanTypes);
@@ -226,7 +229,7 @@ class DatabaseSeeder extends Seeder
                     'quantity' => $quantity,
                     'value' => $value,
                     'filled' => $quantity,
-                    'current_cost' => $value * $quantity,
+                    'current_cost' => $currentCost,
                     'type' => $type,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
                     'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
@@ -243,7 +246,6 @@ class DatabaseSeeder extends Seeder
                     'quantity' => $quantity,
                     'value' => $value,
                     'filled' => $quantity,
-                    'current_cost' => $value * $quantity,
                     'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
                     'updated_at' => $date
