@@ -90,6 +90,7 @@ function maxBidSelected() {
         $("#unitsBid").addClass("units-selected");
         $("#unitsBid").attr("disabled", true);
     }
+    calculateTotal();
 }
 
 function maxAskSelected() {
@@ -102,6 +103,7 @@ function maxAskSelected() {
         $("#unitsAsk").addClass("units-selected");
         $("#unitsAsk    ").attr("disabled", true);
     }
+    calculateTotal();
 }
 
 function seeHideVolume() {
