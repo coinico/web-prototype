@@ -70,7 +70,8 @@
        </div>
 
        <div class="row order_book_container">
-           <div1 class="order_book_title">Libros de Órdenes</div1>
+           <div1 class="order_book_title_bid">ÓRDENES DE COMPRA</div1>
+           <div1 class="order_book_title_ask">ÓRDENES DE VENTA</div1>
            <div1 class="order_book_bid">
                <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
                    <thead>

@@ -74,7 +74,7 @@ function fillMyLastExecutedOrdersTable() {
                 info: true,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Mis Últimas Órdenes</strong>",
+                    "info": "<div1 class='datatablesCustomTitle'>MI HISTORIAL DE ÓRDENES</div1>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
@@ -130,7 +130,7 @@ function fillLastExecutedOrdersTable() {
                 info: true,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Últimas Órdenes Ejecutadas</strong>",
+                    "info": "<div1 class='datatablesCustomTitle'>HISTORIAL DEL MERCADO</div1>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
@@ -165,10 +165,9 @@ function fillBidOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: true,
+                info: false,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Órdenes de Compra</strong>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
@@ -201,10 +200,9 @@ function fillAskOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: true,
+                info: false,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Órdenes de Venta</strong>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
@@ -285,7 +283,7 @@ function fillOpenOrdersTable() {
                 info: true,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Mis Órdenes Abiertas</strong>",
+                    "info": "<div1 class='datatablesCustomTitle'>MIS ÓRDENES ABIERTAS</div1>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
