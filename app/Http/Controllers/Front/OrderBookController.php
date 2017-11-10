@@ -189,7 +189,7 @@ class OrderBookController extends Controller
 
                 if ($order->closed_time === null) {
                     $order->update(array('closed_time' => Carbon::now()->format('Y-m-d H:i:s')));
-                    $result["message"] = "orden cerrada con exito";
+                    $result["message"] = "Orden cerrada con éxito.";
                     $result["type"] = "success";
                 } else {
                     $result["message"] = "La orden ya se encuentra cerrada.";
@@ -197,7 +197,7 @@ class OrderBookController extends Controller
                 }
 
             } else {
-                $result["message"] = "El usuario no es dueño de esa orden o no se encuentra logueado.";
+                $result["message"] = "El usuario no es dueño de la orden o no se encuentra logueado.";
                 $result["type"] = "error";
             }
         } else {
