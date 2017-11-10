@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CryptoCurrency;
 use App\Models\OrderBook;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 /**
  * Class OrderBookController.
@@ -134,6 +135,7 @@ class OrderBookController extends Controller
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
             ->whereNotNull("closed_time")
+            ->whereNotIn("filled", [0])
             ->where("user_id", $userId)
             ->orderBy("closed_time", "DESC")->get();
 
@@ -158,6 +160,44 @@ class OrderBookController extends Controller
         return $result;
     }
 
+
+    public function deleteOrder()
+    {
+
+        if (auth()->user() !== null) {
+            $userId = auth()->user()->id;
+        } else {
+            $userId = null;
+        }
+
+        $order = OrderBook::find(Input::get("orderId"));
+
+        $result = array();
+
+        if ($order !== null) {
+            if ($userId === $order->user_id) {
+
+                if ($order->closed_time === null) {
+                    $order->update(array('closed_time' => Carbon::now()->format('Y-m-d H:i:s')));
+                    $result["message"] = "orden cerrada con exito";
+                    $result["type"] = "success";
+                } else {
+                    $result["message"] = "La orden ya se encuentra cerrada.";
+                    $result["type"] = "error";
+                }
+
+            } else {
+                $result["message"] = "El usuario no es dueño de esa orden o no se encuentra logueado.";
+                $result["type"] = "error";
+            }
+        } else {
+            $result["message"] = "La orden indicada no existe.";
+            $result["type"] = "error";
+        }
+
+        return $result;
+    }
+
     public function myOpenOrders()
     {
         $userId = auth()->user()->id;
@@ -172,8 +212,12 @@ class OrderBookController extends Controller
 
         foreach ($dbResults as $dbResult) {
 
-            $actualRate = $dbResult->current_cost/$dbResult->filled;
-            $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+            if ($dbResult->filled > 0) {
+                $actualRate = $dbResult->current_cost / $dbResult->filled;
+                $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+            } else {
+                $actualRate = 0;
+            }
 
             $result[] = array(
                 $dbResult->created_at->format('d/m/Y H:i:s A'),
@@ -182,7 +226,8 @@ class OrderBookController extends Controller
                 number_format($dbResult->filled, 8, '.', ''),
                 number_format($dbResult->quantity, 8, '.', ''),
                 number_format($actualRate, 8, '.', ''),
-                number_format($dbResult->value*$dbResult->quantity, 8, '.', '')
+                number_format($dbResult->value*$dbResult->quantity, 8, '.', ''),
+                $dbResult->id
             );
         }
         return $result;

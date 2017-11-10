@@ -43,6 +43,267 @@ function removePanel() {
 
 $(document).ready(function(){
 
+    fillOpenOrdersTable();
+    fillAskOrdersTable();
+    fillBidOrdersTable();
+    fillLastExecutedOrdersTable();
+    fillMyLastExecutedOrdersTable();
+    buildTestGraph();
+
+});
+
+
+function fillMyLastExecutedOrdersTable() {
+    var myLastExecutedOrders = "./myLastExecutedOrders";
+    $.get({
+        url: myLastExecutedOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#myLastExecutedOrders').DataTable( {
+                "order": [],
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-center", targets: [0, 1, 2] },
+                    { "className": "dt-body-right", targets: [3, 4, 5, 6, 7] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Mis Últimas Órdenes</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    }).done(function() {
+        $( this ).addClass( "done" );
+    });
+}
+
+
+function fillLastExecutedOrdersTable() {
+    var lastExecutedOrders = "./lastExecutedOrders";
+    $.get({
+        url: lastExecutedOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#lastExecutedOrders').DataTable( {
+                "order": [],
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-left", targets: [0] },
+                    { "className": "dt-body-center", targets: [1] },
+                    { "className": "dt-body-right", targets: [2, 3, 4] }
+                ],
+                columns:[
+                    {},
+                    {
+                        "mData":"Comprar/Vender",
+                        "render": function ( mData, type,row, meta ) {
+                            if (row[1]  === "buy") {
+                                return '<font color="green">BUY </font><img class="arrow_percent" src="/images/up_arrow.png"/>';
+                            } else {
+                                return '<font color="red">SELL </font><img class="arrow_percent" src="/images/down_arrow.png"/>';
+                            }
+                        }
+                    },
+                    {},
+                    {},
+                    {}
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Últimas Órdenes Ejecutadas</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    }).done(function() {
+        $( this ).addClass( "done" );
+    });
+}
+
+function fillBidOrdersTable() {
+    var bidOrders = "./bidOrders";
+    $.get({
+        url: bidOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#order_book_bid').DataTable( {
+                "searching": false,
+                "ordering": false,
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Órdenes de Compra</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primera",
+                        "last": "Última",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    });
+}
+
+function fillAskOrdersTable() {
+    var askOrders = "./askOrders";
+    $.get({
+        url: askOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#order_book_ask').DataTable( {
+                "ordering": false,
+                "searching": false,
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Órdenes de Venta</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primera",
+                        "last": "Última",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    });
+
+}
+
+function deleteOrder(id) {
+
+    var deleteOrder = "./deleteOrder";
+    $.get({
+        url: deleteOrder,
+        data: {
+            "orderId": id
+        },
+        dataType: "json",
+        success: function(res){
+            modalMessage(res.type, res.message);
+            fillOpenOrdersTable();
+        }
+    }).fail(function(data) {
+        modalMessage("error", data);
+    });
+}
+
+
+function modalMessage(type, message) {
+    alert("type: " + type + " | " + " message: " + message);
+}
+
+var myOpenOrdersDataTable = undefined;
+
+function fillOpenOrdersTable() {
+
+    if (myOpenOrdersDataTable !== undefined)
+        myOpenOrdersDataTable.destroy();
+
+    var myOpenOrders = "./myOpenOrders";
+    $.get({
+        url: myOpenOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            myOpenOrdersDataTable = $('#myOpenOrders').DataTable( {
+                "order": [],
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-center", targets: [0, 1] },
+                    { "className": "dt-body-right", targets: [2, 3, 4, 5, 6, 7] }
+                ],
+                columns:[
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {
+                        "mData":"Comprar/Vender",
+                        "render": function ( mData, type,row, meta ) {
+                            return '<a href="javascript:deleteOrder('+row[7]+')"><i class="fa fa-times" style="color:red"></i></a>';
+                        }
+                    }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Mis Órdenes Abiertas</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    }).done(function() {
+        $( this ).addClass( "done" );
+    });
+}
+
+function buildTestGraph() {
+
     var chartData = [];
 
     function generateChartData() {
@@ -190,195 +451,4 @@ $(document).ready(function(){
             ]
         }
     } );
-
-    var askOrders = "./askOrders";
-    $.get({
-        url: askOrders,
-        data: {
-            "currencyFrom": $("#currencyFrom").val(),
-            "currencyTo": $("#currencyTo").val()
-        },
-        dataType: "json",
-        success: function(res){
-
-            $('#order_book_ask').DataTable( {
-                "ordering": false,
-                "searching": false,
-                data: res,
-                columnDefs: [
-                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
-                ],
-                info: true,
-                dom: '<if<t>lp>',
-                language: {
-                    "info": "<strong>Órdenes de Venta</strong>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primera",
-                        "last": "Última",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
-            });
-        }
-    });
-
-    var bidOrders = "./bidOrders";
-    $.get({
-        url: bidOrders,
-        data: {
-            "currencyFrom": $("#currencyFrom").val(),
-            "currencyTo": $("#currencyTo").val()
-        },
-        dataType: "json",
-        success: function(res){
-
-            $('#order_book_bid').DataTable( {
-                "searching": false,
-                "ordering": false,
-                data: res,
-                columnDefs: [
-                    { "className": "dt-body-right", targets: [0, 1, 2, 3] }
-                ],
-                info: true,
-                dom: '<if<t>lp>',
-                language: {
-                    "info": "<strong>Órdenes de Compra</strong>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primera",
-                        "last": "Última",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
-            });
-        }
-    });
-
-    var myOpenOrders = "./myOpenOrders";
-    $.get({
-        url: myOpenOrders,
-        data: {
-            "currencyFrom": $("#currencyFrom").val(),
-            "currencyTo": $("#currencyTo").val()
-        },
-        dataType: "json",
-        success: function(res){
-
-            $('#myOpenOrders').DataTable( {
-                "order": [],
-                data: res,
-                columnDefs: [
-                    { "className": "dt-body-center", targets: [0, 1] },
-                    { "className": "dt-body-right", targets: [2, 3, 4, 5, 6] }
-                ],
-                info: true,
-                dom: '<if<t>lp>',
-                language: {
-                    "info": "<strong>Mis Órdenes Abiertas</strong>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
-            });
-        }
-    }).done(function() {
-        $( this ).addClass( "done" );
-    });
-
-
-    var lastExecutedOrders = "./lastExecutedOrders";
-    $.get({
-        url: lastExecutedOrders,
-        data: {
-            "currencyFrom": $("#currencyFrom").val(),
-            "currencyTo": $("#currencyTo").val()
-        },
-        dataType: "json",
-        success: function(res){
-
-            $('#lastExecutedOrders').DataTable( {
-                "order": [],
-                data: res,
-                columnDefs: [
-                    { "className": "dt-body-left", targets: [0] },
-                    { "className": "dt-body-center", targets: [1] },
-                    { "className": "dt-body-right", targets: [2, 3, 4] }
-                ],
-                columns:[
-                    {},
-                    {
-                        "mData":"Comprar/Vender",
-                        "render": function ( mData, type,row, meta ) {
-                            if (row[1]  === "buy") {
-                                return '<font color="green">BUY </font><img class="arrow_percent" src="/images/up_arrow.png"/>';
-                            } else {
-                                return '<font color="red">SELL </font><img class="arrow_percent" src="/images/down_arrow.png"/>';
-                            }
-                        }
-                    }
-                ],
-                info: true,
-                dom: '<if<t>lp>',
-                language: {
-                    "info": "<strong>Últimas Órdenes Ejecutadas</strong>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
-            });
-        }
-    }).done(function() {
-        $( this ).addClass( "done" );
-    });
-
-    var myLastExecutedOrders = "./myLastExecutedOrders";
-    $.get({
-        url: myLastExecutedOrders,
-        data: {
-            "currencyFrom": $("#currencyFrom").val(),
-            "currencyTo": $("#currencyTo").val()
-        },
-        dataType: "json",
-        success: function(res){
-
-            $('#myLastExecutedOrders').DataTable( {
-                "order": [],
-                data: res,
-                columnDefs: [
-                    { "className": "dt-body-center", targets: [0, 1, 2] },
-                    { "className": "dt-body-right", targets: [3, 4, 5, 6, 7] }
-                ],
-                info: true,
-                dom: '<if<t>lp>',
-                language: {
-                    "info": "<strong>Mis Últimas Órdenes</strong>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
-            });
-        }
-    }).done(function() {
-        $( this ).addClass( "done" );
-    });
-});
+}
