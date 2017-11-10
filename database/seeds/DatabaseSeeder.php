@@ -193,7 +193,6 @@ class DatabaseSeeder extends Seeder
                     'type' => $type,
                     'quantity' => $quantity,
                     'value' => $value,
-                    'filled' => $quantity,
                     'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
                 ]
@@ -245,7 +244,6 @@ class DatabaseSeeder extends Seeder
                     'type' => $type,
                     'quantity' => $quantity,
                     'value' => $value,
-                    'filled' => $quantity,
                     'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
                     'updated_at' => $date

@@ -97,6 +97,43 @@
            </div1>
        </div>
 
+       @auth
+           <div class="row">
+               <table id="myOpenOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
+                   <thead>
+                   <tr>
+                       <th>Fecha de Apertura</th>
+                       <th>Tipo</th>
+                       <th>Valor</th>
+                       <th>Cantidad llenada</th>
+                       <th>Cantidad Total</th>
+                       <th>Valor Promedio</th>
+                       <th>Total Estimado</th>
+                       <th><i class="fa fa-times"></i></th>
+                   </tr>
+                   </thead>
+               </table>
+           </div>
+
+           <div class="row">
+               <table id="myLastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
+                   <thead>
+                   <tr>
+                       <th>Fecha de Cierre</th>
+                       <th>Fecha de Apertura</th>
+                       <th>Tipo</th>
+                       <th>Valor</th>
+                       <th>Cantidad llenada</th>
+                       <th>Cantidad Total</th>
+                       <th>Valor Promedio</th>
+                       <th>Total</th>
+                   </tr>
+                   </thead>
+               </table>
+           </div>
+
+       @endauth
+
        <div class="row">
            <table id="lastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
@@ -110,25 +147,7 @@
                </thead>
            </table>
        </div>
-       
-       @auth
-       <div class="row">
-           <table id="myLastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
-               <thead>
-               <tr>
-                   <th>Fecha de Cierre</th>
-                   <th>Fecha de Apertura</th>
-                   <th>Tipo</th>
-                   <th>Valor</th>
-                   <th>Cantidad llenada</th>
-                   <th>Cantidad Total</th>
-                   <th>Valor Promedio</th>
-                   <th>Total</th>
-               </tr>
-               </thead>
-           </table>
-       </div>
-       @endauth
+
    </section>
 
 @endsection

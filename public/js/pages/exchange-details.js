@@ -259,6 +259,42 @@ $(document).ready(function(){
         }
     });
 
+    var myOpenOrders = "./myOpenOrders";
+    $.get({
+        url: myOpenOrders,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val()
+        },
+        dataType: "json",
+        success: function(res){
+
+            $('#myOpenOrders').DataTable( {
+                "order": [],
+                data: res,
+                columnDefs: [
+                    { "className": "dt-body-center", targets: [0, 1] },
+                    { "className": "dt-body-right", targets: [2, 3, 4, 5, 6] }
+                ],
+                info: true,
+                dom: '<if<t>lp>',
+                language: {
+                    "info": "<strong>Mis Órdenes Abiertas</strong>",
+                    "search": "",
+                    "lengthMenu": "_MENU_",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+                    }
+                }
+            });
+        }
+    }).done(function() {
+        $( this ).addClass( "done" );
+    });
+
 
     var lastExecutedOrders = "./lastExecutedOrders";
     $.get({

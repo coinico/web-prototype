@@ -158,6 +158,36 @@ class OrderBookController extends Controller
         return $result;
     }
 
+    public function myOpenOrders()
+    {
+        $userId = auth()->user()->id;
+
+        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
+            ->where("crypto_currency_to", Input::get("currencyTo"))
+            ->whereNull("closed_time")
+            ->where("user_id", $userId)
+            ->orderBy("created_at", "DESC")->get();
+
+        $result = array();
+
+        foreach ($dbResults as $dbResult) {
+
+            $actualRate = $dbResult->current_cost/$dbResult->filled;
+            $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+
+            $result[] = array(
+                $dbResult->created_at->format('d/m/Y H:i:s A'),
+                "LIMIT ".strtoupper($dbResult->execution_type),
+                number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->filled, 8, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($actualRate, 8, '.', ''),
+                number_format($dbResult->value*$dbResult->quantity, 8, '.', '')
+            );
+        }
+        return $result;
+    }
+
     public function askOrders()
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))

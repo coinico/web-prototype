@@ -74,6 +74,7 @@ Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMark
 Route::name('exchangeDetails')->get('/exchangeDetails', 'Front\OrderBookController@exchangeDetails');
 Route::name('lastExecutedOrders')->get('/lastExecutedOrders', 'Front\OrderBookController@lastExecutedOrders');
 Route::name('myLastExecutedOrders')->get('/myLastExecutedOrders', 'Front\OrderBookController@myLastExecutedOrders');
+Route::name('myOpenOrders')->get('/myOpenOrders', 'Front\OrderBookController@myOpenOrders');
 Route::name('askOrders')->get('/askOrders', 'Front\OrderBookController@askOrders');
 Route::name('bidOrders')->get('/bidOrders', 'Front\OrderBookController@bidOrders');
 
