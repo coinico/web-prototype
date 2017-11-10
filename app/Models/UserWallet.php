@@ -44,5 +44,10 @@ class UserWallet extends Model
     {
         return $this->transactions->sum( 'amount' );
     }
-	
+
+    public function getCurrency()
+    {
+        return CryptoCurrency::find($this->crypto_currency)->first()->alias;
+    }
+
 }
