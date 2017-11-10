@@ -8,6 +8,15 @@
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
        <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
 
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
+           <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                   <div id="modaldata" class="modal-body" style="text-align: center">
+                   </div>
+               </div>
+           </div>
+       </div>
+
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
            <input type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="MOSTRAR/OCULTAR VOLUMEN" onclick="seeHideVolume();"/>
@@ -235,5 +244,6 @@
     <script src="https://www.amcharts.com/lib/3/amstock.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
     <script type="text/javascript" src="{{ asset('js/pages/exchange-details.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/modal.js') }}" ></script>
 
 @stop

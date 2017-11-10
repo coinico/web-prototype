@@ -225,7 +225,13 @@ function deleteOrder(id) {
 
 
 function modalMessage(type, message) {
-    alert("type: " + type + " | " + " message: " + message);
+
+    if (type === "error")
+        message = "<font color=red>"+message+"</font>";
+
+
+    $('#modaldata').html(message);
+    $('#myModal').modal('show');
 }
 
 var myOpenOrdersDataTable = undefined;
