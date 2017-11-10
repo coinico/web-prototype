@@ -72,6 +72,9 @@
 
        @auth
        <div class="row order_book_trade_container">
+           <div1 class="order_book_title_trade">
+               INTERCAMBIAR
+           </div1>
            <div1 class="order_book_title_trade_bid">
                <div1 style="margin-left:10px; float:left;">COMPRAR</div1>
                <div1 style="margin-right:10px; float:right;">{{number_format($walletFrom->real_balance, 8, '.', '')." ".strtoupper($currencyFrom->alias)}} DISPONIBLE</div1>
