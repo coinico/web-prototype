@@ -1,0 +1,63 @@
+section#exchange{
+  .row {
+    margin-top: 30px;
+    background-color: white;
+    padding: 20px 50px 20px 50px;
+    .arrow_percent{
+      width: 9px;
+    }
+    .currency_wrapper{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0;
+      grid-auto-rows: 40px;
+      margin: 5px 5px 5px 5px;
+      background-color: #F5F5F5;
+      .left-details{
+        grid-column: 1;
+        grid-row: 1 / 4;
+        a{
+          height:100%;
+          width:100%;
+        }
+        img{
+          width: 90px;
+        }
+        .center_image {
+          margin: auto;
+        }
+        .vcenter {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .right-details{
+        grid-column: 2;
+        grid-row: 1 / 4;
+        text-align: right;
+      }
+      .sub_header_type{
+        font-size: 10px;
+        margin-right: 7px;
+      }
+      .sub_header_name{
+        overflow:hidden;
+        height: 30px;
+        margin-top: -5px;
+        margin-right: 7px;
+        font-size: 13px;
+      }
+      .sub_header_volume{
+        margin-top: -5px;
+        margin-right: 7px;
+        font-size: 12px;
+      }
+      .sub_header_change{
+        margin-top: -5px;
+        margin-right: 7px;
+        font-size: 12px;
+      }
+    }
+  }
+}

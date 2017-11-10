@@ -13,12 +13,14 @@ class OrderBook extends Model
 {
     public $timestamps = true;
 
+    protected $dates = ['closed_time'];
+
     protected $table = 'order_book';
 
     protected $fillable = [
         'user_id', 'crypto_currency_from', 'crypto_currency_to',
         'type', 'quantity', 'value','execution_type',
-        'executed', 'created_at'
+        'closed_time', 'created_at', 'filled', 'current_cost'
     ];
 
     public function user()

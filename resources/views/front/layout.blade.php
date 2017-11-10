@@ -56,30 +56,34 @@
    	<div class="gradient-block"></div>
 
    	<div class="row header-content">
+        <?php $iminhome = $_SERVER['PHP_SELF'] === '/index.php';?>
 
    		<div class="logo">
-	    	<a href="{{ url('') }}">Author</a>
+	    	<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '#first-stop' : route('home')}}">Author</a>
 	    </div>
 
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
+					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
 				</li>
 				<li {{ currentRoute('investors') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
+					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
 				</li>
 				@guest
 					<li {{ currentRoute('exchange') }}>
-						<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
+						<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@else
+					<li {{ currentRoute('orders') }}>
+						<a href="{{route('orders')}}">@lang('Ordenes')</a>
+					</li>
 					<li {{ currentRoute('exchange') }}>
 						<a href="{{route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@endguest
 				<li {{ currentRoute('community') }}>
-					<a href="{{$_SERVER['PHP_SELF'] === '/index.php' ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
+					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
 				</li>
 				@request('register')
 					<li class="current">
@@ -165,7 +169,7 @@
 
 	            <h4>@lang('Acerca de nuestro sitio')</h4>
 
-	               <p>@lang('Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum In reprehenderit commodo aliqua irure labore.')</p>
+	               <p>@lang('Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma. Se parte de nuestra comunidad y contribuí con futuro del negocio inmobiliario descentralizado.')</p>
 
 		      </div> <!-- end footer-info -->
 

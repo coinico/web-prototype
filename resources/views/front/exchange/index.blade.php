@@ -4,6 +4,17 @@
 
    <section id="exchange">
        <div class="row">
+           <div class="owl-carousel">
+               @foreach ($volumeCurrencies as $currency)
+                   @include('front.exchange.sub_header', array('headerFor'=>'Mayor Volumen'))
+               @endforeach
+               @foreach ($biggestGainCurrencies as $currency)
+                   @include('front.exchange.sub_header', array('headerFor'=>'Mayor Ganancia %'))
+               @endforeach
+           </div>
+       </div>
+
+       <div class="row">
            <table id="ctf" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>
@@ -26,5 +37,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/pages/exchange.js') }}" ></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" ></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
 
 @stop

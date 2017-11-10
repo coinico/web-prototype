@@ -18,7 +18,7 @@ class UserWalletTransaction extends Model
     protected $fillable = [
         'user_wallet', 'total', 'transaction_fee',
         'transaction_hash', 'memo', 'type','amount',
-        'address_to', 'address_from'
+        'address_to', 'address_from', 'is_hold'
     ];
 
     public function userWallet()

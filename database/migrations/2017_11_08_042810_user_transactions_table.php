@@ -25,6 +25,7 @@ class UserTransactionsTable extends Migration
             $table->String('address_from');
             $table->String('address_to');
             $table->float('amount');
+            $table->boolean('is_hold')->default(false);;
             $table->enum('type', array('credit', 'debit'));
             $table->String('memo');
             $table->String('transaction_hash');
@@ -34,7 +35,6 @@ class UserTransactionsTable extends Migration
             /**
              * Foreignkeys section
              */
-
             $table->integer('user_wallet')->unsigned();
             $table->foreign('user_wallet')->references('id')->on('user_wallets');
 

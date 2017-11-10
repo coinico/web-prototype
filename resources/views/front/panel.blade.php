@@ -4,23 +4,42 @@
 
    <section id="panel">
        <div class="row">
-       <section>
+       <section class="sidebar">
+            <div class="title">
+                Su billetera
+            </div>
+            <div class="info items">
+                @foreach ($standardWallets as $standardWallet)
+                    @include('front.panel.wallet')
+                @endforeach
+            </div>
+           <div class="divider"></div>
+           <div class="title">
+               Tokens de propiedad
+           </div>
+           <div class="info items">
+               @foreach ($tokenWallets as $tokenWallet)
+                   @include('front.panel.token')
+               @endforeach
+           </div>
+       </section>
+       <section class="main">
            <div class="tabs-selector">
-               <div class="tab-selector active">Bitcoin · 6.360,70 €  </div>
-               <div class="tab-selector">Ethereum · 267,87 €</div>
+               <div class="tab-selector active">Casatoken · 1,01 USD  </div>
+               <div class="tab-selector">Ethereum · 267,87 USD</div>
            </div>
            <div class="tabs">
                 <div class="tab active">
                     <div class="currency-info">
                         <div class="price">
                             <div>
-                                <span>6.362,43 €</span>
-                                <small>PRECIO BITCOIN</small>
+                                <span>1,43 USD</span>
+                                <small>PRECIO CTF</small>
                             </div>
                         </div>
                         <div class="variation">
                             <div>
-                                <span><b>+</b>2.283,03 €</span>
+                                <span><b>+</b>0,43 USD</span>
                                 <small>DESDE EL MES PASADO (EUR)</small>
                             </div>
                         </div>
@@ -51,7 +70,8 @@
                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                 </div>
            </div>
-           <div class="summary">
+           <div class="divider"></div>
+           <!--<div class="summary">
                <h3>Resumen</h3>
                <div class="">
                     <h4>Ethereum</h4>
@@ -63,7 +83,7 @@
                    <span>10,00000000</span>
                    <small>480,00000000 €</small>
                </div>
-           </div>
+           </div>-->
        </section>
        </div>
    </section>

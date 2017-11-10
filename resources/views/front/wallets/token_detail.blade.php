@@ -1,18 +1,20 @@
 <div class="wallet-wrapper">
     <div class="wallet">
         <div class="left-details">
-            <img src="/images/tokens/{!!$tokenWallet->currency->image!!}" />
-            <p class="currency_name">{{$tokenWallet->currency->name}}</p>
+            <a href="{{ url("userWallet/$tokenWallet->id/manage") }}">
+                <img src="/images/tokens/{!!$tokenWallet->currency->image!!}" />
+                <p class="currency_name">{{$tokenWallet->currency->name}}</p>
+            </a>
         </div>
         <div class="right-details">
             <img src="/images/wallets/qr_code.png" />
             <p class="address"></p>
 
         </div>
-        <div1 class="middle-details">
-            <p1 class="available_balance">Balance Disponible</p1>
-            <p1 class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p1>
-            <button class="manage_button">Administrar</button>
-        </div1>
+        <div class="middle-details">
+            <p class="available_balance">Balance Disponible</p>
+            <p class="balance">{!!number_format($tokenWallet->transactions->sum( 'amount' ), 8, '.', '')!!}</p>
+            <button class="manage_button" onclick="window.location='{{ url("userWallet/$tokenWallet->id/manage") }}'">Administrar</button>
+        </div>
     </div>
 </div>

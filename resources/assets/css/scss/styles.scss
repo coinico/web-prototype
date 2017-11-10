@@ -24,11 +24,15 @@
 
 /* Components App */
 @import "components/_tables";
+@import "components/_modals";
 
 /* Pages */
 @import "pages/_home";
 @import "pages/_properties";
 @import "pages/_wallets";
+@import "pages/_exchange";
+@import "pages/_orders";
+@import "pages/_exchange_details";
 @import "pages/_property";
 @import "pages/_welcome";
 @import "pages/_panel";

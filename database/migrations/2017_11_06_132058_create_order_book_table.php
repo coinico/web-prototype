@@ -29,9 +29,12 @@ class CreateOrderBookTable extends Migration
             $table->enum('type', array('ask', 'bid'));
             $table->float('quantity'); // cantidad
             $table->float('value'); // valor que se quiere recibir
+            $table->float('filled')->default(0); // valor llenado de la orden
+            $table->float('current_cost')->default(0); // costo total hasta ahora de la orden
 
             $table->enum('execution_type', array('buy', 'sell'));
-            $table->boolean('executed')->default(false); // si fue ejecutada
+
+            $table->timestamp('closed_time')->nullable(); // si fue ejecutada
 
             $table->timestamps();
         });

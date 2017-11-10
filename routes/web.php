@@ -23,16 +23,17 @@ Route::name('logout')->get('/logout' , 'Auth\LoginController@logout');
 // Home
 Route::name('home')->get('/', 'Front\PostController@index');
 
+// Orders
+Route::name('orders')->get('/orders', 'Front\OrderBookController@orders');
+
 // Exchange
-Route::name('exchange')->get('/exchange', 'Front\PostController@exchange');
+Route::name('exchange')->get('/exchange', 'Front\OrderBookController@exchange');
 
 //Owners
 Route::name('owners')->get('/owners', 'Front\PostController@owners');
 
 //Investors
 Route::name('investors')->get('/investors', 'Front\PostController@investors');
-
-
 
 //Community
 Route::name('community')->get('/community', 'Front\PostController@community');
@@ -71,14 +72,17 @@ Auth::routes();
 |--------------------------------------------------------------------------|
 */
 
-// Wallet
-Route::resource('wallets', 'Front\UserWalletController');
-
-//Markets
-Route::name('markets')->get('/markets', 'Back\PostController@markets');
+//Exchange
 Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
-
-
+Route::name('exchangeDetails')->get('/exchangeDetails', 'Front\OrderBookController@exchangeDetails');
+Route::name('lastExecutedOrders')->get('/lastExecutedOrders', 'Front\OrderBookController@lastExecutedOrders');
+Route::name('myLastExecutedOrders')->get('/myLastExecutedOrders', 'Front\OrderBookController@myLastExecutedOrders');
+Route::name('myOpenOrders')->get('/myOpenOrders', 'Front\OrderBookController@myOpenOrders');
+Route::name('askOrders')->get('/askOrders', 'Front\OrderBookController@askOrders');
+Route::name('bidOrders')->get('/bidOrders', 'Front\OrderBookController@bidOrders');
+Route::name('deleteOrder')->get('/deleteOrder', 'Front\OrderBookController@deleteOrder');
+Route::name('allMyLastExecutedOrders')->get('/allMyLastExecutedOrders', 'Front\OrderBookController@allMyLastExecutedOrders');
+Route::name('allMyOpenOrders')->get('/allMyOpenOrders', 'Front\OrderBookController@allMyOpenOrders');
 
 Route::middleware('community')->group(function () {
 
@@ -164,4 +168,8 @@ Route::group(['middleware'=> 'web'],function(){
     Route::resource('cryptoCurrency', '\App\Http\Controllers\Front\CryptoCurrencyController');
     Route::post('cryptoCurrency/{id}/update','\App\Http\Controllers\Front\CryptoCurrencyController@update');
     Route::get('cryptoCurrency/{id}/delete','\App\Http\Controllers\Front\CryptoCurrencyController@destroy');
+
+    // wallets
+    Route::resource('wallets', 'Front\UserWalletController');
+    Route::get('/userWallet/{id}/manage', 'Front\UserWalletController@manageWallet');
 });
