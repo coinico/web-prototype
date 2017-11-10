@@ -9,6 +9,7 @@ use App\Models\ {
 };
 use App\Services\Thumb;
 use phpDocumentor\Reflection\Types\Boolean;
+use App\Models\User;
 
 class PropertyVoteRepository
 {
@@ -53,7 +54,11 @@ class PropertyVoteRepository
      */
     public function store($propertyId, $request)
     {
-        $request->merge(['user_id' => auth()->id()]);
+        $user = User::find(auth()->id());
+
+        //@todo: Agregar peso al voto
+
+        $request->merge(['user_id' => $user->id]);
         $request->merge(['property_id' => $propertyId]);
         $request->merge(['weight' => 1]);
 

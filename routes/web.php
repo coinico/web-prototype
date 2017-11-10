@@ -89,6 +89,9 @@ Route::middleware('community')->group(function () {
     // PropertyVote
     Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
 
+    // PropertyInvest
+    Route::post('/property/{id}/invest', 'Back\PropertyInvestController@invest');
+
 });
 
 

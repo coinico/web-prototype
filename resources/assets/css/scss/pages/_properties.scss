@@ -111,6 +111,55 @@ section#properties{
             border-right: 1px dashed white;
           }
         }
+
+        .invest{
+          >span{
+            margin: 15px;
+            display: block;
+          }
+
+          fieldset{
+            width: 80%;
+            display: block;
+            margin: 10px auto;
+            position: relative;
+            input{
+              width: 100%;
+              color: #fff;
+              padding-right: 40px;
+              &:hover, &:focus{
+                color:$primaryColor;
+                +a{
+                  color:$primaryColor;
+                }
+              }
+            }
+            a{
+              position: absolute;
+              right: 10px;
+              top:15px;
+              color:white;
+              width: 40px;
+              height: 32px;
+              i{
+                display: none;
+                position: absolute;
+                margin-top: 7px;
+                margin-left: 10px;
+              }
+              &:hover,&.loading{
+                small{
+                  display: none;
+                }
+                i{
+                  display: block;
+                  color:$primaryColor;
+                }
+              }
+            }
+          }
+        }
+
         >a{
           color:white;
           display: block;

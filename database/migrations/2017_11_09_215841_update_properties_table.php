@@ -18,7 +18,7 @@ class UpdatePropertiesTable extends Migration
             $table->longText('description');
             $table->string('detail');
             $table->string('images');
-            $table->string('value');
+            $table->decimal('value',15,2);
             $table->string('location');
             $table->string('bidding_time');
             $table->string('features');
