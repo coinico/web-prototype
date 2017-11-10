@@ -152,18 +152,22 @@ class DatabaseSeeder extends Seeder
 
     function createOrderBook($userId, $currencyFrom, $currencyTo) {
 
-        $types = array('bid', 'ask');
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+
+        if ($value > $currencyTo->usd_value)
+            $type = "ask";
+        else
+            $type = "bid";
 
         OrderBook::create(
             [
                 'user_id' => $userId,
                 'crypto_currency_from' => $currencyFrom->id,
                 'crypto_currency_to' => $currencyTo->id,
-                'type' => array_random($types),
+                'type' => $type,
                 'quantity' => $quantity,
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),
@@ -174,18 +178,21 @@ class DatabaseSeeder extends Seeder
 
     function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $date) {
 
-        $types = array('bid', 'ask');
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+        if ($value > $currencyTo->usd_value)
+            $type = "ask";
+        else
+            $type = "bid";
 
         OrderBook::create(
             [
                 'user_id' => $userId,
                 'crypto_currency_from' => $currencyFrom->id,
                 'crypto_currency_to' => $currencyTo->id,
-                'type' => array_random($types),
+                'type' => $type,
                 'quantity' => $quantity,
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),

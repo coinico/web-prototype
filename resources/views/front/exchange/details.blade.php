@@ -9,7 +9,7 @@
 
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
-           <a type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="Mostrar/Ocultar Volumen" href="javascript:seeHideVolume();">Mostrar/Ocultar Volumen</a>
+           <a type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" href="javascript:seeHideVolume();">MOSTRAR/OCULTAR VOLUMEN</a>
 
            <div class="info_currency">
                <table id="info_currency" class="info_currency_table" cellspacing="0">
