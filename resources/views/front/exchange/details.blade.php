@@ -75,10 +75,62 @@
            <div1 class="order_book_title_trade_bid">COMPRAR {{strtoupper($currencyTo->name)}}</div1>
            <div1 class="order_book_title_trade_ask">VENDER {{strtoupper($currencyTo->name)}}</div1>
            <div1 class="order_book_trade_bid">
+               </br>
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                    <input id="units" type="text" placeholder="0.00000000" class="input-trade">
+                    <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
+               </div1>
 
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                   <input id="bid" type="text" placeholder="0.00000000" class="input-trade">
+                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+               </div1>
+
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                   <input id="total" type="text" placeholder="0.00000000" class="input-trade">
+                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+               </div1>
+               <div1 class="input-group submit_trade">
+                   <button type="submit"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
+               </div1>
            </div1>
            <div1 class="order_book_trade_ask">
+               </br>
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                   <input id="units" type="text" placeholder="0.00000000" class="input-trade">
+                   <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
+               </div1>
 
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                   <input id="bid" type="text" placeholder="0.00000000" class="input-trade">
+                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+               </div1>
+
+               <div1 class="input-group">
+                   <span class="input-group-btn">
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                    </span>
+                   <input id="total" type="text" placeholder="0.00000000" class="input-trade">
+                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+               </div1>
+               <div1 class="input-group submit_trade">
+                   <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
+               </div1>
            </div1>
        </div>
        @endauth
