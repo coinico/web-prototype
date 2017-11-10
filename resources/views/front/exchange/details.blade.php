@@ -24,42 +24,42 @@
                    <tbody>
                        <tr>
                            <td rowspan="2" class="key_values">Último</td>
-                           <td class="currency_values">{{$basicDetails->last_value}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->last_value}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->last_value * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2" class="key_values">Volumen {{$currencyFrom->alias}}</td>
-                           <td class="currency_values">{{$basicDetails->volume}}</td>
+                           <td rowspan="2" class="key_values">Volumen</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->volume}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->volume * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Precio Venta</td>
-                           <td class="currency_values">{{$basicDetails->ask}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->ask}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->ask * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Precio Compra</td>
-                           <td class="currency_values">{{$basicDetails->bid}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->bid}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->bid * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Máximo</td>
-                           <td class="currency_values">{{$basicDetails->high}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->high}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->high * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Mínimo</td>
-                           <td class="currency_values">{{$basicDetails->low}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->low}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->low * $currencyFrom->usd_value}}</td>

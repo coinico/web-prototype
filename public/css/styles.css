@@ -3553,6 +3553,8 @@ section#exchange-details .info_container {
         font-size: 18px;
         text-align: right;
         border: none; }
+        section#exchange-details .info_container .info_currency .info_currency_table tr .currency_values img {
+          width: 16.5px; }
 
 section#property {
   padding-top: 40px;
