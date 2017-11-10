@@ -24,7 +24,7 @@ section#exchange-details{
     display: grid;
     padding-top: 30px;
     grid-template-columns: repeat(9, 1fr);
-    grid-column-gap: 60px;
+    grid-column-gap: 40px;
     position:relative;
     #seeHideVolumeButton{
       background: transparent;
@@ -36,17 +36,15 @@ section#exchange-details{
       opacity: 0.7;
       outline: none;
       position:absolute;
-      bottom: 15px;
+      bottom: 10px;
       left: 50px;
       vertical-align: middle;
-      padding: 0 10px 0 10px;
+      padding: 0 1rem 0 1rem;
       -webkit-appearance: button;
       letter-spacing: 0;
       height: 22px;
       font-size: 8px;
       line-height: 0;
-      padding-right: 1rem;
-      padding-left: 1rem;
       cursor: pointer;
       font-family: "montserrat-regular", sans-serif;
       text-decoration: none;
