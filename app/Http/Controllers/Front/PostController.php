@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Front;
 use App\{
     Http\Controllers\Controller, Http\Requests\SearchRequest, Models\CryptoCurrency, Repositories\PostRepository, Models\Tag, Models\Category
 };
+use App\Models\PropertyInvest;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\User;
 use App\Models\UserWallet;
+use App\Models\PropertyVote;
 
 class PostController extends Controller
 {
@@ -116,7 +118,10 @@ class PostController extends Controller
      */
     public function community()
     {
-        return view('front.community');
+        $user = User::find(auth()->user()->id);
+        $properties = Property::where('status_id',1)->get();
+        $votes = PropertyVote::where('user_id',$user->id)->get();
+        return view('front.community', compact('properties','votes'));
     }
 
     /**
@@ -136,7 +141,10 @@ class PostController extends Controller
      */
     public function investors()
     {
-        return view('front.investors');
+        $user = User::find(auth()->user()->id);
+        $properties = Property::where('status_id',4)->get();
+        $investments = PropertyInvest::where('user_id',$user->id)->get();
+        return view('front.investors', compact('properties','investments'));
     }
 
 
@@ -158,7 +166,7 @@ class PostController extends Controller
      */
     public function properties()
     {
-        $properties = Property::all();
+        $properties = Property::where('status_id',1)->get();
         return view('front.properties', compact('properties'));
     }
 
@@ -202,7 +210,9 @@ class PostController extends Controller
             $q->where('type', '=','token');
         })->where('user_id', $user->id)->get();
 
-        return view('front.panel', compact('user','standardWallets', 'tokenWallets'));
+        $investments = PropertyInvest::where('user_id',$user->id)->get();
+
+        return view('front.panel', compact('user','standardWallets', 'tokenWallets', 'investments'));
     }
 
 }

@@ -964,6 +964,9 @@ section#properties.horizontal-view .wrapper .property .hover .vote { margin-top:
 section#properties.horizontal-view .wrapper .property .hover .vote .up { border-right: none; }
 section#properties.horizontal-view .wrapper .property .hover .vote > a { display: inline-block; position: absolute; bottom: -20px; right: 20px; }
 
+section#properties .main { padding: 0; margin: 0; background: none; }
+section#properties .sidebar { background: white; margin-top: 10px; }
+
 section#create-wallet { width: 100%; }
 section#create-wallet input, section#create-wallet textarea, section#create-wallet select, section#create-wallet button { width: 100%; }
 section#create-wallet form { width: 100%; max-width: 800px; }
@@ -1056,7 +1059,7 @@ section#property .investment fieldset { width: 100%; display: block; margin: 0; 
 section#property .investment fieldset input { width: 100%; color: #666; padding-right: 40px; }
 section#property .investment fieldset input:hover, section#property .investment fieldset input:focus { color: #666; }
 section#property .investment fieldset input:hover + a, section#property .investment fieldset input:focus + a { color: #666; }
-section#property .investment fieldset a { position: absolute; right: 10px; top: 15px; color: white; width: 40px; height: 32px; olor: #666; }
+section#property .investment fieldset a { position: absolute; right: 10px; top: 15px; color: #666; width: 40px; height: 32px; olor: #666; }
 section#property .investment fieldset a i { display: none; position: absolute; margin-top: 7px; margin-left: 10px; }
 section#property .investment fieldset a small { font-size: 20px; }
 section#property .investment fieldset a:hover small, section#property .investment fieldset a.loading small { display: none; }
@@ -1082,42 +1085,43 @@ section#property section.plans a img { width: 200px; }
 
 section#welcome { margin: 40px 20px; padding: 20px 0; background: white; }
 
-section#panel { margin: 40px 15px; }
-section#panel section { position: relative; background: white; padding: 15px; color: #666; }
-section#panel section .highcharts-axis-labels, section#panel section .highcharts-credits, section#panel section .highcharts-grid { display: none !important; }
-section#panel section .highcharts-container svg { margin-left: -20px; margin-top: -25px; }
-section#panel section .tabs-selector .tab-selector { display: inline-block; padding-right: 20px; border-right: 1px dashed #ccc; margin-right: 20px; }
-section#panel section .tabs-selector .tab-selector.active { color: #4868af; position: relative; }
-section#panel section .tabs-selector .tab-selector.active:after { content: ''; height: 2px; bottom: -4px; left: 0; right: 20px; position: absolute; background: #4868af; }
-section#panel section .tabs-selector .tab-selector:last-child { border: none; }
-section#panel section .tabs .tab { display: none; }
-section#panel section .tabs .tab .currency-info { margin-top: 3px; border-top: 1px dashed #ccc; padding: 20px; border-bottom: 1px dashed #ccc; }
-section#panel section .tabs .tab .currency-info > div { width: 32.5%; display: inline-block; border-right: 1px dashed #ccc; text-align: center; }
-section#panel section .tabs .tab .currency-info > div small { display: block; }
-section#panel section .tabs .tab .currency-info > div span { font-size: 40px; }
-section#panel section .tabs .tab .currency-info > div span b { color: #24da24; font-size: 33px; }
-section#panel section .tabs .tab .currency-info > div:last-child { border: none; }
-@media (max-width: 1200px) { section#panel section .tabs .tab .currency-info > div span { font-size: 30px; } }
-@media (max-width: 991px) { section#panel section .tabs .tab .currency-info > div { width: 100%; border-bottom: 1px dashed #ccc; padding: 20px; border-right: none; } }
-section#panel section .tabs .tab.active { display: block; }
-section#panel section .summary { margin-bottom: 40px; }
-section#panel section .summary h3 { border-bottom: 1px dashed #ccc; border-top: 1px dashed #ccc; line-height: 40px; text-align: center; }
-section#panel section .summary > div { width: 49%; display: inline-block; text-align: center; border-right: 1px dashed #ccc; }
-section#panel section .summary > div:last-child { border: none; }
-section#panel section .summary > div span { font-size: 25px; }
-section#panel section .summary > div small { display: block; }
-section#panel section.main { width: calc(100% - 315px); float: left; }
-section#panel section.sidebar { width: 300px; float: right; }
-section#panel section.sidebar .title { padding-bottom: 4px; border-bottom: 1px solid #ccc; }
-section#panel section.sidebar .items .item { padding: 15px 0 22px 0; border-bottom: 1px dashed #ccc; display: block; color: #666; }
-section#panel section.sidebar .items .item:hover { color: #666; }
-section#panel section.sidebar .items .item span { line-height: 38px; padding-left: 10px; }
-section#panel section.sidebar .items .item img { float: left; width: 38px; }
-section#panel section.sidebar .items .item .detail { float: right; text-align: right; margin-top: -5px; }
-section#panel section.sidebar .items .item .detail span { line-height: 25px; font-size: 14px; }
-section#panel section.sidebar .items .item .detail small { display: block; color: #ccc; line-height: 10px; }
-section#panel section.sidebar .items .item:last-child { border: none; }
-section#panel section.sidebar .divider { height: 20px; }
-section#panel section.sidebar .divider:before { content: ''; left: 0; right: 0; height: 15px; background: whitesmoke; position: absolute; }
-@media (max-width: 767px) { section#panel section.main, section#panel section.sidebar { width: 100%; } }
-@media (max-width: 490px) { section#panel { margin: 40px 0px; } }
+section#panel, .panel { margin: 40px 15px; }
+section#panel section, .panel section { position: relative; background: white; padding: 15px; color: #666; }
+section#panel section .highcharts-axis-labels, section#panel section .highcharts-credits, section#panel section .highcharts-grid, .panel section .highcharts-axis-labels, .panel section .highcharts-credits, .panel section .highcharts-grid { display: none !important; }
+section#panel section .highcharts-container svg, .panel section .highcharts-container svg { margin-left: -20px; margin-top: -25px; }
+section#panel section .tabs-selector .tab-selector, .panel section .tabs-selector .tab-selector { display: inline-block; padding-right: 20px; border-right: 1px dashed #ccc; margin-right: 20px; }
+section#panel section .tabs-selector .tab-selector.active, .panel section .tabs-selector .tab-selector.active { color: #4868af; position: relative; }
+section#panel section .tabs-selector .tab-selector.active:after, .panel section .tabs-selector .tab-selector.active:after { content: ''; height: 2px; bottom: -4px; left: 0; right: 20px; position: absolute; background: #4868af; }
+section#panel section .tabs-selector .tab-selector:last-child, .panel section .tabs-selector .tab-selector:last-child { border: none; }
+section#panel section .tabs .tab, .panel section .tabs .tab { display: none; }
+section#panel section .tabs .tab .currency-info, .panel section .tabs .tab .currency-info { margin-top: 3px; border-top: 1px dashed #ccc; padding: 20px; border-bottom: 1px dashed #ccc; }
+section#panel section .tabs .tab .currency-info > div, .panel section .tabs .tab .currency-info > div { width: 32.5%; display: inline-block; border-right: 1px dashed #ccc; text-align: center; }
+section#panel section .tabs .tab .currency-info > div small, .panel section .tabs .tab .currency-info > div small { display: block; }
+section#panel section .tabs .tab .currency-info > div span, .panel section .tabs .tab .currency-info > div span { font-size: 40px; }
+section#panel section .tabs .tab .currency-info > div span b, .panel section .tabs .tab .currency-info > div span b { color: #24da24; font-size: 33px; }
+section#panel section .tabs .tab .currency-info > div:last-child, .panel section .tabs .tab .currency-info > div:last-child { border: none; }
+@media (max-width: 1200px) { section#panel section .tabs .tab .currency-info > div span, .panel section .tabs .tab .currency-info > div span { font-size: 30px; } }
+@media (max-width: 991px) { section#panel section .tabs .tab .currency-info > div, .panel section .tabs .tab .currency-info > div { width: 100%; border-bottom: 1px dashed #ccc; padding: 20px; border-right: none; } }
+section#panel section .tabs .tab.active, .panel section .tabs .tab.active { display: block; }
+section#panel section .summary, .panel section .summary { margin-bottom: 40px; }
+section#panel section .summary h3, .panel section .summary h3 { border-bottom: 1px dashed #ccc; border-top: 1px dashed #ccc; line-height: 40px; text-align: center; }
+section#panel section .summary > div, .panel section .summary > div { width: 49%; display: inline-block; text-align: center; border-right: 1px dashed #ccc; }
+section#panel section .summary > div:last-child, .panel section .summary > div:last-child { border: none; }
+section#panel section .summary > div span, .panel section .summary > div span { font-size: 25px; }
+section#panel section .summary > div small, .panel section .summary > div small { display: block; }
+section#panel section.main, .panel section.main { width: calc(100% - 315px); float: left; }
+section#panel section.sidebar, .panel section.sidebar { width: 300px; float: right; }
+section#panel section.sidebar .title, .panel section.sidebar .title { padding-bottom: 4px; border-bottom: 1px solid #ccc; }
+section#panel section.sidebar .items .item, .panel section.sidebar .items .item { padding: 15px 0 22px 0; border-bottom: 1px dashed #ccc; display: block; color: #666; }
+section#panel section.sidebar .items .item:hover, .panel section.sidebar .items .item:hover { color: #666; }
+section#panel section.sidebar .items .item span, .panel section.sidebar .items .item span { line-height: 38px; padding-left: 10px; }
+section#panel section.sidebar .items .item img, .panel section.sidebar .items .item img { float: left; width: 38px; }
+section#panel section.sidebar .items .item .detail, .panel section.sidebar .items .item .detail { float: right; text-align: right; margin-top: -5px; }
+section#panel section.sidebar .items .item .detail span, .panel section.sidebar .items .item .detail span { line-height: 25px; font-size: 14px; }
+section#panel section.sidebar .items .item .detail small, .panel section.sidebar .items .item .detail small { display: block; color: #ccc; line-height: 10px; }
+section#panel section.sidebar .items .item .detail i, .panel section.sidebar .items .item .detail i { font-size: 30px; margin-top: 8px; margin-right: 10px; }
+section#panel section.sidebar .items .item:last-child, .panel section.sidebar .items .item:last-child { border: none; }
+section#panel section.sidebar .divider, .panel section.sidebar .divider { height: 20px; }
+section#panel section.sidebar .divider:before, .panel section.sidebar .divider:before { content: ''; left: 0; right: 0; height: 15px; background: whitesmoke; position: absolute; }
+@media (max-width: 767px) { section#panel section.main, section#panel section.sidebar, .panel section.main, .panel section.sidebar { width: 100%; } }
+@media (max-width: 490px) { section#panel, .panel { margin: 40px 0px; } }

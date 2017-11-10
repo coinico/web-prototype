@@ -1,4 +1,4 @@
-section#panel{
+section#panel,.panel{
   margin:40px 15px;
   section {
     position: relative;
@@ -150,6 +150,12 @@ section#panel{
               display: block;
               color:#ccc;
               line-height: 10px;
+            }
+            i{
+              font-size: 30px;
+              margin-top: 8px;
+              margin-right: 10px;
+
             }
           }
           &:last-child{
