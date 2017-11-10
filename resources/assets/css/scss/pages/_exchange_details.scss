@@ -12,6 +12,39 @@ section#exchange-details{
       font-weight: 600;
     }
   }
+  .order_book_trade_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-template-rows: 45px 450px;
+    .order_book_title_trade_bid{
+      grid-column: 1 / 2;
+      grid-row: 1;
+      text-align: center;
+      font-size: 24px;
+      margin-top:25px;
+      vertical-align: middle;
+      font-weight: 600;
+    }
+    .order_book_title_trade_ask{
+      grid-column: 2 / 3;
+      grid-row: 1;
+      text-align: center;
+      font-size: 24px;
+      margin-top:25px;
+      vertical-align: middle;
+      font-weight: 600;
+    }
+    .order_book_trade_bid {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .order_book_trade_ask {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+
   .order_book_container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);

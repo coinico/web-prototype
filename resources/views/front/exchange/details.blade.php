@@ -70,9 +70,22 @@
            </div>
        </div>
 
+       @auth
+       <div class="row order_book_trade_container">
+           <div1 class="order_book_title_trade_bid">COMPRAR {{strtoupper($currencyTo->name)}}</div1>
+           <div1 class="order_book_title_trade_ask">VENDER {{strtoupper($currencyTo->name)}}</div1>
+           <div1 class="order_book_trade_bid">
+
+           </div1>
+           <div1 class="order_book_trade_ask">
+
+           </div1>
+       </div>
+       @endauth
+
        <div class="row order_book_container">
-           <div1 class="order_book_title_bid">ÓRDENES DE COMPRA</div1>
-           <div1 class="order_book_title_ask">ÓRDENES DE VENTA</div1>
+           <div1 class="order_book_title_bid">ORDENES DE COMPRA</div1>
+           <div1 class="order_book_title_ask">ORDENES DE VENTA</div1>
            <div1 class="order_book_bid">
                <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
                    <thead>

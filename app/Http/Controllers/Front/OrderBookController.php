@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserWallet;
 use App\Utils\MarketUtils;
 use Illuminate\Support\Facades\DB;
 use App\Models\CryptoCurrency;
@@ -102,7 +103,15 @@ class OrderBookController extends Controller
     and ob.updated_at >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
 
         $userLoggedIn = Auth::check();
-        return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails', 'userLoggedIn'));
+
+        if ($userLoggedIn) {
+            $walletFrom = UserWallet::where("user_id", auth()->user()->id)
+                ->where("crypto_currency", $currencyFrom->id)->first();
+
+            $walletTo = UserWallet::where("user_id", auth()->user()->id)
+                ->where("crypto_currency", $currencyTo->id)->first();
+        }
+        return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails', 'userLoggedIn', 'walletFrom', 'walletTo'));
     }
 
     public function lastExecutedOrders()

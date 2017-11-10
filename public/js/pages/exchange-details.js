@@ -1,5 +1,24 @@
 var chart = undefined;
 
+$.extend( true, $.fn.dataTable.defaults, {
+    dom: '<if<t>lp>',
+    language: {
+        "search": "",
+        "lengthMenu": "_MENU_",
+        "zeroRecords": "Cero resultados.",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "No hay información disponible.",
+        "infoFiltered": "(filtrados de _MAX_ registros en total)",
+        "emptyTable": "Sin resultados.",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
+            "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
+        }
+    }
+} );
+
 function seeHideVolume() {
     if ($("#seeHideVolumeButton").hasClass("seeingVolume")) {
         removePanel();
@@ -77,17 +96,9 @@ function fillMyLastExecutedOrdersTable() {
                     { "className": "dt-body-right", targets: [3, 4, 5, 6, 7] }
                 ],
                 info: true,
-                dom: '<if<t>lp>',
                 language: {
-                    "info": "<div1 class='datatablesCustomTitle'>MI HISTORIAL DE ÓRDENES</div1>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
+                    "info": "<div1 class='datatablesCustomTitle'>MI HISTORIAL DE ORDENES</div1>",
+                    "infoEmpty": "<div1 class='datatablesCustomTitle'>MI HISTORIAL DE ORDENES</div1>"
                 }
             });
         }
@@ -136,14 +147,7 @@ function fillLastExecutedOrdersTable() {
                 dom: '<if<t>lp>',
                 language: {
                     "info": "<div1 class='datatablesCustomTitle'>HISTORIAL DEL MERCADO</div1>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
+                    "infoEmpty": "<div1 class='datatablesCustomTitle'>HISTORIAL DEL MERCADO</div1>"
                 }
             });
         }
@@ -170,18 +174,7 @@ function fillBidOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false,
-                dom: '<if<t>lp>',
-                language: {
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primera",
-                        "last": "Última",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
+                info: false
             });
         }
     });
@@ -205,18 +198,7 @@ function fillAskOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false,
-                dom: '<if<t>lp>',
-                language: {
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primera",
-                        "last": "Última",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
-                }
+                info: false
             });
         }
     });
@@ -288,15 +270,8 @@ function fillOpenOrdersTable() {
                 info: true,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<div1 class='datatablesCustomTitle'>MIS ÓRDENES ABIERTAS</div1>",
-                    "search": "",
-                    "lengthMenu": "_MENU_",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": '<i class="fa fa-arrow-right" aria-hidden="true" style="color: #4767af"></i>',
-                        "previous": '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #4767af"></i>'
-                    }
+                    "info": "<div1 class='datatablesCustomTitle'>MIS ORDENES ABIERTAS</div1>",
+                    "infoEmpty": "<div1 class='datatablesCustomTitle'>MIS ORDENES ABIERTAS</div1>"
                 }
             });
         }
