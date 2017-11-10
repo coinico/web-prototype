@@ -19,6 +19,91 @@ $.extend( true, $.fn.dataTable.defaults, {
     }
 } );
 
+function formatAsCurrency(value) {
+    return value.toFixed(8)
+}
+
+function priceChange(price) {
+    $("#askValue").val(formatAsCurrency(price));
+    $("#bidValue").val(formatAsCurrency(price));
+    calculateTotal();
+}
+
+function quantityChange(quantity) {
+    $("#unitsBid").val(formatAsCurrency(quantity));
+    $("#unitsAsk").val(formatAsCurrency(quantity));
+    calculateTotal();
+}
+
+function calculateTotal() {
+    calculateBidTotal();
+    calculateAskTotal();
+}
+
+function calculateBidTotal() {
+
+    var maxSelected = $("#maxBidBtn").hasClass("btnmax-selected");
+    var balance = parseFloat($("#currencyFromBalance").val());
+    var units = parseFloat($("#unitsBid").val());
+    var value = parseFloat($("#bidValue").val());
+
+    if (maxSelected) {
+        if (balance !== 0 && value !== 0) {
+            $("#unitsBid").val(formatAsCurrency(balance/value));
+            $("#totalBid").val(formatAsCurrency(balance));
+        }
+    } else {
+        if (units !== 0 && value !== 0) {
+            $("#totalBid").val(formatAsCurrency(units * value));
+        }
+    }
+}
+
+function calculateAskTotal() {
+
+    var maxSelected = $("#maxAskBtn").hasClass("btnmax-selected");
+    var balance = parseFloat($("#currencyToBalance").val());
+    var units = parseFloat($("#unitsAsk").val());
+    var value = parseFloat($("#askValue").val());
+
+    if (maxSelected) {
+        if (balance !== 0 && value !== 0) {
+            $("#unitsAsk").val(formatAsCurrency(balance/value));
+            $("#totalASk").val(formatAsCurrency(balance));
+        }
+    } else {
+        if (units !== 0 && value !== 0) {
+            $("#totalASk").val(formatAsCurrency(units * value));
+        }
+    }
+}
+
+
+
+function maxBidSelected() {
+    if ($("#maxBidBtn").hasClass("btnmax-selected")) {
+        $("#maxBidBtn").removeClass("btnmax-selected");
+        $("#unitsBid").attr("disabled", false);
+        $("#unitsBid").removeClass("units-selected");
+    } else {
+        $("#maxBidBtn").addClass("btnmax-selected");
+        $("#unitsBid").addClass("units-selected");
+        $("#unitsBid").attr("disabled", true);
+    }
+}
+
+function maxAskSelected() {
+    if ($("#maxAskBtn").hasClass("btnmax-selected")) {
+        $("#maxAskBtn").removeClass("btnmax-selected");
+        $("#unitsAsk").removeClass("units-selected");
+        $("#unitsAsk").attr("disabled", false);
+    } else {
+        $("#maxAskBtn").addClass("btnmax-selected");
+        $("#unitsAsk").addClass("units-selected");
+        $("#unitsAsk    ").attr("disabled", true);
+    }
+}
+
 function seeHideVolume() {
     if ($("#seeHideVolumeButton").hasClass("seeingVolume")) {
         removePanel();
@@ -174,7 +259,21 @@ function fillBidOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false
+                info: false,
+                columns:[
+                    {},
+                    {},
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='quantityChange("+row[2]+")'>"+row[2]+"</papanata>";
+                        }
+                    },
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='priceChange("+row[3]+")'>"+row[3]+"</papanata>";
+                        }
+                    }
+                ]
             });
         }
     });
@@ -198,7 +297,19 @@ function fillAskOrdersTable() {
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false
+                info: false,
+                columns:[
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='priceChange("+row[0]+")'>"+row[0]+"</papanata>";
+                        }
+                    },
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='quantityChange("+row[1]+")'>"+row[1]+"</papanata>";
+                        }
+                    }
+                ]
             });
         }
     });

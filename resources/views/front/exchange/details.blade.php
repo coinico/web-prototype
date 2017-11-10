@@ -6,6 +6,8 @@
 
        <input type="hidden" id="currencyFrom" value="{{ $currencyFrom->id }}">
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
+       <input type="hidden" id="currencyFromBalance" value="{{ $walletFrom->available_balance }}">
+       <input type="hidden" id="currencyToBalance" value="{{ $walletTo ? $walletTo->available_balance : 0 }}">
        <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
 
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
@@ -97,7 +99,7 @@
                <div1 class="input-group">
                    <label for="unitsBid" class="col-md-1 control-label">Cantidad</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                        <button class="btn btn-primary" id="maxBidBtn" onclick="maxBidSelected();" style="width:100px;" type="button" title="Habilitando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
                     <input id="unitsBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required>
                     <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
@@ -129,7 +131,7 @@
                <div1 class="input-group">
                    <label for="unitsAsk" class="col-md-1 control-label">Cantidad</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                        <button class="btn btn-primary" id="maxAskBtn" onclick="maxAskSelected();" style="width:100px;" type="button" title="Habilitando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
                    <input id="unitsAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
