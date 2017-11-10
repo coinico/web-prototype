@@ -31,19 +31,19 @@ class OrderBookController extends Controller
                            cc.name as crypto_currency_name, 
                            cc.image as image, 
                            cc.alias as alias,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to and 
-            Date(updated_at) = CURDATE() -INTERVAL 1 DAY order by updated_at desc limit 1) as prev_day,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
-                            order by updated_at desc limit 1) as last_value,
+                           (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to and closed_time is not null and
+            Date(closed_time) = CURDATE() -INTERVAL 1 DAY order by closed_time desc limit 1) as prev_day, 
+                           (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
+                            order by closed_time desc limit 1) as last_value,
                            (select (IF(isnull(prev_day), 0, (last_value - prev_day) / prev_day * 100))) as change_percent,
                            (select concat(FORMAT(change_percent, 1),'%')) as change_string
                       from order_book ob 
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
-                     where ob.crypto_currency_from = 2 
-                       and ob.closed_time is not null
-                       and ob.updated_at >= (NOW() - INTERVAL 1 DAY) 
+                     where ob.closed_time is not null
+                       and ob.closed_time >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
+                           ob.crypto_currency_from,
                            cc.name,
                            cc.image,
                            cc.alias
@@ -58,19 +58,19 @@ class OrderBookController extends Controller
                            cc.image as image, 
                            cc.name as crypto_currency_name, 
                            cc.alias as alias,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to and 
-            Date(updated_at) = CURDATE() -INTERVAL 1 DAY order by updated_at desc limit 1) as prev_day,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
-                            order by updated_at desc limit 1) as last_value,
+                           (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to and closed_time is not null and
+            Date(closed_time) = CURDATE() -INTERVAL 1 DAY order by closed_time desc limit 1) as prev_day, 
+                           (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
+                            order by closed_time desc limit 1) as last_value,
                            (select (IF(isnull(prev_day), 0, (last_value - prev_day) / prev_day * 100))) as change_percent,
                            (select concat(FORMAT(change_percent, 1),'%')) as change_string
                       from order_book ob 
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
-                     where ob.crypto_currency_from = 2 
-                       and ob.closed_time is not null
-                       and ob.updated_at >= (NOW() - INTERVAL 1 DAY) 
+                     where ob.closed_time is not null
+                       and ob.closed_time >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
+                           ob.crypto_currency_from,
                            cc.name,
                            cc.image,
                            cc.alias
@@ -90,17 +90,17 @@ class OrderBookController extends Controller
         $basicDetails = DB::select("select ob.crypto_currency_to, sum(ob.quantity*ob.value) as volume, 
                            max(ob.value) as high, 
                            min(ob.value) as low,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
-                            order by updated_at desc limit 1) as last_value,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
+                           (select value from order_book where crypto_currency_from = $currencyFrom->id and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
+                            order by closed_time desc limit 1) as last_value,
+                            (select value from order_book where crypto_currency_from = $currencyFrom->id and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
                             order by value asc , created_at desc  limit 1) as ask,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
+                            (select value from order_book where crypto_currency_from = $currencyFrom->id and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
                             order by value desc , created_at desc limit 1) as bid
                       from order_book ob 
                      where ob.crypto_currency_from = $currencyFrom->id
     and ob.crypto_currency_to = $currencyTo->id
     and ob.closed_time is not null
-    and ob.updated_at >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
+    and ob.closed_time >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
 
         $userLoggedIn = Auth::check();
 
@@ -124,9 +124,8 @@ class OrderBookController extends Controller
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            //->whereNotNull("closed_time")
             ->where('closed_time', '<>', '', 'and')
-            ->orderBy("updated_at", "DESC")->get();
+            ->orderBy("closed_time", "DESC")->get();
 
         $result = array();
 
@@ -149,7 +148,7 @@ class OrderBookController extends Controller
 
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->whereNotNull("closed_time")
+            ->where('closed_time', '<>', '', 'and')
             ->whereNotIn("filled", [0])
             ->where("user_id", $userId)
             ->orderBy("closed_time", "DESC")->get();
@@ -382,30 +381,40 @@ class OrderBookController extends Controller
 
     public function ctfMarkets()
     {
+        return $this->marketsInformation(2);
+    }
+
+    public function ethMarkets()
+    {
+        return $this->marketsInformation(1);
+    }
+
+    public function marketsInformation($cryptoCurrencyFrom)
+    {
 
         $dbResults = DB::select("
                     select crypto_currency_to as crypto_currency, 
                            sum(quantity*value) as volume, 
                            max(value) as high, 
                            min(value) as low,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to and 
-            Date(updated_at) = CURDATE() -INTERVAL 1 DAY order by updated_at desc limit 1) as prev_day,
-                           (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
-                            order by updated_at desc limit 1) as last_value,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
+                           (select value from order_book where crypto_currency_from = $cryptoCurrencyFrom and crypto_currency_to = ob.crypto_currency_to and closed_time is not null and
+            Date(closed_time) = CURDATE() -INTERVAL 1 DAY order by closed_time desc limit 1) as prev_day, 
+                           (select value from order_book where crypto_currency_from = $cryptoCurrencyFrom and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
+                            order by closed_time desc limit 1) as last_value,
+                            (select value from order_book where crypto_currency_from = $cryptoCurrencyFrom and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
                             order by value asc , created_at desc  limit 1) as ask,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
+                            (select value from order_book where crypto_currency_from = $cryptoCurrencyFrom and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
                             order by value desc , created_at desc limit 1) as bid,
                            (select (IF(isnull(prev_day), 0, (last_value - prev_day) / prev_day * 100))) as change_percent,
                            (select concat(FORMAT(change_percent, 1),'%')) as change_string
                       from order_book ob
-                     where crypto_currency_from = 2 
+                     where crypto_currency_from = $cryptoCurrencyFrom 
                        and closed_time is not null
-                       and updated_at >= (NOW() - INTERVAL 1 DAY) 
+                       and closed_time >= (NOW() - INTERVAL 1 DAY) 
                   group by crypto_currency_to 
                   order by sum(quantity*value) desc");
 
-        $ctfCurrency = CryptoCurrency::find(2);
+        $ctfCurrency = CryptoCurrency::find($cryptoCurrencyFrom);
 
         $result = array();
 

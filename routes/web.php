@@ -74,6 +74,7 @@ Auth::routes();
 
 //Exchange
 Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
+Route::name('ethMarkets')->get('/ethMarkets', 'Front\OrderBookController@ethMarkets');
 Route::name('exchangeDetails')->get('/exchangeDetails', 'Front\OrderBookController@exchangeDetails');
 Route::name('lastExecutedOrders')->get('/lastExecutedOrders', 'Front\OrderBookController@lastExecutedOrders');
 Route::name('myLastExecutedOrders')->get('/myLastExecutedOrders', 'Front\OrderBookController@myLastExecutedOrders');

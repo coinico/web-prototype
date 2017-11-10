@@ -119,6 +119,8 @@ class DatabaseSeeder extends Seeder
             for ($i = 1; $i <= 60; $i++) {
                 $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
                 $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $dateYesterday);
+                $this->createOrderBook($user->id, $ethCurrency, $tokenCurrency);
+                $this->createOrderBookWithDate($user->id, $ethCurrency, $tokenCurrency, $dateYesterday);
             }
         }
 
