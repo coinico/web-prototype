@@ -3555,7 +3555,7 @@ section#exchange-details .order_book_trade_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 40px;
-  grid-template-rows: 50px 60px 330px; }
+  grid-template-rows: 50px 60px 300px; }
   section#exchange-details .order_book_trade_container .submit_trade {
     left: 20%; }
   section#exchange-details .order_book_trade_container .input-group {
@@ -3573,6 +3573,7 @@ section#exchange-details .order_book_trade_container {
       /* WebKit, Blink, Edge */
       color: #d6e2eb; }
     section#exchange-details .order_book_trade_container .input-group .input-trade {
+      height: 50px;
       margin: 0;
       line-height: 1.42857143;
       color: #555;
@@ -3604,7 +3605,7 @@ section#exchange-details .order_book_trade_container {
       color: #333;
       -webkit-tap-highlight-color: transparent; }
       section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn, section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn-primary {
-        height: 60px;
+        height: 50px;
         width: 100px;
         border: 4px solid #3b508a;
         border-radius: 4px;
