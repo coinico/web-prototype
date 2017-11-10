@@ -314,27 +314,33 @@ class OrderBookController extends Controller
 
     public function askOrders()
     {
-        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
-            ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->whereNull("closed_time")
-            ->where("type", "ask")
-            ->orderBy("value", "ASC")
-            ->orderBy("created_at", "DESC")->get();
+        $ccf = Input::get("currencyFrom");
+        $cct = Input::get("currencyTo");
+
+        $dbResults = DB::select("
+          SELECT value, 
+                 sum(quantity) as cantidad, 
+                 value*sum(quantity)  as total
+            from order_book 
+           where crypto_currency_from = $ccf
+             and crypto_currency_to = $cct
+             and closed_time is null
+             and type = 'ask'
+           group by value
+           order by value asc");
 
         $result = array();
         $totalSum = 0;
 
         foreach ($dbResults as $dbResult) {
 
-            $total = $dbResult->quantity * $dbResult->value;
-            $sum = $totalSum + $total;
-            $totalSum += $total;
+            $totalSum += $dbResult->total;
 
             $result[] = array(
                 number_format($dbResult->value, 8, '.', ''),
-                number_format($dbResult->quantity, 8, '.', ''),
-                number_format($total, 4, '.', ''),
-                number_format($sum, 4, '.', '')
+                number_format($dbResult->cantidad, 8, '.', ''),
+                number_format($dbResult->total, 4, '.', ''),
+                number_format($totalSum, 4, '.', '')
             );
         }
         return $result;
@@ -342,26 +348,32 @@ class OrderBookController extends Controller
 
     public function bidOrders()
     {
-        $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
-            ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->whereNull("closed_time")
-            ->where("type", "bid")
-            ->orderBy("value", "DESC")
-            ->orderBy("created_at", "DESC")->get();
+        $ccf = Input::get("currencyFrom");
+        $cct = Input::get("currencyTo");
+
+        $dbResults = DB::select("
+          SELECT value, 
+                 sum(quantity) as cantidad, 
+                 value*sum(quantity)  as total
+            from order_book 
+           where crypto_currency_from = $ccf
+             and crypto_currency_to = $cct
+             and closed_time is null
+             and type = 'bid'
+           group by value
+           order by value desc");
 
         $result = array();
         $totalSum = 0;
 
         foreach ($dbResults as $dbResult) {
 
-            $total = $dbResult->quantity * $dbResult->value;
-            $sum = $totalSum + $total;
-            $totalSum += $total;
+            $totalSum += $dbResult->total;
 
             $result[] = array(
-                number_format($sum, 4, '.', ''),
-                number_format($total, 4, '.', ''),
-                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($totalSum, 4, '.', ''),
+                number_format($dbResult->total, 4, '.', ''),
+                number_format($dbResult->cantidad, 8, '.', ''),
                 number_format($dbResult->value, 8, '.', ''),
             );
         }
