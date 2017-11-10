@@ -12,7 +12,7 @@ $table-body-border: 1px solid #ffeeb7 !default;
 
 // Row background colour (hover, striping etc are all based on this colour and
 // calculated automatically)
-$table-row-background: #F8F8FF !default;
+$table-row-background: #fdfdff !default;
 
 // Row colour, when selected (tr.selected)
 $table-row-selected: #4767af !default;
@@ -69,8 +69,8 @@ table.dataTable {
    /*
     * Header and footer styles
     */
-    th { font-size: 1em; }
-    td { font-size: 0.955em; }
+    th { font-size: 1.1em;  font-family: 'Open Sans',sans-serif; letter-spacing: 0.2px; }
+    td { font-size: 1.02em; font-family: 'Open Sans',sans-serif; letter-spacing: 0.2px;}
 
    thead,
    tfoot {

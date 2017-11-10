@@ -296,7 +296,7 @@ $(document).ready(function(){
                 info: true,
                 dom: '<if<t>lp>',
                 language: {
-                    "info": "<strong>Últimas órdenes ejecutadas</strong>",
+                    "info": "<strong>Últimas Órdenes Ejecutadas</strong>",
                     "search": "",
                     "lengthMenu": "_MENU_",
                     "paginate": {
