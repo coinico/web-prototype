@@ -34,5 +34,15 @@ class UserWallet extends Model
     {
         return $this->hasMany(UserWalletTransaction::class,'user_wallet', 'id');
     }
+
+    public function getAvailableBalanceAttribute()
+    {
+        return $this->transactions->sum( 'amount' );
+    }
+
+    public function getRealBalanceAttribute()
+    {
+        return $this->transactions->where("is_hold", 0)->sum( 'amount' );
+    }
 	
 }

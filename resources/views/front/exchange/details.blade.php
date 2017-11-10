@@ -38,14 +38,14 @@
                            <td class="usd_values">$ {{$basicDetails->volume * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2" class="key_values">Precio Venta</td>
+                           <td rowspan="2" class="key_values">Venta</td>
                            <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->ask}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->ask * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
-                           <td rowspan="2" class="key_values">Precio Compra</td>
+                           <td rowspan="2" class="key_values">Compra</td>
                            <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->bid}}</td>
                        </tr>
                        <tr>
@@ -72,8 +72,14 @@
 
        @auth
        <div class="row order_book_trade_container">
-           <div1 class="order_book_title_trade_bid">COMPRAR {{strtoupper($currencyTo->name)}}</div1>
-           <div1 class="order_book_title_trade_ask">VENDER {{strtoupper($currencyTo->name)}}</div1>
+           <div1 class="order_book_title_trade_bid">
+               <div1 style="margin-left:10px; float:left;">COMPRAR</div1>
+               <div1 style="margin-right:10px; float:right;">{{number_format($walletFrom->real_balance, 8, '.', '')." ".strtoupper($currencyFrom->alias)}} DISPONIBLE</div1>
+           </div1>
+           <div1 class="order_book_title_trade_ask">
+               <div1 style="margin-left:10px; float:left;">VENDER</div1>
+               <div1 style="margin-right:10px; float:right;">{{number_format($walletTo->real_balance, 8, '.', '')." ".strtoupper($currencyTo->alias)}} DISPONIBLE</div1>
+           </div1>
            <div1 class="order_book_trade_bid">
                </br>
                <div1 class="input-group">

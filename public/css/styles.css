@@ -3551,22 +3551,20 @@ section#exchange-details .order_book_trade_container {
     grid-column: 1 / 2;
     grid-row: 1;
     background-color: #f2f5f9;
-    text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     padding-top: 5px;
     margin-top: 22px;
     vertical-align: middle;
-    font-weight: 600; }
+    font-weight: 400; }
   section#exchange-details .order_book_trade_container .order_book_title_trade_ask {
     grid-column: 2 / 3;
     grid-row: 1;
     background-color: #f2f5f9;
-    text-align: center;
     padding-top: 5px;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 22px;
     vertical-align: middle;
-    font-weight: 600; }
+    font-weight: 400; }
   section#exchange-details .order_book_trade_container .order_book_trade_bid {
     grid-column: 1;
     grid-row: 2;
