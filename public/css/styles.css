@@ -3590,6 +3590,7 @@ section#exchange-details .order_book_trade_container {
     color: #333;
     -webkit-tap-highlight-color: transparent; }
     section#exchange-details .order_book_trade_container .input-group .control-label {
+      margin-bottom: 10px;
       padding-left: 5px;
       padding-right: 0;
       width: 90px; }
@@ -3631,14 +3632,14 @@ section#exchange-details .order_book_trade_container {
       section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn, section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn-primary {
         height: 40px;
         width: 80px;
-        border: 1.5px solid #4868af;
+        border: 1.2px solid #bfd5ff;
         border-radius: 4px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         position: relative;
-        color: #fff;
+        color: #555;
         -webkit-appearance: button;
-        background-color: #6692f7;
+        background-color: #d1d6ff;
         margin: 0;
         padding-top: 6px;
         padding-right: 6px;
@@ -3650,6 +3651,30 @@ section#exchange-details .order_book_trade_container {
         line-height: 1.42857143;
         text-align: center;
         vertical-align: middle; }
+      section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn1, section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn-primary1 {
+        height: 40px;
+        width: 80px;
+        border: 1px solid #d6e2eb;
+        border-radius: 4px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        position: relative;
+        color: #fff;
+        -webkit-appearance: button;
+        background-color: #f2f5f9;
+        margin: 0;
+        padding-top: 6px;
+        padding-right: 6px;
+        padding-bottom: 6px;
+        padding-left: 6px;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        vertical-align: middle; }
+        section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn1 img, section#exchange-details .order_book_trade_container .input-group .input-group-btn .btn-primary1 img {
+          width: 25px; }
     section#exchange-details .order_book_trade_container .input-group .input-group-addon {
       font-family: "montserrat-regular", sans-serif;
       border-collapse: separate;

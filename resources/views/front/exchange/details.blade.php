@@ -106,7 +106,7 @@
                <div1 class="input-group">
                    <label for="bidValue" class="col-md-1 control-label">Precio</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Puedes seleccionar el precio que quieras.">Precio</button>
                     </span>
                    <input id="bidValue" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
@@ -115,7 +115,7 @@
                <div1 class="input-group">
                    <label for="totalBid" class="col-md-1 control-label">Total</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!$currencyFrom->image!!}"/></button>
                     </span>
                    <input id="totalBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
@@ -138,7 +138,7 @@
                <div1 class="input-group">
                    <label for="askValue" class="col-md-1 control-label">Precio</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
+                        <button class="btn btn-primary" style="width:100px;" type="button" title="Puedes seleccionar el precio que quieras.">Precio</button>
                     </span>
                    <input id="askValue" type="text" placeholder="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
@@ -147,8 +147,8 @@
                <div1 class="input-group">
                    <label for="totalAsk" class="col-md-1 control-label">Total</label>
                    <span class="input-group-btn">
-                        <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
-                    </span>
+                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!$currencyFrom->image!!}"/></button>
+                   </span>
                    <input id="totalAsk" type="text" placeholder="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
