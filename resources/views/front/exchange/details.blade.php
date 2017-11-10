@@ -9,7 +9,7 @@
 
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
-           <a type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" href="javascript:seeHideVolume();">MOSTRAR/OCULTAR VOLUMEN</a>
+           <input type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="MOSTRAR/OCULTAR VOLUMEN" onclick="seeHideVolume();"/>
 
            <div class="info_currency">
                <table id="info_currency" class="info_currency_table" cellspacing="0">
@@ -70,6 +70,7 @@
        </div>
 
        <div class="row order_book_container">
+           <div1 class="order_book_title">Libro de Órdenes</div1>
            <div1 class="order_book_bid">
                <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
                    <thead>
