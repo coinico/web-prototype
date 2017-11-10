@@ -98,7 +98,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
-                    <input id="units" type="text" placeholder="0.00000000" class="input-trade">
+                    <input id="units" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required>
                     <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
                </div1>
 
@@ -106,7 +106,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
-                   <input id="bid" type="text" placeholder="0.00000000" class="input-trade">
+                   <input id="bid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
 
@@ -114,7 +114,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" style="width:100px;" type="button" title="Habilistando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
-                   <input id="total" type="text" placeholder="0.00000000" class="input-trade">
+                   <input id="total" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
                <div1 class="input-group submit_trade">

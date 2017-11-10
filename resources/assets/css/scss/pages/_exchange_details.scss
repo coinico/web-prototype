@@ -17,12 +17,12 @@ section#exchange-details{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 40px;
-    grid-template-rows: 50px 60px 300px;
+    grid-template-rows: 50px 60px 270px;
     .submit_trade{
       left: 20%;
     }
     .input-group{
-      padding: 15px 0 0 0;
+      padding: 17px 0 0 0;
       position: relative;
       display: table;
       border-collapse: separate;
@@ -36,7 +36,7 @@ section#exchange-details{
         color:    #d6e2eb;
       }
       .input-trade{
-        height: 50px;
+        height: 40px;
         margin: 0;
         line-height: 1.42857143;
         color: #555;
@@ -50,7 +50,7 @@ section#exchange-details{
         z-index: 2;
         float: left;
         width: 100%;
-        font-size: 25px;
+        font-size: 22px;
         border: 1px solid #d6e2eb;
         box-shadow: inset 0 0 1px rgba(0,0,0,.075);
         padding: 6px 12px;
@@ -69,7 +69,7 @@ section#exchange-details{
         color: #333;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         .btn, .btn-primary{
-          height: 50px;
+          height: 40px;
           width: 100px;
           border: 4px solid #3b508a;
           border-radius: 4px;
@@ -80,12 +80,12 @@ section#exchange-details{
           -webkit-appearance: button;
           background-color: $primaryColor;
           margin: 0;
-          padding-top: 12px;
-          padding-right: 12px;
-          padding-bottom: 12px;
-          padding-left: 12px;
+          padding-top: 6px;
+          padding-right: 6px;
+          padding-bottom: 6px;
+          padding-left: 6px;
           display: inline-block;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 400;
           line-height: 1.42857143;
           text-align: center;
