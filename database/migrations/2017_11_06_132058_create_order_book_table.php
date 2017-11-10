@@ -31,7 +31,8 @@ class CreateOrderBookTable extends Migration
             $table->float('value'); // valor que se quiere recibir
 
             $table->enum('execution_type', array('buy', 'sell'));
-            $table->boolean('executed')->default(false); // si fue ejecutada
+
+            $table->timestamp('closed_time')->nullable()->default(null); // si fue ejecutada
 
             $table->timestamps();
         });

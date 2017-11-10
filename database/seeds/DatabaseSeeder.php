@@ -102,11 +102,12 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $date = date("Y-m-d H:i:s", time() - 60 * 60 * 24);
+        $dateYesterday = date("Y-m-d H:i:s", time() - 60 * 60 * 24);
+        $dateToday = date("Y-m-d H:i:s", time());
 
         for ($i = 1; $i <= 60; $i++) {
-            $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency);
-            $this->createOrderBookWithDate($user->id, $ethCurrency, $ctfCurrency, $date);
+            $this->createOrderBook($user->id, $ethCurrency, $ctfCurrency, $dateToday);
+            $this->createOrderBookWithDate($user->id, $ethCurrency, $ctfCurrency, $dateToday, $dateYesterday);
         }
 
         foreach ($tokenCurrencies as $tokenCurrency) {
@@ -117,8 +118,8 @@ class DatabaseSeeder extends Seeder
                 ]
             );
             for ($i = 1; $i <= 60; $i++) {
-                $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency);
-                $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $date);
+                $this->createOrderBook($user->id, $ctfCurrency, $tokenCurrency, $dateToday);
+                $this->createOrderBookWithDate($user->id, $ctfCurrency, $tokenCurrency, $dateToday, $dateYesterday);
             }
         }
 
@@ -150,7 +151,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    function createOrderBook($userId, $currencyFrom, $currencyTo) {
+    function createOrderBook($userId, $currencyFrom, $currencyTo, $dateToday) {
 
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
@@ -171,12 +172,12 @@ class DatabaseSeeder extends Seeder
                 'quantity' => $quantity,
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),
-                'executed' => array_random($booleanTypes)
+                'closed_time' => array_random($booleanTypes) ? $dateToday : NULL
             ]
         );
     }
 
-    function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $date) {
+    function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $dateToday, $date) {
 
         $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
@@ -196,7 +197,7 @@ class DatabaseSeeder extends Seeder
                 'quantity' => $quantity,
                 'value' => $value,
                 'execution_type' => array_random($executionTypes),
-                'executed' => array_random($booleanTypes),
+                'closed_time' => array_random($booleanTypes) ? $dateToday : NULL,
                 'created_at' => $date,
                 'updated_at' => $date
             ]

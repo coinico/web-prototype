@@ -38,7 +38,7 @@ class OrderBookController extends Controller
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
                      where ob.crypto_currency_from = 2 
-                       and ob.executed = 1
+                       and ob.closed_time is not null
                        and ob.updated_at >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
                            cc.name,
@@ -65,7 +65,7 @@ class OrderBookController extends Controller
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
                      where ob.crypto_currency_from = 2 
-                       and ob.executed = 1
+                       and ob.closed_time is not null
                        and ob.updated_at >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
                            cc.name,
@@ -91,14 +91,14 @@ class OrderBookController extends Controller
                            min(ob.value) as low,
                            (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
                             order by updated_at desc limit 1) as last_value,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'ask'
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
                             order by value asc , created_at desc  limit 1) as ask,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'bid'
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
                             order by value desc , created_at desc limit 1) as bid
                       from order_book ob 
                      where ob.crypto_currency_from = $currencyFrom->id
     and ob.crypto_currency_to = $currencyTo->id
-    and ob.executed = 1
+    and ob.closed_time is not null
     and ob.updated_at >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
 
         return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails'));
@@ -108,7 +108,7 @@ class OrderBookController extends Controller
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->where("executed", 1)
+            ->whereNotNull("closed_time")
             ->orderBy("updated_at", "DESC")->get();
 
         $result = array();
@@ -130,7 +130,7 @@ class OrderBookController extends Controller
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->where("executed", 0)
+            ->whereNull("closed_time")
             ->where("type", "ask")
             ->orderBy("value", "ASC")
             ->orderBy("created_at", "DESC")->get();
@@ -158,7 +158,7 @@ class OrderBookController extends Controller
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
-            ->where("executed", 0)
+            ->whereNull("closed_time")
             ->where("type", "bid")
             ->orderBy("value", "DESC")
             ->orderBy("created_at", "DESC")->get();
@@ -194,15 +194,15 @@ class OrderBookController extends Controller
             Date(updated_at) = CURDATE() -INTERVAL 1 DAY order by updated_at desc limit 1) as prev_day,
                            (select value from order_book where crypto_currency_to = ob.crypto_currency_to 
                             order by updated_at desc limit 1) as last_value,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'ask'
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'ask'
                             order by value asc , created_at desc  limit 1) as ask,
-                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and executed = 0 and type = 'bid'
+                            (select value from order_book where crypto_currency_from = 2 and crypto_currency_to = ob.crypto_currency_to and closed_time is null and type = 'bid'
                             order by value desc , created_at desc limit 1) as bid,
                            (select (IF(isnull(prev_day), 0, (last_value - prev_day) / prev_day * 100))) as change_percent,
                            (select concat(FORMAT(change_percent, 1),'%')) as change_string
                       from order_book ob
                      where crypto_currency_from = 2 
-                       and executed = 1
+                       and closed_time is not null
                        and updated_at >= (NOW() - INTERVAL 1 DAY) 
                   group by crypto_currency_to 
                   order by sum(quantity*value) desc");
