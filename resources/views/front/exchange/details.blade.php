@@ -8,15 +8,9 @@
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
 
        <div class="row info_container">
-           <div1 class="graphic">
-               <table id="graphic" class="display cell-border hover stripe" cellspacing="0">
-                   <thead>
-                   <tr>
-                       la concha de tu madre allboys
-                   </tr>
-                   </thead>
-               </table>
-           </div1>
+           <div id="chartdiv" class="graphic"></div>
+           <a type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="Mostrar/Ocultar Volumen" href="javascript:seeHideVolume();">Mostrar/Ocultar Volumen</a>
+
            <div class="info_currency">
                <table id="info_currency" class="info_currency_table" cellspacing="0">
                    <thead>
@@ -120,7 +114,11 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/pages/exchange-details.js') }}" ></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" ></script>
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script type="text/javascript" src="{{ asset('js/pages/exchange-details.js') }}" ></script>
 
 @stop
