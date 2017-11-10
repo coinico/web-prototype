@@ -86,11 +86,11 @@
            </div1>
            <div1 class="order_book_title_trade_bid">
                <div1 style="margin-left:10px; float:left;">COMPRAR</div1>
-               <div1 style="margin-right:10px; float:right;">{{number_format($walletFrom->real_balance, 8, '.', '')." ".strtoupper($currencyFrom->alias)}} DISPONIBLE</div1>
+               <div1 style="margin-right:10px; float:right;">{{number_format($walletFrom->available_balance, 8, '.', '')." ".strtoupper($currencyFrom->alias)}} DISPONIBLE</div1>
            </div1>
            <div1 class="order_book_title_trade_ask">
                <div1 style="margin-left:10px; float:left;">VENDER</div1>
-               <div1 style="margin-right:10px; float:right;">{{number_format($walletTo ? $walletTo->real_balance : 0, 8, '.', '')." ".strtoupper($currencyTo->alias)}} DISPONIBLE</div1>
+               <div1 style="margin-right:10px; float:right;">{{number_format($walletTo ? $walletTo->available_balance : 0, 8, '.', '')." ".strtoupper($currencyTo->alias)}} DISPONIBLE</div1>
            </div1>
            <div1 class="order_book_trade_bid">
                </br>

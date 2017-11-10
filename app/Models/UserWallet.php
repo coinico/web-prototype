@@ -37,12 +37,12 @@ class UserWallet extends Model
 
     public function getAvailableBalanceAttribute()
     {
-        return $this->transactions->sum( 'amount' );
+        return $this->transactions->where("is_hold", 0)->sum( 'amount' );
     }
 
     public function getRealBalanceAttribute()
     {
-        return $this->transactions->where("is_hold", 0)->sum( 'amount' );
+        return $this->transactions->sum( 'amount' );
     }
 	
 }
