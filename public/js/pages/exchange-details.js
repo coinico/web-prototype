@@ -205,7 +205,6 @@ $(document).ready(function(){
                 "ordering": false,
                 "searching": false,
                 data: res,
-                order: [[ 0, "desc" ]],
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
@@ -240,7 +239,6 @@ $(document).ready(function(){
                 "searching": false,
                 "ordering": false,
                 data: res,
-                order: [[ 0, "desc" ]],
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
@@ -273,8 +271,8 @@ $(document).ready(function(){
         success: function(res){
 
             $('#lastExecutedOrders').DataTable( {
+                "order": [],
                 data: res,
-                order: [[ 0, "desc" ]],
                 columnDefs: [
                     { "className": "dt-body-left", targets: [0] },
                     { "className": "dt-body-center", targets: [1] },
@@ -323,8 +321,8 @@ $(document).ready(function(){
         success: function(res){
 
             $('#myLastExecutedOrders').DataTable( {
+                "order": [],
                 data: res,
-                order: [[ 0, "desc" ]],
                 columnDefs: [
                     { "className": "dt-body-center", targets: [0, 1, 2] },
                     { "className": "dt-body-right", targets: [3, 4, 5, 6, 7] }

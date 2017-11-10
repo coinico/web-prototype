@@ -105,7 +105,7 @@
                    <th>Comprar/Vender</th>
                    <th>Valor</th>
                    <th>Cantidad</th>
-                   <th>Costo Total</th>
+                   <th>Total</th>
                </tr>
                </thead>
            </table>
@@ -122,7 +122,7 @@
                    <th>Cantidad llenada</th>
                    <th>Cantidad Total</th>
                    <th>Valor Promedio</th>
-                   <th>Costo Total</th>
+                   <th>Total</th>
                </tr>
                </thead>
            </table>
