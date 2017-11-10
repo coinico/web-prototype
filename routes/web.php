@@ -23,6 +23,9 @@ Route::name('logout')->get('/logout' , 'Auth\LoginController@logout');
 // Home
 Route::name('home')->get('/', 'Front\PostController@index');
 
+// Orders
+Route::name('orders')->get('/orders', 'Front\OrderBookController@orders');
+
 // Exchange
 Route::name('exchange')->get('/exchange', 'Front\OrderBookController@exchange');
 
@@ -78,6 +81,8 @@ Route::name('myOpenOrders')->get('/myOpenOrders', 'Front\OrderBookController@myO
 Route::name('askOrders')->get('/askOrders', 'Front\OrderBookController@askOrders');
 Route::name('bidOrders')->get('/bidOrders', 'Front\OrderBookController@bidOrders');
 Route::name('deleteOrder')->get('/deleteOrder', 'Front\OrderBookController@deleteOrder');
+Route::name('allMyLastExecutedOrders')->get('/allMyLastExecutedOrders', 'Front\OrderBookController@allMyLastExecutedOrders');
+Route::name('allMyOpenOrders')->get('/allMyOpenOrders', 'Front\OrderBookController@allMyOpenOrders');
 
 Route::middleware('community')->group(function () {
 

@@ -115,6 +115,11 @@ class OrderBookController extends Controller
         return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails', 'userLoggedIn', 'walletFrom', 'walletTo'));
     }
 
+    public function orders() {
+        $userLoggedIn = Auth::check();
+        return view('front.orders.index', compact( 'userLoggedIn'));
+    }
+
     public function lastExecutedOrders()
     {
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
@@ -170,6 +175,36 @@ class OrderBookController extends Controller
         return $result;
     }
 
+    public function allMyLastExecutedOrders()
+    {
+        $userId = auth()->user()->id;
+
+        $dbResults = OrderBook::where("user_id", $userId)
+            ->whereNotNull("closed_time")
+            ->whereNotIn("filled", [0])
+            ->orderBy("closed_time", "DESC")->get();
+
+        $result = array();
+
+        foreach ($dbResults as $dbResult) {
+
+            $actualRate = $dbResult->current_cost/$dbResult->filled;
+            $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+
+            $result[] = array(
+                $dbResult->closed_time->format('d/m/Y H:i:s A'),
+                $dbResult->created_at->format('d/m/Y H:i:s A'),
+                $dbResult->cryptoCurrencyFrom->alias."-".$dbResult->cryptoCurrencyTo->alias,
+                "LIMIT ".strtoupper($dbResult->execution_type),
+                number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->filled, 8, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($actualRate, 8, '.', ''),
+                number_format($dbResult->current_cost, 8, '.', '')
+            );
+        }
+        return $result;
+    }
 
     public function deleteOrder()
     {
@@ -231,6 +266,40 @@ class OrderBookController extends Controller
 
             $result[] = array(
                 $dbResult->created_at->format('d/m/Y H:i:s A'),
+                "LIMIT ".strtoupper($dbResult->execution_type),
+                number_format($dbResult->value, 8, '.', ''),
+                number_format($dbResult->filled, 8, '.', ''),
+                number_format($dbResult->quantity, 8, '.', ''),
+                number_format($actualRate, 8, '.', ''),
+                number_format($dbResult->value*$dbResult->quantity, 8, '.', ''),
+                $dbResult->id
+            );
+        }
+        return $result;
+    }
+
+    public function allMyOpenOrders()
+    {
+        $userId = auth()->user()->id;
+
+        $dbResults = OrderBook::where("user_id", $userId)
+            ->whereNull("closed_time")
+            ->orderBy("created_at", "DESC")->get();
+
+        $result = array();
+
+        foreach ($dbResults as $dbResult) {
+
+            if ($dbResult->filled > 0) {
+                $actualRate = $dbResult->current_cost / $dbResult->filled;
+                $actualRate = $actualRate > 0 ? $actualRate : -$actualRate;
+            } else {
+                $actualRate = 0;
+            }
+
+            $result[] = array(
+                $dbResult->created_at->format('d/m/Y H:i:s A'),
+                $dbResult->cryptoCurrencyFrom->alias."-".$dbResult->cryptoCurrencyTo->alias,
                 "LIMIT ".strtoupper($dbResult->execution_type),
                 number_format($dbResult->value, 8, '.', ''),
                 number_format($dbResult->filled, 8, '.', ''),

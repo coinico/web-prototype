@@ -3541,6 +3541,15 @@ section#exchange .row {
       margin-right: 7px;
       font-size: 12px; }
 
+section#orders-details .row {
+  font-family: "montserrat-regular", sans-serif;
+  margin-top: 30px;
+  background-color: white;
+  padding: 0 50px 0 50px; }
+  section#orders-details .row .datatablesCustomTitle {
+    font-size: 26px;
+    font-weight: 600; }
+
 section#exchange-details .row {
   font-family: "montserrat-regular", sans-serif;
   margin-top: 30px;

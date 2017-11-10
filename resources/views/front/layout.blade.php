@@ -75,6 +75,9 @@
 						<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@else
+					<li {{ currentRoute('orders') }}>
+						<a href="{{route('orders')}}">@lang('Ordenes')</a>
+					</li>
 					<li {{ currentRoute('exchange') }}>
 						<a href="{{route('exchange')}}">@lang('Exchange')</a>
 					</li>
