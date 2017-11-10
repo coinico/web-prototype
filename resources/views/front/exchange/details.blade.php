@@ -34,42 +34,42 @@
                    <tbody>
                        <tr>
                            <td rowspan="2" class="key_values">Último</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->last_value}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->last_value, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->last_value * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Volumen</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->volume}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->volume, 4, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->volume * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Venta</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->ask}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->ask, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->ask * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Compra</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->bid}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->bid, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->bid * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Máximo</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->high}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->high, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->high * $currencyFrom->usd_value}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Mínimo</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{$basicDetails->low}}</td>
+                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->low, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">$ {{$basicDetails->low * $currencyFrom->usd_value}}</td>

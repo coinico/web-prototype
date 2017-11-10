@@ -18,7 +18,7 @@ class MarketUtils
      * @return float|int
      */
     public static function calculatePriceDifference($cf, $ct) {
-        return $cf->usd_value / $ct->usd_value;
+        return $ct->usd_value / $cf->usd_value;
     }
 
     public static function calculateSpread($askValue, $bidValue) {

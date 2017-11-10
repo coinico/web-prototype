@@ -27,10 +27,10 @@ class CreateOrderBookTable extends Migration
             $table->foreign('crypto_currency_to')->references('id')->on('crypto_currencies');
 
             $table->enum('type', array('ask', 'bid'));
-            $table->float('quantity'); // cantidad
-            $table->float('value'); // valor que se quiere recibir
-            $table->float('filled')->default(0); // valor llenado de la orden
-            $table->float('current_cost')->default(0); // costo total hasta ahora de la orden
+            $table->double('quantity', 28, 18); // cantidad
+            $table->double('value', 28, 18); // valor que se quiere recibir
+            $table->double('filled', 28, 18)->default(0); // valor llenado de la orden
+            $table->double('current_cost', 28, 18)->default(0); // costo total hasta ahora de la orden
 
             $table->enum('execution_type', array('buy', 'sell'));
 
