@@ -70,7 +70,35 @@
        </div>
 
        <div class="row order_book_container">
-           <div1 class="order_book_title">Libro de Órdenes</div1>
+           <div1 class="order_book_title">Libros de Órdenes</div1>
+           <div1 class="order_book_bid">
+               <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
+                   <thead>
+                   <tr>
+                       <th>Suma Total</th>
+                       <th>Total</th>
+                       <th>Cantidad</th>
+                       <th>Precio Compra ({{$currencyFrom->alias}})</th>
+                   </tr>
+                   </thead>
+               </table>
+           </div1>
+           <div1 class="order_book_ask">
+               <table id="order_book_ask" class="display cell-border hover stripe" cellspacing="0">
+                   <thead>
+                   <tr>
+                       <th>Precio Venta ({{$currencyFrom->alias}})</th>
+                       <th>Cantidad</th>
+                       <th>Total</th>
+                       <th>Suma Total</th>
+                   </tr>
+                   </thead>
+               </table>
+           </div1>
+       </div>
+
+       <div class="row order_book_container">
+           <div1 class="order_book_title">Libros de Órdenes</div1>
            <div1 class="order_book_bid">
                <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
                    <thead>
