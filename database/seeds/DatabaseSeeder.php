@@ -152,15 +152,17 @@ class DatabaseSeeder extends Seeder
 
     function createOrderBook($userId, $currencyFrom, $currencyTo) {
 
-        $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
 
-        if ($value > $currencyTo->usd_value)
+        if ($value > $currencyTo->usd_value) {
             $type = "ask";
-        else
+            $executionType = "sell";
+        }else {
+            $executionType = "buy";
             $type = "bid";
+        }
 
         $cerrar = array_random($booleanTypes);
 
@@ -175,7 +177,7 @@ class DatabaseSeeder extends Seeder
                     'value' => $value,
                     'filled' => $quantity,
                     'current_cost' => $value * $quantity,
-                    'execution_type' => array_random($executionTypes),
+                    'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
                     'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
                 ]
@@ -191,7 +193,7 @@ class DatabaseSeeder extends Seeder
                     'value' => $value,
                     'filled' => $quantity,
                     'current_cost' => $value * $quantity,
-                    'execution_type' => array_random($executionTypes),
+                    'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
                 ]
             );
@@ -200,14 +202,17 @@ class DatabaseSeeder extends Seeder
 
     function createOrderBookWithDate($userId, $currencyFrom, $currencyTo, $date) {
 
-        $executionTypes = array('sell', 'buy');
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
         $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
-        if ($value > $currencyTo->usd_value)
+
+        if ($value > $currencyTo->usd_value) {
             $type = "ask";
-        else
+            $executionType = "sell";
+        }else {
+            $executionType = "buy";
             $type = "bid";
+        }
 
         $cerrar = array_random($booleanTypes);
 
@@ -217,12 +222,12 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $userId,
                     'crypto_currency_from' => $currencyFrom->id,
                     'crypto_currency_to' => $currencyTo->id,
-                    'type' => $type,
+                    'execution_type' => $executionType,
                     'quantity' => $quantity,
                     'value' => $value,
                     'filled' => $quantity,
                     'current_cost' => $value * $quantity,
-                    'execution_type' => array_random($executionTypes),
+                    'type' => $type,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
                     'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
                     'updated_at' => $date
@@ -239,7 +244,7 @@ class DatabaseSeeder extends Seeder
                     'value' => $value,
                     'filled' => $quantity,
                     'current_cost' => $value * $quantity,
-                    'execution_type' => array_random($executionTypes),
+                    'execution_type' => $executionType,
                     'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
                     'updated_at' => $date
                 ]
