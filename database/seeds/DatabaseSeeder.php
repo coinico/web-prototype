@@ -150,14 +150,19 @@ class DatabaseSeeder extends Seeder
         }
     }
 
+    function priceDifference($currencyFrom, $currencyTo) {
+        return \App\Utils\MarketUtils::calculatePriceDifference($currencyFrom, $currencyTo);
+    }
+
     function createOrderBook($userId, $currencyFrom, $currencyTo) {
 
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
-        $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+        $currencyFromAvgValue = $this->priceDifference($currencyFrom, $currencyTo);
+        $value = $currencyFromAvgValue * $this->createRandomFloat(array_random($booleanTypes));
 
         $currentCost = $value * $quantity;
-        if ($value > $currencyTo->usd_value) {
+        if ($value > $currencyFromAvgValue) {
             $type = "ask";
             $executionType = "sell";
         }else {
@@ -204,10 +209,11 @@ class DatabaseSeeder extends Seeder
 
         $booleanTypes = array(1, 0);
         $quantity = rand(1, 5000);
-        $value = $currencyTo->usd_value * $this->createRandomFloat(array_random($booleanTypes));
+        $currencyFromAvgValue = $this->priceDifference($currencyFrom, $currencyTo);
+        $value = $currencyFromAvgValue * $this->createRandomFloat(array_random($booleanTypes));
         $currentCost = $value * $quantity;
 
-        if ($value > $currencyTo->usd_value) {
+        if ($value > $currencyFromAvgValue) {
             $type = "ask";
             $executionType = "sell";
         }else {
