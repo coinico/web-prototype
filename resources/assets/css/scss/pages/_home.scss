@@ -26,31 +26,6 @@ section#home{
   .casatoken-title:hover{
     color:$secondaryColor;
   }
-  .features{
-    background: white;
-    padding: 40px 0 30px 0;
-    .feature {
-      display: inline-block;
-      width: 33%;
-      text-align: center;
-      padding: 20px;
-      @include bs();
-      @media(max-width: 1050px){
-        width: 49%;
-      }
-      @media(max-width: 768px){
-        width: 100%;
-      }
-      .info{
-        height: 150px;
-        p{
-          font-size: 14px;
-          line-height: 18px;
-        }
-      }
-
-    }
-  }
   section{
     padding: 90px 0;
     background: $primaryBgColor;
