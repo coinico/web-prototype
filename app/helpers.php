@@ -7,6 +7,14 @@ if (!function_exists('currentRoute')) {
     }
 }
 
+if (!function_exists('isHome')) {
+    function isHome()
+    {
+        return request()->url() == route('home');
+    }
+}
+
+
 if (!function_exists('currentRouteBootstrap')) {
     function currentRouteBootstrap($route)
     {

@@ -15,6 +15,15 @@
             </div>
            <div class="divider"></div>
            <div class="title">
+               Sus inversiones
+           </div>
+           <div class="info items">
+               @foreach ($investments as $investment)
+                   @include('front.panel.investment')
+               @endforeach
+           </div>
+           <div class="divider"></div>
+           <div class="title">
                Tokens de propiedad
            </div>
            <div class="info items">

@@ -1,6 +1,19 @@
 $(document).ready(function(){
     //$('.properties .wrap')@todo: min height algorithm
 
+    function standarHeight() {
+        var height = 0;
+        $('#properties .property').each(function () {
+            $(this).css('height', 'auto');
+            if (height < $(this).outerHeight()) {
+                height = $(this).outerHeight();
+            }
+        });
+
+        $('#properties .property').each(function () {
+            $(this).css('height', height+10);
+        });
+    }
 
     /** Views **/
     $('#horizontal-view-btn').click(function(e){
@@ -34,7 +47,7 @@ $(document).ready(function(){
             $(this).find('.hs').html(hs);
             $(this).find('.days').html(days);
         });
-    }, 1000);
+    }, 1000*60);
 
     /** Votes **/
     $('.vote a').click(function(e){
@@ -123,4 +136,11 @@ $(document).ready(function(){
             $('.invest a').click();
     });
 
+    standarHeight();
+
+    $(window).resize(function(){
+        standarHeight();
+    });
+
 });
+

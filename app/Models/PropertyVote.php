@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Property;
 
 class PropertyVote extends Model
 {
@@ -19,5 +20,11 @@ class PropertyVote extends Model
     public function properties()
     {
         return $this->belongsTo(Property::class, 'property_id');
+    }
+
+    public function property()
+    {
+        $property = Property::find($this->getAttribute('property_id'));
+        return $property;
     }
 }
