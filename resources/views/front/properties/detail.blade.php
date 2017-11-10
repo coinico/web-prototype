@@ -9,7 +9,7 @@
 
             <div class="price">U$D {{number_format($property->value, 0, ',', '.')}}</div>
             <h3>{{$property->title}}</h3>
-            <p>{{substr ($property->description, 0, 150)}}...</p>
+            <p>{{substr ($property->description, 0, 130)}}...</p>
         </div>
         <div class="hover">
             @if($property->status_id == 1)

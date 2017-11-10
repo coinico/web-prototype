@@ -20,4 +20,10 @@ class PropertyInvest extends Model
     {
         return $this->belongsTo(Property::class, 'property_id');
     }
+
+    public function property()
+    {
+        $property = Property::find($this->getAttribute('property_id'));
+        return $property;
+    }
 }

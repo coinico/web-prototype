@@ -12,24 +12,31 @@
             <h1> {{$property->title}} <span>U$D {{number_format($property->value, 0, ',', '.')}}</span></h1>
             <img src="/images/properties/{{$property->images}}" class="main-image" />
 
+           @if($property->status_id ==1)
 
-           <div class="investment">
-               <div class="item-wrap">
-                   <div class="item invest"  data-url="/property/{{ $property->id }}/invest">
-                       <h3>Tu inversión <a href="#" id="edit-investment"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></h3>
-                       <fieldset>
-                           <input readonly class="eth" value="{{number_format($property->getUserInvestment(), 2, ',', '.')}}" />
-                           <a href="#">
-                               <small>ETH</small>
-                               <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                           </a>
-                       </fieldset>
-                       <p><small>{{number_format($property->getUserInvestment('usd'), 0, ',', '.')}} U$D</small></p>
+               <div class="voting">
+
+               </div>
+
+           @elseif($property->status_id ==4)
+
+               <div class="investment">
+                   <div class="item-wrap">
+                       <div class="item invest"  data-url="/property/{{ $property->id }}/invest">
+                           <h3>Tu inversión <a href="#" id="edit-investment"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></h3>
+                           <fieldset>
+                               <input readonly class="eth" value="{{number_format($property->getUserInvestment(), 2, ',', '.')}}" />
+                               <a href="#">
+                                   <small>ETH</small>
+                                   <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                               </a>
+                           </fieldset>
+                           <p><small>{{number_format($property->getUserInvestment('usd'), 0, ',', '.')}} U$D</small></p>
+                       </div>
                    </div>
                </div>
-           </div>
 
-
+           @endif
 
             <div class="economic">
                 <div class="item-wrap">

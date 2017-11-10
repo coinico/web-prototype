@@ -42,4 +42,5 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/home.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/pages/properties.js') }}" ></script>
 @stop

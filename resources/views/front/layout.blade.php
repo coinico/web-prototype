@@ -65,14 +65,21 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('owners') }}>
-					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
+					<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
 				</li>
-				<li {{ currentRoute('investors') }}>
-					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
-				</li>
+                @guest
+                    <li {{ currentRoute('investors') }}>
+                        <a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
+                    </li>
+                @else
+                    <li {{ currentRoute('investors') }}>
+                        <a href="{{route('investors')}}">@lang('Inversores')</a>
+                    </li>
+                @endguest
+
 				@guest
 					<li {{ currentRoute('exchange') }}>
-						<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
+						<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '#fourth-stop' : route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@else
 					<li {{ currentRoute('orders') }}>
@@ -82,9 +89,18 @@
 						<a href="{{route('exchange')}}">@lang('Exchange')</a>
 					</li>
 				@endguest
-				<li {{ currentRoute('community') }}>
-					<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
-				</li>
+
+                @guest
+                    <li {{ currentRoute('community') }}>
+                        <a class="{{isHome()? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
+                    </li>
+                @else
+                    <li {{ currentRoute('community') }}>
+                        <a href="{{route('community')}}">@lang('Comunidad')</a>
+                    </li>
+                @endguest
+
+
 				@request('register')
 					<li class="current">
 						<a href="{{ request()->url() }}">@lang('Registrarme')</a>
