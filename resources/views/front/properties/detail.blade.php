@@ -7,11 +7,12 @@
                 <div class="image" style="background-image: url('images/no-image.png') "></div>
             @endif
 
-            <div class="price">U$D {{$property->value}}</div>
+            <div class="price">U$D {{number_format($property->value, 0, ',', '.')}}</div>
             <h3>{{$property->title}}</h3>
             <p>{{substr ($property->description, 0, 150)}}...</p>
         </div>
         <div class="hover">
+            @if($property->status_id == 1)
             <div class="time_left">
                 <div><span class="days"> {{$property->getVotingTime()->d}} </span> <small>dias</small></div>
                 <div><span class="hs">{{$property->getVotingTime()->h}}</span> <small>hs</small></div>
@@ -28,6 +29,24 @@
                 </div>
             </div>
             <a href="properties/{{$property->id}}">Ampliar</a>
+            @else
+            <div class="time_left">
+                <div><span class="days"> {{$property->getInvestmentTime()->d}} </span> <small>dias</small></div>
+                <div><span class="hs">{{$property->getInvestmentTime()->h}}</span> <small>hs</small></div>
+                <div><span class="min">{{$property->getInvestmentTime()->i}}</span> <small>min</small></div>
+            </div>
+            <div class="invest" data-url="property/{{ $property->id }}/invest">
+                <span>INVERTIR</span>
+                <fieldset>
+                    <input type="number" value="{{$property->getUserInvestment()}}" name="value"/>
+                    <a href="#">
+                        <small>ETH</small>
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </a>
+                </fieldset>
+            </div>
+            <a href="properties/{{$property->id}}">Ampliar</a>
+            @endif
         </div>
     </div>
 </div>

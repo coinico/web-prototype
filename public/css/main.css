@@ -78,22 +78,7 @@ body {
 /* ------------------------------------------------------------------- 
  * links - (_document-setup.scss)  
  * ------------------------------------------------------------------- */
-a,
-a:visited {
-	color: #1237B1;
-	border-bottom: 1px solid transparent;
-	-moz-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-	-webkit-transition: all 0.4s ease-in-out;
-	-ms-transition: all 0.4s ease-in-out;
-	transition: all 0.4s ease-in-out;
-}
 
-a:hover,
-a:focus {
-	color: #000000;
-	border-color: rgba(21, 21, 21, 0.2);
-}
 
 /* ===================================================================
  *  03. typography & general theme styles - (_document-setup.scss) 

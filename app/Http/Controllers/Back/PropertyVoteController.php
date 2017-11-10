@@ -17,6 +17,8 @@ use App\Http\Requests\PropertyVoteRequest;
 class PropertyVoteController extends Controller
 {
 
+    use Indexable;
+
     /**
      * Create a new PropertyController instance.
      *

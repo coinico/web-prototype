@@ -3334,6 +3334,39 @@ section#properties .wrapper {
             display: block; }
         section#properties .wrapper .property .hover .vote .up {
           border-right: 1px dashed white; }
+      section#properties .wrapper .property .hover .invest > span {
+        margin: 15px;
+        display: block; }
+      section#properties .wrapper .property .hover .invest fieldset {
+        width: 80%;
+        display: block;
+        margin: 10px auto;
+        position: relative; }
+        section#properties .wrapper .property .hover .invest fieldset input {
+          width: 100%;
+          color: #fff;
+          padding-right: 40px; }
+          section#properties .wrapper .property .hover .invest fieldset input:hover, section#properties .wrapper .property .hover .invest fieldset input:focus {
+            color: #4868af; }
+            section#properties .wrapper .property .hover .invest fieldset input:hover + a, section#properties .wrapper .property .hover .invest fieldset input:focus + a {
+              color: #4868af; }
+        section#properties .wrapper .property .hover .invest fieldset a {
+          position: absolute;
+          right: 10px;
+          top: 15px;
+          color: white;
+          width: 40px;
+          height: 32px; }
+          section#properties .wrapper .property .hover .invest fieldset a i {
+            display: none;
+            position: absolute;
+            margin-top: 7px;
+            margin-left: 10px; }
+          section#properties .wrapper .property .hover .invest fieldset a:hover small, section#properties .wrapper .property .hover .invest fieldset a.loading small {
+            display: none; }
+          section#properties .wrapper .property .hover .invest fieldset a:hover i, section#properties .wrapper .property .hover .invest fieldset a.loading i {
+            display: block;
+            color: #4868af; }
       section#properties .wrapper .property .hover > a {
         color: white;
         display: block;
@@ -3802,6 +3835,51 @@ section#property {
     width: 100%;
     display: block;
     margin: 20px 0; }
+  section#property .investment {
+    background: white;
+    padding: 15px; }
+    section#property .investment h3 a {
+      color: #666;
+      display: inline-block;
+      padding-left: 20px; }
+    section#property .investment p, section#property .investment input {
+      font-size: 35px;
+      margin-bottom: 0; }
+      section#property .investment p small, section#property .investment input small {
+        font-size: 15px; }
+    section#property .investment fieldset {
+      width: 100%;
+      display: block;
+      margin: 0;
+      position: relative; }
+      section#property .investment fieldset input {
+        width: 100%;
+        color: #666;
+        padding-right: 40px; }
+        section#property .investment fieldset input:hover, section#property .investment fieldset input:focus {
+          color: #666; }
+          section#property .investment fieldset input:hover + a, section#property .investment fieldset input:focus + a {
+            color: #666; }
+      section#property .investment fieldset a {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        color: white;
+        width: 40px;
+        height: 32px;
+        olor: #666; }
+        section#property .investment fieldset a i {
+          display: none;
+          position: absolute;
+          margin-top: 7px;
+          margin-left: 10px; }
+        section#property .investment fieldset a small {
+          font-size: 20px; }
+        section#property .investment fieldset a:hover small, section#property .investment fieldset a.loading small {
+          display: none; }
+        section#property .investment fieldset a:hover i, section#property .investment fieldset a.loading i {
+          display: block;
+          color: #666; }
   section#property .economic .item-wrap {
     display: inline-block;
     width: 33%;

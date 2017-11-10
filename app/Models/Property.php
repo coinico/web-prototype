@@ -8,6 +8,7 @@ use App\Events\ {
     PropertyUpdated
 };
 use App\Models\PropertyVote;
+use App\Models\CryptoCurrency;
 
 
 class Property extends Model
@@ -83,6 +84,7 @@ class Property extends Model
         $end = new \DateTime($this->getAttribute('created_at'));
         $end->add(new \DateInterval('PT10H30S'));
         $date = new \DateTime();
+
         if($end > $date) {
             $time = $end->diff($date);
         }else{
@@ -90,6 +92,85 @@ class Property extends Model
         }
         return $time;
     }
+
+    /**
+     * Investment time
+     *
+     * @return \DateTime
+     */
+    public function getInvestmentTime(){
+        $end = new \DateTime($this->getAttribute('created_at'));
+        $end->add(new \DateInterval('PT10H30S'));
+        $date = new \DateTime();
+
+        if($end > $date) {
+            $time = $end->diff($date);
+        }else{
+            $time = $date->diff($date);
+        }
+        return $time;
+    }
+
+
+    /**
+     * User investment
+     * @param Boolean
+     * @return \Integer
+     */
+    public function getUserInvestment($s = false){
+        $propertyId = $this->getAttribute('id');
+        $userId = auth()->id();
+        $propertyInvest = PropertyInvest::where(['property_id'=>$propertyId,'user_id'=>$userId])->first();
+
+        if($propertyInvest){
+            $eth_value = $propertyInvest->getAttribute('value');
+            $change = CryptoCurrency::where(['alias'=>'ETH'])->first()->usd_value;
+            $usd_value = $eth_value * $change;
+
+            $return = array(
+                'eth' => $eth_value,
+                'usd' => $usd_value
+            );
+
+            return ($s ? $return[$s] : $return['eth']);
+        }else{
+            return 0;
+        }
+    }
+
+    /**
+     * Total investment
+     * @param \Boolean
+     * @return \Integer
+     */
+    public function getTotalInvestment($s = false){
+        $propertyId = $this->getAttribute('id');
+        $eth_value = PropertyInvest::where(['property_id'=>$propertyId])->sum('value');
+        $change = CryptoCurrency::where(['alias'=>'ETH'])->first()->usd_value;
+        $usd_value = $eth_value * $change;
+        $percentage = $usd_value/$this->getAttribute('value');
+
+        $return = array(
+            'percentage' => $percentage,
+            'usd' => $usd_value
+        );
+
+        return ($s ? $return[$s] : $return['usd']);
+
+    }
+
+    /**
+     * Total investors
+     *
+     * @return \Integer
+     */
+    public function getTotalInvestors(){
+        $propertyId = $this->getAttribute('id');
+        $total = PropertyInvest::where(['property_id'=>$propertyId])->groupBy('user_id')->count();
+
+        return $total;
+    }
+
 
     /**
      * User vote
