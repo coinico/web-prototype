@@ -316,113 +316,18 @@ class OrderBookController extends Controller
 
     public function createBidOrder() {
 
-       /* $result = array();
-
-        $userId = auth()->user()->id;
-        $ccf = Input::get("currencyFrom");
-        $cct = Input::get("currencyTo");
-
-        $cantidad = Input::get("cantidad");
-        $precio = Input::get("precio");
-        $subtotal = Input::get("subtotal");
-        $comision = Input::get("comision");
-        $total = Input::get("total");
-
-        $walletFrom = UserWallet::where("user_id", $userId)->where("crypto_currency", $ccf)->first();
-        $walletTo = UserWallet::where("user_id", $userId)->where("crypto_currency", $cct)->first();
-
-        if (!$walletTo) {
-            $walletTo = UserWallet::create(
-                [
-                    'user_id' => $userId,
-                    'crypto_currency' => $cct,
-                ]
-            );
-        }
-
-        if ($walletFrom->available_balance >= $total) {
-
-            $executingAmount = $total;
-
-            $executingOrder = OrderBook::create(
-                [
-                    'user_id' => $userId,
-                    'crypto_currency_from' => $ccf,
-                    'crypto_currency_to' => $cct,
-                    'type' => "bid",
-                    'quantity' => $cantidad,
-                    'value' => $precio,
-                    'execution_type' => "SELL"
-                ]
-            );
-
-            $nextOrder = OrderBook::whereNull("closed_time")
-                ->where("type", "ask")
-                ->where("crypto_currency_from", $ccf)
-                ->where("crypto_currency_to", $cct)
-                ->where("value", "<=", $precio)
-                ->orderBy("closed_time", "asc")->first();
-
-            while($executingAmount > 0 && $nextOrder) {
-
-                if ($nextOrder->quantity > $cantidad) {
-
-                    $nextOrderUserWallet = UserWallet::where("user_id", $nextOrder->user_id)
-                        ->where("crypto_currency", $ccf);
-
-                    UserWalletTransaction::create(
-                        [
-                            'address_from' => '0xde0B295665436436435634636cb697BAe',
-                            'address_to' => '0xde0B29566124124124124124124cb697BAe',
-                            'amount' => $subtotal,
-                            'type' => 'credit',
-                            'memo' => 'Compra en exchange.',
-                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => 0,
-                            'total' => $subtotal,
-                            'user_wallet' => $nextOrderUserWallet->id,
-                        ]
-                    );
-
-                    UserWalletTransaction::create(
-                        [
-                            'address_from' => '0xde0B295665436436435634636cb697BAe',
-                            'address_to' => '0xde0B29566124124124124124124cb697BAe',
-                            'amount' => $cantidad,
-                            'type' => 'credit',
-                            'memo' => 'Compra en exchange.',
-                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => 0,
-                            'total' => $cantidad,
-                            'user_wallet' => $walletTo->id,
-                        ]
-                    );
-
-                    $nextOrder->update([
-                        "filled" => $nextOrder->filled +$cantidad,
-                        "current_cost" => $nextOrder->current_cost +$nextOrder->value*$cantidad
-                    ]);
-
-                    $nextOrder = null;
-                } else {
-                    $nextOrder->quantity > $cantidad
-                }
-            }
-
-        } else {
-            $result["type"] = "error";
-            $result["message"] = "No posees fondos suficientes para realizar la operación.";
-        }
-
-        return $result;*/
+        $result = array();
         $result["type"] = "success";
         $result["message"] = "Operación no disponible aún.";
+        return $result;
     }
 
     public function createAskOrder() {
 
+        $result = array();
         $result["type"] = "success";
         $result["message"] = "Operación no disponible aún.";
+        return $result;
     }
 
     public function askOrders()
