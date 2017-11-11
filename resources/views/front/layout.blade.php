@@ -63,16 +63,28 @@
 
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
-				<li {{ currentRoute('owners') }}>
-					<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
+				<li {{ currentRoute('home') }}>
+					<a href="{{isHome() ? '#top' : route('home')}}">@lang('Inicio')</a>
 				</li>
-                @guest
+			@guest
+					<li {{ currentRoute('owners') }}>
+						<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#second-stop">@lang('Propietarios')</a>
+					</li>
+					<li {{ currentRoute('community') }}>
+						<a class="{{isHome()? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
+					</li>
                     <li {{ currentRoute('investors') }}>
                         <a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#third-stop">@lang('Inversores')</a>
                     </li>
                 @else
+					<li>
+						<a href="javascript:alert('Opción no disponible en la demo.');">@lang('Enlistar')</a>
+					</li>
+					<li {{ currentRoute('community') }}>
+						<a href="{{route('community')}}">@lang('Votar')</a>
+					</li>
                     <li {{ currentRoute('investors') }}>
-                        <a href="{{route('investors')}}">@lang('Inversores')</a>
+                        <a href="{{route('investors')}}">@lang('Invertir')</a>
                     </li>
                 @endguest
 
@@ -90,13 +102,7 @@
 				@endguest
 
                 @guest
-                    <li {{ currentRoute('community') }}>
-                        <a class="{{isHome()? 'smoothscroll' : ''}}" href="{{isHome() ? '' : route('home')}}#fifth-stop">@lang('Comunidad')</a>
-                    </li>
                 @else
-                    <li {{ currentRoute('community') }}>
-                        <a href="{{route('community')}}">@lang('Comunidad')</a>
-                    </li>
                 @endguest
 
 
@@ -128,7 +134,7 @@
 						<li class='cat-item'>
 							<div class="user-lnk">
 								<a class="atata" href='#' title='Usuario'>Usuario</a>
-								<a class="atata1" href='#' title='Usuario'><img src="images/user-icon.svg" /></a>
+								<a class="atata1" href='#' title='Usuario'><img src="/images/user-icon.svg" /></a>
 							</div>
 							<ul class="children">
 								<li {{ currentRoute('panel') }}>
