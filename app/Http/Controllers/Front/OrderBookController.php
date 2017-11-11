@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserWallet;
-use App\Models\UserWalletTransaction;
-use App\Utils\MarketUtils;
-use Illuminate\Support\Facades\DB;
 use App\Models\CryptoCurrency;
 use App\Models\OrderBook;
-use Illuminate\Support\Facades\Input;
+use App\Models\UserWallet;
+use App\Utils\MarketUtils;
 use Carbon\Carbon;
-use \Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class OrderBookController.
