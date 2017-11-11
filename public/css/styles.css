@@ -3552,6 +3552,12 @@ section#manage-wallet .info {
       top: 0; }
       section#manage-wallet .info .item .detail span {
         font-size: 12px; }
+section#manage-wallet .botones_wallet .boton_wallet1 {
+  margin-top: 25px;
+  width: 270px; }
+section#manage-wallet .botones_wallet .boton_wallet2 {
+  margin-top: 5px;
+  width: 270px; }
 
 section#exchange .row {
   margin-top: 30px;

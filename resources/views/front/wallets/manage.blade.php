@@ -25,7 +25,7 @@
                @include('front.panel.transaction')
             @endforeach
             @if($transactions->isEmpty())
-               <div class="item">No tienes transacciones</div>
+               <div class="item">No tienes transacciones.</div>
             @endif
          </div>
       </section>
@@ -38,10 +38,14 @@
                <img src="/images/wallets/qr_code.png" />
                <span>{{$userWallet->getCurrency()}} </span>
                <div class="detail">
-                  <span>Real: {{$userWallet->getRealBalanceAttribute()}}</span>
-                  <small>Disp: {{$userWallet->getAvailableBalanceAttribute()}}</small>
+                  <span>Disp: {{$userWallet->available_balance}}</span>
+                  <small>Real: {{$userWallet->real_balance}}</small>
                </div>
             </div>
+            <div1 class="botones_wallet">
+               <button class="boton_wallet1" type="submit" onclick="depositar()"><i class="fa fa-plus"></i> Depositar</button>
+               <button class="boton_wallet2" type="submit" onclick="retirar()"><i class="fa fa-minus"></i> Retirar</button>
+            </div1>
          </div>
       </section>
 
