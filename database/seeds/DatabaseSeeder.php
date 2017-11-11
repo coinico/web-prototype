@@ -53,14 +53,14 @@ class DatabaseSeeder extends Seeder
 
         $tokenCurrencies = array();
 
-        $tokenCurrencies[] = $this->createCurrency("ARG-BN-001", "ARBN1", "house1.png", 10.5);
-        $tokenCurrencies[] = $this->createCurrency("ARG-PD-004", "ARPD4", "house2.png", 9);
-        $tokenCurrencies[] = $this->createCurrency("ARG-TT-007", "ARTT7", "house3.png", 8);
-        $tokenCurrencies[] = $this->createCurrency("ARG-GN-008", "ARGN8", "house4.png", 11);
-        $tokenCurrencies[] = $this->createCurrency("ARG-HP-009", "ARHP9", "house5.png", 12.45);
-        $tokenCurrencies[] = $this->createCurrency("ARG-TY-002", "ARTY2", "house6.png", 3.22);
-        $tokenCurrencies[] = $this->createCurrency("ARG-YC-005", "ARYC5", "house7.png", 8.75456);
-        $tokenCurrencies[] = $this->createCurrency("ARG-RR-003", "ARRR3", "house8.png", 10.777);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARBN-001", "ARBN1", "house1.png", 10.5);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARPD-004", "ARPD4", "house2.png", 9);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARTT-007", "ARTT7", "house3.png", 8);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARGN-008", "ARGN8", "house4.png", 11);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARHP-009", "ARHP9", "house5.png", 12.45);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARTY-002", "ARTY2", "house6.png", 3.22);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARYC-005", "ARYC5", "house7.png", 8.75456);
+        $tokenCurrencies[] = $this->createCurrency("TPI-ARRR-003", "ARRR3", "house8.png", 10.777);
 
         $ethWallet = UserWallet::create(
             [
