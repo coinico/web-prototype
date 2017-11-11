@@ -314,6 +314,24 @@ class OrderBookController extends Controller
         return $result;
     }
 
+    public function createBidOrder() {
+
+        $result = array();
+        $result["type"] = "success";
+        $result["message"] = "holasoyunabidorder";
+        $result["input"] = Input::get();
+        return $result;
+    }
+
+    public function createAskOrder() {
+
+        $result = array();
+        $result["type"] = "success";
+        $result["message"] = "holasoyunaaskorder";
+        $result["input"] = Input::get();
+        return $result;
+    }
+
     public function askOrders()
     {
         $ccf = Input::get("currencyFrom");

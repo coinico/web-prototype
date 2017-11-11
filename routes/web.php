@@ -84,6 +84,8 @@ Route::name('bidOrders')->get('/bidOrders', 'Front\OrderBookController@bidOrders
 Route::name('deleteOrder')->get('/deleteOrder', 'Front\OrderBookController@deleteOrder');
 Route::name('allMyLastExecutedOrders')->get('/allMyLastExecutedOrders', 'Front\OrderBookController@allMyLastExecutedOrders');
 Route::name('allMyOpenOrders')->get('/allMyOpenOrders', 'Front\OrderBookController@allMyOpenOrders');
+Route::name('createBidOrder')->get('/createBidOrder', 'Front\OrderBookController@createBidOrder');
+Route::name('createAskOrder')->get('/createAskOrder', 'Front\OrderBookController@createAskOrder');
 
 Route::middleware('community')->group(function () {
 

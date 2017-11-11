@@ -40,6 +40,8 @@ function createBidOrder() {
             $("#modal-trade-comision").val(formatAsCurrency(commission));
             $("#modal-trade-total").val(formatAsCurrency(total));
 
+            $("#confirm-trade-modal").attr("onclick", "confirmBidOrder()");
+
             $('#tradeModal').modal('show');
 
         } else {
@@ -48,6 +50,67 @@ function createBidOrder() {
     } else {
         modalMessage("error", "La orden debe ser mayor al mínimo: "+getMinimum());
     }
+}
+
+function confirmBidOrder() {
+    console.log("confirm bid order");
+
+    var cantidad = $("#modal-trade-cantidad").val();
+    var precio = $("#modal-trade-precio").val();
+    var subtotal = $("#modal-trade-subtotal").val();
+    var comision = $("#modal-trade-comision").val();
+    var total = $("#modal-trade-total").val();
+
+    var createBidOrder = "./createBidOrder";
+
+    $.get({
+        url: createBidOrder,
+        data: {
+            "cantidad": cantidad,
+            "precio": precio,
+            "subtotal": subtotal,
+            "comision": comision,
+            "total": total
+        },
+        dataType: "json",
+        success: function(res){
+            modalMessage(res.type, res.message);
+        }
+    }).done(function() {
+
+    }).fail(function(data) {
+        modalMessage("error", data);
+    });
+}
+
+function confirmAskOrder() {
+
+    var cantidad = $("#modal-trade-cantidad").val();
+    var precio = $("#modal-trade-precio").val();
+    var subtotal = $("#modal-trade-subtotal").val();
+    var comision = $("#modal-trade-comision").val();
+    var total = $("#modal-trade-total").val();
+
+    var createAskOrder = "./createAskOrder";
+
+    $.get({
+        url: createAskOrder,
+        data: {
+            "cantidad": cantidad,
+            "precio": precio,
+            "subtotal": subtotal,
+            "comision": comision,
+            "total": total
+        },
+        dataType: "json",
+        success: function(res){
+            modalMessage(res.type, res.message);
+        }
+    }).done(function() {
+
+    }).fail(function(data) {
+        modalMessage("error", data);
+    });
 }
 
 function createAskOrder() {
@@ -70,6 +133,8 @@ function createAskOrder() {
             $("#modal-trade-subtotal").val(formatAsCurrency(subTotal));
             $("#modal-trade-comision").val(formatAsCurrency(commission));
             $("#modal-trade-total").val(formatAsCurrency(total));
+
+            $("#confirm-trade-modal").attr("onclick", "confirmAskOrder()");
 
             $('#tradeModal').modal('show');
 

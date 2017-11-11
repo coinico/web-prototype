@@ -148,7 +148,7 @@
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                               <button type="button" class="btn btn-primary">Confirmar</button>
+                               <button id="confirm-trade-modal" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                            </div>
                        </div>
                    </div>
