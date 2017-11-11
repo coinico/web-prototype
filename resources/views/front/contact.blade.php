@@ -12,7 +12,7 @@
 
                 <div class="primary-content">
 
-						<h1 class="entry-title add-bottom">@lang('Contactanos')</h1>
+						<h1 class="entry-title add-bottom">@lang('Contáctanos')</h1>
 
                         @if (session('ok'))
                             @component('front.components.alert')
