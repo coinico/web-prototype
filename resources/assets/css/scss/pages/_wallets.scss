@@ -149,6 +149,23 @@ section#create-wallet{
 }
 
 section#manage-wallet{
+    #tradeModal {
+        .modal-header{
+            text-align:center;
+        }
+        .modal-footer{
+            text-align:center;
+        }
+        .modal-body{
+            text-align:center;
+            .input-hola{
+                margin-left:175px;
+            }
+            .input-left{
+                text-align:right;
+            }
+        }
+    }
     .info{
         background: white;
         color: #898998;

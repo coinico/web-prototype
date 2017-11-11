@@ -4,6 +4,35 @@
 
 <section id="manage-wallet" class="panel">
 
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div id="modaldata" class="modal-body" style="text-align: center">
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog order_book_trade_bid" role="document">
+         <div class="modal-content order_book_trade_bid">
+            <div class="modal-header">
+               <h4 class="modal-title" id="tradeModalTitle">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                  <label for="modal-trade-cantidad">Cantidad</label>
+                  <input id="modal-trade-cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
+                  <label for="modal-trade-memo">Memo</label>
+                  <input id="modal-trade-memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+               <button id="confirm-trade-modal" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
    <div class="row">
       <section class="main">
          <?php $transactions = $userWallet->transactions ?>
@@ -14,10 +43,10 @@
             <div class="actions">
                <!--<a href="#" id="horizontal-view-btn">
                   <i class="fa fa-list" aria-hidden="true"></i>
-               </a>-->
-               <a href="#" id="normal-view-btn">
-                  <i class="fa fa-th" aria-hidden="true"></i>
                </a>
+            <!--<a href="#" id="normal-view-btn">
+                  <i class="fa fa-th" aria-hidden="true"></i>
+               </a>-->
             </div>
          </div>
          <div class="info items">
@@ -57,4 +86,5 @@
 
 @section('scripts')
    <script type="text/javascript" src="{{ asset('js/pages/manage-wallets.js') }}" ></script>
+   <script type="text/javascript" src="{{ asset('js/plugins/modal.js') }}" ></script>
 @stop
