@@ -157,12 +157,43 @@ section#manage-wallet{
             text-align:center;
         }
         .modal-body{
-            text-align:center;
-            .input-hola{
-                margin-left:175px;
+            text-align: center;
+            .modal-body-info-chiquit{
+                font-size: 13px;
+                color: #898998;
             }
             .input-left{
                 text-align:right;
+            }
+        }
+    }
+    #deposit-modal-virtual {
+        .modal-header{
+            text-align:center;
+        }
+        .modal-footer{
+            text-align:center;
+        }
+        .modal-body{
+            text-align: center;
+            .modal-body-info-chiquit{
+                font-size: 13px;
+                color: #898998;
+            }
+            .input-left{
+                text-align:right;
+            }
+            .label-hola{
+                vertical-align: middle;
+                margin-top: -10px;
+                width:130px;
+                text-align:right;
+                display: inline-block;
+            }
+            .input-hola{
+                height: 40px;
+                align-content: right;
+                display: inline-block;
             }
         }
     }

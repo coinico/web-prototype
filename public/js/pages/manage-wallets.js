@@ -3,6 +3,11 @@ function depositar() {
     $('#deposit-modal').modal('show');
 }
 
+function depositarVirtual() {
+
+    $('#deposit-modal-virtual').modal('show');
+}
+
 function retirar() {
 
     $('#withdraw-modal').modal('show');

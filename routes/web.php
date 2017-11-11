@@ -172,6 +172,6 @@ Route::group(['middleware'=> 'web'],function(){
     Route::resource('wallets', 'Front\UserWalletController');
     Route::get('/userWallet/{id}/manage', 'Front\UserWalletController@manageWallet');
     Route::get('/userWallet/{id}/deposit', 'Front\UserWalletController@deposit');
-    Route::get('/userWallet/{id}/withdraw', 'Front\UserWalletController@withdraw');
+    Route::post('/userWallet/{id}/withdraw', 'Front\UserWalletController@withdraw');
 
 });

@@ -3538,10 +3538,32 @@ section#manage-wallet #deposit-modal .modal-footer, section#manage-wallet #withd
   text-align: center; }
 section#manage-wallet #deposit-modal .modal-body, section#manage-wallet #withdraw-modal .modal-body {
   text-align: center; }
-  section#manage-wallet #deposit-modal .modal-body .input-hola, section#manage-wallet #withdraw-modal .modal-body .input-hola {
-    margin-left: 175px; }
+  section#manage-wallet #deposit-modal .modal-body .modal-body-info-chiquit, section#manage-wallet #withdraw-modal .modal-body .modal-body-info-chiquit {
+    font-size: 13px;
+    color: #898998; }
   section#manage-wallet #deposit-modal .modal-body .input-left, section#manage-wallet #withdraw-modal .modal-body .input-left {
     text-align: right; }
+section#manage-wallet #deposit-modal-virtual .modal-header {
+  text-align: center; }
+section#manage-wallet #deposit-modal-virtual .modal-footer {
+  text-align: center; }
+section#manage-wallet #deposit-modal-virtual .modal-body {
+  text-align: center; }
+  section#manage-wallet #deposit-modal-virtual .modal-body .modal-body-info-chiquit {
+    font-size: 13px;
+    color: #898998; }
+  section#manage-wallet #deposit-modal-virtual .modal-body .input-left {
+    text-align: right; }
+  section#manage-wallet #deposit-modal-virtual .modal-body .label-hola {
+    vertical-align: middle;
+    margin-top: -10px;
+    width: 130px;
+    text-align: right;
+    display: inline-block; }
+  section#manage-wallet #deposit-modal-virtual .modal-body .input-hola {
+    height: 40px;
+    align-content: right;
+    display: inline-block; }
 section#manage-wallet .info {
   background: white;
   color: #898998;

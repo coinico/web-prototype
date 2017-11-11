@@ -14,27 +14,51 @@
          </div>
       </div>
    </div>
+
+    <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog order_book_trade_bid" role="document">
+            <div class="modal-content order_book_trade_bid">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="tradeModalTitle"><img width="20px" src="/images/{{$userWallet->currency->type === "currency"? "".$userWallet->currency->image : "tokens/".$userWallet->currency->image}}" /> Depositar fondos</h4>
+                </div>
+                <div class="modal-body">
+                    <img width="36%" src="/images/wallets/qr_code.png">
+                    0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61</br>
+                    <div1 class="modal-body-info-chiquit">Información meramente visual. Para realizar un depósito virtual, presione el botón "VIRTUAL".</div1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-primary" onclick="depositarVirtual()">Virtual</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
   <form id="deposit-form" action="{{ url("userWallet/$userWallet->id/deposit") }}" method="GET">
 
-   <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog order_book_trade_bid" role="document">
-         <div class="modal-content order_book_trade_bid">
-               <div class="modal-header">
-                  <h4 class="modal-title" id="tradeModalTitle">Depositar fondos</h4>
-               </div>
-               <div class="modal-body">
-                     <label for="modal-trade-cantidad">Cantidad</label>
-                     <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
-                     <label for="modal-trade-memo">Memo</label>
-                     <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button id="confirm-trade-modal" type="submit" class="btn btn-primary">Confirmar</button>
-               </div>
-         </div>
-      </div>
-   </div>
+       <div class="modal fade" id="deposit-modal-virtual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog order_book_trade_bid" role="document">
+             <div class="modal-content order_book_trade_bid">
+                   <div class="modal-header">
+                      <h4 class="modal-title" id="tradeModalTitle"><img width="20px" src="/images/{{$userWallet->currency->type === "currency"? "".$userWallet->currency->image : "tokens/".$userWallet->currency->image}}" /> Depositar fondos</h4>
+                   </div>
+                   <div class="modal-body">
+                       <div class="input-group">
+                           <label class="label-hola" for="modal-trade-cantidad">Cantidad</label>
+                           <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
+                       </div>
+                       <div class="input-group">
+                           <label class="label-hola" for="modal-trade-memo">Memo</label>
+                           <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
+                       </div>
+                   </div>
+                   <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button id="confirm-trade-modal" type="submit" class="btn btn-primary">Confirmar</button>
+                   </div>
+             </div>
+          </div>
+       </div>
    </form>
 
    <form id="withdraw-form" action="{{ url("userWallet/$userWallet->id/withdraw") }}" method="GET">
@@ -67,12 +91,6 @@
                @lang('Mostrando ') {{count($transactions)}} @lang('transacciones')
             </div>
             <div class="actions">
-               <!--<a href="#" id="horizontal-view-btn">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-               </a>
-            <!--<a href="#" id="normal-view-btn">
-                  <i class="fa fa-th" aria-hidden="true"></i>
-               </a>-->
             </div>
          </div>
          <div class="info items">
