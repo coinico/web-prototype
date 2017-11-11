@@ -4,7 +4,7 @@
 
    <section id="welcome">
        <div class="row">
-           <h1>Hola {{$user->name}}! Cómo estás? Bienvenido a la plataforma CasaToken.</h1>
+           <h1>Hola {{$user->name}}! Cómo estás? Bienvenido a la plataforma CasaToken (version DEMO).</h1>
            <div class="message">
                Déjanos contarte algunas novedades:
                Hemos depositado 100 ETH y 10000 CTF virtuales en tu billetera (puedes encontrarla en el panel de usuarios).
