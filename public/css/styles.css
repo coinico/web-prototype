@@ -4083,6 +4083,9 @@ section#panel, .panel {
     background: white;
     padding: 15px;
     color: #666; }
+    section#panel section .sopenco, .panel section .sopenco {
+      margin: 10px 50px 50px 50px;
+      padding-top: 10px; }
     section#panel section .highcharts-axis-labels, section#panel section .highcharts-credits, section#panel section .highcharts-grid, .panel section .highcharts-axis-labels, .panel section .highcharts-credits, .panel section .highcharts-grid {
       display: none !important; }
     section#panel section .highcharts-container svg, .panel section .highcharts-container svg {

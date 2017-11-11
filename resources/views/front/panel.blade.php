@@ -3,10 +3,11 @@
 @section('main')
 
    <section id="panel">
+
        <div class="row">
        <section class="sidebar">
             <div class="title">
-                Su billetera
+                Mis billeteras
             </div>
             <div class="info items">
                 @foreach ($standardWallets as $standardWallet)
@@ -15,24 +16,34 @@
             </div>
            <div class="divider"></div>
            <div class="title">
-               Sus inversiones
-           </div>
-           <div class="info items">
-               @foreach ($investments as $investment)
-                   @include('front.panel.investment')
-               @endforeach
-           </div>
-           <div class="divider"></div>
-           <div class="title">
-               Tokens de propiedad
+               Mis Tokens de Propiedad
            </div>
            <div class="info items">
                @foreach ($tokenWallets as $tokenWallet)
                    @include('front.panel.token')
                @endforeach
            </div>
+           <div class="divider"></div>
+           <div class="title">
+               Mis Contribuciones
+           </div>
+           <div class="info items">
+               @foreach ($investments as $investment)
+                   @include('front.panel.investment')
+               @endforeach
+           </div>
        </section>
        <section class="main">
+
+           <div class="row sopenco">
+               <h1>¡Hola {{$user->name}}! Bienvenido a CasaToken (DEMO)</h1>
+               <div class="message">
+                   Hemos depositado 100 ETH y 10000 CTF virtuales en tus billeteras.</br></br>
+                   También creamos una propiedad a tu nombre, la misma será sometida a votación entre los miembros de la plataforma. De ser aprobada, podrás verla en tu panel de inversión.</br></br>
+                   Te cuento que podrás interactuar con tus crypto-monedas y tokens en nuestro exchange o invirtiendo en alguna de las propiedades disponibles en el menú "Invertir".
+               </div>
+           </div>
+           <div class="row sopenco">
            <div class="tabs-selector">
                <div class="tab-selector active">Casatoken · 1,01 USD  </div>
                <div class="tab-selector">Ethereum · 267,87 USD</div>
@@ -49,12 +60,12 @@
                         <div class="variation">
                             <div>
                                 <span><b>+</b>0,43 USD</span>
-                                <small>DESDE EL MES PASADO (EUR)</small>
+                                <small>DESDE EL MES PASADO (CTF)</small>
                             </div>
                         </div>
                         <div class="percent_variation">
                             <div>
-                                <span><b>+</b>55.94%</span>
+                                <span><b>+</b>43.00%</span>
                                 <small>DESDE EL MES PASADO (%)</small>
                             </div>
                         </div>
@@ -64,15 +75,15 @@
                 <div class="tab">
                    <div class="currency-info">
                        <div class="price">
-                           6.362,43 €
-                           <small>PRECIO BITCOIN</small>
+                           362,43 €
+                           <small>PRECIO ETHEREUM</small>
                        </div>
                        <div class="variation">
-                           +2.283,03 €
-                           <small>DESDE EL MES PASADO (EUR)</small>
+                           +83,03 €
+                           <small>DESDE EL MES PASADO (ETH)</small>
                        </div>
                        <div class="percent_variation">
-                           +55.94%
+                           +22.94%
                            <small>DESDE EL MES PASADO (%)</small>
                        </div>
                    </div>
@@ -93,6 +104,7 @@
                    <small>480,00000000 €</small>
                </div>
            </div>-->
+           </div>
        </section>
        </div>
    </section>
@@ -147,7 +159,7 @@
 
                 series: [{
                     type: 'area',
-                    name: 'USD to EUR',
+                    name: 'CTF to ETH',
                     data: data
                 }]
             });
