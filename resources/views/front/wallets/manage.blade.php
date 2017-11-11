@@ -90,8 +90,8 @@
          </div>
          <div class="items">
             <div class="item wallet">
-               <img src="/images/wallets/qr_code.png" />
-               <span>{{$userWallet->getCurrency()}} </span>
+               <img src="/images/{{$userWallet->currency->type === "currency"? "".$userWallet->currency->image : "tokens/".$userWallet->currency->image}}" />
+               <span>{{$userWallet->currency->alias}} </span>
                <div class="detail">
                   <span>Disp: {{$userWallet->available_balance}}</span>
                   <small>Real: {{$userWallet->real_balance}}</small>

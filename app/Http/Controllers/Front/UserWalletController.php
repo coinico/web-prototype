@@ -113,7 +113,7 @@ class UserWalletController extends Controller
                 'user_wallet' => $id,
             ]
         );
-        
+
         $userWallet = UserWallet::find($id);
 
         $message = "Operación realizada con éxito.";
