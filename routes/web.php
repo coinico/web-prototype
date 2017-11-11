@@ -87,15 +87,11 @@ Route::name('allMyOpenOrders')->get('/allMyOpenOrders', 'Front\OrderBookControll
 Route::name('createBidOrder')->get('/createBidOrder', 'Front\OrderBookController@createBidOrder');
 Route::name('createAskOrder')->get('/createAskOrder', 'Front\OrderBookController@createAskOrder');
 
-Route::middleware('community')->group(function () {
+// PropertyVote
+Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
 
-    // PropertyVote
-    Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
-
-    // PropertyInvest
-    Route::post('/property/{id}/invest', 'Back\PropertyInvestController@invest');
-
-});
+// PropertyInvest
+Route::post('/property/{id}/invest', 'Back\PropertyInvestController@invest');
 
 
 Route::prefix('admin')->namespace('Back')->group(function () {

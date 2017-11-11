@@ -24,6 +24,8 @@ class PropertyVoteController extends Controller
         $this->repository = $repository;
 
         $this->table = 'property_votes';
+
+        $this->middleware('auth');
     }
 
 
