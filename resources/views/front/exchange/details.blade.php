@@ -11,7 +11,6 @@
        <input type="hidden" id="currencyToBalance" value="{{ $walletTo ? $walletTo->available_balance : 0 }}">
        <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
 
-
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
            <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -160,7 +159,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" id="maxBidBtn" onclick="maxBidSelected();" style="width:100px;" type="button" title="Habilitando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
-                    <input id="unitsBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required>
+                    <input id="unitsBid" type="text" placeholder="0.00000000" value="0.00000000" onchange="calculateBidTotal()" class="input-trade" min="0.00050000" required>
                     <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
                </div1>
 
@@ -202,7 +201,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" style="width:100px;" type="button" title="Puedes seleccionar el precio que quieras.">Precio</button>
                     </span>
-                   <input id="askValue" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
+                   <input id="askValue" type="text" placeholder="0.00000000" onchange="calculateAskTotal()" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
 
@@ -216,7 +215,7 @@
                </div1>
                <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de {!!number_format($currencyFrom->minimum_order, 8, ".", "")!!}</div1>
                <div1 class="input-group submit_trade">
-                   <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
+                   <button type="submit" onclick="createAskOrder()"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
                </div1>
            </div1>
        </div>

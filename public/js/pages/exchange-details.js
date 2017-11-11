@@ -50,6 +50,37 @@ function createBidOrder() {
     }
 }
 
+function createAskOrder() {
+
+    var quantity = parseFloat($("#unitsAsk").val());
+    var price = parseFloat($("#askValue").val());
+    var subTotal = quantity * price;
+    var commission = subTotal * getCommission();
+    var total = subTotal - commission;
+
+    var balance = parseFloat($("#currencyFromBalance").val());
+
+    if (total >= getMinimum()) {
+        if (total <= balance) {
+
+            $("#tradeModalTitle").html("Crear Orden de Venta");
+
+            $("#modal-trade-cantidad").val(formatAsCurrency(quantity));
+            $("#modal-trade-precio").val(formatAsCurrency(price));
+            $("#modal-trade-subtotal").val(formatAsCurrency(subTotal));
+            $("#modal-trade-comision").val(formatAsCurrency(commission));
+            $("#modal-trade-total").val(formatAsCurrency(total));
+
+            $('#tradeModal').modal('show');
+
+        } else {
+            modalMessage("error", "No tienes fondos suficientes para generar la orden.");
+        }
+    } else {
+        modalMessage("error", "La orden debe ser mayor al mínimo: "+getMinimum());
+    }
+}
+
 function getMinimum(){ return parseFloat($("#order-minimum-value").val()); }
 
 function getCommission(){ return 0.0025; }
@@ -113,11 +144,11 @@ function calculateAskTotal() {
     if (maxSelected) {
         if (balance !== 0 && value !== 0) {
             $("#unitsAsk").val(formatAsCurrency(balance/value));
-            $("#totalASk").val(formatAsCurrency(balance));
+            $("#totalAsk").val(formatAsCurrency(balance));
         }
     } else {
         if (units !== 0 && value !== 0) {
-            $("#totalASk").val(formatAsCurrency(units * (value*(1-getCommission()))));
+            $("#totalAsk").val(formatAsCurrency(units * (value*(1-getCommission()))));
         }
     }
 }
