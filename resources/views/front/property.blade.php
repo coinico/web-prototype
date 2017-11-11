@@ -10,7 +10,10 @@
    <section id="property">
        <div class="row">
             <h1> {{$property->title}} <span>U$D {{number_format($property->value, 0, ',', '.')}}</span></h1>
-            <img src="/images/properties/{{$property->images}}" class="main-image" />
+
+           <div class="investment">
+                <img src="/images/properties/{{$property->images}}" class="main-image" />
+           </div>
 
            @if($property->status_id ==1)
 

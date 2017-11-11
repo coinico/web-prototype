@@ -3951,9 +3951,9 @@ section#property {
       font-size: 16px;
       line-height: 40px; }
   section#property .main-image {
-    width: 100%;
+    width: 800px;
     display: block;
-    margin: 20px 0; }
+    margin: 20px auto auto auto; }
   section#property .investment {
     background: white;
     padding: 15px; }

@@ -24,14 +24,14 @@
             </section>
             <section class="sidebar">
                 <div class="title">
-                    Sus inversiones
+                    Mis Contribuciones
                 </div>
                 <div class="info items">
                     @foreach ($investments as $investment)
                         @include('front.panel.investment')
                     @endforeach
                     @if($investments->isEmpty())
-                        <div class="item">No posees inversiones activas.</div>
+                        <div class="item">No posees contribuciones activas.</div>
                     @endif
                 </div>
             </section>
