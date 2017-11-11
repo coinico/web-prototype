@@ -160,9 +160,6 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 //crypto_currency Routes
 Route::group(['middleware'=> 'web'],function(){
 
-    //Welcome
-    Route::name('welcome')->get('/welcome', 'Front\PostController@welcome');
-
     //Panel
     Route::name('panel')->get('/panel', 'Front\PostController@panel');
 

@@ -9,9 +9,6 @@
                <h3>@lang('Mostrando ') {{count($standardWallets)}} @lang('billeteras')</h3>
             </div>
             <div class="actions">
-               <a href="#" id="wallets-horizontal-view-btn">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-               </a>
                <a href="#" id="wallets-normal-view-btn">
                   <i class="fa fa-th" aria-hidden="true"></i>
                </a>
@@ -29,9 +26,6 @@
                <h3>Tokens de propiedad</h3>
             </div>
             <div class="actions">
-               <a href="#" id="tokens-horizontal-view-btn">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-               </a>
                <a href="#" id="tokens-normal-view-btn">
                   <i class="fa fa-th" aria-hidden="true"></i>
                </a>
