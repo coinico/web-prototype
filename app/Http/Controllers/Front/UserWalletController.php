@@ -43,17 +43,21 @@ class UserWalletController extends Controller
         return view('front.wallets.manage', compact('userWallet'));
     }
 
-    public function deposit(Request $request) {
+    public function deposit() {
 
-        // TODO: walletId exists
-        // TODO: amountToDeposit != negative
-        // TODO: no fee for deposits
+        $result = array();
 
         $walletId = Input::get("walletId");
-        $amountToDeposit = Input::get("amountToDeposit");
-        $memoToDeposit = Input::get("memoToDeposit") ? Input::get("memoToDeposit") : "Depósito manual.";
+        $amountToDeposit = Input::get("amount");
+        $memoToDeposit = Input::get("memo") ? Input::get("memo") : "Depósito manual.";
 
-        $wallet = UserWallet::find($walletId)->get();
+        if ($amountToDeposit <= 0) {
+
+            $result["type"] = "error";
+            $result["message"] = "No se pueden depositar valores negativos o nulos.";
+
+            return $result;
+        }
 
         UserWalletTransaction::create(
             [
@@ -65,27 +69,41 @@ class UserWalletController extends Controller
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
                 'transaction_fee' => 0,
                 'total' => $amountToDeposit,
-                'user_wallet' => $wallet->id,
+                'user_wallet' => $walletId,
             ]
         );
 
-        // TODO: return what?
+        $result["type"] = "success";
+        $result["message"] = "Operación realizada con éxito.";
+
+        return $result;
     }
 
-    public function withdraw(Request $request) {
+    public function withdraw() {
 
-        // TODO: walletId exists
-        // TODO: amountToWithdraw != negative
-        // TODO: feeForWithdrawal != negative
-        // TODO: validate balance >= amount + fee
+        $result = array();
 
         $walletId = Input::get("walletId");
-        $amountToWithdraw = Input::get("amountToWithdraw");
-        $feeForWithdrawal = Input::get("feeForWithdrawal");
-        $memoToWithdraw = Input::get("memoToWithdraw") ? Input::get("memoToWithdraw") : "Retiro manual.";
+        $amountToWithdraw = Input::get("amount");
+        $memoToWithdraw = Input::get("memo") ? Input::get("memo") : "Retiro manual.";
 
-        $total = $amountToWithdraw + $feeForWithdrawal;
+        if ($amountToWithdraw <= 0) {
+
+            $result["type"] = "error";
+            $result["message"] = "No se pueden retirar valores negativos o nulos.";
+
+            return $result;
+        }
+
         $wallet = UserWallet::find($walletId)->get();
+
+        if ($wallet->available_balance < $amountToWithdraw) {
+
+            $result["type"] = "error";
+            $result["message"] = "No tienes fondos suficientes para hacer el retiro.";
+
+            return $result;
+        }
 
         UserWalletTransaction::create(
             [
@@ -95,12 +113,15 @@ class UserWalletController extends Controller
                 'type' => 'debit',
                 'memo' => $memoToWithdraw,
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                'transaction_fee' => -$feeForWithdrawal,
-                'total' => -$total,
+                'transaction_fee' => -0,
+                'total' => -$amountToWithdraw,
                 'user_wallet' => $wallet->id,
             ]
         );
 
-        // TODO: return what?
+        $result["type"] = "success";
+        $result["message"] = "Operación realizada con éxito.";
+
+        return $result;
     }
 }
