@@ -194,11 +194,10 @@
 	      		<h4>@lang('Links del sitio')</h4>
 
 	      		<ul>
-				  	<li><a href="#">@lang('Acerca de Nosotros')</a></li>
+				  	<li><a href="http://casatoken.io/">@lang('Acerca de Nosotros')</a></li>
 					<li><a href="{{ route('contacts.create') }}">@lang('Contáctanos')</a></li>
-					<li><a href="{{ url('') }}">@lang('Blog')</a></li>
-					<li><a href="{{ url('') }}">@lang('FAQ')</a></li>
-					<li><a href="#">@lang('Política de Privacidad')</a></li>
+					<li><a href="http://casatoken.io/blog/">@lang('Blog')</a></li>
+					<!--<li><a href="#">@lang('Política de Privacidad')</a></li>-->
 				</ul>
 
 	      	</div> <!-- end site-links -->
@@ -208,10 +207,9 @@
 	      		<h4>@lang('Social')</h4>
 
 	      		<ul>
-	      			<li><a href="#">Twitter</a></li>
-					<li><a href="#">Facebook</a></li>
-					<li><a href="#">Google+</a></li>
-					<li><a href="#">Instagram</a></li>
+	      			<li><a href="https://twitter.com/casatoken">Twitter</a></li>
+					<li><a href="https://www.facebook.com/CasaToken-136200837022798">Facebook</a></li>
+					<li><a href="https://www.instagram.com/casatoken/">Instagram</a></li>
 				</ul>
 
 	      	</div> <!-- end social links -->
@@ -226,7 +224,7 @@
       		<div class="col-twelve">
 	      		<div class="copyright">
 		         	<span>© Copyright CasaToken 2017</span>
-		         	<span>Design by <a href="http://www.diwork.com.ar/">Di Work</a></span>
+		         	<span>Design by <a href="#">BlockThatShit**</a></span>
 		         </div>
 
 		         <div id="go-top">

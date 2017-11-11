@@ -6,6 +6,8 @@
         Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma.
         Se parte de nuestra comunidad y contribuí con futuro del negocio inmobiliario descentralizado.
     </p>
-    <a>QUIERO SER PARTE</a>
+    @guest
+        <a href="{{ route('register') }}">@lang('QUIERO SER PARTE')</a>
+    @endguest
 </section>
 

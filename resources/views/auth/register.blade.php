@@ -13,7 +13,7 @@
                             {!! session('confirmation-success') !!}
                         @endcomponent
                     @endif
-                    <h3>@lang('Register')</h3>
+                    <h3>@lang('Regístrate')</h3>
                     <form role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
                         @if ($errors->has('name'))
@@ -21,21 +21,21 @@
                                 {{ $errors->first('name') }}
                             @endcomponent
                         @endif 
-                        <input id="name" placeholder="@lang('Name')" type="text" class="full-width"  name="name" value="{{ old('name') }}" required autofocus>
+                        <input id="name" placeholder="@lang('Nombre')" type="text" class="full-width"  name="name" value="{{ old('name') }}" required autofocus>
                         @if ($errors->has('email'))
                             @component('front.components.error')
                                 {{ $errors->first('email') }}
                             @endcomponent
                         @endif                       
-                        <input id="email" placeholder="@lang('Email')" type="text" class="full-width"  name="email" value="{{ old('email') }}" required>
+                        <input id="email" placeholder="@lang('E-mail')" type="text" class="full-width"  name="email" value="{{ old('email') }}" required>
                         @if ($errors->has('password'))
                             @component('front.components.error')
                                 {{ $errors->first('password') }}
                             @endcomponent
                         @endif 
-                        <input id="password" placeholder="@lang('Password')" type="password" class="full-width"  name="password" required>
-                        <input id="password-confirm" placeholder="@lang('Confirm your password')" type="password" class="full-width" name="password_confirmation" required>
-                        <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Register')">
+                        <input id="password" placeholder="@lang('Contraseña')" type="password" class="full-width"  name="password" required>
+                        <input id="password-confirm" placeholder="@lang('Confirma tu contraseña')" type="password" class="full-width" name="password_confirmation" required>
+                        <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Confirmar')">
                     </form>
                 </div>
             </div>
