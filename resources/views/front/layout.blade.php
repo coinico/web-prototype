@@ -56,10 +56,9 @@
    	<div class="gradient-block"></div>
 
    	<div class="row header-content">
-        <?php $iminhome = $_SERVER['PHP_SELF'] === '/index.php';?>
 
    		<div class="logo">
-	    	<a class="{{$iminhome ? 'smoothscroll' : ''}}" href="{{$iminhome ? '#first-stop' : route('home')}}">Author</a>
+	    	<a href="http://casatoken.io">CasaToken.io</a>
 	    </div>
 
 	   	<nav id="main-nav-wrap">
