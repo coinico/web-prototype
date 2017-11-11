@@ -40,23 +40,23 @@ class UserWalletController extends Controller
 
         $userWallet = UserWallet::find($id);
 
-        return view('front.wallets.manage', compact('userWallet'));
+        $message = "";
+
+        return view('front.wallets.manage', compact('userWallet', 'message'));
     }
 
-    public function deposit() {
+    public function deposit($id) {
 
-        $result = array();
+        $userWallet = UserWallet::find($id);
 
-        $walletId = Input::get("walletId");
-        $amountToDeposit = Input::get("amount");
+        $amountToDeposit = Input::get("cantidad");
         $memoToDeposit = Input::get("memo") ? Input::get("memo") : "Depósito manual.";
 
         if ($amountToDeposit <= 0) {
 
-            $result["type"] = "error";
-            $result["message"] = "No se pueden depositar valores negativos o nulos.";
+            $message = "No se pueden depositar valores negativos o nulos.";
 
-            return $result;
+            return view('front.wallets.manage', compact('userWallet', 'message'));
         }
 
         UserWalletTransaction::create(
@@ -69,40 +69,35 @@ class UserWalletController extends Controller
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
                 'transaction_fee' => 0,
                 'total' => $amountToDeposit,
-                'user_wallet' => $walletId,
+                'user_wallet' => $id,
             ]
         );
 
-        $result["type"] = "success";
-        $result["message"] = "Operación realizada con éxito.";
+        $message = "Operación realizada con éxito.";
 
-        return $result;
+        return view('front.wallets.manage', compact('userWallet', 'message'));
+
     }
 
-    public function withdraw() {
+    public function withdraw($id) {
 
-        $result = array();
-
-        $walletId = Input::get("walletId");
-        $amountToWithdraw = Input::get("amount");
+        $userWallet = UserWallet::find($id);
+        $amountToWithdraw = Input::get("cantidad");
         $memoToWithdraw = Input::get("memo") ? Input::get("memo") : "Retiro manual.";
 
         if ($amountToWithdraw <= 0) {
 
-            $result["type"] = "error";
-            $result["message"] = "No se pueden retirar valores negativos o nulos.";
+            $message = "No se pueden retirar valores negativos o nulos.";
 
-            return $result;
+            return view('front.wallets.manage', compact('userWallet', 'message'));
         }
 
-        $wallet = UserWallet::find($walletId)->get();
 
-        if ($wallet->available_balance < $amountToWithdraw) {
+        if ($userWallet->available_balance < $amountToWithdraw) {
 
-            $result["type"] = "error";
-            $result["message"] = "No tienes fondos suficientes para hacer el retiro.";
+            $message = "No tienes fondos suficientes para hacer el retiro.";
 
-            return $result;
+            return view('front.wallets.manage', compact('userWallet', 'message'));
         }
 
         UserWalletTransaction::create(
@@ -115,13 +110,14 @@ class UserWalletController extends Controller
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
                 'transaction_fee' => -0,
                 'total' => -$amountToWithdraw,
-                'user_wallet' => $wallet->id,
+                'user_wallet' => $id,
             ]
         );
+        
+        $userWallet = UserWallet::find($id);
 
-        $result["type"] = "success";
-        $result["message"] = "Operación realizada con éxito.";
+        $message = "Operación realizada con éxito.";
 
-        return $result;
+        return view('front.wallets.manage', compact('userWallet', 'message'));
     }
 }

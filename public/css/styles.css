@@ -3532,15 +3532,15 @@ section#create-wallet {
         position: absolute;
         margin-top: 100px; }
 
-section#manage-wallet #tradeModal .modal-header {
+section#manage-wallet #deposit-modal .modal-header, section#manage-wallet #withdraw-modal .modal-header {
   text-align: center; }
-section#manage-wallet #tradeModal .modal-footer {
+section#manage-wallet #deposit-modal .modal-footer, section#manage-wallet #withdraw-modal .modal-footer {
   text-align: center; }
-section#manage-wallet #tradeModal .modal-body {
+section#manage-wallet #deposit-modal .modal-body, section#manage-wallet #withdraw-modal .modal-body {
   text-align: center; }
-  section#manage-wallet #tradeModal .modal-body .input-hola {
+  section#manage-wallet #deposit-modal .modal-body .input-hola, section#manage-wallet #withdraw-modal .modal-body .input-hola {
     margin-left: 175px; }
-  section#manage-wallet #tradeModal .modal-body .input-left {
+  section#manage-wallet #deposit-modal .modal-body .input-left, section#manage-wallet #withdraw-modal .modal-body .input-left {
     text-align: right; }
 section#manage-wallet .info {
   background: white;

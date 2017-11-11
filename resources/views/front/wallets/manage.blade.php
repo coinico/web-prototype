@@ -4,6 +4,8 @@
 
 <section id="manage-wallet" class="panel">
 
+   <input type="hidden" id="result-message" value="{{$message}}">
+
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -12,30 +14,54 @@
          </div>
       </div>
    </div>
+  <form id="deposit-form" action="{{ url("userWallet/$userWallet->id/deposit") }}" method="GET">
 
-   <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog order_book_trade_bid" role="document">
          <div class="modal-content order_book_trade_bid">
-            <div class="modal-header">
-               <h4 class="modal-title" id="tradeModalTitle">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                  <label for="modal-trade-cantidad">Cantidad</label>
-                  <input id="modal-trade-cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
-                  <label for="modal-trade-memo">Memo</label>
-                  <input id="modal-trade-memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-               <button id="confirm-trade-modal" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
-            </div>
+               <div class="modal-header">
+                  <h4 class="modal-title" id="tradeModalTitle">Depositar fondos</h4>
+               </div>
+               <div class="modal-body">
+                     <label for="modal-trade-cantidad">Cantidad</label>
+                     <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
+                     <label for="modal-trade-memo">Memo</label>
+                     <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="confirm-trade-modal" type="submit" class="btn btn-primary">Confirmar</button>
+               </div>
          </div>
       </div>
    </div>
+   </form>
+
+   <form id="withdraw-form" action="{{ url("userWallet/$userWallet->id/withdraw") }}" method="GET">
+   <div class="modal fade" id="withdraw-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog order_book_trade_bid" role="document">
+         <div class="modal-content order_book_trade_bid">
+               <div class="modal-header">
+                  <h4 class="modal-title" id="tradeModalTitle">Retirar fondos</h4>
+               </div>
+               <div class="modal-body">
+                  <label for="modal-trade-cantidad">Cantidad</label>
+                  <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
+                  <label for="modal-trade-memo">Memo</label>
+                  <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button id="confirm-trade-modal" type="submit" class="btn btn-primary">Confirmar</button>
+               </div>
+         </div>
+      </div>
+   </div>
+   </form>
 
    <div class="row">
       <section class="main">
-         <?php $transactions = $userWallet->transactions ?>
+         <?php $transactions = $userWallet->transactions->sortByDesc("created_at") ?>
          <div class="info-results">
             <div class="results">
                @lang('Mostrando ') {{count($transactions)}} @lang('transacciones')

@@ -149,7 +149,7 @@ section#create-wallet{
 }
 
 section#manage-wallet{
-    #tradeModal {
+    #deposit-modal, #withdraw-modal {
         .modal-header{
             text-align:center;
         }

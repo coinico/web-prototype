@@ -1,19 +1,11 @@
 function depositar() {
 
-    $("#tradeModalTitle").html("Depositar fondos");
-
-    $("#confirm-trade-modal").attr("onclick", "confirmarDepositar()");
-
-    $('#tradeModal').modal('show');
+    $('#deposit-modal').modal('show');
 }
 
 function retirar() {
 
-    $("#tradeModalTitle").html("Retirar fondos");
-
-    $("#confirm-trade-modal").attr("onclick", "confirmarRetirar()");
-
-    $('#tradeModal').modal('show');
+    $('#withdraw-modal').modal('show');
 }
 
 function modalMessage(type, message) {
@@ -25,3 +17,12 @@ function modalMessage(type, message) {
     $('#modaldata').html(message);
     $('#myModal').modal('show');
 }
+
+$(document).ready(function(){
+
+    var message = $("#result-message").val();
+
+    if (message !== "")
+        modalMessage("success", message);
+
+});
