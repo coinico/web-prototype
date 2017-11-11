@@ -25,6 +25,8 @@ trait RegistersUsers
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
+        $user->confirmed = true;
+        $user->valid = true;
         $user->confirmation_code = str_random(30);
         $user->save();
 

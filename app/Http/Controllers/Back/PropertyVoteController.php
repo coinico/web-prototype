@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\ {
-    Http\Requests\PropertyRequest,
-    Http\Controllers\Controller,
-    Models\PropertyStatus,
-    Models\Property,
-    Repositories\PropertyVoteRepository
+use App\{
+    Http\Controllers\Controller, Repositories\PropertyVoteRepository
 };
-use Illuminate\Http\Request;
-use App\Models\PropertyVote;
 use App\Http\Requests\PropertyVoteRequest;
+use App\Models\PropertyVote;
 
 
 class PropertyVoteController extends Controller
@@ -32,11 +27,12 @@ class PropertyVoteController extends Controller
     }
 
 
-    public function vote($propertyId, PropertyVoteRequest $request){
-        $propertyVote = PropertyVote::where(['property_id'=>$propertyId, 'user_id' => auth()->user()->id])->first();
-        if($propertyVote){
+    public function vote($propertyId, PropertyVoteRequest $request)
+    {
+        $propertyVote = PropertyVote::where(['property_id' => $propertyId, 'user_id' => auth()->user()->id])->first();
+        if ($propertyVote) {
             $this->repository->update($propertyVote, $request);
-        }else{
+        } else {
             $this->repository->store($propertyId, $request);
         }
     }
