@@ -2,7 +2,8 @@
     <span>
         <strong>ORIGEN:</strong> {{$transaction->address_from}} <br>
         <strong>DESTINO:</strong> {{$transaction->address_to}} <br>
-        <strong>MONTO: </strong>{{$transaction->amount}}
+        <strong>MONTO: </strong>{{$transaction->amount}}<br>
+        <strong>DESCRIPCIÓN: </strong>{{$transaction->memo}}
     </span>
     <div class="detail">
         <?php $date = new DateTime($transaction->created_at) ?>
