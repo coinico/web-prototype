@@ -37,12 +37,33 @@ class UserWallet extends Model
 
     public function getAvailableBalanceAttribute()
     {
-        return $this->transactions->where("is_hold", 0)->sum( 'amount' );
+        $ordersFrom = OrderBook::where("user_id", $this->user_id)
+            ->where("crypto_currency_from", $this->crypto_currency)
+            ->where("type", "bid")
+            ->whereNull("closed_time")->get();
+
+        $ordersTo = OrderBook::where("user_id", $this->user_id)
+            ->where("crypto_currency_to", $this->crypto_currency)
+            ->where("type", "ask")
+            ->whereNull("closed_time")->get();
+
+        $orderSum = 0;
+        if ($ordersFrom) {
+            foreach ($ordersFrom as $order) {
+                $orderSum -= ($order->quantity) - $order->filled;
+            }
+        }
+        if ($ordersTo) {
+            foreach ($ordersTo as $order) {
+                $orderSum -= ($order->quantity) - $order->filled;
+            }
+        }
+        return $this->transactions->sum( 'amount' )-$orderSum;
     }
 
     public function getRealBalanceAttribute()
     {
-        return $this->transactions->sum( 'amount' );
+        return $this->transactions->sum('amount');
     }
 
     public function getCurrency()
