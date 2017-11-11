@@ -96,6 +96,56 @@
            </div1>
            <div1 class="order_book_trade_bid">
                </br>
+               <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                   <div class="modal-dialog order_book_trade_bid" role="document">
+                       <div class="modal-content order_book_trade_bid">
+                           <div class="modal-header">
+                               <h4 class="modal-title" id="tradeModalTitle">Modal title</h4>
+                           </div>
+                           <div class="modal-body">
+                               <div1 class="input-group">
+                                   <label for="modal-trade-cantidad" class="col-md-1 control-label">Cantidad</label>
+                                   <span class="input-group-btn">
+                                    </span>
+                                   <input id="modal-trade-cantidad" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
+                                   <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
+                               </div1>
+                               <div1 class="input-group">
+                                   <label for="modal-trade-precio" class="col-md-1 control-label">Precio</label>
+                                   <span class="input-group-btn">
+                                    </span>
+                                   <input id="modal-trade-precio" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
+                                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+                               </div1>
+                               <div1 class="input-group">
+                                   <label for="modal-trade-subtotal" class="col-md-1 control-label">Sub-Total</label>
+                                   <span class="input-group-btn">
+                                    </span>
+                                   <input id="modal-trade-subtotal" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
+                                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+                               </div1>
+                               <div1 class="input-group">
+                                   <label for="modal-trade-comision" class="col-md-1 control-label">Comisión</label>
+                                   <span class="input-group-btn">
+                                    </span>
+                                   <input id="modal-trade-comision" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
+                                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+                               </div1>
+                               <div1 class="input-group">
+                                   <label for="modal-trade-total" class="col-md-1 control-label">Total</label>
+                                   <span class="input-group-btn">
+                                    </span>
+                                   <input id="modal-trade-total" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
+                                   <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
+                               </div1>
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                               <button type="button" class="btn btn-primary">Confirmar</button>
+                           </div>
+                       </div>
+                   </div>
+               </div>
                <div1 class="input-group">
                    <label for="unitsBid" class="col-md-1 control-label">Cantidad</label>
                    <span class="input-group-btn">
@@ -123,6 +173,7 @@
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
                <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
+               <div1 class="comission-class">** La orden mínima es de .00050000</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
                </div1>
@@ -156,6 +207,7 @@
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
                <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
+               <div1 class="comission-class">** La orden mínima es de .00050000</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
                </div1>

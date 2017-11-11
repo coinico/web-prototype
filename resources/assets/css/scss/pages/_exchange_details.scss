@@ -344,4 +344,22 @@ section#exchange-details{
       }
     }
   }
+
+  #tradeModal {
+    top: 15%;
+    height: 500px;
+    .modal-header{
+      margin-top: 40px;
+      text-align:center;
+    }
+    .modal-footer{
+      text-align:center;
+    }
+    .modal-body{
+      left: 10%;
+      .input-trade{
+        background-color: #f6f6f6;
+      }
+    }
+  }
 }

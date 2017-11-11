@@ -90,13 +90,13 @@ function calculateAskTotal() {
 
 function maxBidSelected() {
     if ($("#maxBidBtn").hasClass("btnmax-selected")) {
-        $("#maxBidBtn").removeClass("btnmax-selected");
         $("#unitsBid").attr("disabled", false);
         $("#unitsBid").removeClass("units-selected");
+        $("#maxBidBtn").removeClass("btnmax-selected");
     } else {
-        $("#maxBidBtn").addClass("btnmax-selected");
         $("#unitsBid").addClass("units-selected");
         $("#unitsBid").attr("disabled", true);
+        $("#maxBidBtn").addClass("btnmax-selected");
     }
     calculateTotals();
 }
@@ -104,8 +104,8 @@ function maxBidSelected() {
 function maxAskSelected() {
     if ($("#maxAskBtn").hasClass("btnmax-selected")) {
         $("#maxAskBtn").removeClass("btnmax-selected");
-        $("#unitsAsk").removeClass("units-selected");
         $("#unitsAsk").attr("disabled", false);
+        $("#unitsAsk").removeClass("units-selected");
     } else {
         $("#maxAskBtn").addClass("btnmax-selected");
         $("#unitsAsk").addClass("units-selected");
@@ -168,6 +168,9 @@ $(document).ready(function(){
     fillBidOrdersTable();
     fillLastExecutedOrdersTable();
     buildTestGraph();
+
+
+    $('#tradeModal').modal('show');
 
 });
 
