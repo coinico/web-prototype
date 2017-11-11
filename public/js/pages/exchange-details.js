@@ -208,9 +208,6 @@ $(document).ready(function(){
     fillLastExecutedOrdersTable();
     buildTestGraph();
 
-
-    $('#tradeModal').modal('show');
-
 });
 
 
