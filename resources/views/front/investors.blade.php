@@ -31,7 +31,7 @@
                         @include('front.panel.investment')
                     @endforeach
                     @if($investments->isEmpty())
-                        <div class="item">No dispones de inversiones</div>
+                        <div class="item">No posees inversiones activas.</div>
                     @endif
                 </div>
             </section>

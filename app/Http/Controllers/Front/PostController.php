@@ -47,8 +47,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$posts = $this->postRepository->getActiveOrderByDate($this->nbrPages);
-        $properties = Property::all();
+        $properties = Property::where('status_id',4)->get();
 
         return view('front.index', compact('properties'));
     }
@@ -118,9 +117,8 @@ class PostController extends Controller
      */
     public function community()
     {
-        $user = User::find(auth()->user()->id);
         $properties = Property::where('status_id',1)->get();
-        $votes = PropertyVote::where('user_id',$user->id)->get();
+        $votes = PropertyVote::where('user_id',auth()->user()->id)->get();
         return view('front.community', compact('properties','votes'));
     }
 
@@ -141,9 +139,8 @@ class PostController extends Controller
      */
     public function investors()
     {
-        $user = User::find(auth()->user()->id);
         $properties = Property::where('status_id',4)->get();
-        $investments = PropertyInvest::where('user_id',$user->id)->get();
+        $investments = PropertyInvest::where('user_id',auth()->user()->id)->get();
         return view('front.investors', compact('properties','investments'));
     }
 

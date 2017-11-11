@@ -24,14 +24,14 @@
             </section>
             <section class="sidebar">
                 <div class="title">
-                    Sus votos
+                    Mis votos
                 </div>
                 <div class="info items">
                     @foreach ($votes as $vote)
                         @include('front.panel.vote')
                     @endforeach
                     @if($votes->isEmpty())
-                        <div class="item">No dispones de inversiones</div>
+                        <div class="item">No has participado en ninguna votación.</div>
                     @endif
                 </div>
             </section>

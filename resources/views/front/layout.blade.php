@@ -133,7 +133,7 @@
 					@else
 						<li class='cat-item'>
 							<div class="user-lnk">
-								<a class="atata" href='#' title='Usuario'>Usuario</a>
+								<a class="atata" href='#' title='Usuario'>Mi Usuario</a>
 								<a class="atata1" href='#' title='Usuario'><img src="/images/user-icon.svg" /></a>
 							</div>
 							<ul class="children">
