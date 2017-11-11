@@ -139,6 +139,7 @@ class DatabaseSeeder extends Seeder
                 'alias' => $alias,
                 'image' => $image,
                 'usd_value' => $usd_value,
+                "minimum_order" => 0.05,
                 'type' => 'token'
             ]
         );
