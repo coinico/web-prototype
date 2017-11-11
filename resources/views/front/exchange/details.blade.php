@@ -6,9 +6,11 @@
 
        <input type="hidden" id="currencyFrom" value="{{ $currencyFrom->id }}">
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
+       <input type="hidden" id="order-minimum-value" value="{{ $currencyFrom->minimum_order }}">
        <input type="hidden" id="currencyFromBalance" value="{{ $walletFrom ? $walletFrom->available_balance : 0}}">
        <input type="hidden" id="currencyToBalance" value="{{ $walletTo ? $walletTo->available_balance : 0 }}">
        <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
+
 
        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
            <div class="modal-dialog" role="document">
@@ -140,6 +142,10 @@
                                    <input id="modal-trade-total" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade" min="0.00050000" required disabled>
                                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                                </div1>
+                               </br>
+                               <strong>Renuncia de Responsabilidad</strong></br>
+                               <div1 class="disclaimer-1">Por favor, verifica que los datos ingresados sean correctos antes de confirmar.</div1></br>
+                               <div1 class="disclaimer-1">Una vez confirmada, no podremos realizar un reembolso de los fondos.</div1>
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -175,9 +181,9 @@
                    <input id="totalBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
-               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de .00050000</div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de {!!number_format($currencyFrom->minimum_order, 8, ".", "")!!}</div1>
                <div1 class="input-group submit_trade">
-                   <button type="submit"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
+                   <button type="submit" onclick="createBidOrder()"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
                </div1>
            </div1>
            <div1 class="order_book_trade_ask">
@@ -208,7 +214,7 @@
                    <input id="totalAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
-               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de .00050000</div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de {!!number_format($currencyFrom->minimum_order, 8, ".", "")!!}</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
                </div1>

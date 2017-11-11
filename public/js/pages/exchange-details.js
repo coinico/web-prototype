@@ -19,7 +19,40 @@ $.extend( true, $.fn.dataTable.defaults, {
     }
 } );
 
-var comission = 0.0025;
+function createBidOrder() {
+
+    var quantity = parseFloat($("#unitsBid").val());
+    var price = parseFloat($("#bidValue").val());
+    var subTotal = quantity * price;
+    var commission = subTotal * getCommission();
+    var total = subTotal + commission;
+
+    var balance = parseFloat($("#currencyFromBalance").val());
+
+    if (total >= getMinimum()) {
+        if (total <= balance) {
+
+            $("#tradeModalTitle").html("Crear Orden de Compra");
+
+            $("#modal-trade-cantidad").val(formatAsCurrency(quantity));
+            $("#modal-trade-precio").val(formatAsCurrency(price));
+            $("#modal-trade-subtotal").val(formatAsCurrency(subTotal));
+            $("#modal-trade-comision").val(formatAsCurrency(commission));
+            $("#modal-trade-total").val(formatAsCurrency(total));
+
+            $('#tradeModal').modal('show');
+
+        } else {
+            modalMessage("error", "No tienes fondos suficientes para generar la orden.");
+        }
+    } else {
+        modalMessage("error", "La orden debe ser mayor al mínimo: "+getMinimum());
+    }
+}
+
+function getMinimum(){ return parseFloat($("#order-minimum-value").val()); }
+
+function getCommission(){ return 0.0025; }
 
 function formatAsCurrency(value) {
     return value.toFixed(8)
@@ -60,12 +93,12 @@ function calculateBidTotal() {
 
     if (maxSelected) {
         if (balance !== 0 && value !== 0) {
-            $("#unitsBid").val(formatAsCurrency(balance/(value*(1+comission))));
+            $("#unitsBid").val(formatAsCurrency(balance/(value*(1+getCommission()))));
             $("#totalBid").val(formatAsCurrency(balance));
         }
     } else {
         if (units !== 0 && value !== 0) {
-            $("#totalBid").val(formatAsCurrency(units * (value*(1+comission))));
+            $("#totalBid").val(formatAsCurrency(units * (value*(1+getCommission()))));
         }
     }
 }
@@ -84,7 +117,7 @@ function calculateAskTotal() {
         }
     } else {
         if (units !== 0 && value !== 0) {
-            $("#totalASk").val(formatAsCurrency(units * (value*(1-comission))));
+            $("#totalASk").val(formatAsCurrency(units * (value*(1-getCommission()))));
         }
     }
 }

@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 'alias' => 'ETH',
                 'image' => 'eth-logo.png',
                 'usd_value' => 304.22,
+                "minimum_order" => 0.005,
                 'type' => 'currency'
             ]
         );
@@ -45,6 +46,7 @@ class DatabaseSeeder extends Seeder
                 'alias' => 'CTF',
                 'image' => 'logo_dark.png',
                 'usd_value' => 1.01,
+                "minimum_order" => 0.05,
                 'type' => 'currency'
             ]
         );

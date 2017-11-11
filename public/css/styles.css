@@ -3910,7 +3910,7 @@ section#exchange-details .info_container {
           width: 16.5px; }
 section#exchange-details #tradeModal {
   top: 15%;
-  height: 500px; }
+  height: 600px; }
   section#exchange-details #tradeModal .modal-header {
     margin-top: 40px;
     text-align: center; }
@@ -3920,6 +3920,8 @@ section#exchange-details #tradeModal {
     left: 10%; }
     section#exchange-details #tradeModal .modal-body .input-trade {
       background-color: #f6f6f6; }
+    section#exchange-details #tradeModal .modal-body .disclaimer-1 {
+      font-size: 10px; }
 
 section#property {
   padding-top: 40px;
