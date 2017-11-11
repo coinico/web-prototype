@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => 100,
                 'type' => 'credit',
                 'memo' => 'Depósito inicial.',
@@ -93,7 +93,7 @@ class DatabaseSeeder extends Seeder
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => 10000,
                 'type' => 'credit',
                 'memo' => 'Depósito inicial.',

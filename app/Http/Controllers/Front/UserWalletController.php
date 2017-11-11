@@ -62,7 +62,7 @@ class UserWalletController extends Controller
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => $amountToDeposit,
                 'type' => 'credit',
                 'memo' => $memoToDeposit,
@@ -102,7 +102,7 @@ class UserWalletController extends Controller
 
         UserWalletTransaction::create(
             [
-                'address_from' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'address_to' => '0x',
                 'amount' => -$amountToWithdraw,
                 'type' => 'debit',

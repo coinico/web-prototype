@@ -20,5 +20,5 @@ $(document).ready(function() {
         e.preventDefault();
         $('.tokens').removeClass('horizontal-view');
     });
-    
+
 });
