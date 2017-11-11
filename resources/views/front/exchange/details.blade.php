@@ -96,6 +96,8 @@
            </div1>
            <div1 class="order_book_trade_bid">
                </br>
+
+               <!-- TRADE MODALLLL INIT -->
                <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                    <div class="modal-dialog order_book_trade_bid" role="document">
                        <div class="modal-content order_book_trade_bid">
@@ -146,6 +148,7 @@
                        </div>
                    </div>
                </div>
+               <!-- TRADE MODALLLL eEND -->
                <div1 class="input-group">
                    <label for="unitsBid" class="col-md-1 control-label">Cantidad</label>
                    <span class="input-group-btn">
@@ -160,7 +163,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" style="width:100px;" type="button" title="Puedes seleccionar el precio que quieras.">Precio</button>
                     </span>
-                   <input id="bidValue" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
+                   <input id="bidValue" type="text" placeholder="0.00000000" value="0.00000000" onchange="calculateBidTotal()" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
 
@@ -172,8 +175,7 @@
                    <input id="totalBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
-               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
-               <div1 class="comission-class">** La orden mínima es de .00050000</div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de .00050000</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
                </div1>
@@ -185,7 +187,7 @@
                    <span class="input-group-btn">
                         <button class="btn btn-primary" id="maxAskBtn" onclick="maxAskSelected();" style="width:100px;" type="button" title="Habilitando esta casilla, se va a calcular el maximo disponible que puedas comprar con el precio que escribas.">Max</button>
                     </span>
-                   <input id="unitsAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
+                   <input id="unitsAsk" type="text" placeholder="0.00000000" value="0.00000000"  onchange="calculateAskTotal()" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyTo->alias)}}</span>
                </div1>
 
@@ -206,8 +208,7 @@
                    <input id="totalAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
-               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
-               <div1 class="comission-class">** La orden mínima es de .00050000</div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%. || ** La orden mínima es de .00050000</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
                </div1>

@@ -19,6 +19,8 @@ $.extend( true, $.fn.dataTable.defaults, {
     }
 } );
 
+var comission = 0.0025;
+
 function formatAsCurrency(value) {
     return value.toFixed(8)
 }
@@ -58,12 +60,12 @@ function calculateBidTotal() {
 
     if (maxSelected) {
         if (balance !== 0 && value !== 0) {
-            $("#unitsBid").val(formatAsCurrency(balance/value));
+            $("#unitsBid").val(formatAsCurrency(balance/(value*(1+comission))));
             $("#totalBid").val(formatAsCurrency(balance));
         }
     } else {
         if (units !== 0 && value !== 0) {
-            $("#totalBid").val(formatAsCurrency(units * value));
+            $("#totalBid").val(formatAsCurrency(units * (value*(1+comission))));
         }
     }
 }
@@ -82,7 +84,7 @@ function calculateAskTotal() {
         }
     } else {
         if (units !== 0 && value !== 0) {
-            $("#totalASk").val(formatAsCurrency(units * value));
+            $("#totalASk").val(formatAsCurrency(units * (value*(1-comission))));
         }
     }
 }
@@ -92,10 +94,12 @@ function maxBidSelected() {
     if ($("#maxBidBtn").hasClass("btnmax-selected")) {
         $("#unitsBid").attr("disabled", false);
         $("#unitsBid").removeClass("units-selected");
+        $("#totalBid").removeClass("units-selected");
         $("#maxBidBtn").removeClass("btnmax-selected");
     } else {
         $("#unitsBid").addClass("units-selected");
         $("#unitsBid").attr("disabled", true);
+        $("#totalBid").addClass("units-selected");
         $("#maxBidBtn").addClass("btnmax-selected");
     }
     calculateTotals();
@@ -104,11 +108,13 @@ function maxBidSelected() {
 function maxAskSelected() {
     if ($("#maxAskBtn").hasClass("btnmax-selected")) {
         $("#maxAskBtn").removeClass("btnmax-selected");
+        $("#totalAsk").removeClass("units-selected");
         $("#unitsAsk").attr("disabled", false);
         $("#unitsAsk").removeClass("units-selected");
     } else {
         $("#maxAskBtn").addClass("btnmax-selected");
         $("#unitsAsk").addClass("units-selected");
+        $("#totalAsk").addClass("units-selected");
         $("#unitsAsk    ").attr("disabled", true);
     }
     calculateTotals();
