@@ -43,6 +43,5 @@
 @endsection
 
 @section('scripts')
-   <script type="text/javascript" src="{{ asset('js/wallet/lightwallet.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/pages/wallets.js') }}" ></script>
 @stop
