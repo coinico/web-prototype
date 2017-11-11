@@ -24,18 +24,27 @@ function formatAsCurrency(value) {
 }
 
 function priceChange(price) {
-    $("#askValue").val(formatAsCurrency(price));
+    bidPriceChange(price);
+    askPriceChange(price);
+}
+
+function bidPriceChange(price) {
     $("#bidValue").val(formatAsCurrency(price));
-    calculateTotal();
+    calculateBidTotal();
+}
+
+function askPriceChange(price) {
+    $("#askValue").val(formatAsCurrency(price));
+    calculateAskTotal();
 }
 
 function quantityChange(quantity) {
     $("#unitsBid").val(formatAsCurrency(quantity));
     $("#unitsAsk").val(formatAsCurrency(quantity));
-    calculateTotal();
+    calculateTotals();
 }
 
-function calculateTotal() {
+function calculateTotals() {
     calculateBidTotal();
     calculateAskTotal();
 }
@@ -79,7 +88,6 @@ function calculateAskTotal() {
 }
 
 
-
 function maxBidSelected() {
     if ($("#maxBidBtn").hasClass("btnmax-selected")) {
         $("#maxBidBtn").removeClass("btnmax-selected");
@@ -90,7 +98,7 @@ function maxBidSelected() {
         $("#unitsBid").addClass("units-selected");
         $("#unitsBid").attr("disabled", true);
     }
-    calculateTotal();
+    calculateTotals();
 }
 
 function maxAskSelected() {
@@ -103,7 +111,7 @@ function maxAskSelected() {
         $("#unitsAsk").addClass("units-selected");
         $("#unitsAsk    ").attr("disabled", true);
     }
-    calculateTotal();
+    calculateTotals();
 }
 
 function seeHideVolume() {

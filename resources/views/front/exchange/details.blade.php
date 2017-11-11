@@ -6,7 +6,7 @@
 
        <input type="hidden" id="currencyFrom" value="{{ $currencyFrom->id }}">
        <input type="hidden" id="currencyTo" value="{{ $currencyTo->id }}">
-       <input type="hidden" id="currencyFromBalance" value="{{ $walletFrom->available_balance }}">
+       <input type="hidden" id="currencyFromBalance" value="{{ $walletFrom ? $walletFrom->available_balance : 0}}">
        <input type="hidden" id="currencyToBalance" value="{{ $walletTo ? $walletTo->available_balance : 0 }}">
        <input type="hidden" id="userLoggedIn" value="{{ $userLoggedIn }}">
 
@@ -122,6 +122,7 @@
                    <input id="totalBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-plus"></i> Comprar {{strtoupper($currencyTo->name)}}</button>
                </div1>
@@ -154,6 +155,7 @@
                    <input id="totalAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
                </div1>
+               <div1 class="comission-class">* Todas las operaciones incluyen una comisión del 0.25%.</div1>
                <div1 class="input-group submit_trade">
                    <button type="submit"><i class="fa fa-minus"></i> Vender {{strtoupper($currencyTo->name)}}</button>
                </div1>

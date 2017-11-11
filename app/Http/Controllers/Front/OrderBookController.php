@@ -110,6 +110,9 @@ class OrderBookController extends Controller
 
             $walletTo = UserWallet::where("user_id", auth()->user()->id)
                 ->where("crypto_currency", $currencyTo->id)->first();
+        } else {
+            $walletFrom = null;
+            $walletTo = null;
         }
 
         return view('front.exchange.details', compact("currencyFrom", "currencyTo", 'basicDetails', 'userLoggedIn', 'walletFrom', 'walletTo'));
