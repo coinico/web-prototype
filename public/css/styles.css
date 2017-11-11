@@ -3187,13 +3187,6 @@ section#home section {
     padding: 0; }
   section#home section.third-stop {
     background: url("../images/home/bg_4.jpg"); }
-    section#home section.third-stop p {
-      max-width: 650px;
-      color: white;
-      text-align: center;
-      margin: 0 auto 40px auto;
-      font-size: 18px;
-      padding: 20px; }
     section#home section.third-stop .wrapper {
       width: auto;
       float: none; }

@@ -1,14 +1,3 @@
-function modalMessage(type, message) {
-
-    if (type === "error")
-        message = "<font color=red>"+message+"</font>";
-
-
-    $('#modaldata').html(message);
-    $('#myModal').modal('show');
-}
-
-
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel({
         loop: true,
@@ -71,7 +60,7 @@ $(document).ready(function(){
             error: function (xhr, ajaxOptions, thrownError) {
                 var status = xhr.status;
                 if(status == 401) {
-                    modalMessage("success", "Debes iniciar sesión para votar");
+                    alert("Debes iniciar sesión para votar");
                 }else{
                     console.log(xhr);
                 }

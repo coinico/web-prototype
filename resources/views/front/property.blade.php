@@ -8,15 +8,6 @@
 @section('main')
 
    <section id="property">
-       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:35%; text-align: center">
-           <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                   <div id="modaldata" class="modal-body" style="text-align: center">
-                   </div>
-               </div>
-           </div>
-       </div>
-
        <div class="row">
             <h1> {{$property->title}} <span>U$D {{number_format($property->value, 0, ',', '.')}}</span></h1>
             <img src="/images/properties/{{$property->images}}" class="main-image" />
@@ -135,6 +126,5 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.fancybox.min.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('js/plugins/modal.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/property.js') }}" ></script>
 @stop
