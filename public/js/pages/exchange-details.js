@@ -66,6 +66,8 @@ function confirmBidOrder() {
     $.get({
         url: createBidOrder,
         data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val(),
             "cantidad": cantidad,
             "precio": precio,
             "subtotal": subtotal,
@@ -96,6 +98,8 @@ function confirmAskOrder() {
     $.get({
         url: createAskOrder,
         data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val(),
             "cantidad": cantidad,
             "precio": precio,
             "subtotal": subtotal,
