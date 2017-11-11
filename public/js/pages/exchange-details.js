@@ -76,10 +76,11 @@ function confirmBidOrder() {
         },
         dataType: "json",
         success: function(res){
+            if (res.type === "success") {
+                reloadTables();
+            }
             modalMessage(res.type, res.message);
         }
-    }).done(function() {
-
     }).fail(function(data) {
         modalMessage("error", data);
     });
@@ -108,13 +109,23 @@ function confirmAskOrder() {
         },
         dataType: "json",
         success: function(res){
+            if (res.type === "success") {
+                reloadTables();
+            }
             modalMessage(res.type, res.message);
         }
-    }).done(function() {
-
     }).fail(function(data) {
         modalMessage("error", data);
     });
+}
+
+
+function reloadTables() {
+    fillBidOrdersTable();
+    fillAskOrdersTable();
+    fillLastExecutedOrdersTable();
+    fillMyLastExecutedOrdersTable();
+    fillOpenOrdersTable();
 }
 
 function createAskOrder() {
@@ -310,6 +321,7 @@ $(document).ready(function(){
 
 });
 
+var myLastExecutedOrdersTable = undefined;
 
 function fillMyLastExecutedOrdersTable() {
     var myLastExecutedOrders = "./myLastExecutedOrders";
@@ -322,7 +334,10 @@ function fillMyLastExecutedOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#myLastExecutedOrders').DataTable( {
+            if (myLastExecutedOrdersTable !== undefined)
+                myLastExecutedOrdersTable.destroy();
+
+            myLastExecutedOrdersTable = $('#myLastExecutedOrders').DataTable( {
                 "order": [],
                 data: res,
                 columnDefs: [
@@ -341,6 +356,7 @@ function fillMyLastExecutedOrdersTable() {
     });
 }
 
+var lastExecutedOrdersTable = undefined;
 
 function fillLastExecutedOrdersTable() {
     var lastExecutedOrders = "./lastExecutedOrders";
@@ -353,7 +369,10 @@ function fillLastExecutedOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#lastExecutedOrders').DataTable( {
+            if (lastExecutedOrdersTable !== undefined)
+                lastExecutedOrdersTable.destroy();
+
+            lastExecutedOrdersTable = $('#lastExecutedOrders').DataTable( {
                 "order": [],
                 data: res,
                 columnDefs: [
@@ -390,6 +409,8 @@ function fillLastExecutedOrdersTable() {
     });
 }
 
+var bidOrdersTable = undefined;
+
 function fillBidOrdersTable() {
     var bidOrders = "./bidOrders";
     $.get({
@@ -401,7 +422,10 @@ function fillBidOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#order_book_bid').DataTable( {
+            if (bidOrdersTable !== undefined)
+                bidOrdersTable.destroy();
+
+            bidOrdersTable = $('#order_book_bid').DataTable( {
                 "searching": false,
                 "ordering": false,
                 data: res,
@@ -428,6 +452,8 @@ function fillBidOrdersTable() {
     });
 }
 
+var askOrdersTable = undefined;
+
 function fillAskOrdersTable() {
     var askOrders = "./askOrders";
     $.get({
@@ -439,7 +465,10 @@ function fillAskOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#order_book_ask').DataTable( {
+            if (askOrdersTable !== undefined)
+                askOrdersTable.destroy();
+
+            askOrdersTable = $('#order_book_ask').DataTable( {
                 "ordering": false,
                 "searching": false,
                 data: res,
