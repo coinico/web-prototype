@@ -74,7 +74,7 @@ trait RegistersUsers
 
         $this->guard()->login($user);
 
-        return $this->registered($request, $user) ?: redirect(route('welcome'));
+        return $this->registered($request, $user) ?: redirect(route('panel'));
     }
 
     /**
