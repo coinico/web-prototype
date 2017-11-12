@@ -191,7 +191,7 @@
 
 	            <h4>@lang('Acerca de nuestro sitio')</h4>
 
-	               <p>@lang('Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma. Se parte de nuestra comunidad y contribuí con el futuro del negocio inmobiliario descentralizado.')</p>
+	               <p>@lang('Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma. Sé parte de nuestra comunidad y contribuye con el futuro del negocio inmobiliario descentralizado.')</p>
 
 		      </div> <!-- end footer-info -->
 
