@@ -140,4 +140,30 @@
 @section('scripts')
    <script type="text/javascript" src="{{ asset('js/pages/manage-wallets.js') }}" ></script>
    <script type="text/javascript" src="{{ asset('js/plugins/modal.js') }}" ></script>
+   <script type="text/javascript">
+       function startIntro(){
+           var intro = introJs();
+           intro.setOptions({
+               steps: [
+                   {
+                       element: '.sidebar',
+                       intro: "Acá estan los detalles de tu billetera, puedes depositar o retirar dinero ficticio"
+                   },
+                   {
+                       element: '.info.items',
+                       intro: "Este es el detalle de tus transacciones"
+                   }
+
+               ],
+               doneLabel : "Pág. sig."
+           }).oncomplete(function() {
+               window.location.href = '/community?tuto=true';
+           });
+
+           intro.start();
+       }
+       if (RegExp('tuto', 'gi').test(window.location.search)) {
+           startIntro();
+       }
+   </script>
 @stop

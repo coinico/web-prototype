@@ -44,4 +44,26 @@
 
 @section('scripts')
    <script type="text/javascript" src="{{ asset('js/pages/wallets.js') }}" ></script>
+   <script type="text/javascript">
+      function startIntro(){
+         var intro = introJs();
+         intro.setOptions({
+            steps: [
+               {
+                  element: '.wallets .wallet:first-child',
+                  intro: "Esta es una billetera, inicialmente tienes 100 ETH de crédito inicial."
+               }
+            ],
+            doneLabel : "Pág. sig."
+         }).oncomplete(function() {
+            var url = $('.wallets .wallet:first-child a').attr('href');
+            window.location.href = url+'?tuto=true';
+         });
+
+         intro.start();
+      }
+      if (RegExp('tuto', 'gi').test(window.location.search)) {
+         startIntro();
+      }
+   </script>
 @stop

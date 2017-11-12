@@ -177,7 +177,7 @@
                 ],
                 doneLabel : "Pág. sig."
             }).oncomplete(function() {
-                window.location.href = '/community?tuto=true';
+                window.location.href = '/wallets?tuto=true';
             });
 
             intro.start();
