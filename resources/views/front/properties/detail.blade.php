@@ -35,6 +35,10 @@
                 <div><span class="hs">{{$property->getInvestmentTime()->h}}</span> <small>hs</small></div>
                 <div><span class="min">{{$property->getInvestmentTime()->i}}</span> <small>min</small></div>
             </div>
+            @guest
+            </br></br>
+            <span><a href="{{ route('login') }}">INVERTIR</a></span>
+            @else
             <div class="invest" data-url="property/{{ $property->id }}/invest">
                 <span>INVERTIR</span>
                 <fieldset>
@@ -45,6 +49,7 @@
                     </a>
                 </fieldset>
             </div>
+            @endguest
             <a href="properties/{{$property->id}}">Ampliar</a>
             @endif
         </div>

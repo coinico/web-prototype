@@ -3242,8 +3242,6 @@ section#home section {
         float: none; }
         section#home section.third-stop .owl-carousel .wrapper .property {
           min-height: 180px; }
-          section#home section.third-stop .owl-carousel .wrapper .property .invest {
-            visibility: hidden; }
   section#home section.fourth-stop {
     background: url("../images/home/bg_6.jpg"); }
     section#home section.fourth-stop a {
