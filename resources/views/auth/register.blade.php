@@ -1,6 +1,7 @@
 @extends('front.layout')
 
 @section('main')
+    <section id="register">
    <section id="content-wrap">
         <div class="row">
             <div class="col-twelve">
@@ -40,6 +41,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </section>
 @endsection
 
