@@ -75,7 +75,7 @@ $(document).ready(function(){
             data: {vote:vote},
             method: 'POST',
             success: function(result){
-                //
+                $('#voting-list').html(result);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var status = xhr.status;
@@ -110,10 +110,11 @@ $(document).ready(function(){
             method: 'POST',
             success: function(result){
                 btn.find('i').attr('class','fa fa-check');
+                $('#investment-list').html(result);
                 setTimeout(function(){
                     btn.removeClass('loading');
                     btn.find('i').attr('class','fa fa-paper-plane');
-                },2000);
+                },1000);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var status = xhr.status;
@@ -126,7 +127,7 @@ $(document).ready(function(){
                 setTimeout(function(){
                     btn.removeClass('loading');
                     btn.find('i').attr('class','fa fa-paper-plane');
-                },2000);
+                },1000);
             }
         });
     });

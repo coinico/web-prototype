@@ -23,17 +23,7 @@
                 @endforeach
             </section>
             <section class="sidebar">
-                <div class="title">
-                    Mis votos
-                </div>
-                <div class="info items">
-                    @foreach ($votes as $vote)
-                        @include('front.panel.vote')
-                    @endforeach
-                    @if($votes->isEmpty())
-                        <div class="item">No has participado en ninguna votación.</div>
-                    @endif
-                </div>
+                @include('front.panel.votes')
             </section>
 
         </div>

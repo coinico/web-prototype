@@ -23,17 +23,7 @@
                 @endforeach
             </section>
             <section class="sidebar">
-                <div class="title">
-                    Mis Contribuciones
-                </div>
-                <div class="info items">
-                    @foreach ($investments as $investment)
-                        @include('front.panel.investment')
-                    @endforeach
-                    @if($investments->isEmpty())
-                        <div class="item">No posees contribuciones activas.</div>
-                    @endif
-                </div>
+                @include ('front.panel.investments')
             </section>
 
         </div>

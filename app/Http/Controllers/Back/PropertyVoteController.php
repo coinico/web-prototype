@@ -37,6 +37,9 @@ class PropertyVoteController extends Controller
         } else {
             $this->repository->store($propertyId, $request);
         }
+
+        $votes = PropertyVote::where('user_id',auth()->user()->id)->get();
+        return view('front.panel.votes', compact('votes'));
     }
 
 }

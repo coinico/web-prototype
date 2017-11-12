@@ -39,6 +39,9 @@ class PropertyInvestController extends Controller
         }else{
             $this->repository->store($propertyId, $request);
         }
+
+        $investments = PropertyInvest::where('user_id',auth()->user()->id)->get();
+        return view('front.panel.investments', compact('investments'));
     }
 
 }
