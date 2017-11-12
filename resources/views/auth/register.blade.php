@@ -47,27 +47,5 @@
 
 @section('scripts')
 
-    <script type="text/javascript" src="{{ asset('js/lightwallet.min.js') }}"></script>
-
-    <script>
-
-        function createWalletPrivateKey() {
-
-            var password = $("#password").val();
-
-            var opts = {password: password};
-            lightwallet.keystore.createVault(opts, function(err, vault) {
-
-                vault.keyFromPassword(password, function (err, pwDerivedKey) {
-                    if (err) throw err;
-
-                    vault.generateNewAddress(pwDerivedKey, 1);
-                    var addr = vault.getAddresses();
-                    console.log(addr);
-                });
-            });
-        }
-    </script>
-
 @stop
 
