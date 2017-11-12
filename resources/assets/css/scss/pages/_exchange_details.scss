@@ -244,6 +244,32 @@ section#exchange-details{
     grid-template-columns: repeat(9, 1fr);
     grid-column-gap: 40px;
     position:relative;
+    #demo-label{
+      background: transparent;
+      color: rgb(59, 80, 138);
+      margin: 1px;
+      outline: none;
+      position:absolute;
+      bottom: 35%;
+      left: 22%;
+      vertical-align: middle;
+      padding: 0 1rem 0 1rem;
+      -webkit-appearance: button;
+      letter-spacing: 0;
+      font-size: 70px;
+      line-height: 0;
+      cursor: pointer;
+      font-family: "montserrat-regular", sans-serif;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      transition: all 0.3s ease-in-out;
+      -webkit-font-smoothing: antialiased;
+      word-spacing: normal;
+      text-indent: 0;
+      text-shadow: none;
+      text-rendering: auto;
+    }
     #seeHideVolumeButton{
       background: transparent;
       border: 1px solid rgba(0, 0, 0, 0.3);

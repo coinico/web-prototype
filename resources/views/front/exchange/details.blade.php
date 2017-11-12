@@ -23,6 +23,7 @@
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
            <input type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="MOSTRAR/OCULTAR VOLUMEN" onclick="seeHideVolume();"/>
+           <label id="demo-label">DEMO</label>
 
            <div class="info_currency">
                <table id="info_currency" class="info_currency_table" cellspacing="0">
