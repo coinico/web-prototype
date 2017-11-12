@@ -38,10 +38,8 @@
            <div class="row sopenco">
                <h1>¡Hola {{$user->name}}! Bienvenido a CasaToken (DEMO)</h1>
                <div class="message">
-                   Al crear tu cuenta depositamos 100 ETH y 10000 CTF virtuales en tus billeteras.</br></br>
                    <!--También creamos una propiedad a tu nombre, la misma será sometida a votación entre los miembros de la plataforma. De ser aprobada, podrás verla en tu panel de inversión.</br></br>-->
-                   Te cuento que podrás interactuar con tus crypto-monedas y tokens en nuestro exchange o invirtiendo en alguna de las propiedades disponibles en el menú "Invertir".<br><br>
-                    Dejanos ayudarte a empezar a interactuar con la plataforma haciendo click <a href="#" onclick="startIntro()"> aquí  </a>
+                    Dejanos ayudarte a empezar a interactuar con la plataforma haciendo click <a href="#" onclick="startIntro()"> <strong><u>aquí</u></strong>  </a>
                </div>
            </div>
            <div class="row sopenco">

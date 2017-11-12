@@ -88,6 +88,9 @@ section#home{
           width: auto;
           float: none;
           .property{
+            .invest{
+              visibility: hidden;
+            }
             min-height: 180px;
           }
         }
