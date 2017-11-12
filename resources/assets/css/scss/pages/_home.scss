@@ -72,11 +72,24 @@ section#home{
     &.third-stop{
       //background: url('../images/home/bg_3.jpg');
       background: url('../images/home/bg_4.jpg');
-      .wrapper{
+      .invest-p{
+        max-width: 650px;
+        color: white;
+        text-align: center;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        padding: 20px;
+      }
+      .owl-carousel{
+        margin-left:12%;
         width: auto;
-        float: none;
-        .property{
-          min-height: 320px;
+        margin-right:12%;
+        .wrapper{
+          width: auto;
+          float: none;
+          .property{
+            min-height: 180px;
+          }
         }
       }
     }

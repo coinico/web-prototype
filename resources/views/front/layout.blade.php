@@ -65,7 +65,7 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('home') }}>
-					<a href="{{isHome() ? '#top' : route('home')}}">@lang('Inicio')</a>
+					<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '#top' : route('home')}}">@lang('Inicio')</a>
 				</li>
 			@guest
 					<li {{ currentRoute('owners') }}>
