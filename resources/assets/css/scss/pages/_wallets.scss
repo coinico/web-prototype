@@ -149,7 +149,7 @@ section#create-wallet{
 }
 
 section#manage-wallet{
-    #deposit-modal, #withdraw-modal {
+    #deposit-modal  {
         .modal-header{
             text-align:center;
         }
@@ -167,7 +167,7 @@ section#manage-wallet{
             }
         }
     }
-    #deposit-modal-virtual {
+    #deposit-modal-virtual, #withdraw-modal {
         .modal-header{
             text-align:center;
         }
@@ -186,6 +186,7 @@ section#manage-wallet{
             .label-hola{
                 vertical-align: middle;
                 margin-top: -10px;
+                margin-left: -10px;
                 width:130px;
                 text-align:right;
                 display: inline-block;
@@ -194,6 +195,9 @@ section#manage-wallet{
                 height: 40px;
                 align-content: right;
                 display: inline-block;
+            }
+            .input-disabled {
+                background-color: #e5e5fe;
             }
         }
     }

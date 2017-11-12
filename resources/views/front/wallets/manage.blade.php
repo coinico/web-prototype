@@ -66,14 +66,23 @@
       <div class="modal-dialog order_book_trade_bid" role="document">
          <div class="modal-content order_book_trade_bid">
                <div class="modal-header">
-                  <h4 class="modal-title" id="tradeModalTitle">Retirar fondos</h4>
+                   <h4 class="modal-title" id="tradeModalTitle"><img width="20px" src="/images/{{$userWallet->currency->type === "currency"? "".$userWallet->currency->image : "tokens/".$userWallet->currency->image}}" /> Retirar fondos</h4>
                </div>
-               <div class="modal-body">
-                  <label for="modal-trade-cantidad">Cantidad</label>
-                  <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
-                  <label for="modal-trade-memo">Memo</label>
-                  <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
-               </div>
+             <div class="modal-body"></br>
+                 <div class="input-group">
+                     <label class="label-hola" for="modal-trade-cantidad">Address</label>
+                     <input id="modal-trade-address" name="address" type="text" value="0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61" class="input-hola input-left input-disabled" required disabled>
+                 </div>
+                 <div class="input-group">
+                     <label class="label-hola" for="modal-trade-cantidad">Cantidad</label>
+                     <input id="modal-trade-cantidad" name="cantidad" type="text" placeholder="0.00000000" class="input-hola input-left" required>
+                 </div>
+                 <div class="input-group">
+                     <label class="label-hola" for="modal-trade-memo">Memo</label>
+                     <input id="modal-trade-memo" name="memo" type="text" placeholder="Ingresa una descripción." value="" class="input-hola" required>
+                 </div>
+                 <div1 class="modal-body-info-chiquit">El retiro es meramente virtual, sólo modificará el balance de la billetera.</div1>
+             </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                   <button id="confirm-trade-modal" type="submit" class="btn btn-primary">Confirmar</button>
