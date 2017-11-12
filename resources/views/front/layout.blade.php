@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/plugins/introjs.css') }}">
 
 	@yield('css')
 
@@ -246,19 +247,30 @@
     	<div id="loader"></div>
    </div>
 
+   <a href="#" id="help-btn" class="help">
+	   <i class="fa fa-question" aria-hidden="true"></i>
+   </a>
+
    <!-- Java Script
    ================================================== -->
    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
    <script src="{{ asset('js/plugins.js') }}"></script>
    <script src="{{ asset('js/main.js') }}"></script>
+   <script type="text/javascript" src="/js/plugins/intro.js"></script>
    <script>
 	   $(function() {
 		   $('#logout').click(function(e) {
 			   e.preventDefault();
 			   $('#logout-form').submit()
-		   })
+		   });
+		   $('#help-btn').click(function(e) {
+			   e.preventDefault();
+			   startIntro();
+		   });
 	   })
    </script>
+
+
 
    @yield('scripts')
 

@@ -117,6 +117,9 @@ section#panel,.panel{
     &.main{
       width: calc(100% - 315px);
       float: left;
+      a,a:hover, a:focus{
+        color:#666
+      }
     }
     &.sidebar{
       width: 300px;

@@ -83,10 +83,19 @@ section#property{
   }
 
   .economic{
+    &:after{
+      content: '';
+      display: block;
+      width: 1px;
+      height: 1px;
+      clear: both;
+
+    }
     .item-wrap{
       display: inline-block;
-      width: 33%;
+      width: 33.33%;
       padding: 15px;
+      float: left;
       .item{
         background: white;
         height: 100px;

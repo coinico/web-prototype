@@ -904,6 +904,16 @@ table th, table td { padding: 3px; text-align: left; border-bottom: 1px solid #E
 @media (min-width: 768px) { .modal-dialog { width: 600px; margin: 30px auto; }
   .modal-sm { width: 300px; } }
 @media (min-width: 992px) { .modal-lg { width: 900px; } }
+.help { position: fixed; right: 0; bottom: 0; width: 35px; height: 35px; background: #ccc; text-align: center; line-height: 35px; color: #666; }
+
+.introjs-overlay { background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.4) 0, rgba(18, 26, 100, 0.9) 100%) !important; }
+
+.introjs-helperLayer { border: 1px solid rgba(34, 83, 184, 0.5) !important; box-shadow: 0 2px 15px rgba(14, 81, 217, 0.4) !important; }
+
+.introjs-helperNumberLayer { background: rgba(255, 255, 255, 0.9) !important; color: #171b41 !important; }
+
+.introjs-tooltipbuttons a:hover, .introjs-tooltipbuttons a:focus { color: #333; border-color: #bcbcbc; text-decoration: none; box-shadow: 0px 1px 1px #e3e3e3; }
+
 /* Pages */
 section#register .row { font-family: "montserrat-regular", sans-serif; margin-top: 30px; background-color: white; padding: 50px 50px 0 50px; }
 section#register .row input { background-color: #f5f5f5; }
@@ -968,7 +978,10 @@ section#properties.horizontal-view .wrapper .property { padding: 15px; }
 section#properties.horizontal-view .wrapper .property .info .image { width: 130px; background-image: url(images/no-image.png); display: inline-block; float: left; margin-right: 20px; }
 section#properties.horizontal-view .wrapper .property .hover .vote { margin-top: -80px; }
 section#properties.horizontal-view .wrapper .property .hover .vote .up { border-right: none; }
-section#properties.horizontal-view .wrapper .property .hover .vote > a { display: inline-block; position: absolute; bottom: -20px; right: 20px; }
+section#properties.horizontal-view .wrapper .property .hover > a { display: inline-block; position: absolute; bottom: -20px; right: 20px; }
+@media (max-width: 767px) { section#properties.horizontal-view .wrapper .property .hover .vote { width: 100%; }
+  section#properties.horizontal-view .wrapper .property .hover .vote .up { width: 90px; float: left; }
+  section#properties.horizontal-view .wrapper .property .hover .vote .down { width: 90px; float: right; } }
 
 section#properties .main, section#manage-wallet .main { padding: 0; margin: 0; background: none; }
 section#properties .sidebar, section#manage-wallet .sidebar { background: white; margin-top: 10px; }
@@ -1105,7 +1118,8 @@ section#property .investment fieldset a i { display: none; position: absolute; m
 section#property .investment fieldset a small { font-size: 20px; }
 section#property .investment fieldset a:hover small, section#property .investment fieldset a.loading small { display: none; }
 section#property .investment fieldset a:hover i, section#property .investment fieldset a.loading i { display: block; color: #666; }
-section#property .economic .item-wrap { display: inline-block; width: 33%; padding: 15px; }
+section#property .economic:after { content: ''; display: block; width: 1px; height: 1px; clear: both; }
+section#property .economic .item-wrap { display: inline-block; width: 33.33%; padding: 15px; float: left; }
 section#property .economic .item-wrap .item { background: white; height: 100px; position: relative; }
 section#property .economic .item-wrap .item p { font-size: 25px; font-weight: bold; text-align: center; position: absolute; margin: auto; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
 section#property .economic .item-wrap .item p small { display: block; }
@@ -1152,6 +1166,7 @@ section#panel section .summary > div:last-child, .panel section .summary > div:l
 section#panel section .summary > div span, .panel section .summary > div span { font-size: 25px; }
 section#panel section .summary > div small, .panel section .summary > div small { display: block; }
 section#panel section.main, .panel section.main { width: calc(100% - 315px); float: left; }
+section#panel section.main a, section#panel section.main a:hover, section#panel section.main a:focus, .panel section.main a, .panel section.main a:hover, .panel section.main a:focus { color: #666; }
 section#panel section.sidebar, .panel section.sidebar { width: 300px; float: right; }
 section#panel section.sidebar .title, .panel section.sidebar .title { padding-bottom: 4px; border-bottom: 1px solid #ccc; }
 section#panel section.sidebar .items .item, .panel section.sidebar .items .item { padding: 15px 0 22px 0; border-bottom: 1px dashed #ccc; display: block; color: #666; }

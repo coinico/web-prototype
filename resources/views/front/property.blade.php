@@ -21,6 +21,29 @@
 
                </div>
 
+               <div class="economic">
+                   <div class="item-wrap">
+                       <div class="item">
+                           <p>{{number_format($property->getVotingStatus('percentage'), 2, ',', '.')}}%
+                               <small>Aprobación: 95%</small>
+                           </p>
+                       </div>
+                   </div>
+                   <div class="item-wrap">
+                       <div class="item"><p>{{$property->getTotalVoters()}} <small>Votantes</small></p></div>
+                   </div>
+                   <div class="item-wrap">
+                       <div class="item">
+                           <p>
+                               {{$property->getPositiveVotes()}} <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                               <small>
+                                   {{$property->getNegativeVotes()}} <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                               </small>
+                           </p>
+                       </div>
+                   </div>
+               </div>
+
            @elseif($property->status_id ==4)
 
                <div class="investment">
@@ -39,8 +62,6 @@
                    </div>
                </div>
 
-           @endif
-
             <div class="economic">
                 <div class="item-wrap">
                     <div class="item"><p>{{number_format($property->getTotalInvestment('percentage'), 2, ',', '.')}}%</p></div>
@@ -52,6 +73,9 @@
                     <div class="item"><p>U$D {{number_format($property->getTotalInvestment('usd'), 0, ',', '.')}}</p></div>
                 </div>
             </div>
+
+           @endif
+
 
             <section class="features owl-carousel">
                 <div class="feature">
@@ -129,5 +153,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.fancybox.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/jquery.sparkline.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/property.js') }}" ></script>
 @stop

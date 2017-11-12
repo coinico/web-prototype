@@ -218,11 +218,26 @@ section#properties{
             .down{
 
             }
-            >a{
-              display: inline-block;
-              position: absolute;
-              bottom: -20px;
-              right: 20px;
+
+          }
+          >a{
+            display: inline-block;
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+          }
+
+          @media(max-width: 767px){
+            .vote{
+              width:100%;
+              .up{
+                width: 90px;
+                float: left;
+              }
+              .down{
+                width: 90px;
+                float: right;
+              }
             }
           }
         }

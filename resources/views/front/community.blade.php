@@ -33,4 +33,30 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/pages/properties.js') }}" ></script>
+    <script type="text/javascript">
+        function startIntro(){
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {
+                        element: '.main .property:first-child',
+                        intro: "Esta es una propiedad en proceso de aceptación, si pasas tu mouse por arriba podrás votar"
+                    },
+                    {
+                        element: '#voting-list',
+                        intro: "Acá encontrarás el listado de tus votos",
+                        position: 'right'
+                    },
+                ],
+                doneLabel : "Pág. sig."
+            }).oncomplete(function() {
+                window.location.href = '/investors?tuto=true';
+            });
+
+            intro.start();
+        }
+        if (RegExp('tuto', 'gi').test(window.location.search)) {
+            startIntro();
+        }
+    </script>
 @stop

@@ -12,7 +12,7 @@ use App\ {
 use Illuminate\Http\Request;
 use App\Models\PropertyInvest;
 use App\Http\Requests\PropertyInvestRequest;
-
+use App\Models\UserWallet;
 
 class PropertyInvestController extends Controller
 {
@@ -33,6 +33,16 @@ class PropertyInvestController extends Controller
 
 
     public function invest($propertyId, PropertyInvestRequest $request){
+
+        //Chequeo si tiene fondos para realizar la inversión
+        $user = auth()->user();
+        $ethWallet = UserWallet::where(['user_id'=>$user->id, 'crypto_currency'=>1])->first();
+
+        if($ethWallet->available_balance < floatval($request->input('value'))){
+            return response('Saldo no disponible', 400);
+        }
+
+
         $propertyInvest = PropertyInvest::where(['property_id'=>$propertyId, 'user_id' => auth()->user()->id])->first();
         if($propertyInvest){
             $this->repository->update($propertyInvest, $request);

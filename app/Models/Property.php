@@ -148,7 +148,7 @@ class Property extends Model
         $eth_value = PropertyInvest::where(['property_id'=>$propertyId])->sum('value');
         $change = CryptoCurrency::where(['alias'=>'ETH'])->first()->usd_value;
         $usd_value = $eth_value * $change;
-        $percentage = $usd_value/$this->getAttribute('value');
+        $percentage = $usd_value/$this->getAttribute('value') * 100;
 
         $return = array(
             'percentage' => $percentage,
@@ -166,7 +166,7 @@ class Property extends Model
      */
     public function getTotalInvestors(){
         $propertyId = $this->getAttribute('id');
-        $total = PropertyInvest::where(['property_id'=>$propertyId])->groupBy('user_id')->count();
+        $total = PropertyInvest::where(['property_id'=>$propertyId])->count();
 
         return $total;
     }
@@ -211,5 +211,49 @@ class Property extends Model
         $propertyVotes = PropertyVote::where(['property_id'=>$propertyId,'vote'=>"-1"])->count();
         return $propertyVotes;
     }
+
+    /**
+     * Total voters
+     *
+     * @return \Integer
+     */
+    public function getTotalVoters(){
+        $propertyId = $this->getAttribute('id');
+        $propertyVotes = PropertyVote::where(['property_id'=>$propertyId])->count();
+        return $propertyVotes;
+    }
+
+
+    /**
+     * Voting Status
+     *
+     * @return \Integer
+     */
+    public function getVotingStatus(){
+        $propertyId = $this->getAttribute('id');
+        $positive  = PropertyVote::where(['property_id'=>$propertyId,'vote'=>"1"])->sum('weight');
+        $total  = PropertyVote::where(['property_id'=>$propertyId])->sum('weight');
+        $percentage = 0;
+        if($total > 0){
+            $percentage = $positive/$total*100;
+        }
+        return $percentage;
+    }
+
+
+
+    /**
+     * Voting Data
+     *
+     * @return \Integer
+     */
+    public function getVotingData(){
+        $propertyId = $this->getAttribute('id');
+        $total = implode(",",PropertyVote::where(['property_id'=>$propertyId])->pluck('weight')->toArray());
+
+        return $total;
+    }
+
+
 
 }

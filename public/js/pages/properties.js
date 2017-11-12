@@ -57,12 +57,17 @@ $(document).ready(function(){
         var url = wrapper.attr('data-url');
         var vote = $(this).parent().hasClass('up') ? '1' : '-1';
 
-        if(!$(this).hasClass('selected') && wrapper.find('.selected').length){
-            var votes = $(this).parent().find('small');
-            votes.html(Number(votes.html())+1);
-            votes = wrapper.find('.selected').parent().find('small');
+        var votes = $(this).parent().find('small');
+        votes.html(Number(votes.html())+1);
+        if(!$(this).hasClass('selected')){
+            if(wrapper.find('.selected').length) {
+                votes = wrapper.find('.selected').parent().find('small');
+                votes.html(Number(votes.html())-1);
+            }
+        }else{
             votes.html(Number(votes.html())-1);
         }
+
 
         wrapper.find('a').removeClass('selected');
         btn.addClass('selected');
@@ -120,8 +125,9 @@ $(document).ready(function(){
                 var status = xhr.status;
                 if(status == 401) {
                     alert("Debes iniciar sesión para votar");
-                }else{
-                    console.log(xhr);
+                }
+                if(status == 400) {
+                    alert("Tu saldo no es suficiente");
                 }
                 btn.find('i').attr('class','fa fa-times');
                 setTimeout(function(){

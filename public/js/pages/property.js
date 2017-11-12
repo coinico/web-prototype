@@ -61,8 +61,11 @@ $(document).ready(function(){
                 var status = xhr.status;
                 if(status == 401) {
                     alert("Debes iniciar sesión para votar");
-                }else{
-                    console.log(xhr);
+                    return;
+                }
+                if(status == 400) {
+                    alert("Tu saldo no es suficiente");
+                    return;
                 }
                 btn.find('i').attr('class','fa fa-times');
                 setTimeout(function(){
@@ -77,5 +80,6 @@ $(document).ready(function(){
         if(e.which==13)
             $('fieldset a').click();
     });
+
 
 });

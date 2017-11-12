@@ -10,6 +10,8 @@ use App\Models\ {
 use App\Services\Thumb;
 use phpDocumentor\Reflection\Types\Boolean;
 use App\Models\User;
+use App\Models\UserWallet;
+
 
 class PropertyVoteRepository
 {
@@ -54,11 +56,14 @@ class PropertyVoteRepository
      */
     public function store($propertyId, $request)
     {
-        //@todo: Agregar peso al voto
+        $user = auth()->user();
+        $ethWallet = UserWallet::where(['user_id'=>$user->id, 'crypto_currency'=>1])->first();
+
+        $weight = $ethWallet->available_balance;
 
         $request->merge(['user_id' => auth()->id()]);
         $request->merge(['property_id' => $propertyId]);
-        $request->merge(['weight' => 1]);
+        $request->merge(['weight' => $weight]);
 
         $propertyVote = PropertyVote::create($request->all());
 

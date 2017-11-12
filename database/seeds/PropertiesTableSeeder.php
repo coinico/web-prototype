@@ -112,7 +112,34 @@ class PropertiesTableSeeder extends Seeder
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
+            ),
+            array(
+                'title' => 'Majadahonda',
+                'user_id' => 1,
+                'status_id' => 4,
+                'description' => 'Un concepto de vivienda con diseño de fachada ventilada en mármol travertino y madera natural, cuyo desarrollo principal se realiza en una planta, aunando sus grandes espacios y comunicación visual con el exterior, dotado de un gran porche, jardín y piscina privada. El diseño de los desniveles del terreno permite que la planta bajo rasante, ademas de ubicar el aparcamiento, disponga de una habitación con salida directa a nivel de jardín, proporcionando también una comunicación directa con el entorno.',
+                'detail' => '',
+                'images' => '7.jpg',
+                'value' => '1700000',
+                'location' => '{lat:40.4435326,lng:-3.8402236}',
+                'bidding_time' => '',
+                'features' => '',
+                'created_at' => new \DateTime()
+            ),
+            array(
+                'title' => 'Humanes',
+                'user_id' => 1,
+                'status_id' => 4,
+                'description' => 'Perfecto estado para entrar a vivir, piso bien situado en zona centro y a cinco minutos de la Renfe, cercano a todos los servicios, colegios, centro de salud... Superf. Const. 82 m², 3 habitaciones, 1 baño reformado con plato de ducha y mampara, cocina amueblada y equipada, salón-comedor amplio y luminoso, terraza cerrada en aluminio, ascensor, puerta blindada, calefacción de gas natural, suelos de parquet, vidrios dobles de climalit, carpintería exterior con doble ventana, carpintería interior sapelli, aire acondicionado en el salón.',
+                'detail' => '',
+                'images' => '8.jpg',
+                'value' => '980000',
+                'location' => '{lat:40.4435326,lng:-3.8402236}',
+                'bidding_time' => '',
+                'features' => '',
+                'created_at' => new \DateTime()
             )
+
         );
         DB::table('properties')->insert($properties);
     }
