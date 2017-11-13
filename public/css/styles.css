@@ -3244,6 +3244,8 @@ section#home section {
           min-height: 180px; }
           section#home section.third-stop .owl-carousel .wrapper .property .invest {
             visibility: hidden; }
+          section#home section.third-stop .owl-carousel .wrapper .property .location-img {
+            width: 13px; }
   section#home section.fourth-stop {
     background: url("../images/home/bg_6.jpg"); }
     section#home section.fourth-stop a {
