@@ -15,4 +15,9 @@ class CryptoCurrency extends Model
 
     protected $table = 'crypto_currencies';
 
+    protected $fillable = [
+        'name', 'alias', 'usd_value',
+        'type', 'minimum_order', "image"
+    ];
+
 }

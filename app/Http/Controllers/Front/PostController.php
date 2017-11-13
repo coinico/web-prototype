@@ -151,7 +151,10 @@ class PostController extends Controller
             ->whereIn('user_id',[1, auth()->user() ? auth()->user()->id : 0])
             ->orderBy('user_id', "desc")->get();
 
-        $investments = PropertyInvest::where('user_id',auth()->user()->id)->where("value","<>", 0)->get();
+        $investments = PropertyInvest::where('user_id',auth()->user()->id)->where("value","<>", 0)
+            ->whereHas('properties', function($q){
+                $q->where('status_id', 4);
+            })->get();
         return view('front.investors', compact('properties','investments'));
     }
 

@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\ {
-    Http\Requests\PropertyRequest,
-    Http\Controllers\Controller,
-    Models\UserWalletTransaction,
-    Models\Property,
-    Repositories\PropertyInvestRepository
+use App\{
+    Http\Requests\PropertyRequest, Http\Controllers\Controller, Models\CryptoCurrency, Models\UserWalletTransaction, Models\Property, Repositories\PropertyInvestRepository
 };
 use Illuminate\Http\Request;
 use App\Models\PropertyInvest;
@@ -31,6 +27,53 @@ class PropertyInvestController extends Controller
         $this->table = 'property_invests';
     }
 
+    public function tokenizateProperty($property, $user, $transaction) {
+
+        // efectiviza la transacción anterior
+        $transaction["is_hold"] = 0;
+        $transaction->save();
+
+        $ptiName = 'TPI de '.auth()->user()->name;
+        $ptiAlias = 'TPI-'.auth()->user()->id;
+
+        $cryptoCurrency = CryptoCurrency::create(
+            [
+                'name' => $ptiName,
+                'alias' => $ptiAlias,
+                'image' => "house.png",
+                'usd_value' => 10,
+                "minimum_order" => 0.05,
+                'type' => 'token'
+            ]
+        );
+
+        $property["status_id"] = 5;
+        $property->save();
+
+        $userWallet = UserWallet::create(
+            [
+                'user_id' => $user->id,
+                'crypto_currency' => $cryptoCurrency->id,
+            ]
+        );
+
+        UserWalletTransaction::create(
+            [
+                'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                'amount' => 3100,
+                'type' => 'debit',
+                'memo' => 'Tokenización de propiedad: '.$property->title,
+                'transaction_hash' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                'transaction_fee' => 0,
+                'is_hold' => 1,
+                'total' =>  3100,
+                'user_wallet' => $userWallet->id,
+            ]
+        );
+
+    }
+
 
     public function invest($propertyId, PropertyInvestRequest $request){
 
@@ -52,6 +95,10 @@ class PropertyInvestController extends Controller
             $transaction->save();
 
             $this->repository->update($propertyInvest, $request);
+
+            if(floatval($request->input("value")) == 100) {
+                $this->tokenizateProperty($property, $user, $transaction);
+            }
         }else{
 
             if($ethWallet->available_balance < floatval($request->input('value'))){
@@ -76,9 +123,16 @@ class PropertyInvestController extends Controller
             $request->merge(['transaction_id' => $transaction->id]);
 
             $this->repository->store($propertyId, $request);
+
+            if(floatval($request->input("value")) == 100) {
+                $this->tokenizateProperty($property, $user, $transaction);
+            }
         }
 
-        $investments = PropertyInvest::where('user_id',auth()->user()->id)->where("value","<>", 0)->get();
+        $investments = PropertyInvest::where('user_id',auth()->user()->id)->where("value","<>", 0)
+            ->whereHas('properties', function($q){
+                $q->where('status_id', 4);
+            })->get();
         return view('front.panel.investments', compact('investments'));
     }
 
