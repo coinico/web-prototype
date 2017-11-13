@@ -120,10 +120,13 @@ class PostController extends Controller
     public function community()
     {
         $properties = Property::where('status_id',1)
-            ->whereIn('user_id',[1, auth()->user()->id])
+            ->whereIn('user_id',[1, auth()->user() ? auth()->user()->id : 0])
             ->orderBy('user_id', "desc")->get();
 
-        $votes = PropertyVote::where('user_id',auth()->user() ? auth()->user()->id : 0)->get();
+        $votes = PropertyVote::where('user_id',auth()->user() ? auth()->user()->id : 0)
+            ->whereHas('properties', function($q){
+                $q->where('status_id', 1);
+            })->get();
         return view('front.community', compact('properties','votes'));
     }
 

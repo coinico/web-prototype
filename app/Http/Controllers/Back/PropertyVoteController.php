@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\{
-    Http\Controllers\Controller, Repositories\PropertyVoteRepository
+    Http\Controllers\Controller, Models\Property, Repositories\PropertyVoteRepository
 };
 use App\Http\Requests\PropertyVoteRequest;
 use App\Models\PropertyVote;
@@ -31,6 +31,13 @@ class PropertyVoteController extends Controller
 
     public function vote($propertyId, PropertyVoteRequest $request)
     {
+        $property = Property::find($propertyId);
+
+        if ($property && $request->vote == 1) {
+            $property->status_id = 4;
+            $property->save();
+        }
+
         $propertyVote = PropertyVote::where(['property_id' => $propertyId, 'user_id' => auth()->user()->id])->first();
         if ($propertyVote) {
             $this->repository->update($propertyVote, $request);
@@ -38,7 +45,11 @@ class PropertyVoteController extends Controller
             $this->repository->store($propertyId, $request);
         }
 
-        $votes = PropertyVote::where('user_id',auth()->user()->id)->get();
+        $votes = PropertyVote::where('user_id',auth()->user()->id)
+            ->whereHas('properties', function($q){
+                $q->where('status_id', 1);
+            })->get();
+
         return view('front.panel.votes', compact('votes'));
     }
 
