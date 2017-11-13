@@ -188,63 +188,37 @@
 
    		<div class="row">
 
-	      	<div class="col-six tab-full mob-full footer-info">
+	      	<div class="col-twelve tab-full mob-full footer-info">
 
-	            <h4>@lang('Acerca de nuestro sitio')</h4>
+	            <h4 style="color:#4e638a;">@lang('Acerca de este DEMO')</h4>
 
-	               <p>@lang('Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma. Sé parte de nuestra comunidad y contribuye con el futuro del negocio inmobiliario descentralizado.')</p>
+	               <p>Esta versión es un prototipo de demostración para ilustrar algunas de las funcionalidades básicas, a modo de ejemplo del plan de desarrollo delineado en nuestro white-paper y modelo de negocios. El desarrollo de la plataforma seguirá las etapas descriptas en nuestro roadmap luego del cierre del período de contribución anunciado en la ICO.
+					   Suscríbete a nuestra lista de distribución para recibir información de nuestros avances (<a href="http://casatoken.io/#About">LINK</a>).</p>
 
 		      </div> <!-- end footer-info -->
 
-         	<div class="col-three tab-1-2 mob-1-2 site-links">
+		</div> <!-- end footer-main -->
 
-	      		<h4>@lang('Links del sitio')</h4>
-
-	      		<ul>
-				  	<li><a href="http://casatoken.io/">@lang('Acerca de Nosotros')</a></li>
-					<li><a href="{{ route('contacts.create') }}">@lang('Contáctanos')</a></li>
-					<li><a href="http://casatoken.io/blog/">@lang('Blog')</a></li>
-					<!--<li><a href="#">@lang('Política de Privacidad')</a></li>-->
-	    			</ul>
-
-                 </div> <!-- end site-links -->
-
-          	<div class="col-three tab-1-2 mob-1-2 social-links">
-
-	      		<h4>@lang('Social')</h4>
-
-	      		<ul>
-	      			<li><a href="https://twitter.com/casatoken">Twitter</a></li>
-					<li><a href="https://www.facebook.com/CasaToken-136200837022798">Facebook</a></li>
-					<li><a href="https://www.instagram.com/casatoken/">Instagram</a></li>
-				</ul>
-
-	      	</div> <!-- end social links -->
-
-	    	      </div> <!-- end row -->
-
-	      	</div> <!-- end footer-main -->
-
-	   <div class="footer-bottom">
+	   <div class="footer-bottom" style="margin-top:-40px;margin-bottom:-40px;background-color: #f5f5f5!important">
 		   <div class="row">
 
-			   <div class="col-twelve">
-				   <div class="copyright">
-					   <span>© Copyright CasaToken 2017</span>
-					   <span></span>
-				   </div>
-
-				   <div id="go-top">
-					   <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
-				   </div>
+			   <span style="font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif; display: inline-block; float:left; color:#0a131b; font-weight: bold; font-size: 13px;">COPYRIGHT © 2017 CASATOKEN. ALL RIGHTS RESERVED. TERMS OF USE PRIVACY POLICY</span>
+			   <div class="copyright" style="display: inline-block; color:#0a131b; float:right;">
+				   <span><a style="display: inline-block; color:#0a131b; font-size: 32px;font-weight: bold; " href="https://twitter.com/casatoken"><i class="fa fa-twitter"></i> </a></span>
+				   <span><a style="display: inline-block; color:#0a131b; font-size: 32px;font-weight: bold; " href="https://www.facebook.com/CasaToken-136200837022798"><i class="fa fa-facebook"></i></a></span>
+				   <span><a style="display: inline-block; color:#0a131b; font-size: 32px;font-weight: bold; " href="https://www.instagram.com/casatoken/"><i class="fa fa-instagram"></i></a></span>
 			   </div>
 
+			   <div id="go-top">
+				   <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+			   </div>
 		   </div>
 	   </div> <!-- end footer-bottom -->
+   </footer>
 
 	   @else
 
-		   <footer style="background-color: #0a131b!important;">
+   <footer style="background-color: #0a131b!important;">
       <div class="footer-bottom" style="margin-top:-40px;margin-bottom:-40px;background-color: #0a131b!important">
       	<div class="row">
 
@@ -260,9 +234,9 @@
 			 </div>
 		</div>
       </div> <!-- end footer-bottom -->
-			   @endif
-
    </footer>
+	   @endif
+
 
    <div id="preloader">
     	<div id="loader"></div>
