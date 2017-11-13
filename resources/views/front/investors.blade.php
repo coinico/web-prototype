@@ -44,7 +44,7 @@
                         intro: "Tus contribuciones se verán reflejadas en este listado.",
                         position: 'right'
                     }
-                ].filter(function(obj) { return $(obj.element).length})
+                ].filter(function(obj) { return $(obj.element).length}),
                 doneLabel : "Pág. sig."
             }).oncomplete(function() {
                 window.location.href = '/exchange?tuto=true';
