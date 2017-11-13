@@ -1,6 +1,19 @@
 $(document).ready(function(){
     //$('.properties .wrap')@todo: min height algorithm
 
+    function standarHeight() {
+        var height = 0;
+        $('#properties .property').each(function () {
+            $(this).css('height', 'auto');
+            if (height < $(this).outerHeight()) {
+                height = $(this).outerHeight();
+            }
+        });
+
+        $('#properties .property').each(function () {
+            $(this).css('height', height+10);
+        });
+    }
 
     /** Views **/
     $('#horizontal-view-btn').click(function(e){
@@ -34,7 +47,7 @@ $(document).ready(function(){
             $(this).find('.hs').html(hs);
             $(this).find('.days').html(days);
         });
-    }, 1000);
+    }, 1000*60);
 
     /** Votes **/
     $('.vote a').click(function(e){
@@ -44,12 +57,17 @@ $(document).ready(function(){
         var url = wrapper.attr('data-url');
         var vote = $(this).parent().hasClass('up') ? '1' : '-1';
 
-        if(!$(this).hasClass('selected') && wrapper.find('.selected').length){
-            var votes = $(this).parent().find('small');
-            votes.html(Number(votes.html())+1);
-            votes = wrapper.find('.selected').parent().find('small');
+        var votes = $(this).parent().find('small');
+        votes.html(Number(votes.html())+1);
+        if(!$(this).hasClass('selected')){
+            if(wrapper.find('.selected').length) {
+                votes = wrapper.find('.selected').parent().find('small');
+                votes.html(Number(votes.html())-1);
+            }
+        }else{
             votes.html(Number(votes.html())-1);
         }
+
 
         wrapper.find('a').removeClass('selected');
         btn.addClass('selected');
@@ -62,7 +80,7 @@ $(document).ready(function(){
             data: {vote:vote},
             method: 'POST',
             success: function(result){
-                //
+                $('#voting-list').html(result);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var status = xhr.status;
@@ -75,4 +93,64 @@ $(document).ready(function(){
 
     });
 
+
+    /** Invest **/
+    $('.invest a').click(function(e){
+        e.preventDefault();
+        var btn = $(this);
+        var wrapper = $(this).closest('.invest');
+        var url = wrapper.attr('data-url');
+        var parent = $(this).parent();
+        var value = $(this).parent().find('input').val();
+
+        $(this).addClass('loading');
+        $(this).find('i').attr('class','fa fa-circle-o-notch fa-spin');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: url,
+            data: {value:value},
+            method: 'POST',
+            success: function(result){
+                console.log(result);
+                btn.find('i').attr('class','fa fa-check');
+                $('#investment-list').html(result);
+                setTimeout(function(){
+                    btn.removeClass('loading');
+                    btn.find('i').attr('class','fa fa-paper-plane');
+                },1000);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+                console.log(xhr);
+                var status = xhr.status;
+                if(status == 401) {
+                    alert("Debes iniciar sesión para votar");
+                }
+                if(status == 400) {
+                    alert("Tu saldo no es suficiente");
+                }
+                btn.find('i').attr('class','fa fa-times');
+                setTimeout(function(){
+                    btn.removeClass('loading');
+                    btn.find('i').attr('class','fa fa-paper-plane');
+                },1000);
+            }
+        });
+    });
+
+    $('.invest input').keydown(function(e){
+        if(e.which==13)
+            $('.invest a').click();
+    });
+
+    standarHeight();
+
+    $(window).resize(function(){
+        standarHeight();
+    });
+
 });
+

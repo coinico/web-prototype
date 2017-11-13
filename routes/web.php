@@ -74,6 +74,7 @@ Auth::routes();
 
 //Exchange
 Route::name('ctfMarkets')->get('/ctfMarkets', 'Front\OrderBookController@ctfMarkets');
+Route::name('ethMarkets')->get('/ethMarkets', 'Front\OrderBookController@ethMarkets');
 Route::name('exchangeDetails')->get('/exchangeDetails', 'Front\OrderBookController@exchangeDetails');
 Route::name('lastExecutedOrders')->get('/lastExecutedOrders', 'Front\OrderBookController@lastExecutedOrders');
 Route::name('myLastExecutedOrders')->get('/myLastExecutedOrders', 'Front\OrderBookController@myLastExecutedOrders');
@@ -83,13 +84,14 @@ Route::name('bidOrders')->get('/bidOrders', 'Front\OrderBookController@bidOrders
 Route::name('deleteOrder')->get('/deleteOrder', 'Front\OrderBookController@deleteOrder');
 Route::name('allMyLastExecutedOrders')->get('/allMyLastExecutedOrders', 'Front\OrderBookController@allMyLastExecutedOrders');
 Route::name('allMyOpenOrders')->get('/allMyOpenOrders', 'Front\OrderBookController@allMyOpenOrders');
+Route::name('createBidOrder')->get('/createBidOrder', 'Front\OrderBookController@createBidOrder');
+Route::name('createAskOrder')->get('/createAskOrder', 'Front\OrderBookController@createAskOrder');
 
-Route::middleware('community')->group(function () {
+// PropertyVote
+Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
 
-    // PropertyVote
-    Route::post('/property/{id}/vote', 'Back\PropertyVoteController@vote');
-
-});
+// PropertyInvest
+Route::post('/property/{id}/invest', 'Back\PropertyInvestController@invest');
 
 
 Route::prefix('admin')->namespace('Back')->group(function () {
@@ -158,9 +160,6 @@ Route::prefix('admin')->namespace('Back')->group(function () {
 //crypto_currency Routes
 Route::group(['middleware'=> 'web'],function(){
 
-    //Welcome
-    Route::name('welcome')->get('/welcome', 'Front\PostController@welcome');
-
     //Panel
     Route::name('panel')->get('/panel', 'Front\PostController@panel');
 
@@ -172,4 +171,7 @@ Route::group(['middleware'=> 'web'],function(){
     // wallets
     Route::resource('wallets', 'Front\UserWalletController');
     Route::get('/userWallet/{id}/manage', 'Front\UserWalletController@manageWallet');
+    Route::get('/userWallet/{id}/deposit', 'Front\UserWalletController@deposit');
+    Route::get('/userWallet/{id}/withdraw', 'Front\UserWalletController@withdraw');
+
 });

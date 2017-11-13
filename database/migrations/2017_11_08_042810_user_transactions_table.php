@@ -24,13 +24,13 @@ class UserTransactionsTable extends Migration
 
             $table->String('address_from');
             $table->String('address_to');
-            $table->float('amount');
+            $table->double('amount', 28, 18);
             $table->boolean('is_hold')->default(false);;
             $table->enum('type', array('credit', 'debit'));
             $table->String('memo');
             $table->String('transaction_hash');
-            $table->float('transaction_fee');
-            $table->float('total');
+            $table->double('transaction_fee', 28, 18);
+            $table->double('total', 28, 18);
 
             /**
              * Foreignkeys section

@@ -10,11 +10,18 @@ section#create-wallet{
 }
 
 .wallets, .tokens{
+
+    &:after{
+        content: '';
+        clear: both;
+        display: block;
+    }
     .wallet-wrapper{
         display: inline-block;
-        width: 24.69%;
+        width: 25%;
         padding: 10px;
         min-height: 175px;
+        float: left;
         .wallet{
             border-style: solid;
             background: white;
@@ -24,11 +31,19 @@ section#create-wallet{
                 .currency_name {
                     margin: 15px;
                     text-align: center;
-                    color: #353535;
-                    letter-spacing: 2px;
-                    text-shadow: 1px 1px grey;
+                    color: #666;
                     font-weight: bold;
-                    font-size: 25px;
+                    font-size: 20px;
+                    text-transform: uppercase;
+                }
+                .image{
+                    display: block;
+                    background-size: contain!important;
+                    background-repeat: no-repeat!important;
+                    background-position: center!important;
+                    margin: auto;
+                    width: 100px;
+                    height: 100px;
                 }
                 img {
                     width: 100px;
@@ -58,6 +73,11 @@ section#create-wallet{
                 .left-details {
                     grid-column: 1;
                     grid-row: 1 / 3;
+                    .image{
+                        background: contain;
+                        width: 70px;
+                        height: 70px;
+                    }
                     img {
                         width: 70px;
                         grid-row: 1 / 2;
@@ -69,7 +89,7 @@ section#create-wallet{
                         letter-spacing: 2px;
                         text-shadow: 1px 1px grey;
                         font-weight: bold;
-                        font-size: 25px;
+                        font-size: 20px;
                     }
                 }
                 .right-details{
@@ -88,6 +108,7 @@ section#create-wallet{
                     }
                 }
                 .middle-details{
+                    position: relative;
                     border-style: outset;
                     grid-column: 2 / 4;
                     grid-row: 1 / 3;
@@ -113,6 +134,8 @@ section#create-wallet{
                         font-weight: bold;
                     }
                     .manage_button{
+                        left: 50%;
+                        @include X-50();
                         font-size: 15px;
                         font-weight: bold;
                         text-align:center;
@@ -122,5 +145,96 @@ section#create-wallet{
                 }
             }
         }
+    }
+}
+
+section#manage-wallet{
+    #deposit-modal  {
+        .modal-header{
+            text-align:center;
+        }
+        .modal-footer{
+            text-align:center;
+        }
+        .modal-body{
+            text-align: center;
+            .modal-body-info-chiquit{
+                font-size: 13px;
+                color: #898998;
+            }
+            .input-left{
+                text-align:right;
+            }
+        }
+    }
+    #deposit-modal-virtual, #withdraw-modal {
+        .modal-header{
+            text-align:center;
+        }
+        .modal-footer{
+            text-align:center;
+        }
+        .modal-body{
+            text-align: center;
+            .modal-body-info-chiquit{
+                font-size: 13px;
+                color: #898998;
+            }
+            .input-left{
+                text-align:right;
+            }
+            .label-hola{
+                vertical-align: middle;
+                margin-top: -10px;
+                margin-left: -10px;
+                width:130px;
+                text-align:right;
+                display: inline-block;
+            }
+            .input-hola{
+                height: 40px;
+                align-content: right;
+                display: inline-block;
+            }
+            .input-disabled {
+                background-color: #e5e5fe;
+            }
+        }
+    }
+    .info{
+        background: white;
+        color: #898998;
+        margin: 10px;
+        line-height: 25px;
+        padding: 15px;
+        .item {
+            position: relative;
+            span{
+                font-size: 13px;
+                strong{
+                    font-size: 13px;
+                }
+            }
+            .detail{
+                position: absolute;
+                right: 0;
+                top: 0;
+                span{
+                    font-size: 12px;
+                }
+            }
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 10px;
+        }
+    }
+    .botones_wallet{
+        .boton_wallet1{
+            margin-top: 25px;
+            width: 270px;
+        }
+        .boton_wallet2{
+             margin-top: 5px;
+             width: 270px;
+         }
     }
 }

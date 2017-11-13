@@ -7,12 +7,14 @@ section#exchange{
       width: 9px;
     }
     .currency_wrapper{
+      border-radius: 8px;
+      border: 1px solid #818b8c;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 0;
       grid-auto-rows: 40px;
       margin: 5px 5px 5px 5px;
-      background-color: #F5F5F5;
+      background-color: #fafafa;
       .left-details{
         grid-column: 1;
         grid-row: 1 / 4;
@@ -38,6 +40,7 @@ section#exchange{
         text-align: right;
       }
       .sub_header_type{
+        margin-top: 5px;
         font-size: 10px;
         margin-right: 7px;
       }
@@ -46,7 +49,8 @@ section#exchange{
         height: 30px;
         margin-top: -5px;
         margin-right: 7px;
-        font-size: 13px;
+        font-size: 14px;
+        font-weight: bold;
       }
       .sub_header_volume{
         margin-top: -5px;
@@ -54,9 +58,19 @@ section#exchange{
         font-size: 12px;
       }
       .sub_header_change{
-        margin-top: -5px;
+        display:inline-block;
+        img{
+          display:inline-block;
+        }
+        margin-top: -15px;
         margin-right: 7px;
         font-size: 12px;
+      }
+      .sub_header_change_green{
+        color:darkgreen;
+      }
+      .sub_header_change_red{
+        color: darkred;
       }
     }
   }

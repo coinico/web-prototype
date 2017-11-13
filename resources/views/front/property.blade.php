@@ -9,20 +9,76 @@
 
    <section id="property">
        <div class="row">
-            <h1> {{$property->title}} <span>U$D {{$property->value}}</span></h1>
-            <img src="/images/properties/{{$property->images}}" class="main-image" />
+            <h1> {{$property->title}} <span>U$D {{number_format($property->value, 0, ',', '.')}}</span></h1>
+
+           <div class="investment">
+                <img src="/images/properties/{{$property->images}}" class="main-image" />
+           </div>
+
+           @if($property->status_id ==1)
+
+               <div class="voting">
+
+               </div>
+
+               <div class="economic">
+                   <div class="item-wrap">
+                       <div class="item">
+                           <p>{{number_format($property->getVotingStatus('percentage'), 2, ',', '.')}}%
+                               <small>Aprobación requerida: 95%</small>
+                           </p>
+                       </div>
+                   </div>
+                   <div class="item-wrap">
+                       <div class="item"><p>{{$property->getTotalVoters()}} <small>Votantes</small></p></div>
+                   </div>
+                   <div class="item-wrap">
+                       <div class="item">
+                           <p>
+                               {{$property->getPositiveVotes()}} <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                               <small>
+                                   {{$property->getNegativeVotes()}} <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                               </small>
+                           </p>
+                       </div>
+                   </div>
+               </div>
+
+           @elseif($property->status_id ==4)
+            @guest
+
+                   @else
+               <div class="investment">
+                   <div class="item-wrap">
+                       <div class="item invest"  data-url="/property/{{ $property->id }}/invest">
+                           <h3>Mi inversión <a href="#" id="edit-investment"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></h3>
+                           <fieldset>
+                               <input readonly class="eth" value="{{number_format($property->getUserInvestment(), 2, ',', '.')}}" />
+                               <a href="#">
+                                   <small>ETH</small>
+                                   <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                               </a>
+                           </fieldset>
+                           <p><small>{{number_format($property->getUserInvestment('usd'), 0, ',', '.')}} U$D</small></p>
+                       </div>
+                   </div>
+               </div>
+                       @endguest
 
             <div class="economic">
                 <div class="item-wrap">
-                    <div class="item"><p>{{$rand = rand(0,100)}}%</p></div>
+                    <div class="item"><p>{{number_format($property->getTotalInvestment('percentage'), 2, ',', '.')}}%</p></div>
                 </div>
                 <div class="item-wrap">
-                    <div class="item"><p>486 <small>Suscriptores</small></p></div>
+                    <div class="item"><p>{{$property->getTotalInvestors()}} <small>Suscriptores</small></p></div>
                 </div>
                 <div class="item-wrap">
-                    <div class="item"><p>U$D {{$rand*str_replace('.','',$property->value)*0.01}}</p></div>
+                    <div class="item"><p>U$D {{number_format($property->getTotalInvestment('usd'), 0, ',', '.')}}</p></div>
                 </div>
             </div>
+
+           @endif
+
 
             <section class="features owl-carousel">
                 <div class="feature">
@@ -100,5 +156,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/plugins/jquery.fancybox.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/jquery.sparkline.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/property.js') }}" ></script>
 @stop

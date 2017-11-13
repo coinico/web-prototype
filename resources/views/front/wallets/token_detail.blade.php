@@ -2,7 +2,8 @@
     <div class="wallet">
         <div class="left-details">
             <a href="{{ url("userWallet/$tokenWallet->id/manage") }}">
-                <img src="/images/tokens/{!!$tokenWallet->currency->image!!}" />
+                <div class="image" style="background: url('/images/tokens/{!!$tokenWallet->currency->image!!}')">
+                </div>
                 <p class="currency_name">{{$tokenWallet->currency->name}}</p>
             </a>
         </div>

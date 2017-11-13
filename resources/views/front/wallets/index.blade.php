@@ -9,9 +9,6 @@
                <h3>@lang('Mostrando ') {{count($standardWallets)}} @lang('billeteras')</h3>
             </div>
             <div class="actions">
-               <a href="#" id="wallets-horizontal-view-btn">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-               </a>
                <a href="#" id="wallets-normal-view-btn">
                   <i class="fa fa-th" aria-hidden="true"></i>
                </a>
@@ -29,9 +26,6 @@
                <h3>Tokens de propiedad</h3>
             </div>
             <div class="actions">
-               <a href="#" id="tokens-horizontal-view-btn">
-                  <i class="fa fa-list" aria-hidden="true"></i>
-               </a>
                <a href="#" id="tokens-normal-view-btn">
                   <i class="fa fa-th" aria-hidden="true"></i>
                </a>
@@ -49,6 +43,27 @@
 @endsection
 
 @section('scripts')
-   <script type="text/javascript" src="{{ asset('js/wallet/lightwallet.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/pages/wallets.js') }}" ></script>
+   <script type="text/javascript">
+      function startIntro(){
+         var intro = introJs();
+         intro.setOptions({
+            steps: [
+               {
+                  element: '.wallets',
+                  intro: "Hey! Parece que ya tienes billeteras! Hemos depositado 100 de ETH y 10000 CTK por defecto en ellas."
+               }
+            ],
+            doneLabel : "Pág. sig."
+         }).oncomplete(function() {
+            var url = $('.wallets .wallet:first-child a').attr('href');
+            window.location.href = url+'?tuto=true';
+         });
+
+         intro.start();
+      }
+      if (RegExp('tuto', 'gi').test(window.location.search)) {
+         startIntro();
+      }
+   </script>
 @stop

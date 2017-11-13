@@ -17,7 +17,7 @@ class Community
     {
         $user = $request->user();
 
-        if ($user && ($user->role === 'admin' || $user->role === 'community')) {
+        if ($user) {
             return $next($request);
         }
 

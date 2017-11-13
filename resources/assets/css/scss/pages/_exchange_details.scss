@@ -20,9 +20,23 @@ section#exchange-details{
     grid-template-rows: 50px 60px 270px;
     .submit_trade{
       left: 20%;
+      padding-top: 0;
+      margin-top: 0;
+    }
+    .comission-class{
+      font-size: 10px;
+      font-weight: normal;
+      float:right;
+      position: relative;
     }
     .input-group{
-      padding: 17px 0 0 0;
+      .control-label{
+        margin-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 0;
+        width:90px;
+      }
+      padding: 11px 0 0 0;
       position: relative;
       display: table;
       border-collapse: separate;
@@ -40,6 +54,7 @@ section#exchange-details{
         margin: 0;
         line-height: 1.42857143;
         color: #555;
+        font-weight: normal;
         background-color: #fff;
         background-image: none;
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -50,10 +65,13 @@ section#exchange-details{
         z-index: 2;
         float: left;
         width: 100%;
-        font-size: 22px;
+        font-size: 20px;
         border: 1px solid #d6e2eb;
         box-shadow: inset 0 0 1px rgba(0,0,0,.075);
         padding: 6px 12px;
+      }
+      .units-selected{
+        background-color: #ededed;
       }
       .input-group-btn{
         position: relative;
@@ -70,15 +88,46 @@ section#exchange-details{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         .btn, .btn-primary{
           height: 40px;
-          width: 100px;
-          border: 4px solid #3b508a;
+          width: 80px;
+          border: 1.2px solid #bfd5ff;
+          border-radius: 4px;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          position: relative;
+          color: #555;
+          -webkit-appearance: button;
+          background-color: #d1d6ff;
+          margin: 0;
+          padding-top: 6px;
+          padding-right: 6px;
+          padding-bottom: 6px;
+          padding-left: 6px;
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.42857143;
+          text-align: center;
+          vertical-align: middle;
+        }
+        .btnmax-selected{
+          border: 1.2px solid #a1b3d6;
+          color: white;
+          background-color: #8587a7;
+        }
+        .btn1, .btn-primary1{
+          img{
+            width: 25px;
+          }
+          height: 40px;
+          width: 80px;
+          border: 1px solid #d6e2eb;
           border-radius: 4px;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
           position: relative;
           color: #fff;
           -webkit-appearance: button;
-          background-color: $primaryColor;
+          background-color: #f2f5f9;
           margin: 0;
           padding-top: 6px;
           padding-right: 6px;
@@ -189,12 +238,74 @@ section#exchange-details{
     }
   }
 
+  .info_container2{
+    position:relative;
+    img{
+      width: 30px;
+    }
+    .info_currencies_table {
+      margin-left: 16%;
+      margin-right: 16%;
+      width: auto;
+      margin-top: 30px;
+      border: none;
+      .currency_header {
+        position:relative;
+        vertical-align: middle;
+        height: 100px;
+      }
+      td {
+        .currencies_header_divider{
+          border-left:1px;
+          border-right: 1px;
+        }
+        .currency_header_title {
+          text-align: right;
+          vertical-align: middle;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .currency_header_value {
+          text-align: right;
+          vertical-align: middle;
+          font-weight: 100;
+          font-size: 20px;
+        }
+      }
+    }
+  }
   .info_container{
     display: grid;
     padding-top: 30px;
     grid-template-columns: repeat(9, 1fr);
     grid-column-gap: 40px;
     position:relative;
+    #demo-label{
+      background: transparent;
+      color: rgb(59, 80, 138);
+      margin: 1px;
+      outline: none;
+      position:absolute;
+      bottom: 35%;
+      left: 22%;
+      vertical-align: middle;
+      padding: 0 1rem 0 1rem;
+      -webkit-appearance: button;
+      letter-spacing: 0;
+      font-size: 70px;
+      line-height: 0;
+      cursor: pointer;
+      font-family: "montserrat-regular", sans-serif;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      transition: all 0.3s ease-in-out;
+      -webkit-font-smoothing: antialiased;
+      word-spacing: normal;
+      text-indent: 0;
+      text-shadow: none;
+      text-rendering: auto;
+    }
     #seeHideVolumeButton{
       background: transparent;
       border: 1px solid rgba(0, 0, 0, 0.3);
@@ -292,6 +403,27 @@ section#exchange-details{
             border: none;
           }
         }
+      }
+    }
+  }
+
+  #tradeModal {
+    top: 15%;
+    height: 600px;
+    .modal-header{
+      margin-top: 40px;
+      text-align:center;
+    }
+    .modal-footer{
+      text-align:center;
+    }
+    .modal-body{
+      left: 10%;
+      .input-trade{
+        background-color: #f6f6f6;
+      }
+      .disclaimer-1{
+        font-size: 10px;
       }
     }
   }

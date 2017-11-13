@@ -1,3 +1,19 @@
+section#register{
+  .row {
+    input{
+      background-color: #f5f5f5;
+    }
+    .button-primary{
+
+      background-color: #333333;
+    }
+    font-family: "montserrat-regular", sans-serif;
+    margin-top: 30px;
+    background-color: white;
+    padding: 50px 50px 0 50px
+  }
+}
+
 section#home{
   .first-stop{
     background: url('../images/home/bg_1.jpg');
@@ -26,31 +42,6 @@ section#home{
   .casatoken-title:hover{
     color:$secondaryColor;
   }
-  .features{
-    background: white;
-    padding: 40px 0 30px 0;
-    .feature {
-      display: inline-block;
-      width: 33%;
-      text-align: center;
-      padding: 20px;
-      @include bs();
-      @media(max-width: 1050px){
-        width: 49%;
-      }
-      @media(max-width: 768px){
-        width: 100%;
-      }
-      .info{
-        height: 150px;
-        p{
-          font-size: 14px;
-          line-height: 18px;
-        }
-      }
-
-    }
-  }
   section{
     padding: 90px 0;
     background: $primaryBgColor;
@@ -66,10 +57,11 @@ section#home{
     &.second-stop, &.fourth-stop{
       background: url('../images/home/bg_3.jpg');
       p{
-        max-width: 450px;
+        max-width: 650px;
         color: white;
         text-align: center;
         margin: 0 auto 40px auto;
+        font-size: 18px;
         padding: 20px;
       }
     }
@@ -80,17 +72,36 @@ section#home{
     &.third-stop{
       //background: url('../images/home/bg_3.jpg');
       background: url('../images/home/bg_4.jpg');
-      .wrapper{
+      .invest-p{
+        max-width: 650px;
+        color: white;
+        text-align: center;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        padding: 20px;
+      }
+      .owl-carousel{
+        margin-left:12%;
         width: auto;
-        float: none;
-        .property{
-          min-height: 320px;
+        margin-right:12%;
+        .wrapper{
+          width: auto;
+          float: none;
+          .property{
+            .invest{
+              visibility: hidden;
+            }
+            .location-img{
+              width:13px;
+            }
+            min-height: 180px;
+          }
         }
       }
     }
 
     &.fourth-stop {
-      //background: url('../images/home/bg_4.jpg');
+      background: url('../images/home/bg_6.jpg');
       a{
         text-transform: uppercase;
         text-decoration: none;
@@ -106,6 +117,18 @@ section#home{
           background: white;
           color: $primaryBgColor;
         }
+      }
+    }
+    &.bottom-stop{
+      //background-color: #0C161F!important;
+      background: url('../images/home/bg_7.jpg');
+      p{
+        max-width: 850px;
+        color: white;
+        text-align: center;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        padding: 20px;
       }
     }
     &.fifth-stop {

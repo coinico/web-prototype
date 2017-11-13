@@ -28,4 +28,5 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/pages/wallets.js') }}" ></script>
+
 @stop

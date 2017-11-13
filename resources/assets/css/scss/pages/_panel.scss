@@ -1,6 +1,10 @@
-section#panel{
+section#panel,.panel{
   margin:40px 15px;
   section {
+    .sopenco{
+      margin:10px 50px 50px 50px;
+      padding-top:10px;
+    }
     position: relative;
     background: white;
     padding: 15px;
@@ -113,6 +117,9 @@ section#panel{
     &.main{
       width: calc(100% - 315px);
       float: left;
+      a,a:hover, a:focus{
+        color:#666
+      }
     }
     &.sidebar{
       width: 300px;
@@ -150,6 +157,12 @@ section#panel{
               display: block;
               color:#ccc;
               line-height: 10px;
+            }
+            i{
+              font-size: 30px;
+              margin-top: 8px;
+              margin-right: 10px;
+
             }
           }
           &:last-child{

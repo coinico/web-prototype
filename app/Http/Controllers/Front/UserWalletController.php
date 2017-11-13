@@ -40,67 +40,84 @@ class UserWalletController extends Controller
 
         $userWallet = UserWallet::find($id);
 
-        return view('front.wallets.manage', compact('userWallet'));
+        $message = "";
+
+        return view('front.wallets.manage', compact('userWallet', 'message'));
     }
 
-    public function deposit(Request $request) {
+    public function deposit($id) {
 
-        // TODO: walletId exists
-        // TODO: amountToDeposit != negative
-        // TODO: no fee for deposits
+        $userWallet = UserWallet::find($id);
 
-        $walletId = Input::get("walletId");
-        $amountToDeposit = Input::get("amountToDeposit");
-        $memoToDeposit = Input::get("memoToDeposit") ? Input::get("memoToDeposit") : "Depósito manual.";
+        $amountToDeposit = Input::get("cantidad");
+        $memoToDeposit = Input::get("memo") ? Input::get("memo") : "Depósito manual.";
 
-        $wallet = UserWallet::find($walletId)->get();
+        if ($amountToDeposit <= 0) {
+
+            $message = "No se pueden depositar valores negativos o nulos.";
+
+            return view('front.wallets.manage', compact('userWallet', 'message'));
+        }
 
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => $amountToDeposit,
                 'type' => 'credit',
                 'memo' => $memoToDeposit,
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
                 'transaction_fee' => 0,
                 'total' => $amountToDeposit,
-                'user_wallet' => $wallet->id,
+                'user_wallet' => $id,
             ]
         );
 
-        // TODO: return what?
+        $message = "Operación realizada con éxito.";
+
+        return view('front.wallets.manage', compact('userWallet', 'message'));
+
     }
 
-    public function withdraw(Request $request) {
+    public function withdraw($id) {
 
-        // TODO: walletId exists
-        // TODO: amountToWithdraw != negative
-        // TODO: feeForWithdrawal != negative
-        // TODO: validate balance >= amount + fee
+        $userWallet = UserWallet::find($id);
+        $amountToWithdraw = Input::get("cantidad");
+        $memoToWithdraw = Input::get("memo") ? Input::get("memo") : "Retiro manual.";
 
-        $walletId = Input::get("walletId");
-        $amountToWithdraw = Input::get("amountToWithdraw");
-        $feeForWithdrawal = Input::get("feeForWithdrawal");
-        $memoToWithdraw = Input::get("memoToWithdraw") ? Input::get("memoToWithdraw") : "Retiro manual.";
+        if ($amountToWithdraw <= 0) {
 
-        $total = $amountToWithdraw + $feeForWithdrawal;
-        $wallet = UserWallet::find($walletId)->get();
+            $message = "No se pueden retirar valores negativos o nulos.";
+
+            return view('front.wallets.manage', compact('userWallet', 'message'));
+        }
+
+
+        if ($userWallet->available_balance < $amountToWithdraw) {
+
+            $message = "No tienes fondos suficientes para hacer el retiro.";
+
+            return view('front.wallets.manage', compact('userWallet', 'message'));
+        }
 
         UserWalletTransaction::create(
             [
-                'address_from' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'address_to' => '0x',
                 'amount' => -$amountToWithdraw,
                 'type' => 'debit',
                 'memo' => $memoToWithdraw,
                 'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                'transaction_fee' => -$feeForWithdrawal,
-                'total' => -$total,
-                'user_wallet' => $wallet->id,
+                'transaction_fee' => -0,
+                'total' => -$amountToWithdraw,
+                'user_wallet' => $id,
             ]
         );
 
-        // TODO: return what?
+        $userWallet = UserWallet::find($id);
+
+        $message = "Operación realizada con éxito.";
+
+        return view('front.wallets.manage', compact('userWallet', 'message'));
     }
 }

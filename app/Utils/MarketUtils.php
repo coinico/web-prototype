@@ -12,6 +12,15 @@ namespace App\Utils;
 class MarketUtils
 {
 
+    /**
+     * @param $cf $cryptoCurrencyFrom
+     * @param $ct $cryptoCurrencyTo
+     * @return float|int
+     */
+    public static function calculatePriceDifference($cf, $ct) {
+        return $ct->usd_value / $cf->usd_value;
+    }
+
     public static function calculateSpread($askValue, $bidValue) {
         if ($askValue && $bidValue) {
             return 100 * ($askValue - $bidValue) / $askValue;

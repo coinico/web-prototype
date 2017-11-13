@@ -20,6 +20,7 @@ class CreateCryptoCurrenciesTable extends Migration
             $table->String('alias');
             $table->String('image');
             $table->double('usd_value');
+            $table->double("minimum_order",28,8);
             $table->enum('type', array('token', 'currency'));
             $table->timestamps();
 

@@ -3,6 +3,6 @@
         Propietarios
     </h1>
     <p>
-        Los gastos indirectos se eliminan y los usuarios pagan comisiones sustancialmente más bajas en las transacciones de compra y alquiler procesadas a través de contratos inteligentes
+        Acceso a financiación descentralizada y con alta liquidez respaldada por su propiedad, a través del proceso de enlistamiento en la plataforma Casatoken. Con comisiones mínimas, sin intermediarios, en una comunidad global de inversores  P2P (persona-a-persona)
     </p>
 </section>

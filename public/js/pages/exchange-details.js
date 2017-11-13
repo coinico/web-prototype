@@ -1,3 +1,58 @@
+function startIntro() {
+    var intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                element: '.info_container',
+                intro: "La información resumida del mercado para este par de monedas se verá reflejada en este primer panel.",
+                position: 'top'
+            },
+            {
+                element: '#info_currency',
+                intro: "Estos son los principales indicadores del mercado de referencia.",
+                position: 'left'
+            },
+            {
+                element: '.chinguito',
+                intro: "Este es el historial de órdenes del mercado, podrás ir observando el flujo de compras y ventas ejecutadas.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_container',
+                intro: "Las órdenes de compra y venta que generan el mercado se visualizan en estas listas.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_trade_container',
+                intro: "Aquí podrás crear nuevas órdenes.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_trade_container',
+                intro: "Durante esta primera etapa, sólo se podrán generar órdenes que suplan en su completitud una existente, o que no modifiquen el mercado.",
+                position: 'bottom'
+            },
+            {
+                element: '#order_book_bid',
+                intro: "Oye, la tienes fácil. Puedes seleccionar la cantidad y el valor de la última orden para realizar un intercambio!",
+                position: 'top'
+            },
+            {
+                element: '.info_container2',
+                intro: "Ahora si. Bienvenido a la plataforma CasaToken.",
+                position: 'bottom'
+            }
+        ].filter(function (obj) {
+            return $(obj.element).length
+        }),
+        doneLabel : "Salir"
+    }).oncomplete(function () {
+        window.location.href = '/panel';
+    });
+
+    intro.start();
+}
+
 var chart = undefined;
 
 $.extend( true, $.fn.dataTable.defaults, {
@@ -18,6 +73,251 @@ $.extend( true, $.fn.dataTable.defaults, {
         }
     }
 } );
+
+function createBidOrder() {
+
+    var quantity = parseFloat($("#unitsBid").val());
+    var price = parseFloat($("#bidValue").val());
+    var subTotal = quantity * price;
+    var commission = subTotal * getCommission();
+    var total = subTotal + commission;
+
+    var balance = parseFloat($("#currencyFromBalance").val());
+
+    if (total >= getMinimum()) {
+        if (total <= balance) {
+
+            $("#tradeModalTitle").html("Crear Orden de Compra");
+
+            $("#modal-trade-cantidad").val(formatAsCurrency(quantity));
+            $("#modal-trade-precio").val(formatAsCurrency(price));
+            $("#modal-trade-subtotal").val(formatAsCurrency(subTotal));
+            $("#modal-trade-comision").val(formatAsCurrency(commission));
+            $("#modal-trade-total").val(formatAsCurrency(total));
+
+            $("#confirm-trade-modal").attr("onclick", "confirmBidOrder()");
+
+            $('#tradeModal').modal('show');
+
+        } else {
+            modalMessage("error", "No tienes fondos suficientes para generar la orden.");
+        }
+    } else {
+        modalMessage("error", "La orden debe ser mayor al mínimo: "+getMinimum());
+    }
+}
+
+function confirmBidOrder() {
+    console.log("confirm bid order");
+
+    var cantidad = $("#modal-trade-cantidad").val();
+    var precio = $("#modal-trade-precio").val();
+    var subtotal = $("#modal-trade-subtotal").val();
+    var comision = $("#modal-trade-comision").val();
+    var total = $("#modal-trade-total").val();
+
+    var createBidOrder = "./createBidOrder";
+
+    $.get({
+        url: createBidOrder,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val(),
+            "cantidad": cantidad,
+            "precio": precio,
+            "subtotal": subtotal,
+            "comision": comision,
+            "total": total
+        },
+        dataType: "json",
+        success: function(res){
+            if (res.type === "success") {
+                reloadTables();
+            }
+            modalMessage(res.type, res.message);
+        }
+    }).fail(function(data) {
+        modalMessage("error", data);
+    });
+}
+
+function confirmAskOrder() {
+
+    var cantidad = $("#modal-trade-cantidad").val();
+    var precio = $("#modal-trade-precio").val();
+    var subtotal = $("#modal-trade-subtotal").val();
+    var comision = $("#modal-trade-comision").val();
+    var total = $("#modal-trade-total").val();
+
+    var createAskOrder = "./createAskOrder";
+
+    $.get({
+        url: createAskOrder,
+        data: {
+            "currencyFrom": $("#currencyFrom").val(),
+            "currencyTo": $("#currencyTo").val(),
+            "cantidad": cantidad,
+            "precio": precio,
+            "subtotal": subtotal,
+            "comision": comision,
+            "total": total
+        },
+        dataType: "json",
+        success: function(res){
+            if (res.type === "success") {
+                reloadTables();
+            }
+            modalMessage(res.type, res.message);
+        }
+    }).fail(function(data) {
+        modalMessage("error", data);
+    });
+}
+
+
+function reloadTables() {
+    fillBidOrdersTable();
+    fillAskOrdersTable();
+    fillLastExecutedOrdersTable();
+    fillMyLastExecutedOrdersTable();
+    fillOpenOrdersTable();
+}
+
+function createAskOrder() {
+
+    var quantity = parseFloat($("#unitsAsk").val());
+    var price = parseFloat($("#askValue").val());
+    var subTotal = quantity * price;
+    var commission = subTotal * getCommission();
+    var total = subTotal - commission;
+
+    var balance = parseFloat($("#currencyToBalance").val());
+
+    if (total >= getMinimum()) {
+        if (total <= balance) {
+
+            $("#tradeModalTitle").html("Crear Orden de Venta");
+
+            $("#modal-trade-cantidad").val(formatAsCurrency(quantity));
+            $("#modal-trade-precio").val(formatAsCurrency(price));
+            $("#modal-trade-subtotal").val(formatAsCurrency(subTotal));
+            $("#modal-trade-comision").val(formatAsCurrency(commission));
+            $("#modal-trade-total").val(formatAsCurrency(total));
+
+            $("#confirm-trade-modal").attr("onclick", "confirmAskOrder()");
+
+            $('#tradeModal').modal('show');
+
+        } else {
+            modalMessage("error", "No tienes fondos suficientes para generar la orden.");
+        }
+    } else {
+        modalMessage("error", "La orden debe ser mayor al mínimo: "+getMinimum());
+    }
+}
+
+function getMinimum(){ return parseFloat($("#order-minimum-value").val()); }
+
+function getCommission(){ return 0.0025; }
+
+function formatAsCurrency(value) {
+    return value.toFixed(8)
+}
+
+function priceChange(price) {
+    bidPriceChange(price);
+    askPriceChange(price);
+}
+
+function bidPriceChange(price) {
+    $("#bidValue").val(formatAsCurrency(price));
+    calculateBidTotal();
+}
+
+function askPriceChange(price) {
+    $("#askValue").val(formatAsCurrency(price));
+    calculateAskTotal();
+}
+
+function quantityChange(quantity) {
+    $("#unitsBid").val(formatAsCurrency(quantity));
+    $("#unitsAsk").val(formatAsCurrency(quantity));
+    calculateTotals();
+}
+
+function calculateTotals() {
+    calculateBidTotal();
+    calculateAskTotal();
+}
+
+function calculateBidTotal() {
+
+    var maxSelected = $("#maxBidBtn").hasClass("btnmax-selected");
+    var balance = parseFloat($("#currencyFromBalance").val());
+    var units = parseFloat($("#unitsBid").val());
+    var value = parseFloat($("#bidValue").val());
+
+    if (maxSelected) {
+        if (balance !== 0 && value !== 0) {
+            $("#unitsBid").val(formatAsCurrency(balance/(value*(1+getCommission()))));
+            $("#totalBid").val(formatAsCurrency(balance));
+        }
+    } else {
+        if (units !== 0 && value !== 0) {
+            $("#totalBid").val(formatAsCurrency(units * (value*(1+getCommission()))));
+        }
+    }
+}
+
+function calculateAskTotal() {
+
+    var maxSelected = $("#maxAskBtn").hasClass("btnmax-selected");
+    var balance = parseFloat($("#currencyToBalance").val());
+    var units = parseFloat($("#unitsAsk").val());
+    var value = parseFloat($("#askValue").val());
+
+    if (maxSelected) {
+        if (balance !== 0 && value !== 0) {
+            $("#unitsAsk").val(formatAsCurrency(balance/value));
+            $("#totalAsk").val(formatAsCurrency(balance));
+        }
+    } else {
+        if (units !== 0 && value !== 0) {
+            $("#totalAsk").val(formatAsCurrency(units * (value*(1-getCommission()))));
+        }
+    }
+}
+
+
+function maxBidSelected() {
+    if ($("#maxBidBtn").hasClass("btnmax-selected")) {
+        $("#unitsBid").attr("disabled", false);
+        $("#unitsBid").removeClass("units-selected");
+        $("#totalBid").removeClass("units-selected");
+        $("#maxBidBtn").removeClass("btnmax-selected");
+    } else {
+        $("#unitsBid").addClass("units-selected");
+        $("#unitsBid").attr("disabled", true);
+        $("#totalBid").addClass("units-selected");
+        $("#maxBidBtn").addClass("btnmax-selected");
+    }
+    calculateTotals();
+}
+
+function maxAskSelected() {
+    if ($("#maxAskBtn").hasClass("btnmax-selected")) {
+        $("#maxAskBtn").removeClass("btnmax-selected");
+        $("#totalAsk").removeClass("units-selected");
+        $("#unitsAsk").attr("disabled", false);
+        $("#unitsAsk").removeClass("units-selected");
+    } else {
+        $("#maxAskBtn").addClass("btnmax-selected");
+        $("#unitsAsk").addClass("units-selected");
+        $("#totalAsk").addClass("units-selected");
+        $("#unitsAsk    ").attr("disabled", true);
+    }
+    calculateTotals();
+}
 
 function seeHideVolume() {
     if ($("#seeHideVolumeButton").hasClass("seeingVolume")) {
@@ -69,13 +369,21 @@ $(document).ready(function(){
         fillMyLastExecutedOrdersTable();
     }
 
+    if (RegExp('tuto', 'gi').test(window.location.search)) {
+        startIntro();
+    }
+
     fillAskOrdersTable();
     fillBidOrdersTable();
     fillLastExecutedOrdersTable();
     buildTestGraph();
 
+
 });
 
+
+
+var myLastExecutedOrdersTable = undefined;
 
 function fillMyLastExecutedOrdersTable() {
     var myLastExecutedOrders = "./myLastExecutedOrders";
@@ -88,7 +396,10 @@ function fillMyLastExecutedOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#myLastExecutedOrders').DataTable( {
+            if (myLastExecutedOrdersTable !== undefined)
+                myLastExecutedOrdersTable.destroy();
+
+            myLastExecutedOrdersTable = $('#myLastExecutedOrders').DataTable( {
                 "order": [],
                 data: res,
                 columnDefs: [
@@ -107,6 +418,7 @@ function fillMyLastExecutedOrdersTable() {
     });
 }
 
+var lastExecutedOrdersTable = undefined;
 
 function fillLastExecutedOrdersTable() {
     var lastExecutedOrders = "./lastExecutedOrders";
@@ -119,7 +431,10 @@ function fillLastExecutedOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#lastExecutedOrders').DataTable( {
+            if (lastExecutedOrdersTable !== undefined)
+                lastExecutedOrdersTable.destroy();
+
+            lastExecutedOrdersTable = $('#lastExecutedOrders').DataTable( {
                 "order": [],
                 data: res,
                 columnDefs: [
@@ -156,6 +471,8 @@ function fillLastExecutedOrdersTable() {
     });
 }
 
+var bidOrdersTable = undefined;
+
 function fillBidOrdersTable() {
     var bidOrders = "./bidOrders";
     $.get({
@@ -167,18 +484,37 @@ function fillBidOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#order_book_bid').DataTable( {
+            if (bidOrdersTable !== undefined)
+                bidOrdersTable.destroy();
+
+            bidOrdersTable = $('#order_book_bid').DataTable( {
                 "searching": false,
                 "ordering": false,
                 data: res,
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false
+                info: false,
+                columns:[
+                    {},
+                    {},
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='quantityChange("+row[2]+")'>"+row[2]+"</papanata>";
+                        }
+                    },
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='priceChange("+row[3]+")'>"+row[3]+"</papanata>";
+                        }
+                    }
+                ]
             });
         }
     });
 }
+
+var askOrdersTable = undefined;
 
 function fillAskOrdersTable() {
     var askOrders = "./askOrders";
@@ -191,14 +527,29 @@ function fillAskOrdersTable() {
         dataType: "json",
         success: function(res){
 
-            $('#order_book_ask').DataTable( {
+            if (askOrdersTable !== undefined)
+                askOrdersTable.destroy();
+
+            askOrdersTable = $('#order_book_ask').DataTable( {
                 "ordering": false,
                 "searching": false,
                 data: res,
                 columnDefs: [
                     { "className": "dt-body-right", targets: [0, 1, 2, 3] }
                 ],
-                info: false
+                info: false,
+                columns:[
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='priceChange("+row[0]+")'>"+row[0]+"</papanata>";
+                        }
+                    },
+                    {
+                        "render": function ( mData, type,row, meta ) {
+                            return "<papanata onclick='quantityChange("+row[1]+")'>"+row[1]+"</papanata>";
+                        }
+                    }
+                ]
             });
         }
     });
@@ -226,6 +577,7 @@ function deleteOrder(id) {
 
 function modalMessage(type, message) {
 
+    console.log(message);
     if (type === "error")
         message = "<font color=red>"+message+"</font>";
 

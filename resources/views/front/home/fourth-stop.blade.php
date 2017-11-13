@@ -1,7 +1,6 @@
 <section id="fourth-stop" class="fourth-stop">
     <h1>Exchange</h1>
     <p>
-        Los activos inmobiliarios son tokenizados y comercializados libremente en los mercados de activos digitales, garantizando la transparencia de los precios y su descubrimiento.
-    </p>
+        El exchange decentralizado incluido en la plataforma Casatoken permite la negociación P2P de los diferentes tokens de propiedad y de CTK tokens creando un mercado libre de oferta y demanda con descubrimiento de precios que aporta liquidez, diversificación y oportunidades de crecimiento para los inversores miembros de Casatoken.    </p>
     <a href="{{route('exchange')}}"> VER MÁS</a>
 </section>

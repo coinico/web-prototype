@@ -3,9 +3,10 @@
         Comunidad
     </h1>
     <p>
-        Siendo poseedor de tokens de la plataforma CasaToken podés participar activamente en el desarrollo y la toma de decisiones de la misma.
-        Se parte de nuestra comunidad y contribuí con futuro del negocio inmobiliario descentralizado.
+        Los tokens nativos de Casatoken te permiten ser miembro de la plataforma decentralizada, y así podés participar activamente en el desarrollo y la toma de decisiones. Tendrás acceso al proceso de enlistamiento de propiedades, a las ofertas iniciales de tokens de propiedad, y al exchange nativo de Casatoken.
     </p>
-    <a>QUIERO SER PARTE</a>
+    @guest
+        <a href="{{ route('register') }}">@lang('QUIERO SER PARTE')</a>
+    @endguest
 </section>
 

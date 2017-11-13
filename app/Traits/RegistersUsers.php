@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers as BaseRegistersUsers;
 use Bestmomo\LaravelEmailConfirmation\Notifications\ConfirmEmail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\DetectsApplicationNamespace;
 use App\Models\UserWallet;
 use App\Models\UserWalletTransaction;
@@ -25,6 +26,8 @@ trait RegistersUsers
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
+        $user->confirmed = true;
+        $user->valid = true;
         $user->confirmation_code = str_random(30);
         $user->save();
 
@@ -38,7 +41,7 @@ trait RegistersUsers
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => 100,
                 'type' => 'credit',
                 'memo' => 'Depósito inicial.',
@@ -59,7 +62,7 @@ trait RegistersUsers
         UserWalletTransaction::create(
             [
                 'address_from' => '0x',
-                'address_to' => '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
+                'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                 'amount' => 10000,
                 'type' => 'credit',
                 'memo' => 'Depósito inicial.',
@@ -70,11 +73,30 @@ trait RegistersUsers
             ]
         );
 
+        $properties = array(
+            array(
+                'title' => 'Propiedad de '.$user->name,
+                'user_id' => $user->id,
+                'status_id' => 1,
+                'description' => 'Hermosa casa de 4 ambientes con jardín delantero y trasero. La casa cuenta con un living comedor al frente, muy amplio y cómodo, con pisos cerámicos, calefactor tiro balanceado y gran ventanal a la calle que le otorga mucha luminosidad a este ambiente. La cocina es alargada y se encuentra totalmente azulejada, tiene amplia mesada e importante lugar de guardado en bajo mesada, y lavadero separado; además en la cocina nos encontramos con una entrada de servicio. Los dos dormitorios poseen pisos de parquet y placard de tres hojas con baulera, uno de ellos es a la calle y tiene salida al balcón, mientras que el otro está orientado al contra frente. El baño principal es completo y, tanto el baño principal como el toilette de recepción están totalmente revestidos en cerámicos.',
+                'detail' => '',
+                'images' => '9.jpg',
+                'value' => '250000',
+                'city' => "Chascomús, Buenos Aires, ARG",
+                'location' => '{lat:-35.5861403,lng:-58.0839176}',
+                'bidding_time' => '',
+                'features' => '',
+                'created_at' => new \DateTime()
+            )
+
+        );
+        DB::table('properties')->insert($properties);
+
         event(new Registered($user));
 
         $this->guard()->login($user);
 
-        return $this->registered($request, $user) ?: redirect(route('welcome'));
+        return $this->registered($request, $user) ?: redirect(route('panel'));
     }
 
     /**
