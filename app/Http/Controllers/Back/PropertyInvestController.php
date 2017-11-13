@@ -96,7 +96,7 @@ class PropertyInvestController extends Controller
 
             $this->repository->update($propertyInvest, $request);
 
-            if(floatval($request->input("value")) == 100) {
+            if($property->user_id == $user->id && floatval($request->input("value")) == 100) {
                 $this->tokenizateProperty($property, $user, $transaction);
             }
         }else{
@@ -124,7 +124,7 @@ class PropertyInvestController extends Controller
 
             $this->repository->store($propertyId, $request);
 
-            if(floatval($request->input("value")) == 100) {
+            if(floatval($property->user_id == $user->id && $request->input("value")) == 100) {
                 $this->tokenizateProperty($property, $user, $transaction);
             }
         }
