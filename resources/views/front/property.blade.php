@@ -45,11 +45,13 @@
                </div>
 
            @elseif($property->status_id ==4)
+            @guest
 
+                   @else
                <div class="investment">
                    <div class="item-wrap">
                        <div class="item invest"  data-url="/property/{{ $property->id }}/invest">
-                           <h3>Tu inversión <a href="#" id="edit-investment"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></h3>
+                           <h3>Mi inversión <a href="#" id="edit-investment"> <i class="fa fa-pencil" aria-hidden="true"></i> </a></h3>
                            <fieldset>
                                <input readonly class="eth" value="{{number_format($property->getUserInvestment(), 2, ',', '.')}}" />
                                <a href="#">
@@ -61,6 +63,7 @@
                        </div>
                    </div>
                </div>
+                       @endguest
 
             <div class="economic">
                 <div class="item-wrap">
