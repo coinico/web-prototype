@@ -191,7 +191,7 @@ function createAskOrder() {
     var commission = subTotal * getCommission();
     var total = subTotal - commission;
 
-    var balance = parseFloat($("#currencyFromBalance").val());
+    var balance = parseFloat($("#currencyToBalance").val());
 
     if (total >= getMinimum()) {
         if (total <= balance) {

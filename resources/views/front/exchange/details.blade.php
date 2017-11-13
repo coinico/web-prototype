@@ -66,45 +66,45 @@
                    <tbody>
                        <tr>
                            <td rowspan="2" class="key_values">Último</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}""/>  {{number_format($basicDetails->last_value, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->last_value : 0, 8, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->last_value * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->last_value : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Volumen</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->volume, 4, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->volume : 0, 4, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->volume * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->volume : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Venta</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->ask, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->ask  : 0, 8, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->ask * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->ask : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Compra</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->bid, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->bid : 0, 8, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->bid * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->bid : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Máximo</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->high, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->high : 0, 8, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->high * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->high : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Mínimo</td>
-                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->low, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails ? $basicDetails->low : 0, 8, ".", "")}}</td>
                        </tr>
                        <tr>
-                           <td class="usd_values">U$D {{number_format($basicDetails->low * $currencyFrom->usd_value, 2, ".", "")}}</td>
+                           <td class="usd_values">U$D {{number_format(($basicDetails ? $basicDetails->low : 0) * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                    </tbody>
                </table>

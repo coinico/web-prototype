@@ -88,7 +88,7 @@ class OrderBookController extends Controller
         $currencyFrom = CryptoCurrency::where("alias", $pairArray[0])->first();
         $currencyTo = CryptoCurrency::where("alias", $pairArray[1])->first();
 
-        $basicDetails = DB::select("select ob.crypto_currency_to, sum(ob.quantity*ob.value) as volume, 
+        $basicDetails1 = DB::select("select ob.crypto_currency_to, sum(ob.quantity*ob.value) as volume, 
                            max(ob.value) as high, 
                            min(ob.value) as low,
                            (select value from order_book where crypto_currency_from = $currencyFrom->id and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
@@ -101,7 +101,12 @@ class OrderBookController extends Controller
                      where ob.crypto_currency_from = $currencyFrom->id
     and ob.crypto_currency_to = $currencyTo->id
     and ob.closed_time is not null
-    and ob.closed_time >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to")[0];
+    and ob.closed_time >= (NOW() - INTERVAL 1 DAY) group by ob.crypto_currency_to");
+
+        if (count($basicDetails1)> 0)
+            $basicDetails = $basicDetails1[0];
+        else
+            $basicDetails = null;
 
         $userLoggedIn = Auth::check();
 
@@ -148,13 +153,15 @@ class OrderBookController extends Controller
 
     public function myLastExecutedOrders()
     {
-        $userId = auth()->user()->id;
-
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
             ->where('closed_time', '<>', '', 'and')
             ->whereNotIn("filled", [0])
-            ->where("user_id", $userId)
+            ->where(function ($query) {
+                $query
+                    ->where("user_id", auth()->user()->id)
+                    ->orWhere('user_id_2', auth()->user()->id);
+            })
             ->orderBy("closed_time", "DESC")->get();
 
         $result = array();
@@ -402,6 +409,7 @@ class OrderBookController extends Controller
                     $equalOrder->closed_time = \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s');
                     $equalOrder->filled = $equalOrder->quantity;
                     $equalOrder->current_cost = $equalOrder->quantity*$equalOrder->value;
+                    $equalOrder->user_id_2 = $userId;
 
                     $equalOrder->save();
 
@@ -520,7 +528,7 @@ class OrderBookController extends Controller
             if (!$expensiveOrder) {
 
                 $equalOrder = OrderBook::whereNull("closed_time")
-                    ->where("type", "ask")
+                    ->where("type", "bid")
                     ->where("crypto_currency_from", $ccf)
                     ->where("crypto_currency_to", $cct)
                     ->where("value", "=", $precio)
@@ -534,13 +542,13 @@ class OrderBookController extends Controller
                         [
                             'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                             'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
-                            'amount' => $cantidad,
+                            'amount' => -$cantidad,
                             'type' => 'debit',
                             'is_hold' => 1,
                             'memo' => 'Hold en exchange.',
                             'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
                             'transaction_fee' => 0,
-                            'total' => $cantidad,
+                            'total' => -$cantidad,
                             'user_wallet' => $walletTo->id,
                         ]
                     );
@@ -565,6 +573,7 @@ class OrderBookController extends Controller
                     $equalOrder->closed_time = \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s');
                     $equalOrder->filled = $equalOrder->quantity;
                     $equalOrder->current_cost = $equalOrder->quantity*$equalOrder->value;
+                    $equalOrder->user_id_2 = $userId;
 
                     $equalOrder->save();
 
