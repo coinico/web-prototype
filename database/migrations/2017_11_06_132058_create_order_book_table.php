@@ -32,6 +32,8 @@ class CreateOrderBookTable extends Migration
             $table->double('filled', 28, 8)->default(0); // valor llenado de la orden
             $table->double('current_cost', 28, 8)->default(0); // costo total hasta ahora de la orden
 
+            $table->integer("transaction_id")->default(0);
+
             $table->enum('execution_type', array('buy', 'sell'));
 
             $table->timestamp('closed_time')->nullable(); // si fue ejecutada

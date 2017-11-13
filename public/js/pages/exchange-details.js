@@ -577,6 +577,7 @@ function deleteOrder(id) {
 
 function modalMessage(type, message) {
 
+    console.log(message);
     if (type === "error")
         message = "<font color=red>"+message+"</font>";
 

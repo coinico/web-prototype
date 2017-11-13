@@ -20,7 +20,7 @@ class OrderBook extends Model
     protected $fillable = [
         'user_id', 'crypto_currency_from', 'crypto_currency_to',
         'type', 'quantity', 'value','execution_type',
-        'closed_time', 'created_at', 'filled', 'current_cost'
+        'closed_time', 'created_at', 'filled', 'current_cost', "transaction_id"
     ];
 
     public function user()
