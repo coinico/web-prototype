@@ -1,3 +1,34 @@
+function startIntro() {
+    var intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                element: '.olinda',
+                intro: "Aquí encontrarás los mercados CasaToken disponibles para realizar intercambios.",
+                position: 'top'
+            },
+            {
+                element: '.recife',
+                intro: "Aquí encontrarás los mercados Ethereum disponibles para realizar intercambios.",
+                position: 'top'
+            },
+            {
+                element: '.owl-carousel',
+                intro: "En estos rectángulos se muestran los Mercados con más volumen o mayor ganancia en un día.",
+                position: 'bottom'
+            }
+        ].filter(function (obj) {
+            return $(obj.element).length
+        }),
+        doneLabel : "Pág. sig."
+    }).oncomplete(function () {
+        window.location.href = '/exchangeDetails?pair=ETH-CTF&tuto=true';
+    });
+
+    intro.start();
+}
+
+
 $(document).ready(function(){
 
     var ctfMarketsUrl = "./ctfMarkets";
@@ -127,36 +158,6 @@ $(document).ready(function(){
             }
         }
     });
-
-    function startIntro() {
-        var intro = introJs();
-        intro.setOptions({
-            steps: [
-                {
-                    element: '.olinda',
-                    intro: "Aquí encontrarás los mercados CasaToken disponibles para realizar intercambios.",
-                    position: 'top'
-                },
-                {
-                    element: '.recife',
-                    intro: "Aquí encontrarás los mercados Ethereum disponibles para realizar intercambios.",
-                    position: 'top'
-                },
-                {
-                    element: '.owl-carousel',
-                    intro: "En estos rectángulos se muestran los Mercados con más volumen o mayor ganancia en un día.",
-                    position: 'bottom'
-                }
-            ].filter(function (obj) {
-                return $(obj.element).length
-            }),
-            doneLabel : "Pág. sig."
-        }).oncomplete(function () {
-            window.location.href = '/exchangeDetails?pair=ETH-CTF?tuto=true';
-        });
-
-        intro.start();
-    }
 
     if (RegExp('tuto', 'gi').test(window.location.search)) {
         startIntro();

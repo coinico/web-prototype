@@ -157,11 +157,6 @@
             intro.setOptions({
                 steps: [
                     {
-                        element: "#help-btn",
-                        intro:"Para empezar: podrás encontrar ayuda en este rincón.",
-                        position:"top"
-                    },
-                    {
                         element: '.sidebar',
                         intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas."
                     },
