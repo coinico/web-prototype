@@ -33,6 +33,7 @@
         @include('front.home.fifth-stop')
         @include('front.home.third-stop')
         @include('front.home.fourth-stop')
+        @include('front.home.bottom-stop')
 
     </section> <!-- end bricks -->
 

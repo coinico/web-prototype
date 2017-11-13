@@ -3258,6 +3258,15 @@ section#home section {
       section#home section.fourth-stop a:hover {
         background: white;
         color: #0c161f; }
+  section#home section.bottom-stop {
+    background: url("../images/home/bg_7.jpg"); }
+    section#home section.bottom-stop p {
+      max-width: 850px;
+      color: white;
+      text-align: center;
+      margin: 0 auto 40px auto;
+      font-size: 18px;
+      padding: 20px; }
   section#home section.fifth-stop {
     background: url("../images/home/bg_5.jpg"); }
     section#home section.fifth-stop p {

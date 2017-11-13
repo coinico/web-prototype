@@ -113,6 +113,18 @@ section#home{
         }
       }
     }
+    &.bottom-stop{
+      //background-color: #0C161F!important;
+      background: url('../images/home/bg_7.jpg');
+      p{
+        max-width: 850px;
+        color: white;
+        text-align: center;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        padding: 20px;
+      }
+    }
     &.fifth-stop {
       background: url('../images/home/bg_5.jpg');
       p{
