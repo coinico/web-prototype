@@ -35,6 +35,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('property');
+        Schema::dropIfExists('properties');
     }
 }
