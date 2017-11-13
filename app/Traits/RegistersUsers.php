@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers as BaseRegistersUsers;
 use Bestmomo\LaravelEmailConfirmation\Notifications\ConfirmEmail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\DetectsApplicationNamespace;
 use App\Models\UserWallet;
 use App\Models\UserWalletTransaction;
