@@ -142,7 +142,7 @@
 									<a href="{{ route('panel') }}">@lang('Panel')</a>
 								</li>
 								<li {{ currentRoute('wallets.index') }}>
-									<a href="{{ route('wallets.index') }}">@lang('Billetera')</a>
+									<a href="{{ route('wallets.index') }}" id="billetera_btn">@lang('Billetera')</a>
 								</li>
 								<li>
 									<a id="logout" href="{{ route('logout') }}">@lang('Salir')</a>

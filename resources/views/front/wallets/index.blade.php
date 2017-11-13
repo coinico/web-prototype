@@ -50,8 +50,8 @@
          intro.setOptions({
             steps: [
                {
-                  element: '.wallets .wallet:first-child',
-                  intro: "Esta es una billetera, inicialmente tienes 100 ETH de crédito inicial."
+                  element: '.wallets',
+                  intro: "Hey! Parece que ya tienes billeteras! Hemos depositado 100 de ETH y 10000 CTF por defecto en ellas."
                }
             ],
             doneLabel : "Pág. sig."

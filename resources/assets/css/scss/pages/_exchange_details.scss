@@ -238,6 +238,42 @@ section#exchange-details{
     }
   }
 
+  .info_container2{
+    position:relative;
+    img{
+      width: 30px;
+    }
+    .info_currencies_table {
+      margin-left: 16%;
+      margin-right: 16%;
+      width: auto;
+      margin-top: 30px;
+      border: none;
+      .currency_header {
+        position:relative;
+        vertical-align: middle;
+        height: 100px;
+      }
+      td {
+        .currencies_header_divider{
+          border-left:1px;
+          border-right: 1px;
+        }
+        .currency_header_title {
+          text-align: right;
+          vertical-align: middle;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .currency_header_value {
+          text-align: right;
+          vertical-align: middle;
+          font-weight: 100;
+          font-size: 20px;
+        }
+      }
+    }
+  }
   .info_container{
     display: grid;
     padding-top: 30px;

@@ -147,11 +147,11 @@
                steps: [
                    {
                        element: '.sidebar',
-                       intro: "Acá estan los detalles de tu billetera, puedes depositar o retirar dinero ficticio"
+                       intro: "Estos son los detalles de tu billetera, puedes depositar o retirar dinero ficticio desde este panel."
                    },
                    {
                        element: '.info.items',
-                       intro: "Este es el detalle de tus transacciones"
+                       intro: "¡Aquí encontrarás tus últimas transacciones!"
                    }
 
                ],

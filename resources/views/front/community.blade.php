@@ -40,14 +40,14 @@
                 steps: [
                     {
                         element: '.main .property:first-child',
-                        intro: "Esta es una propiedad en proceso de aceptación, si pasas tu mouse por arriba podrás votar"
+                        intro: "Ésta es una propiedad en proceso de aceptación, pasando el ratón por encima de ella, podrás votar"
                     },
                     {
                         element: '#voting-list',
-                        intro: "Acá encontrarás el listado de tus votos",
+                        intro: "Tus votos se verán reflejados en este listado.",
                         position: 'right'
-                    },
-                ],
+                    }
+                ].filter(function(obj) { return $(obj.element).length}),
                 doneLabel : "Pág. sig."
             }).oncomplete(function() {
                 window.location.href = '/investors?tuto=true';

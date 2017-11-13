@@ -158,8 +158,12 @@
                 steps: [
                     {
                         element: '.sidebar',
-                        intro: "Acá podrás encontrar la información de tus billeteras, tokens de propiedad y contribuciones"
+                        intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas."
                     },
+                    {
+                        element: ".info.items",
+                        intro: "¡Podrás acceder a la administración de las mismas dándoles un click!"
+                    }
                 ],
                 doneLabel : "Pág. sig."
             }).oncomplete(function() {

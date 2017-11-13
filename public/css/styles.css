@@ -3940,6 +3940,33 @@ section#exchange-details .order_book_container {
   section#exchange-details .order_book_container .order_book_ask {
     grid-column: 2;
     grid-row: 2; }
+section#exchange-details .info_container2 {
+  position: relative; }
+  section#exchange-details .info_container2 img {
+    width: 30px; }
+  section#exchange-details .info_container2 .info_currencies_table {
+    margin-left: 16%;
+    margin-right: 16%;
+    width: auto;
+    margin-top: 30px;
+    border: none; }
+    section#exchange-details .info_container2 .info_currencies_table .currency_header {
+      position: relative;
+      vertical-align: middle;
+      height: 100px; }
+    section#exchange-details .info_container2 .info_currencies_table td .currencies_header_divider {
+      border-left: 1px;
+      border-right: 1px; }
+    section#exchange-details .info_container2 .info_currencies_table td .currency_header_title {
+      text-align: right;
+      vertical-align: middle;
+      font-weight: 600;
+      font-size: 20px; }
+    section#exchange-details .info_container2 .info_currencies_table td .currency_header_value {
+      text-align: right;
+      vertical-align: middle;
+      font-weight: 100;
+      font-size: 20px; }
 section#exchange-details .info_container {
   display: grid;
   padding-top: 30px;

@@ -20,6 +20,34 @@
            </div>
        </div>
 
+       <div class="row info_container2">
+           <table class="info_currencies_table" cellspacing="0">
+               <tbody>
+                   <tr>
+                       <td class="currencies_header">
+                           <div class="currency_header_title"><img class="currency_header_img" src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}" /> {{$currencyFrom->name}} ({{$currencyFrom->alias}})</div>
+                       </td>
+
+                       <td class="currencies_header">
+                           <div class="currency_header_value">U$D {{$currencyFrom->usd_value}}</div>
+                       </td>
+
+                       <td class="currencies_header_divider" style="border-left:1px; border-right: 1px;" width="10%">
+                           <div class="currency_header_value"></div>
+                       </td>
+
+                       <td class="currencies_header">
+                           <div class="currency_header_title"><img class="currency_header_img" src="/images/{!!($currencyTo->type === "currency" ? '':'tokens/').$currencyTo->image!!}" /> {{$currencyTo->name}} ({{$currencyTo->alias}})</div>
+                       </td>
+
+                       <td class="currencies_header">
+                           <div class="currency_header_value">U$D {{$currencyTo->usd_value}}</div>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+       </div>
+
        <div class="row info_container">
            <div id="chartdiv" class="graphic"></div>
            <input type="button" class="amChartsButton amcharts-period-input" id="seeHideVolumeButton" value="MOSTRAR/OCULTAR VOLUMEN" onclick="seeHideVolume();"/>
@@ -30,7 +58,7 @@
                    <thead>
                        <tr>
                            <th class="currency_header" colspan="2">
-                               <div><img class="currency_header_img" src="/images/tokens/{!!$currencyTo->image!!}" /></div>
+                               <div><img class="currency_header_img" src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyTo->image!!}" /></div>
                                <div class="currency_header_title">{{$currencyTo->name}} ({{$currencyTo->alias}})</div>
                             </th>
                        </tr>
@@ -38,42 +66,42 @@
                    <tbody>
                        <tr>
                            <td rowspan="2" class="key_values">Último</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->last_value, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}""/>  {{number_format($basicDetails->last_value, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->last_value * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Volumen</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->volume, 4, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->volume, 4, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->volume * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Venta</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->ask, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->ask, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->ask * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">Compra</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->bid, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->bid, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->bid * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Máximo</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->high, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->high, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->high * $currencyFrom->usd_value, 2, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td rowspan="2" class="key_values">24H Mínimo</td>
-                           <td class="currency_values"><img src="/images/{!!$currencyFrom->image!!}"/>  {{number_format($basicDetails->low, 8, ".", "")}}</td>
+                           <td class="currency_values"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/>  {{number_format($basicDetails->low, 8, ".", "")}}</td>
                        </tr>
                        <tr>
                            <td class="usd_values">U$D {{number_format($basicDetails->low * $currencyFrom->usd_value, 2, ".", "")}}</td>
@@ -176,7 +204,7 @@
                <div1 class="input-group">
                    <label for="totalBid" class="col-md-1 control-label">Total</label>
                    <span class="input-group-btn">
-                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!$currencyFrom->image!!}"/></button>
+                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/></button>
                     </span>
                    <input id="totalBid" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>
@@ -209,7 +237,7 @@
                <div1 class="input-group">
                    <label for="totalAsk" class="col-md-1 control-label">Total</label>
                    <span class="input-group-btn">
-                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!$currencyFrom->image!!}"/></button>
+                        <button class="btn1 btn-primary1" style="width:100px;" type="button"><img src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyFrom->image!!}"/></button>
                    </span>
                    <input id="totalAsk" type="text" placeholder="0.00000000" value="0.00000000" class="input-trade">
                    <span class="input-group-addon">{{strtoupper($currencyFrom->alias)}}</span>

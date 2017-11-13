@@ -40,17 +40,17 @@
                 steps: [
                     {
                         element: '.main .property:first-child',
-                        intro: "Esta es una propiedad en proceso de tokenizacón, si pasas tu mouse por arriba podrás contribuir"
+                        intro: "Esta es una propiedad en proceso de tokenización, pasando el ratón por arriba de la misma, habilitarás la opción de contribuir"
                     },
                     {
                         element: '#investment-list',
-                        intro: "Acá encontrarás el listado de tus contribuciones",
+                        intro: "Tus contribuciones se verán reflejadas en este listado.",
                         position: 'right'
-                    },
-                ],
-                //doneLabel : "Pág. sig."
+                    }
+                ].filter(function(obj) { return $(obj.element).length})
+                doneLabel : "Pág. sig."
             }).oncomplete(function() {
-                //window.location.href = '/investors?tuto=true';
+                window.location.href = '/exchange?tuto=true';
             });
 
             intro.start();
