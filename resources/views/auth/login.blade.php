@@ -29,7 +29,7 @@
                                 {{ $errors->first('log') }}
                             @endcomponent
                         @endif   
-                        <input id="log" type="text" placeholder="@lang('E-mail')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
+                        <input id="log" type="email" placeholder="@lang('E-mail')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
                         <input id="password" type="password" placeholder="@lang('Contraseña')" class="full-width" name="password" required>
                         <label class="add-bottom">
                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 

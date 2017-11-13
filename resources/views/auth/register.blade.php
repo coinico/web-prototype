@@ -28,7 +28,7 @@
                                 {{ $errors->first('email') }}
                             @endcomponent
                         @endif                       
-                        <input id="email" placeholder="@lang('E-mail')" type="text" class="full-width"  name="email" value="{{ old('email') }}" required>
+                        <input id="email" placeholder="@lang('E-mail')" type="email" class="full-width"  name="email" value="{{ old('email') }}" required>
                         @if ($errors->has('password'))
                             @component('front.components.error')
                                 {{ $errors->first('password') }}

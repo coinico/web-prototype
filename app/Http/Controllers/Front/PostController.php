@@ -47,7 +47,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $properties = Property::where('status_id',4)->get();
+        $properties = Property::where('status_id',4)
+            ->whereIn('user_id',[1, auth()->user()->id])->get();
 
         return view('front.index', compact('properties'));
     }
@@ -117,7 +118,9 @@ class PostController extends Controller
      */
     public function community()
     {
-        $properties = Property::where('status_id',1)->get();
+        $properties = Property::where('status_id',1)
+            ->whereIn('user_id',[1, auth()->user()->id])->get();
+
         $votes = PropertyVote::where('user_id',auth()->user()->id)->get();
         return view('front.community', compact('properties','votes'));
     }
@@ -139,7 +142,9 @@ class PostController extends Controller
      */
     public function investors()
     {
-        $properties = Property::where('status_id',4)->get();
+        $properties = Property::where('status_id',4)
+            ->whereIn('user_id',[1, auth()->user()->id])->get();
+
         $investments = PropertyInvest::where('user_id',auth()->user()->id)->get();
         return view('front.investors', compact('properties','investments'));
     }
@@ -163,7 +168,8 @@ class PostController extends Controller
      */
     public function properties()
     {
-        $properties = Property::where('status_id',1)->get();
+        $properties = Property::where('status_id',1)
+            ->whereIn('user_id',[1, auth()->user()->id])->get();
         return view('front.properties', compact('properties'));
     }
 
