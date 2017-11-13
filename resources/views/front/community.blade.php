@@ -37,9 +37,14 @@
                 steps: [
                     {
                         element: '.main .property:first-child',
-                        intro: "Ésta es una propiedad en proceso de aceptación, pasando el ratón por encima de ella, podrás votar"
+                        intro: "Ésta es una propiedad en proceso de aceptación, pasando el ratón por encima de ella, podrás votar",
+                        position: 'right'
                     },
                     {
+                        element: '.main .tengoduenio:first-child',
+                        intro: "Hemos creado esta propiedad a tu nombre, si la votas positivamente, luego podrás verla en el panel de inversión.",
+                        position: 'right'
+                    },{
                         element: '#voting-list',
                         intro: "Tus votos se verán reflejados en este listado.",
                         position: 'right'
