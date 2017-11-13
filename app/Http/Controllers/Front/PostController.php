@@ -207,9 +207,12 @@ class PostController extends Controller
             $q->where('type', '=','token');
         })->where('user_id', $user->id)->get();
 
+        $ethCurrency = CryptoCurrency::find(0);
+        $ctfCurrency = CryptoCurrency::find(1);
+
         $investments = PropertyInvest::where('user_id',$user->id)->get();
 
-        return view('front.panel', compact('user','standardWallets', 'tokenWallets', 'investments'));
+        return view('front.panel', compact('user','standardWallets', 'tokenWallets', 'investments', 'ethCurrency', 'ctfCurrency'));
     }
 
 }

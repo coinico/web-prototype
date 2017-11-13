@@ -39,70 +39,58 @@
                <h1>¡Hola {{$user->name}}! Bienvenido a CasaToken (DEMO)</h1>
                <div class="message">
                    <!--También creamos una propiedad a tu nombre, la misma será sometida a votación entre los miembros de la plataforma. De ser aprobada, podrás verla en tu panel de inversión.</br></br>-->
-                    Dejanos ayudarte a empezar a interactuar con la plataforma haciendo click <a href="#" onclick="startIntro()"> <strong><u>aquí</u></strong>  </a>
-               </div>
-           </div>
-           <div class="row sopenco">
-           <div class="tabs-selector">
-               <div class="tab-selector active">Casatoken · 1,01 USD  </div>
-               <div class="tab-selector">Ethereum · 267,87 USD</div>
-           </div>
-           <div class="tabs">
-                <div class="tab active">
-                    <div class="currency-info">
-                        <div class="price">
-                            <div>
-                                <span>1,43 USD</span>
-                                <small>PRECIO CTF</small>
-                            </div>
-                        </div>
-                        <div class="variation">
-                            <div>
-                                <span><b>+</b>0,43 USD</span>
-                                <small>DESDE EL MES PASADO (CTF)</small>
-                            </div>
-                        </div>
-                        <div class="percent_variation">
-                            <div>
-                                <span><b>+</b>43.00%</span>
-                                <small>DESDE EL MES PASADO (%)</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                </div>
-                <div class="tab">
+                   <!--Déjanos ayudarte a empezar a interactuar con la plataforma haciendo click <a href="#" onclick="startIntro()"> <strong><u>aquí</u></strong>  </a>-->
+                   Interactuemos juntos con la plataforma, haz click <a href="#" onclick="startIntro()"><strong><u>aquí</u></strong></a> para comenzar el tutorial.
+              </div>
+          </div>
+          <div class="row sopenco">
+          <div class="tabs-selector">
+              <div class="tab-selector active">{{$standardWallets->last()->currency->name}} · {{$standardWallets->last()->currency->usd_value}} USD  </div>
+              <div class="tab-selector">{{$standardWallets->first()->currency->name}} · {{$standardWallets->first()->currency->usd_value}} USD</div>
+          </div>
+          <div class="tabs">
+               <div class="tab active">
                    <div class="currency-info">
                        <div class="price">
-                           362,43 €
-                           <small>PRECIO ETHEREUM</small>
+                           <div>
+                               <span>{{$standardWallets->last()->currency->usd_value}} USD</span>
+                               <small>PRECIO CTF</small>
+                           </div>
                        </div>
                        <div class="variation">
-                           +83,03 €
-                           <small>DESDE EL MES PASADO (ETH)</small>
+                           <div>
+                               <span><b>+</b>0,23 USD</span>
+                               <small>DESDE EL MES PASADO (USD)</small>
+                           </div>
                        </div>
                        <div class="percent_variation">
-                           +22.94%
-                           <small>DESDE EL MES PASADO (%)</small>
+                           <div>
+                               <span><b>+</b>23.00%</span>
+                               <small>DESDE EL MES PASADO (%)</small>
+                           </div>
                        </div>
                    </div>
                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                </div>
-           </div>
-           <div class="divider"></div>
-           <!--<div class="summary">
-               <h3>Resumen</h3>
-               <div class="">
-                    <h4>Ethereum</h4>
-                    <span>100,00000000</span>
-                    <small>350,00000000 €</small>
                </div>
-               <div class="">
-                   <h4>CasaToken</h4>
-                   <span>10,00000000</span>
-                   <small>480,00000000 €</small>
+               <div class="tab">
+                  <div class="currency-info">
+                      <div class="price">
+                          362,43 €
+                          <small>PRECIO ETHEREUM</small>
+                      </div>
+                      <div class="variation">
+                          +83,03 €
+                          <small>DESDE EL MES PASADO (ETH)</small>
+                      </div>
+                      <div class="percent_variation">
+                          +22.94%
+                          <small>DESDE EL MES PASADO (%)</small>
+                      </div>
+                  </div>
+                  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                </div>
-           </div>-->
+          </div>
+          <div class="divider"></div>
            </div>
        </section>
        </div>
@@ -158,7 +146,7 @@
 
                 series: [{
                     type: 'area',
-                    name: 'CTF to ETH',
+                    name: 'CTF to USD',
                     data: data
                 }]
             });
