@@ -40,6 +40,11 @@
                         intro: "Esta es una propiedad en proceso de tokenización, pasando el ratón por arriba de la misma, habilitarás la opción de contribuir"
                     },
                     {
+                        element: '.main .tengoduenio:first-child',
+                        intro: "Esta propiedad fue creada a tu nombre en el paso anterior, puedes invertir en ella. Si inviertes 100 ETH se desencadenará el proceso de tokenización.",
+                        position: 'right'
+                    },
+                    {
                         element: '#investment-list',
                         intro: "Tus contribuciones se verán reflejadas en este listado.",
                         position: 'right'
