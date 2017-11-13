@@ -3686,7 +3686,7 @@ section#exchange .row {
     grid-gap: 0;
     grid-auto-rows: 40px;
     margin: 5px 5px 5px 5px;
-    background-color: #F5F5F5; }
+    background-color: #fafafa; }
     section#exchange .row .currency_wrapper .left-details {
       grid-column: 1;
       grid-row: 1 / 4; }
@@ -3706,6 +3706,7 @@ section#exchange .row {
       grid-row: 1 / 4;
       text-align: right; }
     section#exchange .row .currency_wrapper .sub_header_type {
+      margin-top: 5px;
       font-size: 10px;
       margin-right: 7px; }
     section#exchange .row .currency_wrapper .sub_header_name {
@@ -3713,15 +3714,23 @@ section#exchange .row {
       height: 30px;
       margin-top: -5px;
       margin-right: 7px;
-      font-size: 13px; }
+      font-size: 14px;
+      font-weight: bold; }
     section#exchange .row .currency_wrapper .sub_header_volume {
       margin-top: -5px;
       margin-right: 7px;
       font-size: 12px; }
     section#exchange .row .currency_wrapper .sub_header_change {
-      margin-top: -5px;
+      display: inline-block;
+      margin-top: -15px;
       margin-right: 7px;
       font-size: 12px; }
+      section#exchange .row .currency_wrapper .sub_header_change img {
+        display: inline-block; }
+    section#exchange .row .currency_wrapper .sub_header_change_green {
+      color: darkgreen; }
+    section#exchange .row .currency_wrapper .sub_header_change_red {
+      color: darkred; }
 
 section#orders-details .row {
   font-family: "montserrat-regular", sans-serif;
