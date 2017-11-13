@@ -114,6 +114,7 @@ $(document).ready(function(){
             data: {value:value},
             method: 'POST',
             success: function(result){
+                console.log(result);
                 btn.find('i').attr('class','fa fa-check');
                 $('#investment-list').html(result);
                 setTimeout(function(){
@@ -122,6 +123,8 @@ $(document).ready(function(){
                 },1000);
             },
             error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+                console.log(xhr);
                 var status = xhr.status;
                 if(status == 401) {
                     alert("Debes iniciar sesión para votar");

@@ -36,7 +36,7 @@ class PropertyInvestController extends Controller
 
         //Chequeo si tiene fondos para realizar la inversión
         $user = auth()->user();
-        $ethWallet = UserWallet::where(['user_id'=>$user->id, 'crypto_currency'=>0])->first();
+        $ethWallet = UserWallet::where('user_id', $user->id)->where("crypto_currency", 1)->first();
 
         $propertyInvest = PropertyInvest::where(['property_id'=>$propertyId, 'user_id' => auth()->user()->id])->first();
         $property = Property::find($propertyId);
@@ -48,7 +48,7 @@ class PropertyInvestController extends Controller
                 return response('Saldo no disponible', 400);
             }
 
-            $transaction["amount"] = floatval($request->input('value'));
+            $transaction["amount"] = -floatval($request->input('value'));
             $transaction->save();
 
             $this->repository->update($propertyInvest, $request);
@@ -73,7 +73,7 @@ class PropertyInvestController extends Controller
                 ]
             );
 
-            $request["transaction_id"] = $transaction->id;
+            $request->merge(['transaction_id' => $transaction->id]);
 
             $this->repository->store($propertyId, $request);
         }
