@@ -33,7 +33,7 @@ class PropertyVoteController extends Controller
     {
         $property = Property::find($propertyId);
 
-        if ($property && $request->vote == 1) {
+        if ($property && $property->user_id <> 1 && $request->vote == 1) {
             $property->status_id = 4;
             $property->save();
         }

@@ -9,7 +9,7 @@ class PropertyInvest extends Model
 
     protected $table = 'property_invests';
 
-    protected $fillable = ['property_id', 'user_id', 'value'];
+    protected $fillable = ['property_id', 'user_id', 'value', "transaction_id"];
 
     /**
      * Many to Many relation
