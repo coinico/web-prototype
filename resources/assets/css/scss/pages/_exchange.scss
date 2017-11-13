@@ -7,6 +7,8 @@ section#exchange{
       width: 9px;
     }
     .currency_wrapper{
+      border-radius: 8px;
+      border: 1px solid #818b8c;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 0;
