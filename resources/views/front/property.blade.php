@@ -25,7 +25,7 @@
                    <div class="item-wrap">
                        <div class="item">
                            <p>{{number_format($property->getVotingStatus('percentage'), 2, ',', '.')}}%
-                               <small>Aprobación: 95%</small>
+                               <small>Aprobación requerida: 95%</small>
                            </p>
                        </div>
                    </div>
