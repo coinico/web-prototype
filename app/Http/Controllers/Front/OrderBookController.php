@@ -25,13 +25,15 @@ class OrderBookController extends Controller
     {
 
         $volumeCurrencies = DB::select("
-                    select ob.crypto_currency_to as crypto_currency, 
+                    select cf.alias as crypto_currency_from,
+                           ob.crypto_currency_to as crypto_currency, 
                            sum(ob.quantity*ob.value) as volume, 
                            max(ob.value) as high, 
                            min(ob.value) as low,
                            cc.name as crypto_currency_name, 
                            cc.image as image, 
                            cc.alias as alias,
+                           cc.type as typex,
                            (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to and closed_time is not null and
             Date(closed_time) = CURDATE() -INTERVAL 1 DAY order by closed_time desc limit 1) as prev_day, 
                            (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
@@ -41,24 +43,30 @@ class OrderBookController extends Controller
                       from order_book ob 
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
+                inner join crypto_currencies cf
+                        on cf.id = ob.crypto_currency_from
                      where ob.closed_time is not null
                        and ob.closed_time >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
                            ob.crypto_currency_from,
                            cc.name,
                            cc.image,
-                           cc.alias
+                           cc.alias,
+                           cf.alias,
+                           cc.type
                   order by volume desc
                      limit 2");
 
         $biggestGainCurrencies = DB::select("
-                    select ob.crypto_currency_to as crypto_currency, 
+                    select cf.alias as crypto_currency_from,
+                           ob.crypto_currency_to as crypto_currency, 
                            sum(ob.quantity*ob.value) as volume, 
                            max(ob.value) as high, 
                            min(ob.value) as low,
                            cc.image as image, 
                            cc.name as crypto_currency_name, 
                            cc.alias as alias,
+                           cc.type as typex,
                            (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to and closed_time is not null and
             Date(closed_time) = CURDATE() -INTERVAL 1 DAY order by closed_time desc limit 1) as prev_day, 
                            (select value from order_book where crypto_currency_from = ob.crypto_currency_from and crypto_currency_to = ob.crypto_currency_to  and closed_time is not null
@@ -68,13 +76,17 @@ class OrderBookController extends Controller
                       from order_book ob 
                 inner join crypto_currencies cc
                         on cc.id = ob.crypto_currency_to
+                inner join crypto_currencies cf
+                        on cf.id = ob.crypto_currency_from
                      where ob.closed_time is not null
                        and ob.closed_time >= (NOW() - INTERVAL 1 DAY) 
                   group by ob.crypto_currency_to,
                            ob.crypto_currency_from,
                            cc.name,
                            cc.image,
-                           cc.alias
+                           cc.alias,
+                           cf.alias,
+                           cc.type
                   order by change_percent desc
                      limit 2");
 
