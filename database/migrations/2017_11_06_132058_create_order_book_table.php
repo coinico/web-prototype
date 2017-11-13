@@ -19,7 +19,7 @@ class CreateOrderBookTable extends Migration
 
             $table->integer('user_id')->unsigned(); // usuario que la creo
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('user_id_2');
+            $table->integer('user_id_2')->nullable();
 
             $table->integer('crypto_currency_from')->unsigned(); // crypto currency que quiere vender
             $table->foreign('crypto_currency_from')->references('id')->on('crypto_currencies');
