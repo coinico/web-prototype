@@ -65,7 +65,7 @@
 	   	<nav id="main-nav-wrap">
 			<ul class="main-navigation sf-menu">
 				<li {{ currentRoute('home') }}>
-					<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '#top' : route('home')}}">@lang('Inicio')</a>
+					<a class="{{isHome() ? 'smoothscroll' : ''}}" href="{{isHome() ? '#top' : route('home')}}">@lang('Demo')</a>
 				</li>
 			@guest
 					<li {{ currentRoute('owners') }}>
@@ -244,7 +244,7 @@
 
 	   @else
 
-		   <footer style="background-color: #0C161F!important;">
+		   <footer style="background-color: #0a131b!important;">
       <div class="footer-bottom" style="margin-top:-40px;margin-bottom:-40px;background-color: #0a131b!important">
       	<div class="row">
 

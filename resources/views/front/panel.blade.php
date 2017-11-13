@@ -54,7 +54,7 @@
                        <div class="price">
                            <div>
                                <span>{{$standardWallets->last()->currency->usd_value}} USD</span>
-                               <small>PRECIO CTF</small>
+                               <small>PRECIO CTK</small>
                            </div>
                        </div>
                        <div class="variation">
@@ -146,7 +146,7 @@
 
                 series: [{
                     type: 'area',
-                    name: 'CTF to USD',
+                    name: 'CTK to USD',
                     data: data
                 }]
             });

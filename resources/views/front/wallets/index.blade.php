@@ -51,7 +51,7 @@
             steps: [
                {
                   element: '.wallets',
-                  intro: "Hey! Parece que ya tienes billeteras! Hemos depositado 100 de ETH y 10000 CTF por defecto en ellas."
+                  intro: "Hey! Parece que ya tienes billeteras! Hemos depositado 100 de ETH y 10000 CTK por defecto en ellas."
                }
             ],
             doneLabel : "Pág. sig."
