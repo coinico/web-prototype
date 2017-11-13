@@ -38,7 +38,7 @@ function startIntro() {
                 position: 'top'
             },
             {
-                element: '#marvin-el-loco',
+                element: '.info_container2',
                 intro: "Ahora si. Bienvenido a la plataforma CasaToken.",
                 position: 'bottom'
             }
@@ -47,7 +47,7 @@ function startIntro() {
         }),
         doneLabel : "Salir"
     }).oncomplete(function () {
-
+        window.location.href = '/panel';
     });
 
     intro.start();

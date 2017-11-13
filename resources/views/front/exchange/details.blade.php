@@ -58,7 +58,7 @@
                    <thead>
                        <tr>
                            <th class="currency_header" colspan="2">
-                               <div><img class="currency_header_img" src="/images/{!!($currencyFrom->type === "currency" ? '':'tokens/').$currencyTo->image!!}" /></div>
+                               <div><img class="currency_header_img" src="/images/{!!($currencyTo->type === "currency" ? '':'tokens/').$currencyTo->image!!}" /></div>
                                <div class="currency_header_title">{{$currencyTo->name}} ({{$currencyTo->alias}})</div>
                             </th>
                        </tr>
