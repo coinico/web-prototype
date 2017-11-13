@@ -75,7 +75,7 @@ trait RegistersUsers
 
         $properties = array(
             array(
-                'title' => 'Prop. '.$user->name,
+                'title' => 'Propiedad de '.$user->name,
                 'user_id' => $user->id,
                 'status_id' => 1,
                 'description' => 'Hermosa casa de 4 ambientes con jardín delantero y trasero. La casa cuenta con un living comedor al frente, muy amplio y cómodo, con pisos cerámicos, calefactor tiro balanceado y gran ventanal a la calle que le otorga mucha luminosidad a este ambiente. La cocina es alargada y se encuentra totalmente azulejada, tiene amplia mesada e importante lugar de guardado en bajo mesada, y lavadero separado; además en la cocina nos encontramos con una entrada de servicio. Los dos dormitorios poseen pisos de parquet y placard de tres hojas con baulera, uno de ellos es a la calle y tiene salida al balcón, mientras que el otro está orientado al contra frente. El baño principal es completo y, tanto el baño principal como el toilette de recepción están totalmente revestidos en cerámicos.',
