@@ -376,8 +376,8 @@ class OrderBookController extends Controller
                             'is_hold' => 1,
                             'memo' => 'Hold en exchange.',
                             'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => -$comision,
-                            'total' => -$total,
+                            'transaction_fee' => 0,
+                            'total' => -$subtotal,
                             'user_wallet' => $walletFrom->id,
                         ]
                     );
@@ -424,13 +424,13 @@ class OrderBookController extends Controller
                         [
                             'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                             'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
-                            'amount' => -$total,
+                            'amount' => -$subtotal,
                             'type' => 'debit',
                             'is_hold' => 0,
                             'memo' => 'Venta en exchange.',
                             'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => -$comision,
-                            'total' => -$total,
+                            'transaction_fee' => 0,
+                            'total' => -$subtotal,
                             'user_wallet' => $walletFrom->id,
                         ]
                     );
@@ -443,13 +443,13 @@ class OrderBookController extends Controller
                         [
                             'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
                             'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
-                            'amount' => $total,
+                            'amount' => $subtotal,
                             'type' => 'credit',
                             'is_hold' => 0,
                             'memo' => 'Venta en exchange.',
                             'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => $total,
-                            'total' => $total,
+                            'transaction_fee' => $subtotal,
+                            'total' => $subtotal,
                             'user_wallet' => $otherUserWalletFrom->id,
                         ]
                     );
@@ -470,29 +470,6 @@ class OrderBookController extends Controller
                 $result["message"] = "Existen órdenes con precios más bajos.";
             }
 
-
-
-          /*  $cheaperOrder = OrderBook::whereNull("closed_time")
-                ->where("type", "ask")
-                ->where("crypto_currency_from", $ccf)
-                ->where("crypto_currency_to", $cct)
-                ->where("value", "<", $precio)
-                ->orderBy("closed_time", "asc")->first();
-
-            if ($cheaperOrder) {
-
-                $result["type"] = "error";
-                $result["message"] = "Existen órdenes con precios más bajos.";
-            } else {
-
-                $orderToClose = OrderBook::whereNull("closed_time")
-                    ->where("type", "ask")
-                    ->where("crypto_currency_from", $ccf)
-                    ->where("crypto_currency_to", $cct)
-                    ->where("value", "=", $precio)
-                    ->orderBy("closed_time", "asc")->first();
-            }*/
-
         } else {
             $result["type"] = "error";
             $result["message"] = "No posees fondos suficientes para realizar la operación.".floatval($walletFrom->available_balance)." asdasd ".floatval($total);
@@ -502,10 +479,165 @@ class OrderBookController extends Controller
     }
 
     public function createAskOrder() {
-
         $result = array();
-        $result["type"] = "success";
-        $result["message"] = "Operación no disponible aún.";
+
+        $userId = auth()->user()->id;
+        $ccf = Input::get("currencyFrom");
+        $cct = Input::get("currencyTo");
+
+        $currencyFrom = CryptoCurrency::find($ccf);
+        $currencyTo = CryptoCurrency::find($cct);
+
+        $cantidad = floatval(Input::get("cantidad"));
+        $precio = floatval(Input::get("precio"));
+        $subtotal = floatval(Input::get("subtotal"));
+        $comision = floatval(Input::get("comision"));
+        $total = floatval(Input::get("total"));
+
+        $walletFrom = UserWallet::where("user_id", $userId)->where("crypto_currency", $ccf)->first();
+        $walletTo = UserWallet::where("user_id", $userId)->where("crypto_currency", $cct)->first();
+
+        if (!$walletFrom) {
+            $walletFrom = UserWallet::create(
+                [
+                    'user_id' => $userId,
+                    'crypto_currency' => $ccf,
+                ]
+            );
+        }
+        // si tengo el balance
+        if (floatval($walletTo->available_balance) > floatval($cantidad)) {
+
+            // si no hay ordenes de venta (contrarias) con valor menor al indicado,
+
+            $expensiveOrder = OrderBook::whereNull("closed_time")
+                ->where("type", "bid")
+                ->where("crypto_currency_from", $ccf)
+                ->where("crypto_currency_to", $cct)
+                ->where("value", ">", $precio)
+                ->orderBy("closed_time", "asc")->first();
+
+            if (!$expensiveOrder) {
+
+                $equalOrder = OrderBook::whereNull("closed_time")
+                    ->where("type", "ask")
+                    ->where("crypto_currency_from", $ccf)
+                    ->where("crypto_currency_to", $cct)
+                    ->where("value", "=", $precio)
+                    ->where("quantity", "=", $cantidad)
+                    ->orderBy("closed_time", "asc")->first();
+
+                // si no hay ordenes iguales, creo la orden y la transacción hold
+                if (!$equalOrder) {
+
+                    $transactionCurrent = UserWalletTransaction::create(
+                        [
+                            'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'amount' => $cantidad,
+                            'type' => 'debit',
+                            'is_hold' => 1,
+                            'memo' => 'Hold en exchange.',
+                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                            'transaction_fee' => 0,
+                            'total' => $cantidad,
+                            'user_wallet' => $walletTo->id,
+                        ]
+                    );
+
+                    OrderBook::create(
+                        [
+                            'user_id' => $userId,
+                            'crypto_currency_from' => $currencyFrom->id,
+                            'crypto_currency_to' => $currencyTo->id,
+                            'type' => "ask",
+                            'quantity' => $cantidad,
+                            'value' => $precio,
+                            'execution_type' => "sell",
+                            "transaction_id" => $transactionCurrent->id
+                        ]
+                    );
+
+                    $result["type"] = "success";
+                    $result["message"] = "Orden creada con éxito.";
+                } else {
+
+                    $equalOrder->closed_time = \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s');
+                    $equalOrder->filled = $equalOrder->quantity;
+                    $equalOrder->current_cost = $equalOrder->quantity*$equalOrder->value;
+
+                    $equalOrder->save();
+
+                    $otherUserWalletTo = UserWallet::where("user_id", $equalOrder->user_id)
+                        ->where("crypto_currency", $cct)->first();
+
+                    UserWalletTransaction::create(
+                        [
+                            'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'amount' => $cantidad,
+                            'type' => 'credit',
+                            'is_hold' => 0,
+                            'memo' => 'Venta en exchange.',
+                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                            'transaction_fee' => 0,
+                            'total' => $cantidad,
+                            'user_wallet' => $otherUserWalletTo->id,
+                        ]
+                    );
+
+                    UserWalletTransaction::create(
+                        [
+                            'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'amount' => -$cantidad,
+                            'type' => 'debit',
+                            'is_hold' => 0,
+                            'memo' => 'Venta en exchange.',
+                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                            'transaction_fee' => 0,
+                            'total' => -$cantidad,
+                            'user_wallet' => $walletTo->id,
+                        ]
+                    );
+
+
+                    UserWalletTransaction::create(
+                        [
+                            'address_from' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'address_to' => '0xfe8f6b1a27625c2eadd2743ff963b16b1d931f61',
+                            'amount' => $total,
+                            'type' => 'credit',
+                            'is_hold' => 0,
+                            'memo' => 'Venta en exchange.',
+                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
+                            'transaction_fee' => $total,
+                            'total' => $total,
+                            'user_wallet' => $walletFrom->id,
+                        ]
+                    );
+
+                    $transaction = UserWalletTransaction::find($equalOrder->transaction_id);
+
+                    if($transaction) {
+                        $transaction->is_hold = 0;
+                        $equalOrder->save();
+                    }
+
+                    $result["type"] = "success";
+                    $result["message"] = "Orden creada y ejecutada con éxito.";
+                }
+            } else {
+
+                $result["type"] = "error";
+                $result["message"] = "Existen órdenes con precios más altos.";
+            }
+
+        } else {
+            $result["type"] = "error";
+            $result["message"] = "No posees fondos suficientes para realizar la operación.".floatval($walletFrom->available_balance)." asdasd ".floatval($total);
+        }
+
         return $result;
     }
 
