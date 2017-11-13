@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
 
         $ctfCurrency = CryptoCurrency::create(
             [
-                'name' => 'Casa Token',
+                'name' => 'CasaToken',
                 'alias' => 'CTF',
                 'image' => 'logo_dark.png',
                 'usd_value' => 1.01,
