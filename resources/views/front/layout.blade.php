@@ -181,8 +181,8 @@
 
    <!-- footer
    ================================================== -->
-   <footer>
-
+   <footer style="background-color: #0C161F!important;">
+   <!--
    	<div class="footer-main">
 
    		<div class="row">
@@ -195,7 +195,7 @@
 
 		      </div> <!-- end footer-info -->
 
-	      	<div class="col-three tab-1-2 mob-1-2 site-links">
+   <!--      	<div class="col-three tab-1-2 mob-1-2 site-links">
 
 	      		<h4>@lang('Links del sitio')</h4>
 
@@ -204,11 +204,11 @@
 					<li><a href="{{ route('contacts.create') }}">@lang('Contáctanos')</a></li>
 					<li><a href="http://casatoken.io/blog/">@lang('Blog')</a></li>
 					<!--<li><a href="#">@lang('Política de Privacidad')</a></li>-->
-				</ul>
+	   <!-- 			</ul>
 
-	      	</div> <!-- end site-links -->
+                 </div> <!-- end site-links -->
 
-	      	<div class="col-three tab-1-2 mob-1-2 social-links">
+   <!--       	<div class="col-three tab-1-2 mob-1-2 social-links">
 
 	      		<h4>@lang('Social')</h4>
 
@@ -220,25 +220,24 @@
 
 	      	</div> <!-- end social links -->
 
-	      </div> <!-- end row -->
+	   <!-- 	      </div> <!-- end row -->
 
-   	</div> <!-- end footer-main -->
+	   <!--   	</div> <!-- end footer-main -->
 
-      <div class="footer-bottom">
+      <div class="footer-bottom" style="margin-top:-40px;margin-bottom:-40px;background-color: #0a131b!important">
       	<div class="row">
 
-      		<div class="col-twelve">
-	      		<div class="copyright">
-		         	<span>© Copyright CasaToken 2017</span>
-		         	<span>Design by <a href="#">BlockThatShit**</a></span>
-		         </div>
+			<span style="    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif; display: inline-block; float:left; color:white; font-weight: bold; font-size: 13px;">COPYRIGHT © 2017 CASATOKEN. ALL RIGHTS RESERVED. TERMS OF USE PRIVACY POLICY</span>
+			<div class="copyright" style="display: inline-block; color:white; float:right;">
+				<span><a style="display: inline-block; color:white; font-size: 32px;font-weight: bold; " href="https://twitter.com/casatoken"><i class="fa fa-twitter"></i> </a></span>
+				<span><a style="display: inline-block; color:white; font-size: 32px;font-weight: bold; " href="https://www.facebook.com/CasaToken-136200837022798"><i class="fa fa-facebook"></i></a></span>
+				<span><a style="display: inline-block; color:white; font-size: 32px;font-weight: bold; " href="https://www.instagram.com/casatoken/"><i class="fa fa-instagram"></i></a></span>
+			 </div>
 
-		         <div id="go-top">
-		            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
-		         </div>
-	      	</div>
-
-      	</div>
+			 <div id="go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+			 </div>
+		</div>
       </div> <!-- end footer-bottom -->
 
    </footer>
