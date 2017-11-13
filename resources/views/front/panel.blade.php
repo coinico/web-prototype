@@ -40,7 +40,7 @@
                <div class="message">
                    <!--También creamos una propiedad a tu nombre, la misma será sometida a votación entre los miembros de la plataforma. De ser aprobada, podrás verla en tu panel de inversión.</br></br>-->
                    <!--Déjanos ayudarte a empezar a interactuar con la plataforma haciendo click <a href="#" onclick="startIntro()"> <strong><u>aquí</u></strong>  </a>-->
-                   Interactuemos juntos con la plataforma, haz click <a href="#" onclick="startIntro()"><strong><u>aquí</u></strong></a> para comenzar el tutorial.
+                   ¿Quieres saber de que se trata?, Haz click <a href="#" onclick="startIntro()"><strong><u>aquí</u></strong></a> para comenzar el tutorial.
               </div>
           </div>
           <div class="row sopenco">
