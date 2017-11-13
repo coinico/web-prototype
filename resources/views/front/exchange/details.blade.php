@@ -316,7 +316,7 @@
 
        @endauth
 
-       <div class="row">
+       <div class="row chinguito">
            <table id="lastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
                <thead>
                <tr>

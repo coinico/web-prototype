@@ -1,3 +1,58 @@
+function startIntro() {
+    var intro = introJs();
+    intro.setOptions({
+        steps: [
+            {
+                element: '.info_container',
+                intro: "La información resumida del mercado para este par de monedas se verá reflejada en este primer panel.",
+                position: 'top'
+            },
+            {
+                element: '#info_currency',
+                intro: "Estos son los principales indicadores del mercado de referencia.",
+                position: 'left'
+            },
+            {
+                element: '.chinguito',
+                intro: "Este es el historial de órdenes del mercado, podrás ir observando el flujo de compras y ventas ejecutadas.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_container',
+                intro: "Las órdenes de compra y venta que generan el mercado se visualizan en estas listas.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_trade_container',
+                intro: "Aquí podrás crear nuevas órdenes.",
+                position: 'bottom'
+            },
+            {
+                element: '.order_book_trade_container',
+                intro: "Durante esta primera etapa, sólo se podrán generar órdenes que suplan en su completitud una existente, o que no modifiquen el mercado.",
+                position: 'bottom'
+            },
+            {
+                element: '#order_book_bid',
+                intro: "Oye, la tienes fácil. Puedes seleccionar la cantidad y el valor de la última orden para realizar un intercambio!",
+                position: 'top'
+            },
+            {
+                element: '#marvin-el-loco',
+                intro: "Ahora si. Bienvenido a la plataforma CasaToken.",
+                position: 'bottom'
+            }
+        ].filter(function (obj) {
+            return $(obj.element).length
+        }),
+        doneLabel : "Salir"
+    }).oncomplete(function () {
+
+    });
+
+    intro.start();
+}
+
 var chart = undefined;
 
 $.extend( true, $.fn.dataTable.defaults, {
@@ -314,12 +369,19 @@ $(document).ready(function(){
         fillMyLastExecutedOrdersTable();
     }
 
+    if (RegExp('tuto', 'gi').test(window.location.search)) {
+        startIntro();
+    }
+
     fillAskOrdersTable();
     fillBidOrdersTable();
     fillLastExecutedOrdersTable();
     buildTestGraph();
 
+
 });
+
+
 
 var myLastExecutedOrdersTable = undefined;
 

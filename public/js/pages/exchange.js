@@ -149,10 +149,10 @@ $(document).ready(function(){
                 }
             ].filter(function (obj) {
                 return $(obj.element).length
-            })
-            //doneLabel : "Pág. sig."
+            }),
+            doneLabel : "Pág. sig."
         }).oncomplete(function () {
-            //window.location.href = '/exchange?tuto=true';
+            window.location.href = '/exchangeDetails?pair=ETH-CTF?tuto=true';
         });
 
         intro.start();
