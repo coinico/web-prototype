@@ -20,6 +20,7 @@ class UpdatePropertiesTable extends Migration
             $table->string('images');
             $table->decimal('value',15,2);
             $table->string('city');
+            $table->string('address');
             $table->string('location');
             $table->string('bidding_time');
             $table->string('features');
@@ -41,6 +42,7 @@ class UpdatePropertiesTable extends Migration
             $table->dropColumn('images');
             $table->dropColumn('value');
             $table->dropColumn('city');
+            $table->dropColumn('address');
             $table->dropColumn('location');
             $table->dropColumn('bidding_time');
             $table->dropColumn('features');
