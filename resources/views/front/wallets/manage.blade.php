@@ -154,7 +154,7 @@
                        intro: "Aquí encontrarás tus últimas transacciones."
                    },
                    {
-                       element: ".user-lnk.children",
+                       element: "#top",
                        intro: "OK. ¡Vamos a ver que puedes hacer como parte de nuestra comunidad!"
                    }
 

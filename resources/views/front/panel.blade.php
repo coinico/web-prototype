@@ -160,14 +160,15 @@
                 steps: [
                     {
                         element: '.sidebar',
-                        intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas."
+                        intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas.",
+                        position: "left"
                     },
                     {
                         element: ".info.items",
                         intro: "¡Podrás acceder a la administración de las mismas dándoles un click!"
                     },
                     {
-                        element: ".user-lnk.children",
+                        element: "#top",
                         intro: "¡Vamos a ver tus billeteras!"
                     }
                 ],
