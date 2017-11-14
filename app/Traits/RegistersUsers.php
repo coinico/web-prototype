@@ -82,7 +82,7 @@ trait RegistersUsers
                 'detail' => '',
                 'images' => '9.jpg',
                 'value' => '250000',
-                'address' => 'Av. Vélez Sarsfield 1000',
+                'address' => 'Av. Vélez Sarsfield',
                 'city' => "Córdoba, ARG",
                 'location' => '{"lat":-35.5861403,"lng":-58.0839176}',
                 'bidding_time' => '',

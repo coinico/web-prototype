@@ -142,9 +142,12 @@
                     <img src="/images/plans.jpg" />
                 </a>
             </section>
-            <section class="location">
+            <br class="location">
                 <h3>Ubicación</h3>
-                <iframe src="https://maps.google.com/maps/embed/v1/place?zoom=18&key=AIzaSyBJgltaTNGdMfz9JStUKKnei78pfQZhgF4&q={{$property->address." ".$property->city}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <p>Dirección: {{$property->address}}</p>
+                <p>Ciudad: {{$property->city}}</p>
+                </br>
+                <iframe src="https://maps.google.com/maps/embed/v1/place?zoom=18&key=AIzaSyBJgltaTNGdMfz9JStUKKnei78pfQZhgF4&q={{$property->address.", ".$property->city}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </section>
 
         </div>
