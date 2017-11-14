@@ -49,10 +49,14 @@
          var intro = introJs();
          intro.setOptions({
             steps: [
-               {
-                  element: '.wallets',
-                  intro: "Hey! Parece que ya tienes billeteras! Hemos depositado 100 de ETH y 10000 CTK por defecto en ellas."
-               }
+                {
+                    element: '.wallets',
+                    intro: "Aquí podrás visualizar tus billeteras. Te depositamos 100 de ETH y 10000 CTK por defecto."
+                },
+                {
+                    element: '.wallet-wrapper',
+                    intro: "¡Haz click en una de ellas!"
+                }
             ],
             doneLabel : "Pág. sig."
          }).oncomplete(function() {
@@ -63,7 +67,11 @@
          intro.start();
       }
       if (RegExp('tuto', 'gi').test(window.location.search)) {
-         startIntro();
+
+          var leftDetails = $( ".tapioca:first-child" );
+          leftDetails.attr("href", leftDetails.attr("href")+"?tuto=true");
+
+          startIntro();
       }
    </script>
 @stop

@@ -22,7 +22,7 @@ function startIntro() {
         }),
         doneLabel : "Pág. sig."
     }).oncomplete(function () {
-        window.location.href = '/exchangeDetails?pair=ETH-CTF&tuto=true';
+        window.location.href = '/exchangeDetails?pair=ETH-CTK&tuto=true';
     });
 
     intro.start();

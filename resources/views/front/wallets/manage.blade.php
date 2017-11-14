@@ -151,7 +151,11 @@
                    },
                    {
                        element: '.info.items',
-                       intro: "¡Aquí encontrarás tus últimas transacciones!"
+                       intro: "Aquí encontrarás tus últimas transacciones."
+                   },
+                   {
+                       element: ".user-lnk.children",
+                       intro: "OK. ¡Vamos a ver que puedes hacer como parte de nuestra comunidad!"
                    }
 
                ],
