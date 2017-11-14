@@ -10,7 +10,6 @@
    <section id="property">
        <div class="row">
             <h1> {{$property->title}} <span>U$D {{number_format($property->value, 0, ',', '.')}}</span></h1>
-
            <div class="investment">
                 <img src="/images/properties/{{$property->images}}" class="main-image" />
            </div>
@@ -142,11 +141,8 @@
                     <img src="/images/plans.jpg" />
                 </a>
             </section>
-            <br class="location">
+            <section class="location">
                 <h3>Ubicación</h3>
-                <p>Dirección: {{$property->address}}</p>
-                <p>Ciudad: {{$property->city}}</p>
-                </br>
                 <iframe src="https://maps.google.com/maps/embed/v1/place?zoom=18&key=AIzaSyBJgltaTNGdMfz9JStUKKnei78pfQZhgF4&q={{$property->address.", ".$property->city}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </section>
 
