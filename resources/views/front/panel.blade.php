@@ -103,9 +103,10 @@
 
     <script src="js/plugins/highcharts.js"></script>
 
-
     <script type="text/javascript">
-        //$.getJSON('https://api.coinbase.com/v2/prices/BTC-EUR/historic?period=month', function (data) {
+        $(document).ready(function(){
+
+            //$.getJSON('https://api.coinbase.com/v2/prices/BTC-EUR/historic?period=month', function (data) {
         $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function (data) {
             Highcharts.chart('container', {
                 chart: {
@@ -151,6 +152,7 @@
                 }]
             });
         });
+        });
 
         function startIntro(){
             var intro = introJs();
@@ -158,11 +160,16 @@
                 steps: [
                     {
                         element: '.sidebar',
-                        intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas."
+                        intro: "Aquí encontrarás el balance de tus billeteras, tokens de propiedad y tus contribuciones activas.",
+                        position: "left"
                     },
                     {
                         element: ".info.items",
                         intro: "¡Podrás acceder a la administración de las mismas dándoles un click!"
+                    },
+                    {
+                        element: "#top",
+                        intro: "¡Vamos a ver tus billeteras!"
                     }
                 ],
                 doneLabel : "Pág. sig."

@@ -47,7 +47,11 @@
                     },{
                         element: '#voting-list',
                         intro: "Tus votos se verán reflejados en este listado.",
-                        position: 'right'
+                        position: 'left'
+                    },
+                    {
+                        element: "#top",
+                        intro: "OK. ¡Vamos a ver que puedes hacer como inversor!"
                     }
                 ].filter(function(obj) { return $(obj.element).length}),
                 doneLabel : "Pág. sig."

@@ -37,7 +37,8 @@
                 steps: [
                     {
                         element: '.main .property:first-child',
-                        intro: "Esta es una propiedad en proceso de tokenización, pasando el ratón por arriba de la misma, habilitarás la opción de contribuir"
+                        intro: "Esta es una propiedad en proceso de tokenización, pasando el ratón por arriba de la misma, habilitarás la opción de contribuir",
+                        position: 'right'
                     },
                     {
                         element: '.main .tengoduenio:first-child',
@@ -47,7 +48,11 @@
                     {
                         element: '#investment-list',
                         intro: "Tus contribuciones se verán reflejadas en este listado.",
-                        position: 'right'
+                        position: 'left'
+                    },
+                    {
+                        element: "#top",
+                        intro: "OK. ¡Vamos a ver que puedes hacer en nuestro exchange!"
                     }
                 ].filter(function(obj) { return $(obj.element).length}),
                 doneLabel : "Pág. sig."

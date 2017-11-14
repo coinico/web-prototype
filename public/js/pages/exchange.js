@@ -10,19 +10,23 @@ function startIntro() {
             {
                 element: '.recife',
                 intro: "Aquí encontrarás los mercados Ethereum disponibles para realizar intercambios.",
-                position: 'top'
+                position: 'bottom'
             },
             {
                 element: '.owl-carousel',
                 intro: "En estos rectángulos se muestran los Mercados con más volumen o mayor ganancia en un día.",
                 position: 'bottom'
+            },
+            {
+                element: "#top",
+                intro: "OK. ¡Vamos a operar con nuestras monedas principales: ETH y CTK!"
             }
         ].filter(function (obj) {
             return $(obj.element).length
         }),
         doneLabel : "Pág. sig."
     }).oncomplete(function () {
-        window.location.href = '/exchangeDetails?pair=ETH-CTF&tuto=true';
+        window.location.href = '/exchangeDetails?pair=ETH-CTK&tuto=true';
     });
 
     intro.start();

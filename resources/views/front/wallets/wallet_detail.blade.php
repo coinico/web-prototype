@@ -1,7 +1,7 @@
 <div class="wallet-wrapper">
     <div class="wallet">
         <div class="left-details">
-            <a href="{{ url("userWallet/$standardWallet->id/manage") }}">
+            <a class="tapioca" href="{{ url("userWallet/$standardWallet->id/manage") }}">
                 <img src="/images/{!!$standardWallet->currency->image!!}" />
                  <p class="currency_name">{{$standardWallet->currency->name}}</p>
             </a>

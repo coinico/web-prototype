@@ -38,7 +38,8 @@ function startIntro() {
                 position: 'top'
             },
             {
-                element: '.info_container2',
+                element: '#top',
+                scrollTo: '#top',
                 intro: "Ahora si. Bienvenido a la plataforma CasaToken.",
                 position: 'bottom'
             }
