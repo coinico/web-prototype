@@ -83,7 +83,7 @@ trait RegistersUsers
                 'images' => '9.jpg',
                 'value' => '250000',
                 'city' => "Chascomús, Buenos Aires, ARG",
-                'location' => '{lat:-35.5861403,lng:-58.0839176}',
+                'location' => '{"lat":-35.5861403,"lng":-58.0839176}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()

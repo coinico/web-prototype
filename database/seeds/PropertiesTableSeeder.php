@@ -21,7 +21,7 @@ class PropertiesTableSeeder extends Seeder
                 'detail' => '',
                 'images' => '{}',
                 'value' => '1000000',
-                'location' => '{lat:33,lng:44}',
+                'location' => '{"lat":33,"lng":44}',
                 'bidding_time' => 'taylor@example.com',
                 'features' => 'taylor@example.com',
             ];
@@ -44,7 +44,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '1.jpg',
                 'value' => '2600000',
                 'city' => 'Villa Carlos Paz, Córdoba, ARG',
-                'location' => '{lat:-31.4122082,lng:-64.5348419}',
+                'location' => '{"lat":-31.4122082,"lng":-64.5348419}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -58,7 +58,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '2.jpg',
                 'value' => '4900000',
                 'city' => 'Parque Las Tejas, Córdoba, ARG',
-                'location' => '{lat:-31.3994009,lng:-64.2645555}',
+                'location' => '{"lat":-31.3994009,"lng":-64.2645555}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -72,7 +72,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '3.jpg',
                 'value' => '2950000',
                 'city' => 'Rosario, Santa Fe, ARG',
-                'location' => '{lat:-32.9522838,lng:-60.7683691}',
+                'location' => '{"lat":-32.9522838,"lng":-60.7683691}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -86,7 +86,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '4.jpg',
                 'value' => '2950000',
                 'city' => 'Las Tapias, Córdoba, ARG',
-                'location' => '{lat:-31.9594807,lng:-65.08355986}',
+                'location' => '{"lat":-31.9594807,"lng":-65.08355986}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -100,7 +100,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '5.jpg',
                 'value' => '2700000',
                 'city' => 'La Blanqueada, Montevideo, URU',
-                'location' => '{lat:-34.8210781,lng:-56.3066501}',
+                'location' => '{"lat":-34.8210781,"lng":-56.3066501}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -114,7 +114,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '6.jpg',
                 'value' => '2600000',
                 'city' => "Tandil, Buenos Aires, ARG",
-                'location' => '{lat:-37.3195177,lng:-59.1778073}',
+                'location' => '{"lat":-37.3195177,"lng":-59.1778073}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -128,7 +128,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '7.jpg',
                 'value' => '1700000',
                 'city' => "Mar del Plata, Buenos Aires, ARG",
-                'location' => '{lat:-38.0175458,lng:-57.6707454}',
+                'location' => json_encode(array('lat' => -38.0175458, 'lng' => -57.6707454)),
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
@@ -142,7 +142,7 @@ class PropertiesTableSeeder extends Seeder
                 'images' => '8.jpg',
                 'value' => '980000',
                 'city' => "Chascomús, Buenos Aires, ARG",
-                'location' => '{lat:-35.5861403,lng:-58.0839176}',
+                'location' => '{"lat":-35.5861403,"lng":-58.0839176}',
                 'bidding_time' => '',
                 'features' => '',
                 'created_at' => new \DateTime()
