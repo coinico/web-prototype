@@ -144,7 +144,7 @@
             </section>
             <section class="location">
                 <h3>Ubicación</h3>
-                <iframe src="https://maps.googleapis.com/maps/embed?zoom=15&key=AIzaSyBJgltaTNGdMfz9JStUKKnei78pfQZhgF4&center={{json_decode($property->location)->lat.",".json_decode($property->location)->lng}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <iframe src="https://maps.google.com/maps/embed/v1/place?zoom=18&key=AIzaSyBJgltaTNGdMfz9JStUKKnei78pfQZhgF4&q={{$property->address." ".$property->city}}" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </section>
 
         </div>
