@@ -1,3 +1,12 @@
+.border-common{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(97, 97, 97, 0.8) 0px 0 10px;
+  -moz-box-shadow: rgba(97, 97, 97, 0.8) 0 0 10px;
+  box-shadow: rgba(97, 97, 97, 0.8) 0 0 10px;
+}
+
 section#register{
   .row {
     input{
@@ -29,6 +38,22 @@ section#home{
       span{
         color:$secondaryColor;
         display: block;
+      }
+    }
+    a{
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      color: white;
+      display: block;
+      margin: auto;
+      width: 310px;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      &:hover{
+        background: white;
+        color: $primaryBgColor;
       }
     }
   }

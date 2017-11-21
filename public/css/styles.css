@@ -3170,6 +3170,14 @@ table {
   box-shadow: 0px 1px 1px #e3e3e3; }
 
 /* Pages */
+.border-common {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(97, 97, 97, 0.8) 0px 0 10px;
+  -moz-box-shadow: rgba(97, 97, 97, 0.8) 0 0 10px;
+  box-shadow: rgba(97, 97, 97, 0.8) 0 0 10px; }
+
 section#register .row {
   font-family: "montserrat-regular", sans-serif;
   margin-top: 30px;
@@ -3194,6 +3202,20 @@ section#home .first-stop {
     section#home .first-stop p span {
       color: #fdcd1a;
       display: block; }
+  section#home .first-stop a {
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid;
+    color: white;
+    display: block;
+    margin: auto;
+    width: 310px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold; }
+    section#home .first-stop a:hover {
+      background: white;
+      color: #0c161f; }
 section#home .casatoken-title {
   text-align: center;
   font-size: 70px;

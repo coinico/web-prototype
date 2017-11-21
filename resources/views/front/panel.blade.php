@@ -45,8 +45,8 @@
           </div>
           <div class="row sopenco">
           <div class="tabs-selector">
-              <div class="tab-selector active">{{$standardWallets->last()->currency->name}} · {{$standardWallets->last()->currency->usd_value}} USD  </div>
-              <div class="tab-selector">{{$standardWallets->first()->currency->name}} · {{$standardWallets->first()->currency->usd_value}} USD</div>
+              <div class="tab-selector active">{{$standardWallets->last()->currency->name}} ({{$standardWallets->last()->currency->alias}}) · {{$standardWallets->last()->currency->usd_value}} USD  </div>
+              <div class="tab-selector">{{$standardWallets->first()->currency->name}} ({{$standardWallets->first()->currency->alias}}) · {{$standardWallets->first()->currency->usd_value}} USD</div>
           </div>
           <div class="tabs">
                <div class="tab active">

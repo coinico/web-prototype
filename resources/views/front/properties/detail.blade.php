@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="property{{strpos($property->title, 'Propiedad') !== false ? " tengoduenio": ""}}">
+    <div class="property{{strpos($property->title, 'Propiedad') !== false ? " tengoduenio": ""}} border-common">
         <div class="info">
             @if( isset($property->images))
                 <div class="image" style="margin:auto; background-image: url('images/properties/{{$property->images}}') "></div>
