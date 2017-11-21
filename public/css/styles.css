@@ -3202,6 +3202,20 @@ section#home .first-stop {
     section#home .first-stop p span {
       color: #fdcd1a;
       display: block; }
+  section#home .first-stop a {
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid;
+    color: white;
+    display: block;
+    margin: auto;
+    width: 310px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold; }
+    section#home .first-stop a:hover {
+      background: white;
+      color: #0c161f; }
 section#home .casatoken-title {
   text-align: center;
   font-size: 70px;

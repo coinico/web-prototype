@@ -40,6 +40,22 @@ section#home{
         display: block;
       }
     }
+    a{
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      color: white;
+      display: block;
+      margin: auto;
+      width: 310px;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      &:hover{
+        background: white;
+        color: $primaryBgColor;
+      }
+    }
   }
   .casatoken-title{
     text-align: center;
