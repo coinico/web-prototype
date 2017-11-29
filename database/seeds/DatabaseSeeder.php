@@ -9,6 +9,20 @@ use App\Models\OrderBook;
 
 class DatabaseSeeder extends Seeder
 {
+
+    public function dummusercreation($number) {
+        User::create(
+            [
+                'name' => 'dummy'.$number,
+                'email' => 'dummy'.$number.'@gmail.com',
+                'password' => bcrypt('admin'),
+                'role' => 'admin',
+                'valid' => true,
+                'confirmed' => true,
+                'remember_token' => str_random(10),
+            ]
+        );
+    }
     /**
      * Run the database seeds.
      *
@@ -29,12 +43,16 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        for ($i = 1; $i <= 15; $i++) {
+            $this->dummusercreation($i);
+        }
+
         $ethCurrency = CryptoCurrency::create(
             [
                 'name' => 'Ethereum',
                 'alias' => 'ETH',
                 'image' => 'eth-logo.png',
-                'usd_value' => 304.22,
+                'usd_value' => 473.22,
                 "minimum_order" => 0.005,
                 'type' => 'currency'
             ]

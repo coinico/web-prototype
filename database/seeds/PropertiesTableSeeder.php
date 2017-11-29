@@ -158,5 +158,22 @@ class PropertiesTableSeeder extends Seeder
 
         );
         DB::table('properties')->insert($properties);
+
+        $booleanTypes = array(1, 0);
+        $cerrar = array_random($booleanTypes);
+
+        $properties = \App\Models\Property::all();
+        $users = \App\Models\User::all();
+
+        foreach ($properties as $property) {
+
+            foreach ($users as $user) {
+                if (rand(1, 145) > 62) {
+                    \App\Models\PropertyInvest::create(
+                        ['property_id' => $property->id, 'user_id' => $user->id, 'value' => rand(1, 142), 'transaction_id' => 1]
+                    );
+                }
+            }
+        }
     }
 }

@@ -82,7 +82,7 @@ class Property extends Model
      */
     public function getVotingTime(){
         $end = new \DateTime($this->getAttribute('created_at'));
-        $end->add(new \DateInterval('PT10H30S'));
+        $end->add(new \DateInterval('PT160H30S'));
         $date = new \DateTime();
 
         if($end > $date) {
@@ -100,7 +100,7 @@ class Property extends Model
      */
     public function getInvestmentTime(){
         $end = new \DateTime($this->getAttribute('created_at'));
-        $end->add(new \DateInterval('PT10H30S'));
+        $end->add(new \DateInterval('PT160H30S'));
         $date = new \DateTime();
 
         if($end > $date) {
