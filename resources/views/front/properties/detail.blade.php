@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="property{{strpos($property->title, 'Propiedad') !== false ? " tengoduenio": ""}} border-common">
+    <div class="property{{strpos($property->title, 'Propiedad') !== false ? " tengoduenio": ""}}">
         <div class="info">
             @if( isset($property->images))
                 <div class="image" style="margin:auto; background-image: url('images/properties/{{$property->images}}') "></div>
@@ -39,6 +39,9 @@
                             <pedo style="color:black; font-size: 15px;">{{number_format($property->getTotalInvestment('percentage'), 2, ',', '.')}}%</pedo></br>
                             Total Invertido
                         </p>
+                        <div1 style="position:absolute; left:45% ; bottom:7%;z-index: 10;">
+                            <div id=torta{{$property->id}}" style="--my-number-var: {{360/100*$property->getTotalInvestment('percentage')}}deg;" class="tortainvest" ></div>
+                        </div1>
                         <p style="margin-top: 16px; text-align: right; display:inline-block;float:right; line-height: 21px; font-size:10px; font-weight: lighter;">
                             <pedo style="color:black; font-size: 15px;">{{$property->getTotalInvestors()}}</pedo></br>
                             Contribuyentes

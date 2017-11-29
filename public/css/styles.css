@@ -3317,6 +3317,26 @@ section#home section {
         background: white;
         color: #0c161f; }
 
+.tortainvest {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  overflow: hidden;
+  border-radius: 100%;
+  background-color: #4868af; }
+
+.tortainvest::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  background-color: #4868af;
+  clip: rect(0, 35px, 17.5px, 0px);
+  background-image: linear-gradient(var(--my-number-var), #fdcd1a, #ebdc0c 49.9%, transparent 50.1%, transparent 100%); }
+
 section#properties .wrapper {
   position: relative;
   width: 33.3333%;
