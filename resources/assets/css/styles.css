@@ -3323,7 +3323,7 @@ section#home section {
   width: 35px;
   overflow: hidden;
   border-radius: 100%;
-  background-color: #fdcd1a; }
+  background-color: #4868af; }
 
 .tortainvest::before {
   content: '';
@@ -3333,9 +3333,9 @@ section#home section {
   top: 0;
   left: 0;
   border-radius: inherit;
-  background-color: #fdcd1a;
+  background-color: #4868af;
   clip: rect(0, 35px, 17.5px, 0px);
-  background-image: linear-gradient(var(--my-number-var), #4868af, #4868af 49.9%, transparent 50.1%, transparent 100%); }
+  background-image: linear-gradient(var(--my-number-var), #fdcd1a, #fdcd1a 49.9%, transparent 50.1%, transparent 100%); }
 
 section#properties .wrapper {
   position: relative;
