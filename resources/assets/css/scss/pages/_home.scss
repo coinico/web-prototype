@@ -191,7 +191,7 @@ section#home{
   height: 35px; width: 35px;
   overflow: hidden;
   border-radius: 100%;
-  background-color: $secondaryColor;
+  background-color: $primaryColor;
 }
 .tortainvest::before {
    content: '';
@@ -199,7 +199,7 @@ section#home{
    height: 100%; width: 100%;
    top: 0; left: 0;
    border-radius: inherit;
-   background-color: $secondaryColor;
+   background-color: $primaryColor;
    clip: rect(0, 35px, 17.5px, 0px);
-  background-image: linear-gradient(var(--my-number-var), $primaryColor, #4868af 49.9%, transparent 50.1%, transparent 100%);
+  background-image: linear-gradient(var(--my-number-var), $secondaryColor, #fdcd1a 49.9%, transparent 50.1%, transparent 100%);
  }
