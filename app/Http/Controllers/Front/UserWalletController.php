@@ -26,11 +26,11 @@ class UserWalletController extends Controller
         $userId = auth()->user()->id;
         $standardWallets = UserWallet::whereHas('currency', function($q){
             $q->where('type', '=','currency');
-        })->where('user_id', $userId)->get();
+        })->where('user_id', $userId)->with("currency", "transactions")->get();
 
         $tokenWallets = UserWallet::whereHas('currency', function($q){
             $q->where('type', '=','token');
-        })->where('user_id', $userId)->get();
+        })->where('user_id', $userId)->with("currency", "transactions")->get();
 
         return view('front.wallets.index', compact('standardWallets', 'tokenWallets'));
     }
@@ -38,7 +38,7 @@ class UserWalletController extends Controller
     public function manageWallet($id)
     {
 
-        $userWallet = UserWallet::find($id);
+        $userWallet = UserWallet::where("id", $id)->with("currency", "transactions")->first();
 
         $message = "";
 

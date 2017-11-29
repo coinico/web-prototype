@@ -217,11 +217,11 @@ class PostController extends Controller
 
         $standardWallets = UserWallet::whereHas('currency', function($q){
             $q->where('type', '=','currency');
-        })->where('user_id', $user->id)->get();
+        })->where('user_id', $user->id)->with("transactions", "currency")->get();
 
         $tokenWallets = UserWallet::whereHas('currency', function($q){
             $q->where('type', '=','token');
-        })->where('user_id', $user->id)->get();
+        })->where('user_id', $user->id)->with("transactions", "currency")->get();
 
         $investments = PropertyInvest::where('user_id',$user->id)->get();
 
