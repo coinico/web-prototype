@@ -14,7 +14,7 @@
                             {!! session('confirmation-success') !!}
                         @endcomponent
                     @endif
-                    <h3>@lang('Regístrate')</h3>
+                    <h3>@lang('Ingresa tus datos para continuar')</h3>
                     <form role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
                         @if ($errors->has('name'))
@@ -33,9 +33,7 @@
                             @component('front.components.error')
                                 {{ $errors->first('password') }}
                             @endcomponent
-                        @endif 
-                        <input id="password" placeholder="@lang('Contraseña')" type="password" class="full-width"  name="password" required>
-                        <input id="password-confirm" placeholder="@lang('Confirma tu contraseña')" type="password" class="full-width" name="password_confirmation" required>
+                        @endif
                         <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Confirmar')">
                     </form>
                 </div>

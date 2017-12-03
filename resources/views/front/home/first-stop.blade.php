@@ -13,7 +13,7 @@
 
 
     @guest
-    </br>   
+    </br>
 <div style="margin-top:-150px; width:100%;text-align:center; display: inline-block">
 
     <div class="example-wrapper1" style="display: inline-block">
