@@ -81,34 +81,34 @@
 
             <section class="features owl-carousel">
                 <div class="feature">
-                    Ambientes <span>4</span>
+                    Ambientes <span>{{number_format($property->value*0.000011, 0, ',', '.')}}</span>
                 </div>
                 <div class="feature">
-                    Dormitorios <span>2</span>
+                    Dormitorios <span>{{number_format($property->value*0.000008, 0, ',', '.')}}</span>
                 </div>
                 <div class="feature">
-                    Baños <span>2</span>
+                    Baños <span>{{number_format($property->value*0.000002, 0, ',', '.')}}</span>
                 </div>
                 <div class="feature">
-                    Superficie Total <span> 300</span>
+                    Superficie Total <span> {{number_format($property->value*0.0009, 0, ',', '.')}} m2</span>
                 </div>
                 <div class="feature">
-                    Superficie Cubierta <span> 85</span>
+                    Superficie Cubierta <span> {{number_format($property->value*0.00045, 0, ',', '.')}} m2</span>
                 </div>
                 <div class="feature">
-                    Expensas <small>U$D 2.000</small>
+                    Expensas <span>U$D {{number_format($property->value*0.0013, 0, ',', '.')}}</span>
                 </div>
                 <div class="feature">
-                    Servicios <small> GAS, LUZ, AGUA </small>
+                    Servicios <span> GAS, LUZ, AGUA </span>
                 </div>
                 <div class="feature">
-                    Orientación <small> Oeste </small>
+                    Orientación <span> OESTE </span>
                 </div>
                 <div class="feature">
-                    Pisos <span> 2 </span>
+                    Pisos <span> {{number_format($property->value*0.000002, 0, ',', '.')}} </span>
                 </div>
                 <div class="feature">
-                    Cocheras <span> 2 </span>
+                    Cocheras <span> {{number_format($property->value*0.000003, 0, ',', '.')}} </span>
                 </div>
             </section>
 
@@ -116,14 +116,14 @@
                <h3> Descripción </h3>
                <p>{{$property->description}}</p>
 
-               <h4>Detalles:</h4>
-               <p>Se realizó la correspondiente tasación de la propiedad en U$D {{number_format($property->value, 0, ',', '.')}} y se procede a emitir 100.000 unidades de TPI-BN-001 por un valor inicial de U$D {{number_format($property->value/100000, 0, ',', '.')}} c/u.</p>
+               <h4>Detalles para contribuir:</h4>
+               <p>Se realizó la correspondiente tasación de la propiedad en un valor de U$D {{number_format($property->value, 0, ',', '.')}} y se emitieron 100.000 unidades del token TPI-BN-001 a un valor inicial de U$D {{number_format($property->value/100000, 0, ',', '.')}} c/u.</p>
                <p>El objetivo de la operación es captar fondos por {{number_format($property->value*0.4, 0, ',', '.')}} dólares mediante la licitación inicial del 40% de los tokens emitidos o 40.000 unidades (el resto permanecerán en la tenencia del original propietario).</p>
                <p>-Plazo - 2 años</p>
-               <p>-Renta - U35.000 el primer año y U$D 40.000 el segundo</p>
+               <p>-Renta - U$D {{number_format($property->value*0.005, 0, ',', '.')}} el primer año y U$D {{number_format($property->value*0.006, 0, ',', '.')}} durante el segundo.</p>
 
-               <h4>Fecha de licitación:</h4>
-               <p>Se puede comprar participación entre el 12-12-2017  y 12-01-2018.</p>
+               <h4>Plazos de Contribución:</h4>
+               <p>Se puede contribuir al fondo de inversión de la propiedad durante el período comprendido entre {{(new DateTime('first day of this month'))->format("d-m-Y")}} y {{(new DateTime('first day of next month'))->format("d-m-Y")}}.</p>
 
 
            </section>
@@ -133,6 +133,8 @@
                 <p>Se trata de una casa en un barrio residencial de lujo en las afueras de {{$property->city}}.
                     La propiedad cuenta con un diseño moderno y está dispuesta sobre un amplio terreno.
                 </p>
+
+                <p>{{$property->description}}</p>
             </section>
 
             <section class="plans">
