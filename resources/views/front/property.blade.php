@@ -96,13 +96,13 @@
                     Superficie Cubierta <span> 85</span>
                 </div>
                 <div class="feature">
-                    Expensas <small>U$s2.000</small>
+                    Expensas <small>U$D 2.000</small>
                 </div>
                 <div class="feature">
                     Servicios <small> GAS, LUZ, AGUA </small>
                 </div>
                 <div class="feature">
-                    Orientacion <small> Oeste </small>
+                    Orientación <small> Oeste </small>
                 </div>
                 <div class="feature">
                     Pisos <span> 2 </span>
@@ -117,8 +117,8 @@
                <p>{{$property->description}}</p>
 
                <h4>Detalles:</h4>
-               <p>Se realizó la correspondiente tasación de la propiedad en U$D 1.000.000 y se procede a emitir 100.000 unidades de ARG-BN-001 por un valor inicial de U$D 10 c/u.</p>
-               <p>El objetivo de la operación es captar fondos U$D 400.000 dólares mediante la licitación inicial del 40% de los de token emitidos o 40.000 unidades (el resto permanecen en la tenencia del inquilino).</p>
+               <p>Se realizó la correspondiente tasación de la propiedad en U$D {{number_format($property->value, 0, ',', '.')}} y se procede a emitir 100.000 unidades de TPI-BN-001 por un valor inicial de U$D {{number_format($property->value/100000, 0, ',', '.')}} c/u.</p>
+               <p>El objetivo de la operación es captar fondos por {{number_format($property->value*0.4, 0, ',', '.')}} dólares mediante la licitación inicial del 40% de los tokens emitidos o 40.000 unidades (el resto permanecerán en la tenencia del original propietario).</p>
                <p>-Plazo - 2 años</p>
                <p>-Renta - U35.000 el primer año y U$D 40.000 el segundo</p>
 
@@ -130,7 +130,7 @@
 
             <section class="decription">
                 <h3> Detalle </h3>
-                <p>Se trata de una casa en un barrio residencial de lujo en las afueras de Londres.
+                <p>Se trata de una casa en un barrio residencial de lujo en las afueras de {{$property->city}}.
                     La propiedad cuenta con un diseño moderno y está dispuesta sobre un amplio terreno.
                 </p>
             </section>
