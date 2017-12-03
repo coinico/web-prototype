@@ -159,7 +159,7 @@ class PropertiesTableSeeder extends Seeder
         );
         DB::table('properties')->insert($properties);
 
-        $booleanTypes = array(1, 1, 0);
+        $booleanTypes = array(1, 1, 1, 0);
 
         $properties = \App\Models\Property::all();
         $users = \App\Models\User::all();
