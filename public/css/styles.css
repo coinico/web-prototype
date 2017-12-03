@@ -3208,9 +3208,10 @@ section#home .first-stop {
     border: 1px solid;
     color: white;
     display: block;
-    margin: auto;
+    padding: 5px;
     width: 330px;
-    padding: 10px;
+    height: 40px;
+    vertical-align: middle;
     font-size: 22px;
     text-align: center;
     font-weight: bold; }
@@ -3218,22 +3219,23 @@ section#home .first-stop {
       background: white;
       color: #0c161f; }
   section#home .first-stop .Hero {
-    width: 100%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: -50px;
     text-align: center; }
   section#home .first-stop .Buildings {
-    max-width: 800px;
+    max-width: 600px;
     visibility: hidden;
     overflow: visible; }
   @media screen and (min-width: 480px) {
     section#home .first-stop .example-wrapper {
-      position: absolute;
-      top: 48%;
-      left: 65%;
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); }
     section#home .first-stop .arrow-example {
       position: relative;
+      left: 90px;
+      top: 135px;
       height: 150px;
       width: 125px;
       will-change: opacity, transform;
@@ -3324,13 +3326,12 @@ section#home .first-stop {
       -webkit-transform: translateX(-25px) translateY(-75px);
       transform: translateX(-25px) translateY(-75px); }
     section#home .first-stop .example-wrapper1 {
-      position: absolute;
-      top: 48%;
-      left: 34%;
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); }
     section#home .first-stop .arrow-example1 {
       position: relative;
+      left: 10px;
+      top: 135px;
       height: 150px;
       width: 125px;
       will-change: opacity, transform;
