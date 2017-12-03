@@ -46,9 +46,10 @@ section#home{
       border: 1px solid;
       color: white;
       display: block;
-      margin: auto;
+      padding: 5px;
       width: 330px;
-      padding: 10px;
+      height: 40px;
+      vertical-align: middle;
       font-size: 22px;
       text-align: center;
       font-weight: bold;
@@ -57,18 +58,18 @@ section#home{
         color: $primaryBgColor;
       }
     }
+
     @media screen and (min-width: 480px) {
 
       .example-wrapper {
-        position: absolute;
-        top: 50%;
-        left: 65%;
         -webkit-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
       }
 
       .arrow-example {
         position: relative;
+        left:90px;
+        top:135px;
         height: 150px;
         width: 125px;
         will-change: opacity, transform;
@@ -213,15 +214,14 @@ section#home{
       }
 
       .example-wrapper1 {
-        position: absolute;
-        top: 50%;
-        left: 34%;
         -webkit-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
       }
 
       .arrow-example1 {
         position: relative;
+        left:10px;
+        top:135px;
         height: 150px;
         width: 125px;
         will-change: opacity, transform;
