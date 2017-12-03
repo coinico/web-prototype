@@ -57,6 +57,17 @@ section#home{
         color: $primaryBgColor;
       }
     }
+    .Hero {
+      width: 100%;
+      margin-bottom:-50px;
+      text-align: center;
+    }
+
+    .Buildings {
+      max-width: 800px;
+      visibility: hidden;
+      overflow: visible;
+    }
     @media screen and (min-width: 480px) {
 
       .example-wrapper {
