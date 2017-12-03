@@ -3218,17 +3218,28 @@ section#home .first-stop {
     section#home .first-stop a:hover {
       background: white;
       color: #0c161f; }
-  section#home .first-stop .Hero {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -50px;
-    text-align: center; }
-  section#home .first-stop .Buildings {
-    max-width: 600px;
-    visibility: hidden;
-    overflow: visible; }
+  @media screen and (max-width: 480px) {
+    section#home .first-stop .Hero {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: -50px;
+      text-align: center; }
+    section#home .first-stop .Buildings {
+      max-width: 600px;
+      visibility: hidden;
+      overflow: visible; } }
   @media screen and (min-width: 480px) {
+    section#home .first-stop .Hero {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: -50px;
+      text-align: center; }
+    section#home .first-stop .Buildings {
+      max-width: 600px;
+      visibility: hidden;
+      overflow: visible; }
     section#home .first-stop .example-wrapper {
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); }
