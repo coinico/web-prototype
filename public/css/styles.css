@@ -3228,7 +3228,7 @@ section#home .first-stop {
   @media screen and (min-width: 480px) {
     section#home .first-stop .example-wrapper {
       position: absolute;
-      top: 50%;
+      top: 48%;
       left: 65%;
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); }
@@ -3325,7 +3325,7 @@ section#home .first-stop {
       transform: translateX(-25px) translateY(-75px); }
     section#home .first-stop .example-wrapper1 {
       position: absolute;
-      top: 50%;
+      top: 48%;
       left: 34%;
       -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%); }
