@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log("Home");
     $(".owl-carousel").owlCarousel({
         loop: true,
         autoplay:true,

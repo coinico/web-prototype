@@ -84,7 +84,7 @@ class PropertiesTableSeeder extends Seeder
                 'title' => 'Las Matas',
                 'user_id' => 1,
                 'status_id' => 1,
-                'description' => ' Gran diseño exterior e interior, seguridad y calidad de construcción. 1350 mts de casa en 3.900 mts de jardines impecables de diseño. Piscina desbordante exterior en gran porche con solarium y unas excelentes vistas. Piscina interior acristalada con vistas al salón y ventana a la sala de fiestas. Terraza chill out con grandes vistas. Gran salón en varios ambientes con vistas panoramicas y chimenea. Grandes espacios llenos de luz y techos muy altos. Casa domotizada con stores, ventanales electricos, sala de cine, gimnasio, cocina con isla central y zona de office. 5 habitaciones, 5 baños, 3 aseos, aseo de invitados de diseño de más de 25 mts, habitacion de servicio, 2 salones, comedor, discoteca con bar. Posibilidad de garita de seguridad. Alarma interior, perimetral, camaras de seguridad. Ultima tecnologia en seguridad con Alarma invisible en todas las entradas. garage con 3 entradas independientes. ',
+                'description' => ' Gran diseño exterior e interior, seguridad y calidad de construcción. 1350 mts de casa en 3.900 mts de jardines impecables de diseño. Piscina desbordante exterior en gran porche con solarium y unas excelentes vistas. Piscina interior acristalada con vistas al salón y ventana a la sala de fiestas. Terraza chill out con grandes vistas. Gran salón en varios ambientes con vistas panoramicas y chimenea. Grandes espacios llenos de luz y techos muy altos. Casa domotizada con stores, ventanales electricos, sala de cine, gimnasio, cocina con isla central y zona de office. 5 habitaciones, 5 baños, 3 aseos, aseo de invitados de diseño de más de 25 mts, habitacion de servicio, 2 salones, comedor, discoteca con bar. Posibilidad de garita de seguridad. Alarma interior, perimetral, cámaras de seguridad. Última tecnologia en seguridad con Alarma invisible en todas las entradas. garage con 3 entradas independientes. ',
                 'detail' => '',
                 'images' => '4.jpg',
                 'value' => '2950000',
@@ -144,7 +144,7 @@ class PropertiesTableSeeder extends Seeder
                 'title' => 'Humanes',
                 'user_id' => 1,
                 'status_id' => 4,
-                'description' => 'Perfecto estado para entrar a vivir, piso bien situado en zona centro y a cinco minutos de la Renfe, cercano a todos los servicios, colegios, centro de salud... Superf. Const. 82 m², 3 habitaciones, 1 baño reformado con plato de ducha y mampara, cocina amueblada y equipada, salón-comedor amplio y luminoso, terraza cerrada en aluminio, ascensor, puerta blindada, calefacción de gas natural, suelos de parquet, vidrios dobles de climalit, carpintería exterior con doble ventana, carpintería interior sapelli, aire acondicionado en el salón.',
+                'description' => 'Perfecto estado para entrar a vivir, piso bien situado en zona centro y a cinco minutos de la peatonal, cercano a todos los servicios, colegios, centro de salud... Superf. Const. 82 m², 3 habitaciones, 1 baño reformado con plato de ducha y mampara, cocina amueblada y equipada, salón-comedor amplio y luminoso, terraza cerrada en aluminio, ascensor, puerta blindada, calefacción de gas natural, suelos de parquet, vidrios dobles de climalit, carpintería exterior con doble ventana, carpintería interior sapelli, aire acondicionado en el salón.',
                 'detail' => '',
                 'images' => '8.jpg',
                 'value' => '980000',
@@ -159,8 +159,7 @@ class PropertiesTableSeeder extends Seeder
         );
         DB::table('properties')->insert($properties);
 
-        $booleanTypes = array(1, 0);
-        $cerrar = array_random($booleanTypes);
+        $booleanTypes = array(1, 1, 1, 1, 1, 1, 0);
 
         $properties = \App\Models\Property::all();
         $users = \App\Models\User::all();
@@ -171,6 +170,9 @@ class PropertiesTableSeeder extends Seeder
                 if (rand(1, 145) > 62) {
                     \App\Models\PropertyInvest::create(
                         ['property_id' => $property->id, 'user_id' => $user->id, 'value' => rand(1, 142), 'transaction_id' => 1]
+                    );
+                    \App\Models\PropertyVote::create(
+                        ['property_id' => $property->id, 'user_id' => $user->id, 'weight' => rand(5000, 10000), 'vote' => array_random($booleanTypes)]
                     );
                 }
             }

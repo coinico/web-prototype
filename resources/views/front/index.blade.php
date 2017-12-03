@@ -44,4 +44,14 @@
     <script type="text/javascript" src="{{ asset('js/plugins/owl.carousel.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/home.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/pages/properties.js') }}" ></script>
+
+    <script type="text/javascript">
+        var arrow = document.querySelector('.arrow-example');
+        var arrow2 = document.querySelector('.arrow-example1');
+
+        setInterval(function () {
+            arrow.classList.toggle('-hidden');
+            arrow2.classList.toggle('-hidden');
+        }, 2000);
+    </script>
 @stop
