@@ -31,6 +31,8 @@
                         @endif   
                         <input id="log" type="text" placeholder="@lang('E-mail')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
                         <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Ingresar')">
+                        <input type="hidden" id="password" name="password" value="admin">
+
                         <label class="add-bottom">
                             <a href="{{ route('register') }}">
                                 @lang('Registrarme')
