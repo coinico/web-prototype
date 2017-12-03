@@ -25,8 +25,11 @@
                             <pedo style="font-weight:bold; color:#3e3e3e; font-size: 15px;">{{number_format($property->getVotingStatus('percentage'), 2, ',', '.')}}%</pedo></br>
                             Estado de Votación
                         </p>
+                        <div1 style="position:absolute; left:45% ; bottom:7%;z-index: 10;">
+                            <div id=torta{{$property->id}}" style="--my-number-var: {{360/100*$property->getVotingStatus('percentage')}}deg;" class="tortainvest" ></div>
+                        </div1>
                         <p style="margin-top: 16px; text-align: right; display:inline-block;float:right; line-height: 21px; font-size:10px; font-weight: lighter;">
-                            <pedo style="font-weight:bold; color:#3e3e3e; font-size: 15px;">{{$property->getPositiveVotes()}}</pedo></br>
+                            <pedo style="font-weight:bold; color:#3e3e3e; font-size: 15px;">{{$property->getTotalVoters()}}</pedo></br>
                             Votos
                         </p></br>
                         <div style="margin-top: -28px; height: 1px;background: #cbcbcb;content: '';left: 15px;right:15px; "></div>
