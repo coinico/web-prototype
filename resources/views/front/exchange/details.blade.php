@@ -254,7 +254,7 @@
            <div1 class="order_book_title_bid">ORDENES DE COMPRA</div1>
            <div1 class="order_book_title_ask">ORDENES DE VENTA</div1>
            <div1 class="order_book_bid">
-               <table id="order_book_bid" class="display cell-border hover stripe" cellspacing="0">
+               <table id="order_book_bid" class="display cell-border responsive hover stripe nowrap" cellspacing="0" width="100%">
                    <thead>
                    <tr>
                        <th>Suma Total</th>
@@ -266,7 +266,7 @@
                </table>
            </div1>
            <div1 class="order_book_ask">
-               <table id="order_book_ask" class="display cell-border hover stripe" cellspacing="0">
+               <table id="order_book_ask" class="display cell-border responsive hover stripe nowrap" cellspacing="0" width="100%">
                    <thead>
                    <tr>
                        <th>Precio Venta ({{$currencyFrom->alias}})</th>
@@ -281,7 +281,7 @@
 
        @auth
            <div class="row">
-               <table id="myOpenOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
+               <table id="myOpenOrders" class="display cell-border responsive hover stripe nowrap" cellspacing="0" width="100%">
                    <thead>
                    <tr>
                        <th>Fecha de Apertura</th>
@@ -298,7 +298,7 @@
            </div>
 
            <div class="row">
-               <table id="myLastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
+               <table id="myLastExecutedOrders" class="display cell-border responsive hover stripe nowrap" cellspacing="0" width="100%">
                    <thead>
                    <tr>
                        <th>Fecha de Cierre</th>
@@ -317,7 +317,7 @@
        @endauth
 
        <div class="row chinguito">
-           <table id="lastExecutedOrders" class="display cell-border hover stripe" cellspacing="0" width="100%">
+           <table id="lastExecutedOrders" class="display cell-border responsive hover stripe nowrap" cellspacing="0" width="100%">
                <thead>
                <tr>
                    <th>Fecha</th>
@@ -336,6 +336,7 @@
 
 @section('scripts')
     <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" ></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js" ></script>
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <script src="https://www.amcharts.com/lib/3/amstock.js"></script>
