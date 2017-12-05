@@ -21,7 +21,8 @@
                             {!! session('confirmation-danger') !!}
                         @endcomponent
                     @endif
-                    <h3>@lang('Ingresar')</h3>
+                        <h3>@lang('Ingresar')</h3>
+                        <p>@lang('Para ingresar deberás estar registrado, y para ello tendrás que proveer un e-mail y tu nombre.')</br>Si aún no te encuentras registrado haz click <a href="{{ route('register') }}">@lang('aquí')</a>.</p>
                     <form role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         @if ($errors->has('log'))
@@ -32,12 +33,6 @@
                         <input id="log" type="text" placeholder="@lang('E-mail')" class="full-width" name="log" value="{{ old('log') }}" required autofocus>
                         <input class="button-primary full-width-on-mobile" type="submit" value="@lang('Ingresar')">
                         <input type="hidden" id="password" name="password" value="admin">
-
-                        <label class="add-bottom">
-                            <a href="{{ route('register') }}">
-                                @lang('Registrarme')
-                            </a>
-                        </label>
                     </form>
                 </div>
             </div>
