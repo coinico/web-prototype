@@ -146,7 +146,8 @@ class OrderBookController extends Controller
         $dbResults = OrderBook::where("crypto_currency_from", Input::get("currencyFrom"))
             ->where("crypto_currency_to", Input::get("currencyTo"))
             ->where('closed_time', '<>', '', 'and')
-            ->orderBy("closed_time", "DESC")->get();
+            ->orderBy("closed_time", "DESC")
+            ->limit(50)->get();
 
         $result = array();
 
@@ -174,7 +175,8 @@ class OrderBookController extends Controller
                     ->where("user_id", auth()->user()->id)
                     ->orWhere('user_id_2', auth()->user()->id);
             })
-            ->orderBy("closed_time", "DESC")->get();
+            ->orderBy("closed_time", "DESC")
+            ->limit(50)->get();
 
         $result = array();
 
@@ -204,7 +206,8 @@ class OrderBookController extends Controller
         $dbResults = OrderBook::where("user_id", $userId)
             ->whereNotNull("closed_time")
             ->whereNotIn("filled", [0])
-            ->orderBy("closed_time", "DESC")->get();
+            ->orderBy("closed_time", "DESC")
+            ->limit(50)->get();
 
         $result = array();
 
@@ -273,7 +276,8 @@ class OrderBookController extends Controller
             ->where("crypto_currency_to", Input::get("currencyTo"))
             ->whereNull("closed_time")
             ->where("user_id", $userId)
-            ->orderBy("created_at", "DESC")->get();
+            ->orderBy("created_at", "DESC")
+            ->limit(50)->get();
 
         $result = array();
 
@@ -306,7 +310,8 @@ class OrderBookController extends Controller
 
         $dbResults = OrderBook::where("user_id", $userId)
             ->whereNull("closed_time")
-            ->orderBy("created_at", "DESC")->get();
+            ->orderBy("created_at", "DESC")
+            ->limit(50)->get();
 
         $result = array();
 
@@ -676,7 +681,8 @@ class OrderBookController extends Controller
              and crypto_currency_to = $cct
              and closed_time is null
              and type = 'ask'
-           order by value asc");
+           order by value asc
+           limit 50");
 
         $result = array();
         $totalSum = 0;
@@ -695,64 +701,6 @@ class OrderBookController extends Controller
         return $result;
     }
 
-    /*
-     *     $createdOrder = OrderBook::create(
-                [
-                    'user_id' => $userId,
-                    'crypto_currency_from' => $ccf,
-                    'crypto_currency_to' => $cct,
-                    'type' => "bid",
-                    'quantity' => $cantidad,
-                    'value' => $precio,
-                    'execution_type' => "SELL"
-                ]
-            );
-
-            while($executingAmount > 0 && $nextOrder) {
-
-                if ($nextOrder->quantity > $cantidad) {
-
-                    $nextOrderUserWallet = UserWallet::where("user_id", $nextOrder->user_id)
-                        ->where("crypto_currency", $ccf);
-
-                    UserWalletTransaction::create(
-                        [
-                            'address_from' => '0xde0B295665436436435634636cb697BAe',
-                            'address_to' => '0xde0B29566124124124124124124cb697BAe',
-                            'amount' => $subtotal,
-                            'type' => 'credit',
-                            'memo' => 'Compra en exchange.',
-                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => 0,
-                            'total' => $subtotal,
-                            'user_wallet' => $nextOrderUserWallet->id,
-                        ]
-                    );
-
-                    UserWalletTransaction::create(
-                        [
-                            'address_from' => '0xde0B295665436436435634636cb697BAe',
-                            'address_to' => '0xde0B29566124124124124124124cb697BAe',
-                            'amount' => $cantidad,
-                            'type' => 'credit',
-                            'memo' => 'Compra en exchange.',
-                            'transaction_hash' => '0x35f29841f9fe3747c0327c261019f22a08718e6650492a5ba01dc2a4b76efeb5',
-                            'transaction_fee' => 0,
-                            'total' => $cantidad,
-                            'user_wallet' => $walletTo->id,
-                        ]
-                    );
-
-                    $nextOrder->update([
-                        "filled" => $nextOrder->filled +$cantidad,
-                        "current_cost" => $nextOrder->current_cost +$nextOrder->value*$cantidad
-                    ]);
-
-                    $nextOrder = null;
-                } else {
-                    $nextOrder->quantity > $cantidad
-                }
-     */
 
     public function bidOrders()
     {
@@ -768,7 +716,8 @@ class OrderBookController extends Controller
              and crypto_currency_to = $cct
              and closed_time is null
              and type = 'bid'
-           order by value desc");
+           order by value desc
+           limit 50");
 
         $result = array();
         $totalSum = 0;
