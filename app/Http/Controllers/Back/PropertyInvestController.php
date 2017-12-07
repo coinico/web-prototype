@@ -34,7 +34,7 @@ class PropertyInvestController extends Controller
         $transaction->save();
 
         $ptiName = 'TPI de '.auth()->user()->name;
-        $ptiAlias = 'TPI-'.auth()->user()->id;
+        $ptiAlias = 'TPI'.auth()->user()->id;
 
         $cryptoCurrency = CryptoCurrency::create(
             [
@@ -83,6 +83,10 @@ class PropertyInvestController extends Controller
 
         $propertyInvest = PropertyInvest::where(['property_id'=>$propertyId, 'user_id' => auth()->user()->id])->first();
         $property = Property::find($propertyId);
+
+        if ($property->status->id <> 4) {
+            return response('Estado de propiedad erróneo.', 400);
+        }
         if($propertyInvest){
 
             $transaction = UserWalletTransaction::find($propertyInvest->transaction_id);
