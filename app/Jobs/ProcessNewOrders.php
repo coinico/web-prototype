@@ -42,12 +42,10 @@ class ProcessNewOrders implements ShouldQueue
         foreach ($tokenCurrencies as $tokenCurrency) {
 
             if ($tokenCurrency->id <> 1 && $tokenCurrency->id <>2) {
-                for ($i = 1; $i <= 10; $i++) {
-                    $this->createOrderBook(1, $ctfCurrency, $tokenCurrency);
-                    $this->createOrderBookWithDate(1, $ctfCurrency, $tokenCurrency, $dateYesterday);
-                    $this->createOrderBook(1, $ethCurrency, $tokenCurrency);
-                    $this->createOrderBookWithDate(1, $ethCurrency, $tokenCurrency, $dateYesterday);
-                }
+                $this->createOrderBook(1, $ctfCurrency, $tokenCurrency);
+                $this->createOrderBookWithDate(1, $ctfCurrency, $tokenCurrency, $dateYesterday);
+                $this->createOrderBook(1, $ethCurrency, $tokenCurrency);
+                $this->createOrderBookWithDate(1, $ethCurrency, $tokenCurrency, $dateYesterday);
             }
         }
 
