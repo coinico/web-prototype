@@ -96,8 +96,8 @@ class ProcessNewOrders implements ShouldQueue
                     'filled' => $quantity,
                     'current_cost' => $currentCost,
                     'execution_type' => $executionType,
-                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
-                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(10, 1300))->format('Y-m-d H:i:s'),
+                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 9))->format('Y-m-d H:i:s')
                 ]
             );
         } else {
@@ -110,7 +110,7 @@ class ProcessNewOrders implements ShouldQueue
                     'quantity' => $quantity,
                     'value' => $value,
                     'execution_type' => $executionType,
-                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s')
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 1350))->format('Y-m-d H:i:s')
                 ]
             );
         }
@@ -147,8 +147,8 @@ class ProcessNewOrders implements ShouldQueue
                     'filled' => $quantity,
                     'current_cost' => $currentCost,
                     'type' => $type,
-                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(18000, 28000))->format('Y-m-d H:i:s'),
-                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(10, 1400))->format('Y-m-d H:i:s'),
+                    'closed_time' => \Carbon\Carbon::now()->subMinutes(rand(1, 9))->format('Y-m-d H:i:s'),
                     'updated_at' => $date
                 ]
             );
@@ -162,7 +162,7 @@ class ProcessNewOrders implements ShouldQueue
                     'quantity' => $quantity,
                     'value' => $value,
                     'execution_type' => $executionType,
-                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 17999))->format('Y-m-d H:i:s'),
+                    'created_at' => \Carbon\Carbon::now()->subMinutes(rand(1, 1400))->format('Y-m-d H:i:s'),
                     'updated_at' => $date
                 ]
             );
